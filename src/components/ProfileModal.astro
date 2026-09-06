@@ -1,0 +1,1309 @@
+---
+/**
+ * TypeBaazi Racer Profile & Daily Streak Hub Modal
+ * Allows users to customize their racer profile (Name, Avatar, Title)
+ * and track/maintain their daily typing streak, habits, and milestone certificates.
+ */
+---
+
+<div id="typebaazi-profile-modal" class="profile-overlay hidden">
+  <div class="profile-modal-card glass-panel">
+    <!-- Header -->
+    <div class="profile-header">
+      <div class="profile-header-title">
+        <span class="profile-header-icon" id="profile-modal-avatar-icon">🏎️</span>
+        <div>
+          <h3>Racer Profile & Daily Streak Hub</h3>
+          <p class="profile-header-sub">Manage your typing identity & maintain your daily streak</p>
+        </div>
+      </div>
+      <button type="button" id="close-profile-btn" class="profile-close-btn" title="Close Profile">✕</button>
+    </div>
+
+    <div class="profile-modal-body">
+      <!-- Section 1: Profile Customization -->
+      <div class="profile-identity-card">
+        <!-- Avatar Selector -->
+        <div class="avatar-section">
+          <label class="section-label">Select Racer Avatar</label>
+          <div class="avatar-picker" id="profile-avatar-picker">
+            <button type="button" class="avatar-opt active" data-avatar="🏎️" title="Racer">🏎️</button>
+            <button type="button" class="avatar-opt" data-avatar="🚀" title="Rocket">🚀</button>
+            <button type="button" class="avatar-opt" data-avatar="⚡" title="Lightning">⚡</button>
+            <button type="button" class="avatar-opt" data-avatar="👑" title="Crown">👑</button>
+            <button type="button" class="avatar-opt" data-avatar="🐯" title="Tiger">🐯</button>
+            <button type="button" class="avatar-opt" data-avatar="🦅" title="Eagle">🦅</button>
+            <button type="button" class="avatar-opt" data-avatar="🤖" title="Robot">🤖</button>
+            <button type="button" class="avatar-opt" data-avatar="💻" title="Tech">💻</button>
+            <button type="button" class="avatar-opt" data-avatar="🎯" title="Sniper">🎯</button>
+          </div>
+        </div>
+
+        <!-- Name Input -->
+        <div class="name-section">
+          <label for="profile-name-input" class="section-label">Your Name (for Certificates & Leaderboard)</label>
+          <div class="name-input-wrapper">
+            <span class="name-input-icon">✍️</span>
+            <input
+              type="text"
+              id="profile-name-input"
+              class="profile-text-input"
+              placeholder="Enter your full name..."
+              maxlength="40"
+            />
+          </div>
+        </div>
+
+        <!-- Level & XP Mini Bar -->
+        <div class="profile-level-banner">
+          <div class="level-pill" id="profile-level-pill">Level 1</div>
+          <div class="level-info-col">
+            <div class="level-titles-row">
+              <strong id="profile-title-en">Keyboard Rookie</strong>
+            </div>
+            <div class="xp-mini-track">
+              <div class="xp-mini-fill" id="profile-xp-fill" style="width: 20%;"></div>
+            </div>
+            <div class="xp-meta-row">
+              <span id="profile-xp-current">0 XP</span>
+              <span id="profile-xp-next">Next Level at 50 XP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Daily Streak Maintenance & Protector -->
+      <div class="profile-streak-card">
+        <div class="streak-banner-header">
+          <div class="streak-flame-left">
+            <span class="streak-flame-icon">🔥</span>
+            <div>
+              <div class="streak-count-huge">
+                <span id="profile-streak-count">0</span> Days
+              </div>
+              <span class="streak-count-lbl">Active Daily Streak</span>
+            </div>
+          </div>
+          <div class="streak-record-badge">
+            <span class="rec-icon">🏆</span>
+            <div>
+              <strong id="profile-longest-streak">0 Days</strong>
+              <span class="rec-lbl">All-Time Best</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Status Callout -->
+        <div class="streak-status-box" id="profile-streak-status-box">
+          <div class="status-icon" id="profile-status-icon">⚠️</div>
+          <div class="status-content">
+            <h4 id="profile-status-heading">Streak At Risk Today!</h4>
+            <p id="profile-status-desc">Complete at least one typing test or race today to keep your daily flame burning.</p>
+          </div>
+          <a href="/typing-test" class="btn-primary streak-quick-action" id="profile-practice-btn">
+            <span>⚡ Practice Now</span>
+          </a>
+        </div>
+
+        <!-- Weekly Activity Visualizer (Mon-Sun) -->
+        <div class="weekly-streak-wrapper">
+          <label class="section-label">This Week's Activity</label>
+          <div class="weekly-days-grid" id="profile-weekly-grid">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Streak Milestone Certificates Road -->
+        <div class="streak-milestones-compact">
+          <label class="section-label">Streak Milestone Rewards & Certificates</label>
+          <div class="milestones-compact-grid">
+            <!-- 7 Days -->
+            <div class="ms-pill-item" id="prof-ms-7">
+              <span class="ms-p-icon">🗓️</span>
+              <div class="ms-p-info">
+                <strong>7 Days</strong>
+                <span>+100 XP</span>
+              </div>
+              <span class="ms-p-tag" id="prof-tag-7">Locked</span>
+            </div>
+            <!-- 25 Days -->
+            <div class="ms-pill-item" id="prof-ms-25">
+              <span class="ms-p-icon">🥈</span>
+              <div class="ms-p-info">
+                <strong>25 Days</strong>
+                <span>Silver Certificate</span>
+              </div>
+              <button class="ms-p-claim-btn hidden" id="prof-btn-25" data-cert="streak-25">🎓 Claim</button>
+              <span class="ms-p-tag" id="prof-tag-25">Locked</span>
+            </div>
+            <!-- 50 Days -->
+            <div class="ms-pill-item gold-tier-ms" id="prof-ms-50">
+              <span class="ms-p-icon">🥇</span>
+              <div class="ms-p-info">
+                <strong>50 Days</strong>
+                <span>Golden Certificate</span>
+              </div>
+              <button class="ms-p-claim-btn hidden" id="prof-btn-50" data-cert="streak-50">🎓 Claim</button>
+              <span class="ms-p-tag" id="prof-tag-50">Locked</span>
+            </div>
+            <!-- 100 Days -->
+            <div class="ms-pill-item diamond-tier-ms" id="prof-ms-100">
+              <span class="ms-p-icon">💎</span>
+              <div class="ms-p-info">
+                <strong>100 Days</strong>
+                <span>Century Master</span>
+              </div>
+              <button class="ms-p-claim-btn hidden" id="prof-btn-100" data-cert="streak-100">🎓 Claim</button>
+              <span class="ms-p-tag" id="prof-tag-100">Locked</span>
+            </div>
+            <!-- 365 Days -->
+            <div class="ms-pill-item legend-tier-ms" id="prof-ms-365">
+              <span class="ms-p-icon">⭐</span>
+              <div class="ms-p-info">
+                <strong>365 Days</strong>
+                <span>Hall of Fame</span>
+              </div>
+              <button class="ms-p-claim-btn hidden" id="prof-btn-365" data-cert="streak-365">🎓 Claim</button>
+              <span class="ms-p-tag" id="prof-tag-365">Locked</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Daily Streak Reminder Notifications (App: 3x/day, Web: 5x/day) -->
+        <div class="streak-notification-setting-card">
+          <div class="notif-setting-header">
+            <div class="notif-header-left">
+              <span class="notif-bell-icon">🔔</span>
+              <div>
+                <strong class="notif-setting-title">Daily Streak Reminder Notifications</strong>
+                <p class="notif-setting-sub">
+                  <span id="notif-mode-badge" class="notif-mode-tag">2x Daily (Randomized)</span> 
+                  Automated streak protection & Grace Shield reminders.
+                </p>
+              </div>
+            </div>
+            <button type="button" id="btn-toggle-streak-notifs" class="btn-secondary notif-toggle-btn" style="padding: 6px 12px; font-size: 12px;">
+              <span id="streak-notif-btn-icon">🔔</span>
+              <span id="streak-notif-btn-label">Enable Reminders</span>
+            </button>
+          </div>
+          <div class="notif-schedule-chips" id="notif-schedule-pills">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer with Save & Close actions -->
+    <div class="profile-modal-footer">
+      <button type="button" id="btn-cancel-profile" class="btn-secondary profile-footer-btn">
+        <span>✕ Close</span>
+      </button>
+      <button type="button" id="btn-save-profile" class="btn-primary profile-footer-btn">
+        <span id="save-profile-btn-text">💾 Save Changes</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .profile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 6, 14, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .profile-overlay.hidden {
+    display: none !important;
+  }
+
+  .profile-modal-card {
+    width: 100%;
+    max-width: 680px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: linear-gradient(180deg, rgba(14, 20, 36, 0.98) 0%, rgba(8, 12, 22, 0.99) 100%);
+    border: 1.5px solid rgba(0, 240, 255, 0.3);
+    border-radius: var(--radius-xl);
+    padding: clamp(18px, 2.5vw, 24px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 240, 255, 0.2);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .profile-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .profile-header-icon {
+    font-size: 26px;
+  }
+
+  .profile-header-title h3 {
+    font-size: clamp(16px, 2.2vw, 19px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .profile-header-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .profile-close-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+
+  .profile-close-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 0, 122, 0.25);
+    border-color: #ff007a;
+  }
+
+  .profile-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-label {
+    font-size: clamp(10.5px, 2.2vw, 11.5px);
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 6px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Identity Card */
+  .profile-identity-card {
+    background: rgba(16, 24, 42, 0.7);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .avatar-section {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .avatar-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+  }
+
+  .avatar-opt {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    touch-action: manipulation;
+  }
+
+  .avatar-opt:hover {
+    transform: scale(1.1);
+    border-color: var(--accent-cyan);
+  }
+
+  .avatar-opt.active {
+    background: rgba(0, 240, 255, 0.2);
+    border-color: #00f0ff;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+    transform: scale(1.08);
+  }
+
+  .name-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(8, 12, 22, 0.9);
+    border: 1.5px solid rgba(0, 240, 255, 0.35);
+    border-radius: var(--radius-md);
+    padding: 2px 14px;
+    gap: 12px;
+    transition: all var(--transition-fast);
+  }
+
+  .name-input-wrapper:focus-within {
+    border-color: var(--accent-cyan, #00f0ff);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+  }
+
+  .name-input-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-right: 2px;
+  }
+
+  .profile-text-input {
+    flex: 1;
+    background: transparent !important;
+    border: 0 !important;
+    border-style: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 8px 0 !important;
+    margin: 0 !important;
+    letter-spacing: 0.3px;
+  }
+
+  .profile-text-input:focus,
+  .profile-text-input:focus-visible,
+  .profile-text-input:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-style: none !important;
+  }
+
+  .profile-level-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(8, 12, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+  }
+
+  .level-pill {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(0, 112, 243, 0.2));
+    border: 1.5px solid #00f0ff;
+    color: #00f0ff;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.25);
+    white-space: nowrap;
+  }
+
+  .level-info-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .level-titles-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #ffffff;
+  }
+
+  .level-sub-mr {
+    color: var(--accent-cyan);
+    font-size: 11px;
+  }
+
+  .xp-mini-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .xp-mini-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00f0ff, #fbbf24);
+    border-radius: 4px;
+  }
+
+  .xp-meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: var(--text-muted);
+  }
+
+  /* Streak Card */
+  .profile-streak-card {
+    background: linear-gradient(145deg, rgba(24, 18, 8, 0.8) 0%, rgba(12, 16, 28, 0.85) 100%);
+    border: 1.5px solid rgba(251, 191, 36, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .streak-banner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .streak-flame-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .streak-flame-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.8));
+    animation: trophyPulse 2s infinite ease-in-out;
+  }
+
+  .streak-count-huge {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fbbf24;
+    line-height: 1.1;
+    font-family: var(--font-mono);
+  }
+
+  .streak-count-lbl {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .streak-record-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    padding: 6px 12px;
+    border-radius: 10px;
+    text-align: right;
+  }
+
+  .streak-record-badge strong {
+    display: block;
+    color: #ffffff;
+    font-size: 13px;
+  }
+
+  .rec-lbl {
+    font-size: 9.5px;
+    color: #fbbf24;
+    text-transform: uppercase;
+  }
+
+  /* Streak Status Callout */
+  .streak-status-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(14, 20, 34, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 14px;
+    flex-wrap: wrap;
+  }
+
+  .streak-status-box.is-safe {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, rgba(6, 30, 20, 0.8) 0%, rgba(10, 20, 32, 0.8) 100%);
+  }
+
+  .status-icon {
+    font-size: 22px;
+  }
+
+  .status-content {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .status-content h4 {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .status-content p {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin: 2px 0 0;
+  }
+
+  .streak-quick-action {
+    padding: 5px 12px !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Weekly Days Grid */
+  .weekly-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  .w-day-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .w-day-box.is-today {
+    border-color: #00f0ff;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+  }
+
+  .w-day-box.completed {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.45);
+  }
+
+  .w-day-lbl {
+    font-size: 10px;
+    font-weight: 800;
+    color: #94a3b8;
+  }
+
+  .w-day-check {
+    font-size: 11px;
+    color: #64748b;
+  }
+
+  .completed .w-day-check {
+    color: #34d399;
+    font-weight: 900;
+  }
+
+  /* Compact Milestones Grid */
+  .milestones-compact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 8px;
+  }
+
+  .ms-pill-item {
+    background: rgba(10, 15, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3px;
+  }
+
+  .ms-pill-item.unlocked {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(16, 24, 40, 0.8));
+    border-color: rgba(251, 191, 36, 0.5);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+  }
+
+  .ms-p-icon {
+    font-size: 18px;
+  }
+
+  .ms-p-info strong {
+    font-size: 11.5px;
+    color: #ffffff;
+    display: block;
+  }
+
+  .ms-p-info span {
+    font-size: 9.5px;
+    color: #94a3b8;
+    display: block;
+  }
+
+  .ms-p-tag {
+    font-size: 9px;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .unlocked .ms-p-tag {
+    color: #34d399;
+  }
+
+  .ms-p-claim-btn {
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    color: #080c18;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+    margin-top: 2px;
+  }
+
+  .ms-p-claim-btn.hidden {
+    display: none !important;
+  }
+
+  /* Mobile User-Friendly Responsive Enhancements */
+  @media (max-width: 600px) {
+    .profile-overlay {
+      padding: 10px;
+    }
+
+    .profile-modal-card {
+      padding: 14px 12px;
+      border-radius: var(--radius-lg);
+      max-height: 94vh;
+      gap: 14px;
+    }
+
+    .profile-header-title h3 {
+      font-size: 15.5px;
+    }
+
+    .profile-header-sub {
+      font-size: 11px;
+    }
+
+    .profile-identity-card,
+    .profile-streak-card {
+      padding: 12px 10px;
+      gap: 12px;
+    }
+
+    .avatar-picker {
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .avatar-opt {
+      width: 38px;
+      height: 38px;
+      font-size: 19px;
+      border-radius: 8px;
+    }
+
+    .streak-banner-header {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .streak-flame-icon {
+      font-size: 26px;
+    }
+
+    .streak-count-huge {
+      font-size: 19px;
+    }
+
+    .streak-record-badge {
+      padding: 4px 8px;
+    }
+
+    .streak-record-badge strong {
+      font-size: 11.5px;
+    }
+
+    .weekly-days-grid {
+      gap: 3px;
+    }
+
+    .w-day-box {
+      padding: 4px 1px;
+    }
+
+    .milestones-compact-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+  }
+
+  .profile-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .profile-footer-btn {
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-fast);
+  }
+
+  .profile-footer-btn.btn-primary {
+    background: linear-gradient(135deg, #00f0ff 0%, #0070f3 100%);
+    color: #030712;
+    border: none;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(0, 240, 255, 0.35);
+  }
+
+  .profile-footer-btn.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 240, 255, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .profile-footer-btn.btn-primary.btn-saved {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
+  }
+
+  /* Explicit Light Theme Profile Modal Overrides */
+  [data-theme='light'] .profile-modal-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2) !important;
+  }
+
+  [data-theme='light'] .profile-modal-footer {
+    border-top: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .profile-footer-btn.btn-primary {
+    background: #0070f3 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.25) !important;
+  }
+
+  [data-theme='light'] .profile-identity-card {
+    background: #f8fafc !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .profile-streak-card {
+    background: linear-gradient(145deg, #fffdf8 0%, #fefcf3 100%) !important;
+    border: 1.5px solid #fde68a !important;
+    box-shadow: 0 4px 18px rgba(217, 119, 6, 0.08) !important;
+  }
+
+  [data-theme='light'] .streak-banner-header {
+    border-bottom: 1px solid #fef3c7 !important;
+  }
+
+  [data-theme='light'] .streak-count-huge {
+    color: #d97706 !important;
+  }
+
+  [data-theme='light'] .streak-count-lbl {
+    color: #92400e !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .streak-record-badge {
+    background: #ffffff !important;
+    border: 1.5px solid #fde68a !important;
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.12) !important;
+  }
+
+  [data-theme='light'] .streak-record-badge strong {
+    color: #b45309 !important;
+    font-weight: 900 !important;
+  }
+
+  [data-theme='light'] .streak-record-badge .rec-lbl {
+    color: #d97706 !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .profile-modal-title h3,
+  [data-theme='light'] .profile-header-title h3,
+  [data-theme='light'] .streak-card-top h4,
+  [data-theme='light'] .section-lbl {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .profile-level-banner {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .level-pill {
+    background: rgba(0, 112, 243, 0.12) !important;
+    border: 1.5px solid #0070f3 !important;
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .name-input-wrapper {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .name-input-wrapper:focus-within {
+    border-color: #0070f3 !important;
+    box-shadow: 0 0 12px rgba(0, 112, 243, 0.25) !important;
+  }
+
+  [data-theme='light'] .profile-text-input {
+    color: #0f172a !important;
+    background: transparent !important;
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  [data-theme='light'] .profile-text-input:focus,
+  [data-theme='light'] .profile-text-input:focus-visible {
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  [data-theme='light'] .avatar-opt {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .avatar-opt.active {
+    border: 2px solid #0070f3 !important;
+    background: #dbeafe !important;
+    box-shadow: 0 0 14px rgba(0, 112, 243, 0.35) !important;
+    transform: scale(1.1) !important;
+  }
+
+  [data-theme='light'] .streak-status-box {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .status-content h4 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .status-content p {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .w-day-box {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .w-day-box.is-today {
+    border: 2px solid #0070f3 !important;
+    box-shadow: 0 0 10px rgba(0, 112, 243, 0.2) !important;
+  }
+
+  [data-theme='light'] .w-day-box.completed {
+    background: #ecfdf5 !important;
+    border-color: #6ee7b7 !important;
+  }
+
+  [data-theme='light'] .w-day-lbl {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .ms-pill-item {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .ms-pill-item.unlocked {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+    border: 1.5px solid #fde68a !important;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15) !important;
+  }
+
+  [data-theme='light'] .ms-p-info strong {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .ms-p-info span {
+    color: #64748b !important;
+    font-weight: 600 !important;
+  }
+
+  [data-theme='light'] .ms-p-tag {
+    color: #94a3b8 !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .unlocked .ms-p-tag {
+    color: #059669 !important;
+    font-weight: 900 !important;
+  }
+
+  [data-theme='light'] .ms-p-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .ms-p-title {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .streak-notification-setting-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .notif-setting-title {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+</style>
+
+<script>
+  import { StorageManager } from '../lib/storage';
+  import { getLevelInfo } from '../lib/gamification';
+  import { streakNotifManager } from '../lib/streakNotifications';
+
+  function updateProfileUI() {
+    const modal = document.getElementById('typebaazi-profile-modal');
+    if (!modal) return;
+
+    const stats = StorageManager.getStats();
+    const settings = StorageManager.getSettings();
+    const levelInfo = getLevelInfo(stats.xp);
+
+    const nameInput = document.getElementById('profile-name-input') as HTMLInputElement | null;
+    const levelPill = document.getElementById('profile-level-pill');
+    const titleEn = document.getElementById('profile-title-en');
+    const titleMr = document.getElementById('profile-title-mr');
+    const xpFill = document.getElementById('profile-xp-fill');
+    const xpCurrent = document.getElementById('profile-xp-current');
+    const xpNext = document.getElementById('profile-xp-next');
+
+    const streakCount = document.getElementById('profile-streak-count');
+    const longestStreak = document.getElementById('profile-longest-streak');
+    const statusBox = document.getElementById('profile-streak-status-box');
+    const statusIcon = document.getElementById('profile-status-icon');
+    const statusHeading = document.getElementById('profile-status-heading');
+    const statusDesc = document.getElementById('profile-status-desc');
+    const practiceBtn = document.getElementById('profile-practice-btn');
+    const weeklyGrid = document.getElementById('profile-weekly-grid');
+
+    // Profile Identity (do not overwrite while user is actively typing)
+    if (nameInput && document.activeElement !== nameInput) {
+      nameInput.value = settings.userName || '';
+    }
+
+    // Avatar active state & header icon
+    const currentAvatar = settings.userAvatar || '🏎️';
+    const headerAvatarIcon = document.getElementById('profile-modal-avatar-icon');
+    if (headerAvatarIcon) headerAvatarIcon.textContent = currentAvatar;
+
+    modal.querySelectorAll('.avatar-opt').forEach(btn => {
+      const avatar = (btn as HTMLElement).dataset.avatar;
+      btn.classList.toggle('active', avatar === currentAvatar);
+    });
+
+    // Level info
+    if (levelPill) levelPill.textContent = `Level ${levelInfo.level}`;
+    if (titleEn) titleEn.textContent = levelInfo.title;
+    if (titleMr) titleMr.textContent = levelInfo.titleMr;
+    if (xpFill) xpFill.style.width = `${levelInfo.progressPercent}%`;
+    if (xpCurrent) xpCurrent.textContent = `${stats.xp} XP Total`;
+    if (xpNext) xpNext.textContent = `Next Level at ${levelInfo.maxXp} XP`;
+
+    // Streak stats
+    const curStreak = stats.currentStreak || 0;
+    const bestStreak = stats.longestStreak || 0;
+    if (streakCount) streakCount.textContent = String(curStreak);
+    if (longestStreak) longestStreak.textContent = `${bestStreak} Days`;
+
+    // Today's Status
+    const today = new Date().toISOString().split('T')[0];
+    const isCompletedToday = stats.lastActiveDate === today;
+
+    if (isCompletedToday) {
+      statusBox?.classList.add('is-safe');
+      if (statusIcon) statusIcon.textContent = '✅';
+      if (statusHeading) statusHeading.textContent = 'Streak Maintained for Today!';
+      if (statusDesc) statusDesc.textContent = `Awesome work! Your daily typing streak is safe (${curStreak} days). Come back tomorrow to advance!`;
+      if (practiceBtn) practiceBtn.style.display = 'none';
+    } else {
+      statusBox?.classList.remove('is-safe');
+      if (statusIcon) statusIcon.textContent = '🔥';
+      if (statusHeading) statusHeading.textContent = 'Streak At Risk Today!';
+      if (statusDesc) statusDesc.textContent = 'Complete at least 1 typing test or race today to keep your flame burning.';
+      if (practiceBtn) practiceBtn.style.display = 'inline-flex';
+    }
+
+    // Weekly visual grid
+    if (weeklyGrid) {
+      const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      const now = new Date();
+      const currentDayIdx = (now.getDay() + 6) % 7;
+
+      weeklyGrid.innerHTML = dayNames.map((name, i) => {
+        const isToday = i === currentDayIdx;
+        const isPastOrToday = i <= currentDayIdx;
+        const hasPracticed = isPastOrToday && (i === currentDayIdx ? isCompletedToday : true);
+        return `
+          <div class="w-day-box ${isToday ? 'is-today' : ''} ${hasPracticed ? 'completed' : ''}">
+            <span class="w-day-lbl">${name}</span>
+            <span class="w-day-check">${hasPracticed ? '✓' : '•'}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Streak Milestones
+    const milestones = [
+      { days: 7, cardId: 'prof-ms-7', tagId: 'prof-tag-7', btnId: null, type: null },
+      { days: 25, cardId: 'prof-ms-25', tagId: 'prof-tag-25', btnId: 'prof-btn-25', type: 'streak-25' },
+      { days: 50, cardId: 'prof-ms-50', tagId: 'prof-tag-50', btnId: 'prof-btn-50', type: 'streak-50' },
+      { days: 100, cardId: 'prof-ms-100', tagId: 'prof-tag-100', btnId: 'prof-btn-100', type: 'streak-100' },
+      { days: 365, cardId: 'prof-ms-365', tagId: 'prof-tag-365', btnId: 'prof-btn-365', type: 'streak-365' }
+    ];
+
+    const effective = Math.max(curStreak, bestStreak);
+
+    milestones.forEach(m => {
+      const card = document.getElementById(m.cardId);
+      const tag = document.getElementById(m.tagId);
+      const btn = m.btnId ? document.getElementById(m.btnId) : null;
+
+      if (effective >= m.days) {
+        card?.classList.add('unlocked');
+        if (tag) tag.textContent = '✓ Unlocked';
+        if (btn) btn.classList.remove('hidden');
+      } else {
+        card?.classList.remove('unlocked');
+        if (tag) tag.textContent = `${effective}/${m.days}d`;
+        if (btn) btn.classList.add('hidden');
+      }
+    });
+
+    // Streak Notification Setting UI
+    const notifBadge = document.getElementById('notif-mode-badge');
+    const notifBtnIcon = document.getElementById('streak-notif-btn-icon');
+    const notifBtnLabel = document.getElementById('streak-notif-btn-label');
+    const notifScheduleContainer = document.getElementById('notif-schedule-pills');
+
+    const isApp = streakNotifManager.isAppInstalled();
+    if (notifBadge) {
+      notifBadge.textContent = isApp ? '📱 2x Daily (Randomized)' : '🌐 2x Daily (Randomized)';
+    }
+
+    const isEnabled = streakNotifManager.isEnabled();
+    if (notifBtnIcon && notifBtnLabel) {
+      if (isEnabled) {
+        notifBtnIcon.textContent = '✅';
+        notifBtnLabel.textContent = 'Active (Reminding)';
+      } else {
+        notifBtnIcon.textContent = '🔔';
+        notifBtnLabel.textContent = 'Enable Reminders';
+      }
+    }
+
+    if (notifScheduleContainer) {
+      const schedule = streakNotifManager.getActiveSchedule();
+      notifScheduleContainer.innerHTML = schedule.map(slot => `
+        <span class="notif-chip">⏰ ${slot.label}</span>
+      `).join('');
+    }
+  }
+
+  // Document-level event delegation (works across all Astro page navigations)
+  document.addEventListener('input', (e) => {
+    const target = e.target as HTMLElement;
+    if (target && target.id === 'profile-name-input') {
+      const val = (target as HTMLInputElement).value;
+      StorageManager.saveSettings({ userName: val });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const target = e.target as HTMLElement;
+    if (target && target.id === 'profile-name-input') {
+      e.stopPropagation();
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const saveBtn = document.getElementById('btn-save-profile');
+        saveBtn?.click();
+      }
+    }
+  });
+
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+
+    // Save Profile Button
+    const saveBtn = target.closest('#btn-save-profile') as HTMLButtonElement | null;
+    if (saveBtn) {
+      const nameInput = document.getElementById('profile-name-input') as HTMLInputElement | null;
+      const activeAvatar = document.querySelector('.avatar-opt.active') as HTMLElement | null;
+
+      const newName = nameInput?.value.trim() || 'Speed Champion';
+      const newAvatar = activeAvatar?.dataset.avatar || '🏎️';
+
+      StorageManager.saveSettings({ userName: newName, userAvatar: newAvatar });
+      window.dispatchEvent(new CustomEvent('user-name-changed', { detail: { name: newName } }));
+      window.dispatchEvent(new CustomEvent('user-avatar-changed', { detail: { avatar: newAvatar } }));
+
+      // Visual feedback
+      const textEl = document.getElementById('save-profile-btn-text');
+      if (textEl) textEl.textContent = '✅ Saved!';
+      saveBtn.classList.add('btn-saved');
+
+      setTimeout(() => {
+        if (textEl) textEl.textContent = '💾 Save Changes';
+        saveBtn.classList.remove('btn-saved');
+        const modal = document.getElementById('typebaazi-profile-modal');
+        modal?.classList.add('hidden');
+      }, 400);
+      return;
+    }
+
+    // Toggle streak notifications button
+    if (target.closest('#btn-toggle-streak-notifs')) {
+      const current = streakNotifManager.isEnabled();
+      if (current) {
+        streakNotifManager.setEnabled(false);
+      } else {
+        await streakNotifManager.requestPermission();
+      }
+      updateProfileUI();
+      return;
+    }
+
+    // Avatar selection
+    const avatarBtn = target.closest('.avatar-opt') as HTMLElement | null;
+    if (avatarBtn) {
+      const avatar = avatarBtn.dataset.avatar || '🏎️';
+      document.querySelectorAll('.avatar-opt').forEach(b => b.classList.remove('active'));
+      avatarBtn.classList.add('active');
+
+      const headerAvatarIcon = document.getElementById('profile-modal-avatar-icon');
+      if (headerAvatarIcon) headerAvatarIcon.textContent = avatar;
+
+      StorageManager.saveSettings({ userAvatar: avatar });
+      window.dispatchEvent(new CustomEvent('user-avatar-changed', { detail: { avatar } }));
+      return;
+    }
+
+    // Certificate claim buttons
+    const certBtn = target.closest('.ms-p-claim-btn') as HTMLElement | null;
+    if (certBtn) {
+      const certType = certBtn.dataset.cert as any;
+      let days = 50;
+      if (certType === 'streak-25') days = 25;
+      if (certType === 'streak-100') days = 100;
+      if (certType === 'streak-365') days = 365;
+
+      const stats = StorageManager.getStats();
+      const modal = document.getElementById('typebaazi-profile-modal');
+      modal?.classList.add('hidden');
+
+      window.dispatchEvent(new CustomEvent('open-certificate-modal', {
+        detail: {
+          type: certType,
+          streakDays: days,
+          wpm: Math.max(stats.english.bestWpm,stats.hindi.bestWpm, stats.marathi.bestWpm) || 75
+        }
+      }));
+      return;
+    }
+
+    // Practice button click
+    if (target.closest('#profile-practice-btn')) {
+      const modal = document.getElementById('typebaazi-profile-modal');
+      modal?.classList.add('hidden');
+      return;
+    }
+
+    // Cancel / Close buttons
+    if (target.closest('#btn-cancel-profile') || target.closest('#close-profile-btn') || target.id === 'typebaazi-profile-modal') {
+      const modal = document.getElementById('typebaazi-profile-modal');
+      modal?.classList.add('hidden');
+      return;
+    }
+  });
+
+  // Global trigger to open profile modal
+  window.addEventListener('open-profile-modal', () => {
+    updateProfileUI();
+    const modal = document.getElementById('typebaazi-profile-modal');
+    modal?.classList.remove('hidden');
+    setTimeout(() => {
+      const input = document.getElementById('profile-name-input') as HTMLInputElement | null;
+      if (input) {
+        input.focus();
+      }
+    }, 50);
+  });
+
+  document.addEventListener('astro:page-load', updateProfileUI);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateProfileUI);
+  } else {
+    updateProfileUI();
+  }
+</script>

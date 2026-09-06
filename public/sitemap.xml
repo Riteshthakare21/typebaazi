@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- 1. Homepage & Core Hub -->
+  <url>
+    <loc>https://typebaazi.com/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://typebaazi.com/icons/icon-512.png</image:loc>
+      <image:title>TypeBaazi - Ultimate Trilingual English, Hindi &amp; Marathi Typing &amp; Racing Platform</image:title>
+    </image:image>
+  </url>
+
+  <!-- 2. Main Speed Test Arena -->
+  <url>
+    <loc>https://typebaazi.com/typing-test</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- 3. English Speed Test -->
+  <url>
+    <loc>https://typebaazi.com/english-typing-test</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- 4. Hindi Typing Test Online -->
+  <url>
+    <loc>https://typebaazi.com/hindi-typing-test</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- 5. Hindi Typing Practice Zone -->
+  <url>
+    <loc>https://typebaazi.com/hindi-typing-practice</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 6. Marathi Typing Arena (मराठी टायपिंग टेस्ट) -->
+  <url>
+    <loc>https://typebaazi.com/marathi-typing-test</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- 7. Marathi Practice Zone (मराठी सराव) -->
+  <url>
+    <loc>https://typebaazi.com/marathi-typing-practice</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 8. 7-Minute Government Exam Test (GCC-TBC, MPSC, SSC) -->
+  <url>
+    <loc>https://typebaazi.com/seven-minute-typing-test</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- 9. Typing Speed Test 1 Minute Hub -->
+  <url>
+    <loc>https://typebaazi.com/typing-speed-test</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 10. Government Exam Typing Practice (SSC, Courts, RRB) -->
+  <url>
+    <loc>https://typebaazi.com/government-exam-typing-practice</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+
+  <!-- 11. Real-Time AI Car Racing -->
+  <url>
+    <loc>https://typebaazi.com/race</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 12. Matrix Falling Words Arcade Game -->
+  <url>
+    <loc>https://typebaazi.com/games</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 13. Daily Challenge Arena -->
+  <url>
+    <loc>https://typebaazi.com/daily-challenge</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
+  </url>
+
+  <!-- 14. Global Hall of Fame & Leaderboard -->
+  <url>
+    <loc>https://typebaazi.com/leaderboard</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 15. Player Dashboard & Analytics -->
+  <url>
+    <loc>https://typebaazi.com/dashboard</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <!-- 16. Learn Touch Typing & Finger Chart Guide -->
+  <url>
+    <loc>https://typebaazi.com/learn</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 17. About Us Hub (Mission, Trilingual Engine, Contact, FAQ) -->
+  <url>
+    <loc>https://typebaazi.com/about</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 18. Contact Us Page -->
+  <url>
+    <loc>https://typebaazi.com/contact-us</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 19. Privacy Policy Page -->
+  <url>
+    <loc>https://typebaazi.com/privacy-policy</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 20. Terms & Conditions Page -->
+  <url>
+    <loc>https://typebaazi.com/terms-and-conditions</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 21. Disclaimer Page -->
+  <url>
+    <loc>https://typebaazi.com/disclaimer</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- 22. Cookie Policy Page -->
+  <url>
+    <loc>https://typebaazi.com/cookie-policy</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+</urlset>

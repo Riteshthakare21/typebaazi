@@ -1,0 +1,1056 @@
+---
+/**
+ * TypeBaazi Auth & Cloud Sync Modal
+ * Allows users to play as Guest by default or optionally Sign Up / Sign In
+ * to protect their streak, sync scores, and access progress on any device.
+ */
+---
+
+<div id="auth-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+  <div class="modal-card glass-panel auth-card">
+    <!-- Modal Header -->
+    <div class="auth-header">
+      <div class="auth-title-box">
+        <span class="auth-icon" id="auth-header-icon">⚡</span>
+        <div>
+          <h2 id="auth-modal-title" class="auth-title">TypeBaazi Account</h2>
+          <p class="auth-sub" id="auth-modal-sub">Save your streak, scores and progress across devices</p>
+        </div>
+      </div>
+      <button id="close-auth-modal-btn" class="close-btn" aria-label="Close Account Dialog">&times;</button>
+    </div>
+
+    <!-- Mode Tabs (for Guest / Unauthenticated users) -->
+    <div class="auth-tabs" id="auth-tabs-row">
+      <button class="auth-tab-btn active" data-auth-tab="signin">Sign In</button>
+      <button class="auth-tab-btn" data-auth-tab="signup">Sign Up</button>
+      <button class="auth-tab-btn" data-auth-tab="guest">Guest Mode</button>
+    </div>
+
+    <!-- Alert / Message Banner -->
+    <div id="auth-msg-banner" class="auth-alert hidden"></div>
+
+    <!-- Modal Scrollable Content Body -->
+    <div class="auth-body-scrollable" id="auth-modal-body">
+      <!-- TAB 1: SIGN IN -->
+      <form id="auth-signin-form" class="auth-form-view active">
+        <div class="form-group">
+          <label for="signin-ident">Username or Email</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input type="text" id="signin-ident" required placeholder="Enter your username or email" autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signin-pwd">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="signin-pwd" required placeholder="Enter your password" autocomplete="current-password" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary auth-submit-btn" id="signin-submit-btn">
+          <span>🚀 Sign In &amp; Restore Progress</span>
+        </button>
+
+        <div class="auth-form-footer">
+          <span>Don't have an account yet?</span>
+          <button type="button" class="link-btn" id="switch-to-signup-btn">Sign Up to Save Progress</button>
+        </div>
+      </form>
+
+      <!-- TAB 2: SIGN UP -->
+      <form id="auth-signup-form" class="auth-form-view">
+        <div class="form-group">
+          <label for="signup-username">Choose a Username</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🏎️</span>
+            <input type="text" id="signup-username" required minlength="2" maxlength="25" placeholder="e.g. SpeedChampion" autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-email">Email Address <small>(Optional, for account sync)</small></label>
+          <div class="input-wrapper">
+            <span class="input-icon">✉️</span>
+            <input type="email" id="signup-email" placeholder="yourname@email.com" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-pwd">Create a Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔑</span>
+            <input type="password" id="signup-pwd" required minlength="4" placeholder="At least 4 characters" autocomplete="new-password" />
+          </div>
+        </div>
+
+        <!-- Guest Progress Migration Checkbox -->
+        <div class="checkbox-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="signup-transfer-data" checked />
+            <span class="checkmark"></span>
+            <span class="checkbox-label">
+              <strong>Transfer my current guest progress</strong>
+              <small>Saves your existing streak, personal best WPM, accuracy, and unlocked badges to your new account.</small>
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary auth-submit-btn" id="signup-submit-btn">
+          <span>✨ Create Account &amp; Save Progress</span>
+        </button>
+
+        <div class="auth-form-footer">
+          <span>Already have an account?</span>
+          <button type="button" class="link-btn" id="switch-to-signin-btn">Sign In</button>
+        </div>
+      </form>
+
+      <!-- TAB 3: GUEST MODE INFO -->
+      <div id="auth-guest-view" class="auth-form-view">
+        <div class="guest-info-box">
+          <div class="guest-status-badge">
+            <span class="guest-icon">👤</span>
+            <div>
+              <strong>Playing as Guest</strong>
+              <span>Your progress is currently saved locally on this browser.</span>
+            </div>
+          </div>
+
+          <div class="guest-features-list">
+            <div class="feat-item">
+              <span class="feat-check">✓</span>
+              <span>Immediate access to all typing tests, races, and games</span>
+            </div>
+            <div class="feat-item">
+              <span class="feat-check">✓</span>
+              <span>Daily challenge and streak tracking on this device</span>
+            </div>
+            <div class="feat-item">
+              <span class="feat-check">✓</span>
+              <span>Local personal bests and leaderboard calculations</span>
+            </div>
+            <div class="feat-item note">
+              <span class="feat-star">⭐</span>
+              <span><strong>Tip:</strong> Create a free account anytime to sync your streak and stats across mobile and desktop.</span>
+            </div>
+          </div>
+
+          <div class="guest-actions-row">
+            <button type="button" class="btn-secondary" id="guest-continue-btn">
+              <span>Continue Playing as Guest</span>
+            </button>
+            <button type="button" class="btn-primary" id="guest-signup-cta-btn">
+              <span>Sign Up to Save Progress</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGGED IN USER PROFILE VIEW -->
+      <div id="auth-profile-view" class="auth-form-view">
+        <div class="profile-card">
+          <div class="profile-avatar-row">
+            <div class="profile-avatar" id="profile-avatar-display">🏎️</div>
+            <div class="profile-details">
+              <h3 class="profile-username" id="profile-username-display">Speed Champion</h3>
+              <span class="profile-badge badge-cyan">✓ Cloud Protected Account</span>
+              <span class="profile-email" id="profile-email-display"></span>
+            </div>
+          </div>
+
+          <div class="profile-stats-grid">
+            <div class="pstat-box">
+              <span class="pstat-val" id="profile-streak-display">🔥 0d</span>
+              <span class="pstat-lbl">Active Streak</span>
+            </div>
+            <div class="pstat-box">
+              <span class="pstat-val" id="profile-en-best">0 WPM</span>
+              <span class="pstat-lbl">English Best</span>
+            </div>
+            <div class="pstat-box">
+              <span class="pstat-val" id="profile-mr-best">0 WPM</span>
+              <span class="pstat-lbl">मराठी Best</span>
+            </div>
+            <div class="pstat-box">
+              <span class="pstat-val" id="profile-level-display">Lvl 1</span>
+              <span class="pstat-lbl">Typist Rank</span>
+            </div>
+          </div>
+
+          <div class="profile-actions-row">
+            <a href="/dashboard" class="btn-secondary profile-btn">
+              <span>📊 View Full Dashboard</span>
+            </a>
+            <button type="button" class="btn-secondary profile-btn" id="export-backup-btn">
+              <span>💾 Backup Data</span>
+            </button>
+            <button type="button" class="btn-danger profile-btn" id="signout-btn">
+              <span>🚪 Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { AuthManager } from '../lib/auth';
+  import { StorageManager } from '../lib/storage';
+
+  function initAuthModal() {
+    const modal = document.getElementById('auth-modal');
+    if (!modal) return;
+
+    const closeBtn = document.getElementById('close-auth-modal-btn');
+    const tabBtns = document.querySelectorAll('.auth-tab-btn');
+    const tabsRow = document.getElementById('auth-tabs-row');
+    const signinForm = document.getElementById('auth-signin-form');
+    const signupForm = document.getElementById('auth-signup-form');
+    const guestView = document.getElementById('auth-guest-view');
+    const profileView = document.getElementById('auth-profile-view');
+    const msgBanner = document.getElementById('auth-msg-banner');
+
+    const switchToSignup = document.getElementById('switch-to-signup-btn');
+    const switchToSignin = document.getElementById('switch-to-signin-btn');
+    const guestContinueBtn = document.getElementById('guest-continue-btn');
+    const guestSignupCtaBtn = document.getElementById('guest-signup-cta-btn');
+    const signoutBtn = document.getElementById('signout-btn');
+    const exportBtn = document.getElementById('export-backup-btn');
+
+    function showMessage(text: string, type: 'success' | 'error' | 'info') {
+      if (!msgBanner) return;
+      msgBanner.textContent = text;
+      msgBanner.className = `auth-alert ${type}`;
+      msgBanner.classList.remove('hidden');
+    }
+
+    function hideMessage() {
+      if (!msgBanner) return;
+      msgBanner.classList.add('hidden');
+    }
+
+    function switchTab(tabId: string) {
+      hideMessage();
+      tabBtns.forEach(b => {
+        if (b.getAttribute('data-auth-tab') === tabId) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      [signinForm, signupForm, guestView, profileView].forEach(v => v?.classList.remove('active'));
+
+      if (tabId === 'signin') signinForm?.classList.add('active');
+      if (tabId === 'signup') signupForm?.classList.add('active');
+      if (tabId === 'guest') guestView?.classList.add('active');
+      if (tabId === 'profile') profileView?.classList.add('active');
+    }
+
+    function updateModalState() {
+      const loggedIn = AuthManager.isLoggedIn();
+      const profile = AuthManager.getUserProfile();
+      const stats = StorageManager.getStats();
+
+      const headerTitle = document.getElementById('auth-modal-title');
+      const headerSub = document.getElementById('auth-modal-sub');
+      const headerIcon = document.getElementById('auth-header-icon');
+
+      if (loggedIn) {
+        if (tabsRow) tabsRow.style.display = 'none';
+        if (headerTitle) headerTitle.textContent = profile.username;
+        if (headerSub) headerSub.textContent = 'Account Synced & Cloud Protected';
+        if (headerIcon) headerIcon.textContent = profile.avatar || '👑';
+
+        // Fill profile view
+        const usernameDisp = document.getElementById('profile-username-display');
+        const emailDisp = document.getElementById('profile-email-display');
+        const avatarDisp = document.getElementById('profile-avatar-display');
+        const streakDisp = document.getElementById('profile-streak-display');
+        const enBestDisp = document.getElementById('profile-en-best');
+        const mrBestDisp = document.getElementById('profile-mr-best');
+        const lvlDisp = document.getElementById('profile-level-display');
+
+        if (usernameDisp) usernameDisp.textContent = profile.username;
+        if (emailDisp) emailDisp.textContent = profile.email || 'Cloud Member';
+        if (avatarDisp) avatarDisp.textContent = profile.avatar || '🏎️';
+        if (streakDisp) streakDisp.textContent = `🔥 ${stats.currentStreak || 0}d`;
+        if (enBestDisp) enBestDisp.textContent = `${stats.english?.bestWpm || 0} WPM`;
+        if (mrBestDisp) mrBestDisp.textContent = `${stats.hindi?.bestWpm || 0} WPM`;
+        if (mrBestDisp) mrBestDisp.textContent = `${stats.marathi?.bestWpm || 0} WPM`;
+        if (lvlDisp) lvlDisp.textContent = `Lvl ${stats.level || 1}`;
+
+        switchTab('profile');
+      } else {
+        if (tabsRow) tabsRow.style.display = 'flex';
+        if (headerTitle) headerTitle.textContent = 'TypeBaazi Account';
+        if (headerSub) headerSub.textContent = 'Save your streak, scores and progress across devices';
+        if (headerIcon) headerIcon.textContent = '⚡';
+        switchTab('signin');
+      }
+    }
+
+    function openModal(defaultTab?: string) {
+      updateModalState();
+      if (defaultTab && !AuthManager.isLoggedIn()) {
+        switchTab(defaultTab);
+      }
+      modal?.classList.add('open');
+      modal?.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      modal?.classList.remove('open');
+      modal?.setAttribute('aria-hidden', 'true');
+      hideMessage();
+    }
+
+    // Tab button listeners
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.getAttribute('data-auth-tab');
+        if (tab) switchTab(tab);
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    switchToSignup?.addEventListener('click', () => switchTab('signup'));
+    switchToSignin?.addEventListener('click', () => switchTab('signin'));
+    guestContinueBtn?.addEventListener('click', closeModal);
+    guestSignupCtaBtn?.addEventListener('click', () => switchTab('signup'));
+
+    // Handle Sign In Submit
+    signinForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const identInput = document.getElementById('signin-ident') as HTMLInputElement;
+      const pwdInput = document.getElementById('signin-pwd') as HTMLInputElement;
+
+      if (!identInput || !pwdInput) return;
+
+      const res = await AuthManager.signIn(identInput.value, pwdInput.value);
+      if (res.success) {
+        showMessage(res.message, 'success');
+        setTimeout(() => {
+          updateModalState();
+          closeModal();
+        }, 1000);
+      } else {
+        showMessage(res.message, 'error');
+      }
+    });
+
+    // Handle Sign Up Submit
+    signupForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const usernameInput = document.getElementById('signup-username') as HTMLInputElement;
+      const emailInput = document.getElementById('signup-email') as HTMLInputElement;
+      const pwdInput = document.getElementById('signup-pwd') as HTMLInputElement;
+      const transferCheck = document.getElementById('signup-transfer-data') as HTMLInputElement;
+
+      if (!usernameInput || !pwdInput) return;
+
+      const transferGuestData = transferCheck ? transferCheck.checked : true;
+      const res = await AuthManager.signUp(
+        usernameInput.value,
+        emailInput?.value || '',
+        pwdInput.value,
+        { transferGuestData }
+      );
+
+      if (res.success) {
+        showMessage(res.message, 'success');
+        setTimeout(() => {
+          updateModalState();
+          closeModal();
+        }, 1200);
+      } else {
+        showMessage(res.message, 'error');
+      }
+    });
+
+    // Handle Sign Out
+    signoutBtn?.addEventListener('click', () => {
+      AuthManager.signOut();
+      showMessage('Signed out. Continuing in Guest Mode.', 'info');
+      setTimeout(() => {
+        updateModalState();
+        closeModal();
+      }, 900);
+    });
+
+    // Handle Export Backup
+    exportBtn?.addEventListener('click', () => {
+      const json = AuthManager.exportProgressBackup();
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `typebaazi_backup_${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showMessage('Progress backup downloaded safely!', 'success');
+    });
+
+    // Expose open trigger to window
+    (window as any).openTypeBaaziAuthModal = openModal;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAuthModal);
+  } else {
+    initAuthModal();
+  }
+  document.addEventListener('astro:page-load', initAuthModal);
+</script>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(3, 6, 14, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999990;
+    padding: calc(70px + 16px) clamp(12px, 3vw, 20px) 24px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .auth-card {
+    background: rgba(10, 16, 28, 0.98);
+    border: 1.5px solid rgba(0, 240, 255, 0.3);
+    border-radius: 22px;
+    padding: clamp(16px, 2.5vw, 24px);
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100vh - 70px - 40px);
+    max-height: calc(100dvh - 70px - 40px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 240, 255, 0.12);
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    margin: auto 0;
+  }
+
+  .auth-header {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .auth-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .auth-icon {
+    font-size: 28px;
+  }
+
+  .auth-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .auth-sub {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 2px 0 0;
+  }
+
+  .close-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 26px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+
+  .close-btn:hover {
+    color: #ffffff;
+  }
+
+  .auth-tabs {
+    flex-shrink: 0;
+    display: flex;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.8);
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  .auth-tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .auth-tab-btn.active {
+    background: rgba(0, 240, 255, 0.15);
+    color: #00f0ff;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+  }
+
+  .auth-alert {
+    flex-shrink: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .auth-alert.hidden {
+    display: none;
+  }
+
+  .auth-alert.success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+  }
+
+  .auth-alert.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+  }
+
+  .auth-alert.info {
+    background: rgba(0, 240, 255, 0.15);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    color: #00f0ff;
+  }
+
+  /* Scrollable Modal Content Body */
+  .auth-body-scrollable {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2px 4px 14px 2px;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .auth-body-scrollable::-webkit-scrollbar {
+    width: 5px;
+  }
+  .auth-body-scrollable::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .auth-body-scrollable::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+  }
+  .auth-body-scrollable::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .auth-form-view {
+    display: none;
+  }
+
+  .auth-form-view.active {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: #e2e8f0;
+    margin-bottom: 6px;
+    letter-spacing: 0.2px;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    min-height: 48px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 0 14px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .input-wrapper:focus-within {
+    border-color: #00f0ff !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.25) !important;
+  }
+
+  .input-icon {
+    font-size: 16px;
+    line-height: 1;
+    margin-right: 10px;
+    opacity: 0.9;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-wrapper input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #ffffff !important;
+    font-size: 14.5px !important;
+    font-family: var(--font-ui, inherit) !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+  }
+
+  .input-wrapper input::placeholder {
+    color: #64748b !important;
+    opacity: 1;
+  }
+
+  .input-wrapper input:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .input-wrapper input:-webkit-autofill,
+  .input-wrapper input:-webkit-autofill:hover,
+  .input-wrapper input:-webkit-autofill:focus,
+  .input-wrapper input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #0f172a inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .checkbox-group {
+    margin: 16px 0;
+  }
+
+  .custom-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  .custom-checkbox input {
+    margin-top: 3px;
+    accent-color: #00f0ff;
+    width: 16px;
+    height: 16px;
+  }
+
+  .checkbox-label strong {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+
+  .checkbox-label small {
+    display: block;
+    font-size: 11.5px;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+
+  .auth-submit-btn {
+    width: 100%;
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  .auth-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: #94a3b8;
+  }
+
+  .link-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-cyan, #00f0ff);
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 2px 4px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, opacity 0.15s ease;
+  }
+
+  .link-btn:hover {
+    color: #ffffff;
+    opacity: 0.9;
+  }
+
+  /* Guest View Styles */
+  .guest-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .guest-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+
+  .guest-icon {
+    font-size: 26px;
+  }
+
+  .guest-status-badge strong {
+    display: block;
+    font-size: 14px;
+    color: #ffffff;
+  }
+
+  .guest-status-badge span {
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .guest-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .feat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  .feat-check {
+    color: #4ade80;
+    font-weight: 900;
+  }
+
+  .feat-item.note {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  .feat-star {
+    font-size: 14px;
+  }
+
+  .guest-actions-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .guest-actions-row button {
+    flex: 1;
+    padding: 11px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  /* Profile View Styles */
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-bottom: 8px;
+  }
+
+  .profile-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .profile-avatar {
+    font-size: 36px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 2px solid #00f0ff;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .profile-username {
+    font-size: 17px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 2px;
+  }
+
+  .profile-email {
+    display: block;
+    font-size: 11.5px;
+    color: #94a3b8;
+    margin-top: 3px;
+  }
+
+  .profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .pstat-box {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  .pstat-val {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    color: #00f0ff;
+  }
+
+  .pstat-lbl {
+    display: block;
+    font-size: 10.5px;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+
+  .profile-actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  .profile-btn {
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .btn-danger {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #f87171;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-danger:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ffffff;
+  }
+
+  /* Light Theme Overrides */
+  [data-theme='light'] .auth-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15) !important;
+  }
+
+  [data-theme='light'] .auth-title,
+  [data-theme='light'] .profile-username,
+  [data-theme='light'] .guest-status-badge strong,
+  [data-theme='light'] .checkbox-label strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .form-group label {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .auth-subtitle,
+  [data-theme='light'] .guest-status-badge p,
+  [data-theme='light'] .checkbox-label span,
+  [data-theme='light'] .pstat-lbl,
+  [data-theme='light'] .profile-email,
+  [data-theme='light'] .auth-switch-text {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .input-wrapper {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .input-wrapper:focus-within {
+    border-color: #0070f3 !important;
+    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15) !important;
+  }
+
+  [data-theme='light'] .guest-status-badge,
+  [data-theme='light'] .pstat-box,
+  [data-theme='light'] .auth-tabs {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .auth-tab {
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] .auth-tab:hover {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .auth-tab.active {
+    background: #ffffff !important;
+    color: #0070f3 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 2px 8px rgba(0, 112, 243, 0.15) !important;
+  }
+
+  [data-theme='light'] .input-wrapper input {
+    color: #0f172a !important;
+    background: transparent !important;
+  }
+
+  [data-theme='light'] .input-icon {
+    color: #0f172a !important;
+    opacity: 0.9 !important;
+  }
+
+  [data-theme='light'] .input-wrapper input:-webkit-autofill,
+  [data-theme='light'] .input-wrapper input:-webkit-autofill:hover,
+  [data-theme='light'] .input-wrapper input:-webkit-autofill:focus,
+  [data-theme='light'] .input-wrapper input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #0f172a !important;
+  }
+
+  [data-theme='light'] .feat-item {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .pstat-val {
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .link-btn {
+    color: #0070f3 !important;
+    font-weight: 800 !important;
+    text-underline-offset: 3px;
+  }
+
+  [data-theme='light'] .link-btn:hover {
+    color: #0051b3 !important;
+  }
+
+  [data-theme='light'] .auth-btn-secondary {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+</style>

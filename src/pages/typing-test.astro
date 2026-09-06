@@ -1,0 +1,345 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const typingTestFaqs = [
+  {
+    question: "How does the online typing speed test calculate WPM?",
+    answer: "Typing speed is calculated by standardizing 5 characters as one word: WPM = (Total Correct Characters / 5) / Time in Minutes. Net WPM subtracts error penalties to reflect real-world typing accuracy."
+  },
+  {
+    question: "Can I test typing speed in English, Hindi, and Marathi?",
+    answer: "Yes! TypeBaazi provides first-class support for English QWERTY, Hindi Devanagari Inscript, and Marathi Devanagari Inscript typing tests with live accuracy tracking and downloadable certificates."
+  },
+  {
+    question: "What test durations are available?",
+    answer: "You can take 60-second quick speed tests or 180-second endurance tests across all supported languages and difficulty levels."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Typing Test", url: "https://typebaazi.com/typing-test" }
+];
+---
+
+<Layout
+  title="Online Typing Speed Test (WPM) — English, Hindi & Marathi | TypeBaazi"
+  description="Test and improve your typing speed and accuracy with TypeBaazi's online typing tests for English, Hindi and Marathi. Practice WPM with multiple test durations and get free verified certificates."
+  keywords="online typing speed test, typing test english hindi marathi, hindi typing test, marathi typing test, english typing test, wpm test, words per minute test, free typing speed test, typing test online, typebaazi"
+  activePath="/typing-test"
+  faqItems={typingTestFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-cyan">⌨️ Speed Test Mode</div>
+      <h1 class="page-title">Online Typing Speed Test — English, Hindi &amp; Marathi</h1>
+      <p class="page-sub">
+        Test your typing speed and accuracy in English, Hindi (हिंदी), or Marathi (मराठी) with TypeBaazi. Select your preferred language, duration, and test difficulty below.
+      </p>
+      
+      <!-- Quick Language Navigation Links -->
+      <div class="quick-lang-links">
+        <a href="/english-typing-test" class="quick-lang-pill">🇬🇧 English Typing Test</a>
+        <a href="/hindi-typing-test" class="quick-lang-pill">🇮🇳 Hindi Typing Test (हिंदी)</a>
+        <a href="/marathi-typing-test" class="quick-lang-pill">🇮🇳 Marathi Typing Test (मराठी)</a>
+        <a href="/seven-minute-typing-test" class="quick-lang-pill">⏱️ 7-Min Exam Simulation</a>
+      </div>
+    </div>
+
+    <!-- Arena Component with Controls -->
+    <TypingArena initialLanguage="english" initialDuration={60} initialDifficulty="medium" showControls={true} />
+
+    <!-- Virtual Keyboard -->
+    <VirtualKeyboard language="english" visible={true} />
+
+    <!-- Explanatory SEO Content & Guides -->
+    <div class="test-guide-card glass-panel">
+      <h2>How Does This Typing Test Work?</h2>
+      <p>
+        The TypeBaazi typing speed test calculates your true typing speed across English, Hindi, and Marathi using the standard international formula:
+      </p>
+      <div class="formula-box">
+        <code>WPM = (Total Correct Characters / 5) / Elapsed Time in Minutes</code>
+      </div>
+      <p>
+        <strong>Net WPM</strong> accounts for uncorrected typing mistakes, ensuring your recorded score accurately mirrors real-world typing productivity. Practice regularly in English, Hindi, and Marathi to build muscle memory, reduce typos, and prepare for competitive exams like SSC, CPCT, MPSC, and UPSC.
+      </p>
+
+      <!-- Related Typing Modes Cross-Linking -->
+      <div class="related-modes-box" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">🚀 Explore More Typing Modes &amp; Practice Tools</h3>
+        <div class="related-links-grid">
+          <a href="/race" class="related-link-card" data-analytics-cta="tt_related_race">
+            <span class="rel-icon">🏎️</span>
+            <div>
+              <strong>Typing Race Game</strong>
+              <small>Duel smart AI bots with nitro speed</small>
+            </div>
+          </a>
+          <a href="/daily-challenge" class="related-link-card" data-analytics-cta="tt_related_daily">
+            <span class="rel-icon">🔥</span>
+            <div>
+              <strong>Daily Streak Sprint</strong>
+              <small>Earn +100 XP &amp; keep streaks alive</small>
+            </div>
+          </a>
+          <a href="/seven-minute-typing-test" class="related-link-card" data-analytics-cta="tt_related_7min">
+            <span class="rel-icon">⏱️</span>
+            <div>
+              <strong>7-Minute Exam Test</strong>
+              <small>GCC-TBC 30/40 WPM simulation</small>
+            </div>
+          </a>
+          <a href="/games" class="related-link-card" data-analytics-cta="tt_related_games">
+            <span class="rel-icon">🎮</span>
+            <div>
+              <strong>Falling Words Arcade</strong>
+              <small>Cyber defense keystroke matrix</small>
+            </div>
+          </a>
+          <a href="/leaderboard" class="related-link-card" data-analytics-cta="tt_related_leaderboard">
+            <span class="rel-icon">🏆</span>
+            <div>
+              <strong>Global Leaderboard</strong>
+              <small>Check top 5 rankings &amp; podium</small>
+            </div>
+          </a>
+          <a href="/learn" class="related-link-card" data-analytics-cta="tt_related_learn">
+            <span class="rel-icon">📖</span>
+            <div>
+              <strong>Touch Typing Guide</strong>
+              <small>Master home-row finger placement</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-container {
+    padding: clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 20px) 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .page-title {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 4px 0 6px;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 14px;
+  }
+
+  .quick-lang-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 14px;
+    flex-wrap: wrap;
+    margin: 14px auto 20px;
+    max-width: 900px;
+  }
+
+  .quick-lang-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    border-radius: var(--radius-full, 9999px);
+    color: var(--accent-cyan, #00f0ff);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .quick-lang-pill:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--accent-cyan, #00f0ff);
+    transform: translateY(-2px);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 240, 255, 0.25);
+  }
+
+  [data-theme='light'] .quick-lang-pill {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0070f3 !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .quick-lang-pill:hover {
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+    color: #005bb5 !important;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.15) !important;
+  }
+
+  .test-guide-card {
+    margin-top: 40px;
+    padding: 28px;
+  }
+
+  .test-guide-card h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .test-guide-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .formula-box {
+    background: rgba(8, 12, 20, 0.8);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    margin: 12px 0 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .formula-box code {
+    font-family: var(--font-mono);
+    color: var(--accent-cyan);
+    font-size: clamp(11.5px, 2.5vw, 14px);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+    display: block;
+  }
+
+  /* Light Theme Overrides */
+  [data-theme='light'] .test-guide-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .test-guide-card h2 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .test-guide-card p {
+    color: #1e293b !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .test-guide-card strong {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .formula-box {
+    background: #f1f5f9 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  /* Related Modes Links Grid */
+  .related-links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .related-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(14, 21, 37, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md, 12px);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .related-link-card:hover {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .rel-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .related-link-card strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+
+  .related-link-card small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted, #94a3b8);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 860px) {
+    .related-links-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .related-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  [data-theme='light'] .related-link-card {
+    background: #f8fafc !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .related-link-card:hover {
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.1) !important;
+  }
+
+  [data-theme='light'] .related-link-card strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .related-link-card small {
+    color: #475569 !important;
+  }
+</style>

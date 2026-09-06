@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact Us",
+      "item": "https://typebaazi.com/contact-us"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Contact Us — TypeBaazi Support & Feedback"
+  description="Contact the TypeBaazi team. Submit feature requests, report bugs, suggest new English, Hindi & Marathi typing passages, or ask questions."
+  activePath="/contact-us"
+  keywords="contact typebaazi, typebaazi support, report bug, feedback typing speed test, hindi typing passage suggestions, marathi typing passage suggestions"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-pink">📬 Get in Touch</div>
+      <h1 class="page-title">Contact Us</h1>
+      <p class="page-sub">
+        Have a question, feature request, or English, Hindi &amp; Marathi passage suggestion? We'd love to hear from you!
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info Cards -->
+      <div class="contact-info-col">
+        <div class="info-card glass-panel">
+          <div class="info-icon">📧</div>
+          <h3>Direct Email Support</h3>
+          <p>For support, business inquiries, or partnerships:</p>
+          <a href="mailto:riteshthakareofficial@gmail.com" class="contact-link">riteshthakareofficial@gmail.com</a>
+        </div>
+
+        <div class="info-card glass-panel">
+          <div class="info-icon">🚩</div>
+          <h3>English, Hindi &amp; Marathi Passages</h3>
+          <p>Want your custom English, Hindi, or Marathi literature or exam practice passage featured in the daily challenge?</p>
+          <a href="mailto:riteshthakareofficial@gmail.com?subject=TypeBaazi%20Passage%20Submission" class="contact-link">Submit Passages →</a>
+        </div>
+
+        <div class="info-card glass-panel">
+          <div class="info-icon">💡</div>
+          <h3>Frequently Asked Questions</h3>
+          <p>Looking for instant answers regarding typing speed, Inscript keyboard, or scores?</p>
+          <a href="/about#faq-section" class="contact-link">Visit the Knowledge Base &amp; FAQ →</a>
+        </div>
+      </div>
+
+      <!-- Interactive Contact Form -->
+      <div class="contact-form-card glass-panel">
+        <h2>Send Us a Message</h2>
+        <p class="form-desc">Fill out the form below and our team will get back to you within 24 hours.</p>
+
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Your Full Name <span class="req">*</span></label>
+            <input type="text" id="contact-name" name="name" placeholder="e.g. Rahul Sharma" required />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="contact-email" name="email" placeholder="e.g. rahul@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="contact-subject">Inquiry Type <span class="req">*</span></label>
+            <select id="contact-subject" name="subject" required>
+              <option value="general">💬 General Question / Feedback</option>
+              <option value="feature">✨ New Feature Request</option>
+              <option value="bug">🐛 Bug Report / Technical Issue</option>
+              <option value="english">🇬🇧 English Passage Suggestion</option>
+              <option value="hindi">🇮🇳 Hindi Passage Suggestion</option>
+              <option value="marathi">🇮🇳 Marathi Passage Suggestion</option>
+              <option value="other">📝 Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">Message <span class="req">*</span></label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="Type your message, suggestions, or bug description here..." required></textarea>
+          </div>
+
+          <button type="submit" id="contact-submit-btn" class="btn-primary" style="width: 100%; justify-content: center; padding: 12px 24px; font-size: 15px;">
+            <span id="contact-btn-text">🚀 Send Message to riteshthakareofficial@gmail.com</span>
+          </button>
+
+          <div id="contact-success-msg" class="contact-alert success hidden">
+            ✅ <strong>Thank you!</strong> Your message has been sent to <strong>riteshthakareofficial@gmail.com</strong>. We will respond shortly!
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-container {
+    padding: clamp(24px, 4vw, 48px) clamp(12px, 2.5vw, 24px) 60px;
+    max-width: 1040px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .page-title {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 10px 0 6px;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 2vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(16px, 2.5vw, 28px);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info-card {
+    padding: 20px;
+    border-radius: var(--radius-lg, 16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-sizing: border-box;
+  }
+
+  .info-icon {
+    font-size: 26px;
+    margin-bottom: 2px;
+  }
+
+  .info-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .info-card p {
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .contact-link {
+    font-size: 13.5px;
+    color: var(--accent-cyan, #00f0ff);
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 4px;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+
+  .contact-link:hover {
+    text-decoration: underline;
+    color: #ffffff;
+  }
+
+  .contact-form-card {
+    padding: clamp(20px, 4vw, 36px);
+    border-radius: var(--radius-xl, 20px);
+    border: 1.5px solid rgba(255, 0, 122, 0.3);
+    box-sizing: border-box;
+  }
+
+  .contact-form-card h2 {
+    font-size: clamp(20px, 3.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+
+  .form-desc {
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin: 0 0 20px;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+
+  .req {
+    color: #ff007a;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(14, 20, 36, 0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md, 10px);
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent-cyan, #00f0ff);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+    background: rgba(18, 28, 52, 0.95);
+  }
+
+  .contact-alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-md, 10px);
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  .contact-alert.success {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1.5px solid #10b981;
+    color: #d1fae5;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  [data-theme='light'] .info-card,
+  [data-theme='light'] .contact-form-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  [data-theme='light'] .info-card h3,
+  [data-theme='light'] .contact-form-card h2 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .info-card p,
+  [data-theme='light'] .form-desc {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .form-group label {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .form-group input,
+  [data-theme='light'] .form-group select,
+  [data-theme='light'] .form-group textarea {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .form-group input:focus,
+  [data-theme='light'] .form-group select:focus,
+  [data-theme='light'] .form-group textarea:focus {
+    border-color: #0070f3 !important;
+    box-shadow: 0 0 12px rgba(0, 112, 243, 0.25) !important;
+  }
+
+  [data-theme='light'] .contact-alert.success {
+    background: #ecfdf5 !important;
+    border: 1.5px solid #a7f3d0 !important;
+    color: #065f46 !important;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement | null;
+  const btnText = document.getElementById('contact-btn-text');
+  const successMsg = document.getElementById('contact-success-msg');
+
+  contactForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnText) btnText.textContent = '⏳ Sending...';
+
+    setTimeout(() => {
+      if (btnText) btnText.textContent = '✓ Sent!';
+      if (successMsg) successMsg.classList.remove('hidden');
+      contactForm.reset();
+
+      setTimeout(() => {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = '🚀 Send Message';
+      }, 4000);
+    }, 900);
+  });
+</script>

@@ -1,0 +1,737 @@
+---
+interface Props {
+  language?: 'english' | 'marathi' | 'hindi';
+  visible?: boolean;
+}
+
+const { language = 'english', visible = true } = Astro.props;
+---
+
+<!-- Virtual Keyboard Unhide Bar (Shown when keyboard is hidden) -->
+<div id="virtual-keyboard-unhide-bar" class={`kb-unhide-wrapper ${visible ? 'hidden' : ''}`}>
+  <button type="button" id="unhide-kb-btn" class="kb-unhide-btn" title="Show Virtual Keyboard">
+    <span class="unhide-icon">⌨️</span>
+    <span class="unhide-title" id="kb-unhide-title">Show Virtual Keyboard ({language === 'marathi' ? 'मराठी Inscript Guide' : (language === 'hindi' ? 'हिंदी Inscript Guide' : 'QWERTY')})</span>
+    <span class="unhide-pill">👁️ Unhide</span>
+  </button>
+</div>
+
+<div id="virtual-keyboard-wrapper" class={`keyboard-container ${visible ? '' : 'hidden'}`} data-lang={language}>
+  <div class="keyboard-header">
+    <div class="keyboard-title">
+      <span class="kb-icon">⌨️</span>
+      <span id="kb-mode-title">Virtual Keyboard ({language === 'marathi' ? 'मराठी Inscript Guide' : (language === 'hindi' ? 'हिंदी Inscript Guide' : 'QWERTY')})</span>
+    </div>
+    <div class="keyboard-controls">
+      <button id="toggle-kb-hints" class="kb-tool-btn" title="Toggle Finger Guide Colors">🖐️ Finger Guide</button>
+      <button id="close-kb-btn" class="kb-tool-btn" title="Hide Keyboard">✕ Hide</button>
+    </div>
+  </div>
+
+  <div class="keyboard-body" id="keyboard-grid">
+    <!-- Number Row -->
+    <div class="kb-row">
+      <div class="kb-key" data-key="`" data-shift="~" data-mr="`"><span class="k-main">`</span></div>
+      <div class="kb-key finger-l-pinky" data-key="1" data-shift="!" data-mr="१"><span class="k-shift">!</span><span class="k-main">1</span></div>
+      <div class="kb-key finger-l-ring" data-key="2" data-shift="@" data-mr="२"><span class="k-shift">@</span><span class="k-main">2</span></div>
+      <div class="kb-key finger-l-mid" data-key="3" data-shift="#" data-mr="३"><span class="k-shift">#</span><span class="k-main">3</span></div>
+      <div class="kb-key finger-l-idx" data-key="4" data-shift="$" data-mr="४"><span class="k-shift">$</span><span class="k-main">4</span></div>
+      <div class="kb-key finger-l-idx" data-key="5" data-shift="%" data-mr="५"><span class="k-shift">%</span><span class="k-main">5</span></div>
+      <div class="kb-key finger-r-idx" data-key="6" data-shift="^" data-mr="६"><span class="k-shift">^</span><span class="k-main">6</span></div>
+      <div class="kb-key finger-r-idx" data-key="7" data-shift="&" data-mr="७"><span class="k-shift">&amp;</span><span class="k-main">7</span></div>
+      <div class="kb-key finger-r-mid" data-key="8" data-shift="*" data-mr="८"><span class="k-shift">*</span><span class="k-main">8</span></div>
+      <div class="kb-key finger-r-ring" data-key="9" data-shift="(" data-mr="९"><span class="k-shift">(</span><span class="k-main">9</span></div>
+      <div class="kb-key finger-r-pinky" data-key="0" data-shift=")" data-mr="०"><span class="k-shift">)</span><span class="k-main">0</span></div>
+      <div class="kb-key finger-r-pinky" data-key="-" data-shift="_" data-mr="-"><span class="k-shift">_</span><span class="k-main">-</span></div>
+      <div class="kb-key finger-r-pinky" data-key="=" data-shift="+" data-mr="="><span class="k-shift">+</span><span class="k-main">=</span></div>
+      <div class="kb-key kb-key-wide" data-key="Backspace"><span class="k-main">⌫ Back</span></div>
+    </div>
+
+    <!-- Top Row (QWERTY / Inscript) -->
+    <div class="kb-row">
+      <div class="kb-key kb-key-med" data-key="Tab"><span class="k-main">Tab</span></div>
+      <div class="kb-key finger-l-pinky" data-key="q" data-shift="Q" data-mr="ौ"><span class="k-main">Q</span><span class="k-sub">ौ</span></div>
+      <div class="kb-key finger-l-ring" data-key="w" data-shift="W" data-mr="ै"><span class="k-main">W</span><span class="k-sub">ै</span></div>
+      <div class="kb-key finger-l-mid" data-key="e" data-shift="E" data-mr="ा"><span class="k-main">E</span><span class="k-sub">ा</span></div>
+      <div class="kb-key finger-l-idx" data-key="r" data-shift="R" data-mr="ी"><span class="k-main">R</span><span class="k-sub">ी</span></div>
+      <div class="kb-key finger-l-idx" data-key="t" data-shift="T" data-mr="ू"><span class="k-main">T</span><span class="k-sub">ू</span></div>
+      <div class="kb-key finger-r-idx" data-key="y" data-shift="Y" data-mr="ब"><span class="k-main">Y</span><span class="k-sub">ब</span></div>
+      <div class="kb-key finger-r-idx" data-key="u" data-shift="U" data-mr="ह"><span class="k-main">U</span><span class="k-sub">ह</span></div>
+      <div class="kb-key finger-r-mid" data-key="i" data-shift="I" data-mr="ग"><span class="k-main">I</span><span class="k-sub">ग</span></div>
+      <div class="kb-key finger-r-ring" data-key="o" data-shift="O" data-mr="द"><span class="k-main">O</span><span class="k-sub">द</span></div>
+      <div class="kb-key finger-r-pinky" data-key="p" data-shift="P" data-mr="ज"><span class="k-main">P</span><span class="k-sub">ज</span></div>
+      <div class="kb-key finger-r-pinky" data-key="[" data-shift="{" data-mr="ड"><span class="k-shift">&#123;</span><span class="k-main">[</span></div>
+      <div class="kb-key finger-r-pinky" data-key="]" data-shift="}" data-mr="़"><span class="k-shift">&#125;</span><span class="k-main">]</span></div>
+      <div class="kb-key" data-key="\" data-shift="|" data-mr="\"><span class="k-shift">|</span><span class="k-main">\</span></div>
+    </div>
+
+    <!-- Home Row (ASDF / Inscript) -->
+    <div class="kb-row">
+      <div class="kb-key kb-key-wide" data-key="CapsLock"><span class="k-main">Caps</span></div>
+      <div class="kb-key finger-l-pinky home-key" data-key="a" data-shift="A" data-mr="ो"><span class="k-main">A</span><span class="k-sub">ो</span></div>
+      <div class="kb-key finger-l-ring home-key" data-key="s" data-shift="S" data-mr="े"><span class="k-main">S</span><span class="k-sub">े</span></div>
+      <div class="kb-key finger-l-mid home-key" data-key="d" data-shift="D" data-mr="्"><span class="k-main">D</span><span class="k-sub">्</span></div>
+      <div class="kb-key finger-l-idx home-key" data-key="f" data-shift="F" data-mr="ि"><span class="k-main">F</span><span class="k-sub">ि</span></div>
+      <div class="kb-key finger-l-idx" data-key="g" data-shift="G" data-mr="ु"><span class="k-main">G</span><span class="k-sub">ु</span></div>
+      <div class="kb-key finger-r-idx" data-key="h" data-shift="H" data-mr="प"><span class="k-main">H</span><span class="k-sub">प</span></div>
+      <div class="kb-key finger-r-idx home-key" data-key="j" data-shift="J" data-mr="र"><span class="k-main">J</span><span class="k-sub">र</span></div>
+      <div class="kb-key finger-r-mid home-key" data-key="k" data-shift="K" data-mr="क"><span class="k-main">K</span><span class="k-sub">क</span></div>
+      <div class="kb-key finger-r-ring home-key" data-key="l" data-shift="L" data-mr="त"><span class="k-main">L</span><span class="k-sub">त</span></div>
+      <div class="kb-key finger-r-pinky home-key" data-key=";" data-shift=":" data-mr="च"><span class="k-shift">:</span><span class="k-main">;</span><span class="k-sub">च</span></div>
+      <div class="kb-key finger-r-pinky" data-key="'" data-shift='"' data-mr="ट"><span class="k-shift">"</span><span class="k-main">'</span><span class="k-sub">ट</span></div>
+      <div class="kb-key kb-key-wide" data-key="Enter"><span class="k-main">↵ Enter</span></div>
+    </div>
+
+    <!-- Bottom Row (ZXCV / Inscript) -->
+    <div class="kb-row">
+      <div class="kb-key kb-key-xwide" data-key="Shift"><span class="k-main">⇧ Shift</span></div>
+      <div class="kb-key finger-l-pinky" data-key="z" data-shift="Z" data-mr="ं"><span class="k-main">Z</span><span class="k-sub">ं</span></div>
+      <div class="kb-key finger-l-ring" data-key="x" data-shift="X" data-mr="ं"><span class="k-main">X</span><span class="k-sub">ं</span></div>
+      <div class="kb-key finger-l-mid" data-key="c" data-shift="C" data-mr="म"><span class="k-main">C</span><span class="k-sub">म</span></div>
+      <div class="kb-key finger-l-idx" data-key="v" data-shift="V" data-mr="न"><span class="k-main">V</span><span class="k-sub">न</span></div>
+      <div class="kb-key finger-l-idx" data-key="b" data-shift="B" data-mr="व"><span class="k-main">B</span><span class="k-sub">व</span></div>
+      <div class="kb-key finger-r-idx" data-key="n" data-shift="N" data-mr="ल"><span class="k-main">N</span><span class="k-sub">ल</span></div>
+      <div class="kb-key finger-r-idx" data-key="m" data-shift="M" data-mr="स"><span class="k-main">M</span><span class="k-sub">स</span></div>
+      <div class="kb-key finger-r-mid" data-key="," data-shift="<" data-mr=","><span class="k-shift">&lt;</span><span class="k-main">,</span></div>
+      <div class="kb-key finger-r-ring" data-key="." data-shift=">" data-mr="."><span class="k-shift">&gt;</span><span class="k-main">.</span></div>
+      <div class="kb-key finger-r-pinky" data-key="/" data-shift="?" data-mr="य"><span class="k-shift">?</span><span class="k-main">/</span><span class="k-sub">य</span></div>
+      <div class="kb-key kb-key-xwide" data-key="Shift"><span class="k-main">⇧ Shift</span></div>
+    </div>
+
+    <!-- Spacebar Row -->
+    <div class="kb-row">
+      <div class="kb-key kb-key-med" data-key="Control"><span class="k-main">Ctrl</span></div>
+      <div class="kb-key kb-key-med" data-key="Alt"><span class="k-main">Alt</span></div>
+      <div class="kb-key kb-key-space finger-thumb" data-key=" " data-shift=" "><span class="k-main">Spacebar</span></div>
+      <div class="kb-key kb-key-med" data-key="Alt"><span class="k-main">Alt</span></div>
+      <div class="kb-key kb-key-med" data-key="Control"><span class="k-main">Ctrl</span></div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .kb-unhide-wrapper {
+    margin-top: clamp(10px, 2vh, 18px);
+    max-width: 1040px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 4px 12px;
+  }
+
+  .kb-unhide-wrapper.hidden {
+    display: none !important;
+  }
+
+  .kb-unhide-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    background: rgba(10, 15, 28, 0.94);
+    border: 1.5px solid rgba(0, 240, 255, 0.45);
+    border-radius: 9999px;
+    color: var(--text-main);
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(0, 240, 255, 0.18), 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all var(--transition-fast);
+  }
+
+  .kb-unhide-btn:hover {
+    background: rgba(0, 240, 255, 0.14);
+    border-color: #00f0ff;
+    box-shadow: 0 6px 26px rgba(0, 240, 255, 0.4);
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+
+  .kb-unhide-btn .unhide-icon {
+    font-size: 16px;
+  }
+
+  .kb-unhide-btn .unhide-pill {
+    background: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 800;
+    border: 1px solid rgba(0, 240, 255, 0.4);
+  }
+
+  [data-theme='light'] .kb-unhide-btn {
+    background: #ffffff !important;
+    border: 1.5px solid #0070f3 !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.15) !important;
+  }
+
+  [data-theme='light'] .kb-unhide-btn:hover {
+    background: #eff6ff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 6px 20px rgba(0, 112, 243, 0.25) !important;
+  }
+
+  [data-theme='light'] .kb-unhide-btn .unhide-pill {
+    background: #eff6ff !important;
+    color: #0070f3 !important;
+    border-color: #bfdbfe !important;
+  }
+
+  .keyboard-container {
+    margin-top: clamp(10px, 2vh, 18px);
+    padding: clamp(10px, 1.8vw, 18px);
+    background: rgba(10, 15, 28, 0.96);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 240, 255, 0.1);
+    max-width: 1040px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all var(--transition-smooth);
+    box-sizing: border-box;
+    touch-action: pan-y;
+  }
+
+  .keyboard-container.hidden {
+    display: none !important;
+  }
+
+  .keyboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: clamp(6px, 1.2vh, 12px);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .keyboard-title {
+    font-size: clamp(12px, 1.6vw, 14px);
+    font-weight: 800;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .keyboard-controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .kb-tool-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: clamp(11px, 1.3vw, 12px);
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    touch-action: manipulation;
+  }
+
+  .kb-tool-btn:hover {
+    color: var(--text-main);
+    border-color: var(--accent-cyan);
+    background: rgba(0, 240, 255, 0.15);
+  }
+
+  .keyboard-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.8vw, 7px);
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  .kb-row {
+    display: flex;
+    gap: clamp(3px, 0.6vw, 6px);
+    width: 100%;
+    justify-content: center;
+    align-items: stretch;
+    touch-action: pan-y;
+  }
+
+  .kb-key {
+    position: relative;
+    height: clamp(38px, 5.8vh, 52px);
+    min-width: clamp(22px, 5vw, 56px);
+    flex: 1;
+    max-width: 68px;
+    background: linear-gradient(180deg, #182338 0%, #0e1524 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border-radius: clamp(4px, 0.8vw, 8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-family: var(--font-mono);
+    user-select: none;
+    cursor: pointer;
+    transition: transform 0.05s ease, background-color 0.08s ease, border-color 0.08s ease, box-shadow 0.08s ease;
+    box-sizing: border-box;
+    padding: 2px 4px;
+    touch-action: manipulation;
+  }
+
+  .kb-key:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .kb-key.home-key::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    width: 8px;
+    height: 2.5px;
+    background: rgba(0, 240, 255, 0.6);
+    border-radius: 2px;
+  }
+
+  .kb-key-wide { min-width: clamp(42px, 8vw, 76px); max-width: 86px; flex: 1.5; }
+  .kb-key-med { min-width: clamp(32px, 6.2vw, 60px); max-width: 68px; flex: 1.3; }
+  .kb-key-xwide { min-width: clamp(50px, 9.5vw, 92px); max-width: 104px; flex: 1.8; }
+  .kb-key-space { min-width: clamp(140px, 34vw, 320px); max-width: 360px; flex: 5.5; }
+
+  .k-shift {
+    font-size: clamp(8px, 1.1vw, 10px);
+    color: var(--text-subtle);
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  .k-main {
+    font-size: clamp(13px, 1.8vw, 17px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: 0.2px;
+  }
+
+  .k-sub {
+    font-size: clamp(10px, 1.4vw, 13px);
+    color: var(--accent-cyan);
+    font-family: var(--font-marathi);
+    line-height: 1;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(0, 240, 255, 0.5);
+  }
+
+  /* Active target key highlighting */
+  .kb-key.target-active {
+    background: linear-gradient(180deg, rgba(0, 240, 255, 0.45), rgba(0, 180, 210, 0.4)) !important;
+    border-color: var(--accent-cyan) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 18px var(--accent-cyan-glow), inset 0 1px 0 #ffffff !important;
+    transform: translateY(-2px);
+  }
+
+  /* Key Pressed Flash Animations */
+  .kb-key.pressed-correct {
+    background: rgba(16, 185, 129, 0.55) !important;
+    border-color: var(--accent-green) !important;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.5) !important;
+    transform: translateY(1px);
+  }
+
+  .kb-key.pressed-wrong {
+    background: rgba(239, 68, 68, 0.55) !important;
+    border-color: var(--accent-danger) !important;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.5) !important;
+    transform: translateY(1px);
+  }
+
+  /* Finger Guide Zone Colors */
+  .show-finger-guides .finger-l-pinky { border-left: 3px solid #ec4899; }
+  .show-finger-guides .finger-l-ring { border-left: 3px solid #8b5cf6; }
+  .show-finger-guides .finger-l-mid { border-left: 3px solid #3b82f6; }
+  .show-finger-guides .finger-l-idx { border-left: 3px solid #06b6d4; }
+  .show-finger-guides .finger-r-idx { border-left: 3px solid #10b981; }
+  .show-finger-guides .finger-r-mid { border-left: 3px solid #f59e0b; }
+  .show-finger-guides .finger-r-ring { border-left: 3px solid #f97316; }
+  .show-finger-guides .finger-r-pinky { border-left: 3px solid #ef4444; }
+  .show-finger-guides .finger-thumb { border-bottom: 3px solid #6366f1; }
+
+  @media (max-width: 600px) {
+    .keyboard-container {
+      padding: 8px 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .kb-row {
+      gap: 2px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .kb-key {
+      height: clamp(30px, 4.8vh, 38px);
+      padding: 1px 1px;
+      min-width: 18px;
+    }
+    .k-main {
+      font-size: clamp(10px, 3vw, 13px);
+    }
+    .k-sub {
+      font-size: clamp(7.5px, 2vw, 9.5px);
+    }
+  }
+
+  @media (max-width: 380px) {
+    .keyboard-container {
+      padding: 6px 2px;
+    }
+    .kb-row {
+      gap: 1.5px;
+    }
+    .kb-key {
+      height: 28px;
+      min-width: 15px;
+      border-radius: 3px;
+    }
+    .k-main {
+      font-size: 9.5px;
+    }
+    .k-sub {
+      font-size: 7px;
+    }
+  }
+
+  /* Light Theme Virtual Keyboard Overrides */
+  [data-theme='light'] .keyboard-container {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  [data-theme='light'] .keyboard-header {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .keyboard-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .kb-tool-btn {
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .kb-tool-btn:hover {
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .kb-key {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: 0 3px 0 #cbd5e1, 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .kb-key:active {
+    transform: translateY(2px) !important;
+    box-shadow: 0 1px 0 #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .k-main {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .k-shift {
+    color: #64748b !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .k-sub {
+    color: #0070f3 !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+  }
+
+  /* Active Target Key: High-contrast vibrant blue with bold white letters */
+  [data-theme='light'] .kb-key.target-active {
+    background: linear-gradient(180deg, #0070f3 0%, #0056b3 100%) !important;
+    border-color: #004494 !important;
+    box-shadow: 0 0 16px rgba(0, 112, 243, 0.45), 0 3px 0 #003380 !important;
+    transform: translateY(-2px);
+  }
+
+  [data-theme='light'] .kb-key.target-active .k-main {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  [data-theme='light'] .kb-key.target-active .k-shift {
+    color: #dbeafe !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .kb-key.target-active .k-sub {
+    color: #e0f2fe !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+  }
+
+  /* Pressed Correct / Wrong in Light Theme */
+  [data-theme='light'] .kb-key.pressed-correct {
+    background: #10b981 !important;
+    border-color: #059669 !important;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.5), 0 2px 0 #047857 !important;
+  }
+
+  [data-theme='light'] .kb-key.pressed-correct .k-main,
+  [data-theme='light'] .kb-key.pressed-correct .k-shift,
+  [data-theme='light'] .kb-key.pressed-correct .k-sub {
+    color: #ffffff !important;
+  }
+
+  [data-theme='light'] .kb-key.pressed-wrong {
+    background: #ef4444 !important;
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.5), 0 2px 0 #b91c1c !important;
+  }
+
+  [data-theme='light'] .kb-key.pressed-wrong .k-main,
+  [data-theme='light'] .kb-key.pressed-wrong .k-shift,
+  [data-theme='light'] .kb-key.pressed-wrong .k-sub {
+    color: #ffffff !important;
+  }
+</style>
+
+<script>
+  import { StorageManager } from '../lib/storage';
+
+  let kbCleanupFns: (() => void)[] = [];
+
+  function initVirtualKeyboard() {
+    kbCleanupFns.forEach(fn => fn());
+    kbCleanupFns = [];
+
+    const kbWrapper = document.getElementById('virtual-keyboard-wrapper');
+    const unhideBar = document.getElementById('virtual-keyboard-unhide-bar');
+    const unhideBtn = document.getElementById('unhide-kb-btn');
+    const unhideTitle = document.getElementById('kb-unhide-title');
+    const closeBtn = document.getElementById('close-kb-btn');
+    const hintsBtn = document.getElementById('toggle-kb-hints');
+    const titleEl = document.getElementById('kb-mode-title');
+
+    if (!kbWrapper) return;
+
+    // Load visibility settings
+    const settings = StorageManager.getSettings();
+    const shouldShow = settings.showKeyboard !== false;
+    
+    if (shouldShow) {
+      kbWrapper.classList.remove('hidden');
+      unhideBar?.classList.add('hidden');
+    } else {
+      kbWrapper.classList.add('hidden');
+      unhideBar?.classList.remove('hidden');
+    }
+
+    const setVisibility = (visible: boolean) => {
+      if (visible) {
+        kbWrapper.classList.remove('hidden');
+        unhideBar?.classList.add('hidden');
+      } else {
+        kbWrapper.classList.add('hidden');
+        unhideBar?.classList.remove('hidden');
+      }
+      StorageManager.saveSettings({ showKeyboard: visible });
+      window.dispatchEvent(new CustomEvent('virtual-keyboard-toggled', { detail: { visible } }));
+    };
+
+    const onClose = (e: Event) => {
+      e.stopPropagation();
+      setVisibility(false);
+    };
+    closeBtn?.addEventListener('click', onClose);
+    kbCleanupFns.push(() => closeBtn?.removeEventListener('click', onClose));
+
+    const onUnhide = (e: Event) => {
+      e.stopPropagation();
+      setVisibility(true);
+    };
+    unhideBtn?.addEventListener('click', onUnhide);
+    kbCleanupFns.push(() => unhideBtn?.removeEventListener('click', onUnhide));
+
+    // Listen for external toggle events (e.g. from toolbar keyboard button)
+    const onExternalToggle = (e: Event) => {
+      const custom = e as CustomEvent<{ visible: boolean }>;
+      if (custom.detail !== undefined) {
+        if (custom.detail.visible) {
+          kbWrapper.classList.remove('hidden');
+          unhideBar?.classList.add('hidden');
+        } else {
+          kbWrapper.classList.add('hidden');
+          unhideBar?.classList.remove('hidden');
+        }
+      }
+    };
+    window.addEventListener('virtual-keyboard-toggled', onExternalToggle);
+    kbCleanupFns.push(() => window.removeEventListener('virtual-keyboard-toggled', onExternalToggle));
+
+    const onHints = () => {
+      kbWrapper?.classList.toggle('show-finger-guides');
+    };
+    hintsBtn?.addEventListener('click', onHints);
+    kbCleanupFns.push(() => hintsBtn?.removeEventListener('click', onHints));
+
+    function triggerVirtualKey(target: HTMLElement) {
+      const key = target.dataset.key;
+      if (!key) return;
+
+      target.classList.add('pressed-correct');
+      setTimeout(() => target.classList.remove('pressed-correct'), 100);
+
+      const isMarathi = kbWrapper?.getAttribute('data-lang') === 'marathi';
+      let sentChar = key;
+      if (key === 'Backspace' || key === 'Enter' || key === 'Tab' || key === 'CapsLock' || key === 'Shift' || key === 'Control' || key === 'Alt') {
+        sentChar = key;
+      } else if (key === ' ') {
+        sentChar = ' ';
+      } else if (isMarathi && target.dataset.mr) {
+        sentChar = target.dataset.mr;
+      }
+
+      window.dispatchEvent(new CustomEvent('virtual-key-click', { detail: { key: sentChar } }));
+    }
+
+    // Smooth mobile touch scrolling & tap detection (NEVER block vertical page scrolling)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let isTouchScroll = false;
+    let activeKeyTarget: HTMLElement | null = null;
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+        isTouchScroll = false;
+        const target = (e.target as HTMLElement).closest('.kb-key') as HTMLElement;
+        activeKeyTarget = target || null;
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+        const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+        if (deltaY > 6 || deltaX > 6) {
+          isTouchScroll = true;
+          activeKeyTarget = null;
+        }
+      }
+    };
+
+    const onTouchEnd = () => {
+      const elapsed = Date.now() - touchStartTime;
+      if (!isTouchScroll && activeKeyTarget && elapsed < 400) {
+        triggerVirtualKey(activeKeyTarget);
+      }
+      isTouchScroll = false;
+      activeKeyTarget = null;
+    };
+
+    kbWrapper.addEventListener('touchstart', onTouchStart, { passive: true });
+    kbWrapper.addEventListener('touchmove', onTouchMove, { passive: true });
+    kbWrapper.addEventListener('touchend', onTouchEnd, { passive: true });
+    kbCleanupFns.push(() => {
+      kbWrapper.removeEventListener('touchstart', onTouchStart);
+      kbWrapper.removeEventListener('touchmove', onTouchMove);
+      kbWrapper.removeEventListener('touchend', onTouchEnd);
+    });
+
+    // Desktop Mouse clicks
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') {
+        const target = (e.target as HTMLElement).closest('.kb-key') as HTMLElement;
+        if (target) {
+          e.preventDefault();
+          triggerVirtualKey(target);
+        }
+      }
+    };
+    kbWrapper.addEventListener('pointerdown', onPointerDown);
+    kbCleanupFns.push(() => kbWrapper.removeEventListener('pointerdown', onPointerDown));
+
+    // Global keypress lighting
+    const onGlobalKeyDown = (e: KeyboardEvent) => {
+      if (!kbWrapper || kbWrapper.classList.contains('hidden')) return;
+      const key = e.key.toLowerCase();
+      const keyEl = document.querySelector(`.kb-key[data-key="${key}"], .kb-key[data-key="${e.key}"]`);
+      if (keyEl) {
+        keyEl.classList.add('pressed-correct');
+        setTimeout(() => {
+          keyEl.classList.remove('pressed-correct');
+        }, 120);
+      }
+    };
+    window.addEventListener('keydown', onGlobalKeyDown);
+    kbCleanupFns.push(() => window.removeEventListener('keydown', onGlobalKeyDown));
+
+    // Dynamic language switcher event
+    const onChangeKbLang = (e: Event) => {
+      const custom = e as CustomEvent<{ language: 'english' | 'marathi' | 'hindi' }>;
+      if (!custom.detail || !kbWrapper) return;
+      const lang = custom.detail.language;
+      kbWrapper.setAttribute('data-lang', lang);
+      const titleStr = `Virtual Keyboard (${lang === 'marathi' ? 'मराठी Inscript Guide' : (lang === 'hindi' ? 'हिंदी Inscript Guide' : 'QWERTY')})`;
+      const unhideTitleStr = `Show Virtual Keyboard (${lang === 'marathi' ? 'मराठी Inscript Guide' : (lang === 'hindi' ? 'हिंदी Inscript Guide' : 'QWERTY')})`;
+      if (titleEl) {
+        titleEl.textContent = titleStr;
+      }
+      if (unhideTitle) {
+        unhideTitle.textContent = unhideTitleStr;
+      }
+    };
+    window.addEventListener('change-keyboard-language', onChangeKbLang);
+    kbCleanupFns.push(() => window.removeEventListener('change-keyboard-language', onChangeKbLang));
+
+    // Listen for target character highlight events
+    const onHighlightTarget = (e: Event) => {
+      const custom = e as CustomEvent<{ char: string }>;
+      if (!custom.detail || !kbWrapper) return;
+      const targetChar = custom.detail.char;
+
+      document.querySelectorAll('.kb-key.target-active').forEach(k => k.classList.remove('target-active'));
+
+      const match = document.querySelector(`.kb-key[data-key="${targetChar.toLowerCase()}"], .kb-key[data-shift="${targetChar}"], .kb-key[data-mr="${targetChar}"]`);
+      if (match) {
+        match.classList.add('target-active');
+      }
+    };
+    window.addEventListener('highlight-target-key', onHighlightTarget);
+    kbCleanupFns.push(() => window.removeEventListener('highlight-target-key', onHighlightTarget));
+  }
+
+  document.addEventListener('astro:page-load', initVirtualKeyboard);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVirtualKeyboard);
+  } else {
+    initVirtualKeyboard();
+  }
+</script>

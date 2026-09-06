@@ -1,0 +1,825 @@
+---
+/**
+ * TypeBaazi Weekly Championship Component
+ * Drives user engagement, competition, and repeat visits.
+ * Displays real user scores, personal bests, dynamic motivational prompts,
+ * and a direct "Join Weekly Championship" CTA to the typing race.
+ */
+interface Props {
+  showTitle?: boolean;
+}
+
+const { showTitle = true } = Astro.props;
+---
+
+<section class="weekly-championship-card glass-panel" id="weekly-championship-widget">
+  <div class="champ-header">
+    <div class="champ-title-box">
+      <span class="champ-flame">🔥</span>
+      <div>
+        {showTitle && <h2 class="champ-title">TypeBaazi Weekly Championship</h2>}
+        <p class="champ-sub">Real-Time Global Speed Standings &bull; Resets Weekly</p>
+      </div>
+    </div>
+    <div class="champ-badge badge-gold">
+      <span class="pulse-dot"></span> LIVE ROUND
+    </div>
+  </div>
+
+  <!-- Dynamic Motivational Banner (Personalized to User) -->
+  <div class="champ-motivation-banner" id="champ-motivation-box">
+    <div class="mot-icon">⚡</div>
+    <div class="mot-text">
+      <strong id="champ-mot-headline">Can you beat 78 WPM?</strong>
+      <span id="champ-mot-sub">Take a 60s speed test or enter the race track to claim your rank on the podium!</span>
+    </div>
+    <div class="mot-stat" id="champ-user-stat-badge">
+      <small>Your Best</small>
+      <strong id="champ-user-best-wpm">0 WPM</strong>
+    </div>
+  </div>
+
+  <!-- Weekly Top 3 Standings Podium -->
+  <div class="champ-podium-grid">
+    <!-- 2nd Place -->
+    <div class="champ-rank-card rank-2" id="champ-card-r2">
+      <div class="rank-medal">🥈</div>
+      <div class="rank-number">2ND PLACE</div>
+      <div class="rank-player-info">
+        <span class="rank-name" id="champ-r2-name">Aarav Deshmukh</span>
+        <span class="rank-meta" id="champ-r2-meta">English &bull; 99% Acc</span>
+      </div>
+      <div class="rank-score" id="champ-r2-wpm">105 WPM</div>
+    </div>
+
+    <!-- 1st Place Champion -->
+    <div class="champ-rank-card rank-1" id="champ-card-r1">
+      <div class="crown-badge">👑 CHAMPION</div>
+      <div class="rank-medal">🏆</div>
+      <div class="rank-number">1ST PLACE</div>
+      <div class="rank-player-info">
+        <span class="rank-name" id="champ-r1-name">Priya Sharma</span>
+        <span class="rank-meta" id="champ-r1-meta">मराठी / English &bull; 100% Acc</span>
+      </div>
+      <div class="rank-score gold" id="champ-r1-wpm">118 WPM</div>
+    </div>
+
+    <!-- 3rd Place -->
+    <div class="champ-rank-card rank-3" id="champ-card-r3">
+      <div class="rank-medal">🥉</div>
+      <div class="rank-number">3RD PLACE</div>
+      <div class="rank-player-info">
+        <span class="rank-name" id="champ-r3-name">Rohan Kulkarni</span>
+        <span class="rank-meta" id="champ-r3-meta">English &bull; 98% Acc</span>
+      </div>
+      <div class="rank-score" id="champ-r3-wpm">94 WPM</div>
+    </div>
+  </div>
+
+  <!-- User Progressive Standing Strip -->
+  <div class="user-standing-box glass-panel" id="champ-user-standing-box">
+    <div class="user-standing-left">
+      <div class="user-rank-pill" id="champ-user-rank-pill">#--</div>
+      <div class="user-rank-info">
+        <div class="user-rank-title-row">
+          <strong id="champ-user-name-label">You (Local Player)</strong>
+          <span class="user-rank-badge" id="champ-user-rank-tier">Rank #-- &bull; Unranked</span>
+        </div>
+        <div class="user-rank-progress-row">
+          <span id="champ-user-standing-msg">Take a test to get your official global ranking!</span>
+        </div>
+      </div>
+    </div>
+    <a href="/race" class="btn-primary user-standing-cta">
+      <span>🏎️ Race to Climb Rank</span>
+    </a>
+  </div>
+
+  <!-- Live Streak & CTA Footer -->
+  <div class="champ-footer-row">
+    <div class="champ-streak-indicator" id="champ-streak-indicator">
+      <span class="fire-icon">🔥</span>
+      <span id="champ-streak-text">Keep your streak alive &bull; Practice daily</span>
+    </div>
+
+    <a href="/race" class="champ-cta-btn" id="champ-join-btn">
+      <span>🏁 Join Weekly Championship</span>
+    </a>
+  </div>
+</section>
+
+<script is:inline>
+  function initWeeklyChampionship() {
+    try {
+      const statsRaw = localStorage.getItem('typebaazi_stats_v1');
+      const settingsRaw = localStorage.getItem('typebaazi_settings_v1');
+      
+      let userBestWpm = 0;
+      let userStreak = 0;
+      let userName = 'You';
+
+      if (settingsRaw) {
+        const settings = JSON.parse(settingsRaw);
+        if (settings.userName && settings.userName.trim()) {
+          userName = settings.userName;
+        }
+      }
+
+      let totalPlays = 0;
+
+      if (statsRaw) {
+        const stats = JSON.parse(statsRaw);
+        const enBest = stats.english?.bestWpm || 0;
+        const mrBest = stats.marathi?.bestWpm || 0;
+        const hiBest = stats.hindi?.bestWpm || 0;
+        userBestWpm = Math.max(enBest, mrBest, hiBest);
+        userStreak = stats.currentStreak || 0;
+
+        totalPlays = Math.max(
+          (stats.english?.totalTests || 0) + (stats.english?.totalRaces || 0) +
+          (stats.hindi?.totalTests || 0) + (stats.hindi?.totalRaces || 0) +
+          (stats.marathi?.totalTests || 0) + (stats.marathi?.totalRaces || 0),
+          Array.isArray(stats.history) ? stats.history.length : 0
+        );
+
+        // Check history for recent weekly highs
+        if (Array.isArray(stats.history) && stats.history.length > 0) {
+          const maxHist = Math.max(...stats.history.map(h => h.wpm || 0));
+          if (maxHist > userBestWpm) userBestWpm = maxHist;
+        }
+      }
+
+      const isQualified = totalPlays >= 3;
+
+      // Update User Best Display in Header
+      const userBestElem = document.getElementById('champ-user-best-wpm');
+      if (userBestElem) {
+        userBestElem.textContent = userBestWpm > 0 ? `${userBestWpm} WPM` : '0 WPM';
+      }
+
+      // Competitive Grandmaster Podium Baseline Standards
+      const top1Wpm = 118;
+      const top2Wpm = 105;
+      const top3Wpm = 94;
+
+      // Dynamic 500-Student Progressive Ranking Scale
+      const TOTAL_CHAMP_STUDENTS = 500;
+      let calculatedRank = TOTAL_CHAMP_STUDENTS;
+      let rankTier = 'Unranked';
+      let rankMsg = '';
+
+      if (!isQualified) {
+        calculatedRank = 0;
+        rankTier = `Unranked • ${totalPlays}/3 Completed`;
+        rankMsg = `Complete ${3 - totalPlays} more speed test(s) to unlock your official Championship ranking!`;
+      } else if (userBestWpm >= top1Wpm) {
+        calculatedRank = 1;
+        rankTier = '👑 #1 World Champion';
+        rankMsg = `You're in 1st Place with ${userBestWpm} WPM! Defend your crown in live races.`;
+      } else if (userBestWpm >= top2Wpm) {
+        calculatedRank = 2;
+        rankTier = '🥈 2nd Place Podium';
+        const diff = top1Wpm - userBestWpm;
+        rankMsg = `Current Speed: ${userBestWpm} WPM &bull; Only ${diff} WPM more to beat Priya Sharma (118 WPM) for #1!`;
+      } else if (userBestWpm >= top3Wpm) {
+        calculatedRank = 3;
+        rankTier = '🥉 3rd Place Podium';
+        const diff = top2Wpm - userBestWpm;
+        rankMsg = `Current Speed: ${userBestWpm} WPM &bull; Only ${diff} WPM more to reach 2nd Place (105 WPM)!`;
+      } else if (userBestWpm > 0) {
+        const ratio = Math.min(1, Math.max(0, userBestWpm / top3Wpm));
+        const rankCurve = 1 - Math.pow(ratio, 1.25);
+        calculatedRank = Math.max(4, Math.min(TOTAL_CHAMP_STUDENTS, Math.round(4 + rankCurve * (TOTAL_CHAMP_STUDENTS - 4))));
+
+        const diff = top3Wpm - userBestWpm;
+        rankTier = `Rank #${calculatedRank}`;
+        rankMsg = `Current Speed: ${userBestWpm} WPM &bull; Reach ${top3Wpm} WPM (+${diff} WPM) to break onto the Top 3 Podium!`;
+      }
+
+      // Update Podium Slots ONLY if user qualified and earned a podium finish (Rank 1, 2, or 3)
+      const r1Name = document.getElementById('champ-r1-name');
+      const r1Wpm = document.getElementById('champ-r1-wpm');
+      const r2Name = document.getElementById('champ-r2-name');
+      const r2Wpm = document.getElementById('champ-r2-wpm');
+      const r3Name = document.getElementById('champ-r3-name');
+      const r3Wpm = document.getElementById('champ-r3-wpm');
+
+      if (isQualified && userBestWpm >= top1Wpm) {
+        if (r1Name) r1Name.textContent = `${userName} (You)`;
+        if (r1Wpm) r1Wpm.textContent = `${userBestWpm} WPM`;
+      } else if (isQualified && userBestWpm >= top2Wpm) {
+        if (r2Name) r2Name.textContent = `${userName} (You)`;
+        if (r2Wpm) r2Wpm.textContent = `${userBestWpm} WPM`;
+      } else if (isQualified && userBestWpm >= top3Wpm) {
+        if (r3Name) r3Name.textContent = `${userName} (You)`;
+        if (r3Wpm) r3Wpm.textContent = `${userBestWpm} WPM`;
+      }
+
+      // Update User Standing Strip
+      const rankPill = document.getElementById('champ-user-rank-pill');
+      const nameLabel = document.getElementById('champ-user-name-label');
+      const tierBadge = document.getElementById('champ-user-rank-tier');
+      const standingMsg = document.getElementById('champ-user-standing-msg');
+
+      if (rankPill) rankPill.textContent = (isQualified && calculatedRank > 0) ? `#${calculatedRank}` : 'Unranked';
+      if (nameLabel) nameLabel.textContent = `${userName} (You)`;
+      if (tierBadge) tierBadge.textContent = rankTier;
+      if (standingMsg) {
+        standingMsg.innerHTML = rankMsg;
+      }
+
+      // Update Motivation Banner
+      const motHeadline = document.getElementById('champ-mot-headline');
+      const motSub = document.getElementById('champ-mot-sub');
+
+      if (motHeadline && motSub) {
+        if (!isQualified) {
+          motHeadline.textContent = `Play 3 Tests to Unlock Official Rank (${totalPlays}/3)`;
+          motSub.textContent = rankMsg;
+        } else if (calculatedRank <= 3) {
+          motHeadline.textContent = `🏆 You are Rank #${calculatedRank} on the Podium! (${userBestWpm} WPM)`;
+          motSub.textContent = rankMsg;
+        } else {
+          motHeadline.textContent = `Your Rank: #${calculatedRank} (${userBestWpm} WPM)`;
+          motSub.textContent = rankMsg;
+        }
+      }
+
+      // Streak Message
+      const streakText = document.getElementById('champ-streak-text');
+      if (streakText) {
+        if (userStreak > 0) {
+          streakText.textContent = `Keep your ${userStreak}-day streak alive 🔥 Practice daily to climb ranks!`;
+        } else {
+          streakText.textContent = 'Keep your streak alive 🔥 Take a test today to start your daily typing streak.';
+        }
+      }
+    } catch (e) {
+      console.warn('Weekly championship init error:', e);
+    }
+  }
+
+  // Run on load and on client-side router navigation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWeeklyChampionship);
+  } else {
+    initWeeklyChampionship();
+  }
+  document.addEventListener('astro:page-load', initWeeklyChampionship);
+</script>
+
+<style>
+  .weekly-championship-card {
+    padding: clamp(16px, 3vw, 28px);
+    margin: clamp(20px, 3vw, 36px) auto;
+    border-radius: var(--radius-xl, 24px);
+    background: linear-gradient(145deg, rgba(10, 16, 28, 0.98), rgba(255, 0, 122, 0.05));
+    border: 1.5px solid rgba(255, 0, 122, 0.35);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 0, 122, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .champ-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .champ-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .champ-flame {
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1;
+    animation: flamePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes flamePulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #ff007a); }
+    50% { transform: scale(1.12); filter: drop-shadow(0 0 12px #ff007a); }
+  }
+
+  .champ-title {
+    font-size: clamp(19px, 2.5vw, 26px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .champ-sub {
+    font-size: clamp(12px, 1.5vw, 13.5px);
+    color: #94a3b8;
+    margin: 2px 0 0;
+  }
+
+  .champ-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00f0ff;
+    box-shadow: 0 0 8px #00f0ff;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  /* Motivation Banner */
+  .champ-motivation-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    box-sizing: border-box;
+  }
+
+  .mot-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .mot-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mot-text strong {
+    display: block;
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+
+  .mot-text span {
+    font-size: clamp(12px, 1.4vw, 13px);
+    color: #94a3b8;
+    line-height: 1.4;
+    display: block;
+  }
+
+  .mot-stat {
+    text-align: right;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 12px;
+    padding: 6px 12px;
+    flex-shrink: 0;
+  }
+
+  .mot-stat small {
+    display: block;
+    font-size: 10px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .mot-stat strong {
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 900;
+    color: #00f0ff;
+  }
+
+  /* Podium Grid */
+  .champ-podium-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: clamp(10px, 2vw, 18px);
+    align-items: end;
+    margin-bottom: 22px;
+  }
+
+  .champ-rank-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px 14px;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .champ-rank-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .champ-rank-card.rank-1 {
+    background: linear-gradient(180deg, rgba(251, 191, 36, 0.15), rgba(15, 23, 42, 0.95));
+    border: 1.5px solid rgba(251, 191, 36, 0.6);
+    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.15);
+    padding-top: 24px;
+  }
+
+  .crown-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    color: #000000;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .champ-rank-card.rank-2 {
+    border-color: rgba(226, 232, 240, 0.3);
+  }
+
+  .champ-rank-card.rank-3 {
+    border-color: rgba(217, 119, 6, 0.3);
+  }
+
+  .rank-medal {
+    font-size: clamp(24px, 3.5vw, 32px);
+    margin-bottom: 4px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  }
+
+  .rank-number {
+    font-size: 11px;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .rank-1 .rank-number {
+    color: #fbbf24 !important;
+    background: rgba(251, 191, 36, 0.2) !important;
+    border: 1px solid rgba(251, 191, 36, 0.5) !important;
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+    box-shadow: 0 2px 10px rgba(251, 191, 36, 0.25);
+  }
+
+  .rank-2 .rank-number {
+    color: #00f0ff !important;
+    background: rgba(0, 240, 255, 0.15) !important;
+    border: 1px solid rgba(0, 240, 255, 0.4) !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  }
+
+  .rank-3 .rank-number {
+    color: #f97316 !important;
+    background: rgba(249, 115, 22, 0.15) !important;
+    border: 1px solid rgba(249, 115, 22, 0.4) !important;
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+  }
+
+  .rank-player-info {
+    margin-bottom: 10px;
+  }
+
+  .rank-name {
+    display: block;
+    font-size: clamp(13.5px, 1.6vw, 15.5px);
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rank-meta {
+    display: block;
+    font-size: 11px;
+    color: #cbd5e1;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  .rank-score {
+    font-size: clamp(16px, 2.2vw, 22px);
+    font-weight: 900;
+    color: #00f0ff;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .rank-score.gold {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+  }
+
+  /* User Championship Standing Card */
+  .user-standing-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .user-standing-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .user-rank-pill {
+    font-size: 19px;
+    font-weight: 900;
+    color: #00f0ff;
+    background: rgba(0, 240, 255, 0.15);
+    border: 1.5px solid #00f0ff;
+    padding: 8px 14px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+    font-family: var(--font-mono, monospace);
+    white-space: nowrap;
+  }
+
+  .user-rank-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .user-rank-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 3px;
+  }
+
+  .user-rank-title-row strong {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .user-rank-badge {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .user-rank-progress-row span {
+    font-size: 12.5px;
+    color: #cbd5e1;
+    line-height: 1.4;
+    display: block;
+  }
+
+  .user-standing-cta {
+    padding: 10px 18px !important;
+    font-size: 13.5px !important;
+    border-radius: 10px !important;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .user-standing-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .user-standing-cta {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  /* Footer & CTA */
+  .champ-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .champ-streak-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  .fire-icon {
+    font-size: 18px;
+  }
+
+  .champ-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #ff007a, #9900ff);
+    color: #ffffff;
+    font-size: 14.5px;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(255, 0, 122, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .champ-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(255, 0, 122, 0.6);
+    color: #ffffff;
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 768px) {
+    .champ-podium-grid {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .champ-rank-card.rank-1 {
+      order: -1;
+    }
+
+    .champ-motivation-banner {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .mot-stat {
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .champ-footer-row {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .champ-cta-btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  /* Light Theme Overrides */
+  [data-theme='light'] .weekly-championship-card {
+    background: linear-gradient(145deg, #ffffff, #fff5f8);
+    border-color: #f43f5e;
+    box-shadow: 0 10px 30px rgba(244, 63, 94, 0.12);
+  }
+
+  [data-theme='light'] .champ-title,
+  [data-theme='light'] .mot-text strong,
+  [data-theme='light'] .rank-name {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .champ-subtitle,
+  [data-theme='light'] .mot-text span,
+  [data-theme='light'] .champ-tip-text {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .mot-stat {
+    background: #eff6ff !important;
+    border-color: #bfdbfe !important;
+  }
+
+  [data-theme='light'] .mot-stat small {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .mot-stat strong {
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .champ-motivation-banner,
+  [data-theme='light'] .champ-rank-card {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .champ-rank-card.rank-1 {
+    background: linear-gradient(180deg, #fffbeb, #ffffff) !important;
+    border-color: #f59e0b !important;
+  }
+
+  [data-theme='light'] .rank-meta {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .rank-1 .rank-number {
+    color: #92400e !important;
+    background: #fef3c7 !important;
+    border: 1.5px solid #f59e0b !important;
+    text-shadow: none !important;
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15) !important;
+  }
+
+  [data-theme='light'] .rank-2 .rank-number {
+    color: #0369a1 !important;
+    background: #e0f2fe !important;
+    border: 1.5px solid #0284c7 !important;
+    text-shadow: none !important;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.15) !important;
+  }
+
+  [data-theme='light'] .rank-3 .rank-number {
+    color: #c2410c !important;
+    background: #ffedd5 !important;
+    border: 1.5px solid #ea580c !important;
+    text-shadow: none !important;
+    box-shadow: 0 2px 6px rgba(234, 88, 12, 0.15) !important;
+  }
+
+  [data-theme='light'] .user-standing-box {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  [data-theme='light'] .user-rank-pill {
+    color: #0070f3 !important;
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+    box-shadow: none !important;
+  }
+
+  [data-theme='light'] .user-rank-title-row strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .user-rank-badge {
+    color: #b45309 !important;
+    background: #fffbeb !important;
+    border-color: #fde68a !important;
+  }
+
+  [data-theme='light'] .user-rank-progress-row span {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .rank-score {
+    background: #e2e8f0 !important;
+    color: #0284c7 !important;
+  }
+
+  [data-theme='light'] .rank-score.gold {
+    background: #fef3c7 !important;
+    color: #d97706 !important;
+  }
+
+  [data-theme='light'] .champ-streak-indicator {
+    color: #475569 !important;
+  }
+</style>

@@ -1,0 +1,25 @@
+# TypeBaazi Robots.txt
+# Platform: https://typebaazi.com
+
+User-agent: *
+Allow: /
+
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+
+# Googlebot-Image specific rules
+User-agent: Googlebot-Image
+Allow: /icons/
+Allow: /favicon.svg
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /og-image.png
+
+# Bingbot specific rules
+User-agent: Bingbot
+Allow: /
+
+# XML Sitemap Directives
+Sitemap: https://typebaazi.com/sitemap.xml
+

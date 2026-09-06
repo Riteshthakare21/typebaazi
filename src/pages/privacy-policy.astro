@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Privacy Policy",
+      "item": "https://typebaazi.com/privacy-policy"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Privacy Policy — TypeBaazi (100% Client-Side & Zero-Tracking Guarantee)"
+  description="Read TypeBaazi's Privacy Policy. Learn about our strict 100% client-side computing architecture, zero keystroke tracking guarantee, and local storage usage."
+  activePath="/privacy-policy"
+  keywords="typebaazi privacy policy, typing test privacy, client side typing, zero tracking typing test"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-cyan">🔒 Official Policy</div>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-sub">
+        Last Updated: August 2026 • <em>Your privacy is our foundational promise.</em>
+      </p>
+    </div>
+
+    <div class="legal-card glass-panel">
+      <div class="legal-section">
+        <h2>1. Our Core Commitment: Zero Keystroke Logging</h2>
+        <p>
+          At <strong>TypeBaazi</strong>, we firmly believe that your keystrokes, personal notes, and typing test inputs belong solely to you. Unlike traditional online typing platforms that transmit user inputs to remote cloud servers for analysis, TypeBaazi operates on a <strong>100% Client-Side Execution Model</strong>.
+        </p>
+        <div class="policy-highlight-box green">
+          <strong>🛡️ Zero Transmission Guarantee:</strong> Every key you press, every character you type, and every sentence you complete is evaluated entirely within your device's browser memory (RAM). Zero typed characters are ever logged, captured, transmitted, or sold to external servers.
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. Data We Store Locally (Client-Side Only)</h2>
+        <p>
+          To provide a seamless, personalized experience across your practice sessions, TypeBaazi utilizes browser <code>localStorage</code> on your device. This data never leaves your browser:
+        </p>
+        <ul class="legal-bullets">
+          <li><strong>Typing Statistics:</strong> Your highest Words Per Minute (WPM), Net WPM records, test history counts, and total keystrokes typed.</li>
+          <li><strong>Daily Streaks &amp; Level XP:</strong> Consecutive daily challenge streaks, experience points, and unlocked player trophies.</li>
+          <li><strong>User Customization Preferences:</strong> Selected visual theme (Dark, Light, Cyberpunk), sound profile (Mechanical, Creamy Thock, Off), volume level, and default language.</li>
+          <li><strong>Custom Avatars &amp; Usernames:</strong> Custom display names and avatar icons chosen in your Profile modal.</li>
+        </ul>
+        <p>
+          You can erase all locally saved data at any time simply by clearing your browser's site data / cache.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>3. Google Analytics &amp; Usage Measurement</h2>
+        <p>
+          We use <strong>Google Analytics 4 (GA4)</strong> to understand anonymous traffic metrics, such as popular pages, device screen resolutions, and general geographic regions (country/city level).
+        </p>
+        <ul class="legal-bullets">
+          <li>Google Analytics collects information anonymously with IP anonymization enabled.</li>
+          <li>It sets first-party cookies (such as <code>_ga</code> and <code>_ga_*</code>) to calculate visitor, session, and campaign data for site analysis.</li>
+          <li>No keystrokes, personal notes, or private typed data are ever transmitted to Google Analytics.</li>
+          <li>You can prevent Google Analytics from using your data by installing the official <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Google Analytics Opt-out Browser Add-on</a>.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section">
+        <h2>4. Google AdSense &amp; Third-Party Advertising</h2>
+        <p>
+          To maintain TypeBaazi as a 100% free educational platform, we partner with <strong>Google AdSense</strong> and authorized third-party advertising networks to display relevant advertisements.
+        </p>
+        <ul class="legal-bullets">
+          <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites on the Internet.</li>
+          <li>Google's use of advertising cookies enables it and its partners to serve advertisements to our users based on their visit to our site and/or other sites on the Web.</li>
+          <li>Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Google Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://aboutads.info/choices" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">www.aboutads.info</a>.</li>
+          <li>For more information on how Google manages data in its advertising products, please visit <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">How Google uses data when you use our partners' sites or apps</a>.</li>
+        </ul>
+        <p>
+          For a full breakdown of the cookies used across TypeBaazi, please consult our dedicated <a href="/cookie-policy" style="color: var(--accent-cyan);"><strong>Cookie Policy</strong></a>.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Procedural Audio &amp; Performance Privacy</h2>
+        <p>
+          Our mechanical switch sound effects and racing audio are synthesized in real-time mathematically using the standard <strong>HTML5 Web Audio API</strong>. We do not access your microphone, camera, or any system peripherals.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>6. Children's Online Privacy (COPPA Compliance)</h2>
+        <p>
+          TypeBaazi is safe for users of all ages, including students and minors learning touch typing in schools. Because we do not collect or request any Personally Identifiable Information (PII) to use our typing tests, our website complies with the Children's Online Privacy Protection Act (COPPA) and international privacy regulations.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>7. Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy periodically to reflect new browser technologies or feature additions. Any updates will always uphold our core pledge of zero keystroke collection and full client-side execution.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>8. Contacting Us About Privacy</h2>
+        <p>
+          If you have any questions or feedback regarding our privacy practices, please reach out through our <a href="/contact-us" style="color: var(--accent-cyan);">Contact Page</a> or email us directly at:
+        </p>
+        <p>
+          📧 <a href="mailto:riteshthakareofficial@gmail.com" style="color: var(--accent-cyan);"><strong>riteshthakareofficial@gmail.com</strong></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(24px, 4vw, 48px) clamp(12px, 2.5vw, 24px) 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .page-title {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 10px 0 6px;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 2vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+  }
+
+  .legal-card {
+    padding: clamp(20px, 4vw, 40px);
+    border-radius: var(--radius-xl, 20px);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    box-sizing: border-box;
+  }
+
+  .legal-section h2 {
+    font-size: clamp(17px, 2.8vw, 21px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .legal-section p {
+    font-size: clamp(13.5px, 1.8vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    margin: 0 0 12px;
+    text-align: left;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
+
+  .policy-highlight-box {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1.5px solid rgba(16, 185, 129, 0.4);
+    border-radius: var(--radius-md, 12px);
+    padding: 14px 18px;
+    color: #d1fae5;
+    font-size: clamp(13px, 1.8vw, 14.5px);
+    line-height: 1.6;
+    margin: 12px 0 6px;
+    text-align: left;
+  }
+
+  .legal-bullets {
+    margin: 8px 0 14px;
+    padding-left: 22px;
+    list-style-type: disc;
+    list-style-position: outside;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legal-bullets li {
+    font-size: clamp(13.5px, 1.8vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    display: list-item;
+    text-align: left;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
+
+  .legal-bullets strong {
+    color: #ffffff;
+    font-weight: 700;
+    display: inline;
+  }
+
+  [data-theme='light'] .legal-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  [data-theme='light'] .legal-section h2 {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .legal-section p,
+  [data-theme='light'] .legal-bullets li {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .legal-bullets strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .policy-highlight-box {
+    background: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+    color: #065f46 !important;
+  }
+</style>

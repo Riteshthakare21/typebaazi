@@ -1,0 +1,568 @@
+---
+---
+
+<div id="settings-modal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="gear-icon">⚙️</span>
+        <span>Settings & Preferences</span>
+      </div>
+      <button id="close-settings-modal" class="close-btn" aria-label="Close Settings">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Language Section -->
+      <div class="setting-group">
+        <label class="setting-label" for="setting-lang">Default Language</label>
+        <select id="setting-lang" class="setting-select">
+          <option value="english">🇬🇧 English</option>
+          <option value="hindi">🇮🇳 Hindi (हिंदी)</option>
+          <option value="marathi">🇮🇳 Marathi (मराठी)</option>
+        </select>
+      </div>
+
+      <!-- Theme Section -->
+      <div class="setting-group">
+        <label class="setting-label" for="setting-theme">Color Theme</label>
+        <select id="setting-theme" class="setting-select">
+          <option value="dark">🌙 Midnight Dark (Default)</option>
+          <option value="light">☀️ Clean Light</option>
+          <option value="cyberpunk">⚡ Cyberpunk Neon</option>
+        </select>
+      </div>
+
+      <!-- Audio Section -->
+      <div class="setting-group">
+        <div class="setting-row">
+          <label class="setting-label" for="setting-sound-toggle">Procedural Keyboard Sounds</label>
+          <input type="checkbox" id="setting-sound-toggle" class="setting-toggle" />
+        </div>
+      </div>
+
+      <div class="setting-group" id="sound-options-panel">
+        <div class="setting-row" style="margin-bottom: 6px;">
+          <label class="setting-label" for="setting-sound-profile">Switch Sound Profile</label>
+          <button type="button" id="btn-preview-sound" class="btn-sound-preview" title="Test selected keyboard switch sound">
+            🔊 Listen Preview
+          </button>
+        </div>
+        <select id="setting-sound-profile" class="setting-select">
+          <option value="creamy-thock">🥛 Creamy Thock (Brown/Red Switch)</option>
+          <option value="mechanical-blue">🔔 Clicky Tactile (Cherry Blue)</option>
+          <option value="typewriter">⌨️ Vintage Typewriter</option>
+          <option value="cyberpunk">⚡ Cyber Laser Chime</option>
+        </select>
+
+        <div class="setting-row volume-row">
+          <label class="setting-label" for="setting-volume">Sound Volume: <span id="volume-val-txt">60%</span></label>
+          <input type="range" id="setting-volume" min="0" max="100" value="60" class="setting-slider" />
+        </div>
+      </div>
+
+      <!-- Strict Mode Toggle -->
+      <div class="setting-group">
+        <div class="setting-row">
+          <div>
+            <label class="setting-label" for="setting-strict">Strict Accuracy Mode</label>
+            <p class="setting-hint">Must backspace and correct typos before typing next characters.</p>
+          </div>
+          <input type="checkbox" id="setting-strict" class="setting-toggle" />
+        </div>
+      </div>
+
+      <!-- Virtual Keyboard Visibility -->
+      <div class="setting-group">
+        <div class="setting-row">
+          <div>
+            <label class="setting-label" for="setting-keyboard">Show Virtual Keyboard Visualizer</label>
+            <p class="setting-hint">Displays interactive on-screen keyboard with finger zone guides.</p>
+          </div>
+          <input type="checkbox" id="setting-keyboard" class="setting-toggle" />
+        </div>
+      </div>
+
+      <!-- Daily Streak Notifications (App: 3x/day, Web: 5x/day) -->
+      <div class="setting-group">
+        <div class="setting-row">
+          <div>
+            <label class="setting-label" for="setting-streak-notifs">Daily Streak Reminder Notifications</label>
+            <p class="setting-hint" id="setting-streak-notif-hint">Never lose your streak! Automated reminders (3x/day for App, 5x/day for Web).</p>
+          </div>
+          <input type="checkbox" id="setting-streak-notifs" class="setting-toggle" />
+        </div>
+      </div>
+
+      <!-- Font Size -->
+      <div class="setting-group">
+        <label class="setting-label" for="setting-fontsize">Typing Arena Font Size</label>
+        <select id="setting-fontsize" class="setting-select">
+          <option value="sm">Small (20px)</option>
+          <option value="md">Medium (24px - Default)</option>
+          <option value="lg">Large (28px)</option>
+          <option value="xl">Extra Large (32px)</option>
+        </select>
+      </div>
+
+      <!-- Data Reset Button -->
+      <div class="setting-group danger-zone">
+        <div class="setting-row">
+          <div>
+            <span class="danger-title">Reset Local Data</span>
+            <p class="setting-hint">Clears all personal best scores, streaks, and history stored locally.</p>
+          </div>
+          <button id="btn-reset-data" class="btn-danger">Clear All</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button id="btn-save-settings" class="btn-primary">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 7, 14, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(24px, 5vh, 48px) 16px;
+    opacity: 1;
+    transition: opacity var(--transition-smooth);
+    box-sizing: border-box;
+  }
+
+  .modal-overlay.hidden {
+    display: none;
+    opacity: 0;
+  }
+
+  .modal-card {
+    background: #0d1424;
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: var(--radius-lg, 16px);
+    width: 100%;
+    max-width: 430px;
+    max-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 240, 255, 0.15);
+    overflow: hidden;
+    margin: auto;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .modal-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .gear-icon {
+    font-size: 17px;
+  }
+
+  .close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color var(--transition-fast);
+  }
+
+  .close-btn:hover {
+    color: #ffffff;
+  }
+
+  .modal-body {
+    padding: 14px 18px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .setting-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .setting-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+
+  .setting-select {
+    background: rgba(18, 27, 46, 0.9);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm, 8px);
+    color: #ffffff;
+    padding: 7px 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+    outline: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .setting-select:focus {
+    border-color: var(--accent-cyan);
+  }
+
+  .setting-toggle {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-cyan);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .volume-row {
+    margin-top: 6px;
+  }
+
+  .setting-slider {
+    width: 100%;
+    accent-color: var(--accent-cyan);
+    cursor: pointer;
+  }
+
+  .danger-zone {
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(239, 68, 68, 0.3);
+  }
+
+  .danger-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-danger);
+  }
+
+  .btn-danger {
+    padding: 5px 12px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    font-size: 11.5px;
+    font-weight: 700;
+    border-radius: var(--radius-sm, 6px);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .btn-danger:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ffffff;
+  }
+
+  .btn-sound-preview {
+    background: rgba(0, 240, 255, 0.12);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    color: var(--accent-cyan);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all var(--transition-fast);
+  }
+
+  .btn-sound-preview:hover {
+    background: rgba(0, 240, 255, 0.25);
+    border-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  }
+
+  .btn-sound-preview:active {
+    transform: scale(0.96);
+  }
+
+  .modal-footer {
+    padding: 10px 18px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(10, 15, 26, 0.5);
+  }
+
+  .modal-footer .btn-primary {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+  }
+
+  /* Light Theme Settings Modal Overrides */
+  [data-theme='light'] .modal-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18) !important;
+  }
+
+  [data-theme='light'] .modal-header {
+    border-bottom: 1px solid #e2e8f0 !important;
+    background: #ffffff !important;
+  }
+
+  [data-theme='light'] .modal-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .close-btn {
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] .close-btn:hover {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .setting-label {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .setting-hint {
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] .setting-select {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+  }
+
+  [data-theme='light'] .setting-select:focus {
+    border-color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .modal-footer {
+    border-top: 1px solid #e2e8f0 !important;
+    background: #f8fafc !important;
+  }
+
+  [data-theme='light'] .btn-sound-preview {
+    background: #eff6ff !important;
+    border: 1px solid #bfdbfe !important;
+    color: #0070f3 !important;
+  }
+
+  @media (max-width: 480px) {
+    .modal-overlay {
+      padding: 8px;
+    }
+    .modal-card {
+      max-height: 90vh;
+      border-radius: var(--radius-md, 12px);
+    }
+    .modal-header {
+      padding: 10px 14px;
+    }
+    .modal-body {
+      padding: 12px 14px;
+      gap: 10px;
+    }
+    .modal-footer {
+      padding: 8px 14px;
+    }
+    .modal-footer .btn-primary {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { StorageManager, type UserSettings } from '../lib/storage';
+  import { soundEngine, type SoundProfile } from '../lib/audio';
+  import { streakNotifManager } from '../lib/streakNotifications';
+
+  function triggerSoundPreview() {
+    const soundProfileSelect = document.getElementById('setting-sound-profile') as HTMLSelectElement | null;
+    const volumeSlider = document.getElementById('setting-volume') as HTMLInputElement | null;
+    const profile = (soundProfileSelect?.value as SoundProfile) || 'creamy-thock';
+    const vol = Number(volumeSlider?.value || 60) / 100;
+    soundEngine.setSettings({ volume: vol, profile, enabled: true });
+    soundEngine.playPreview(profile);
+  }
+
+  function loadSettingsIntoModal() {
+    const s = StorageManager.getSettings();
+    const langSelect = document.getElementById('setting-lang') as HTMLSelectElement | null;
+    const themeSelect = document.getElementById('setting-theme') as HTMLSelectElement | null;
+    const soundToggle = document.getElementById('setting-sound-toggle') as HTMLInputElement | null;
+    const soundProfileSelect = document.getElementById('setting-sound-profile') as HTMLSelectElement | null;
+    const volumeSlider = document.getElementById('setting-volume') as HTMLInputElement | null;
+    const volumeValTxt = document.getElementById('volume-val-txt');
+    const strictToggle = document.getElementById('setting-strict') as HTMLInputElement | null;
+    const kbToggle = document.getElementById('setting-keyboard') as HTMLInputElement | null;
+    const streakToggle = document.getElementById('setting-streak-notifs') as HTMLInputElement | null;
+    const fontSelect = document.getElementById('setting-fontsize') as HTMLSelectElement | null;
+
+    if (langSelect) langSelect.value = s.defaultLanguage;
+    if (themeSelect) themeSelect.value = s.theme;
+    if (soundToggle) soundToggle.checked = s.soundEnabled;
+    if (soundProfileSelect) soundProfileSelect.value = s.soundProfile;
+    if (volumeSlider) {
+      volumeSlider.value = String(Math.round(s.soundVolume * 100));
+      if (volumeValTxt) volumeValTxt.textContent = `${volumeSlider.value}%`;
+    }
+    if (strictToggle) strictToggle.checked = s.strictMode;
+    if (kbToggle) kbToggle.checked = s.showKeyboard;
+    if (streakToggle) streakToggle.checked = streakNotifManager.isEnabled();
+    if (fontSelect) fontSelect.value = s.fontSize;
+  }
+
+  window.addEventListener('open-settings-modal', () => {
+    loadSettingsIntoModal();
+    const modal = document.getElementById('settings-modal');
+    modal?.classList.remove('hidden');
+  });
+
+  // Document delegated event handlers
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+
+    // Close button or overlay
+    if (target.closest('#close-settings-modal') || target.id === 'settings-modal') {
+      const modal = document.getElementById('settings-modal');
+      modal?.classList.add('hidden');
+      return;
+    }
+
+    // Sound preview button
+    if (target.closest('#btn-preview-sound')) {
+      e.preventDefault();
+      triggerSoundPreview();
+      return;
+    }
+
+    // Save settings button
+    if (target.closest('#btn-save-settings')) {
+      const langSelect = document.getElementById('setting-lang') as HTMLSelectElement | null;
+      const themeSelect = document.getElementById('setting-theme') as HTMLSelectElement | null;
+      const soundToggle = document.getElementById('setting-sound-toggle') as HTMLInputElement | null;
+      const soundProfileSelect = document.getElementById('setting-sound-profile') as HTMLSelectElement | null;
+      const volumeSlider = document.getElementById('setting-volume') as HTMLInputElement | null;
+      const strictToggle = document.getElementById('setting-strict') as HTMLInputElement | null;
+      const kbToggle = document.getElementById('setting-keyboard') as HTMLInputElement | null;
+      const streakToggle = document.getElementById('setting-streak-notifs') as HTMLInputElement | null;
+      const fontSelect = document.getElementById('setting-fontsize') as HTMLSelectElement | null;
+
+      const vol = Number(volumeSlider?.value || 60) / 100;
+      const newSettings: Partial<UserSettings> = {
+        defaultLanguage: (langSelect?.value as 'english' | 'marathi' | 'hindi') || 'english',
+        theme: (themeSelect?.value as 'dark' | 'light' | 'cyberpunk') || 'dark',
+        soundEnabled: soundToggle?.checked ?? true,
+        soundProfile: (soundProfileSelect?.value as SoundProfile) || 'creamy-thock',
+        soundVolume: vol,
+        strictMode: strictToggle?.checked ?? false,
+        showKeyboard: kbToggle?.checked ?? true,
+        fontSize: (fontSelect?.value as 'sm' | 'md' | 'lg' | 'xl') || 'md'
+      };
+
+      if (streakToggle) {
+        if (streakToggle.checked && !streakNotifManager.isEnabled()) {
+          await streakNotifManager.requestPermission();
+        } else {
+          streakNotifManager.setEnabled(streakToggle.checked);
+        }
+      }
+
+      StorageManager.saveSettings(newSettings);
+      soundEngine.setSettings({
+        enabled: newSettings.soundEnabled,
+        volume: newSettings.soundVolume,
+        profile: newSettings.soundProfile
+      });
+      document.documentElement.setAttribute('data-theme', newSettings.theme || 'dark');
+
+      const modal = document.getElementById('settings-modal');
+      modal?.classList.add('hidden');
+      window.location.reload();
+      return;
+    }
+
+    // Reset data button
+    if (target.closest('#btn-reset-data')) {
+      if (confirm('Are you sure you want to reset all your stats, personal bests, and test history? This cannot be undone.')) {
+        StorageManager.clearData();
+        alert('Local storage data has been cleared.');
+        window.location.reload();
+      }
+      return;
+    }
+  });
+
+  // Sound Profile change & volume slider input
+  document.addEventListener('change', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.id === 'setting-sound-profile') {
+      triggerSoundPreview();
+    } else if (target.id === 'setting-sound-toggle') {
+      const toggle = target as HTMLInputElement;
+      if (toggle.checked) {
+        triggerSoundPreview();
+      }
+    }
+  });
+
+  document.addEventListener('input', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.id === 'setting-volume') {
+      const slider = target as HTMLInputElement;
+      const vol = Number(slider.value) / 100;
+      const volumeValTxt = document.getElementById('volume-val-txt');
+      if (volumeValTxt) volumeValTxt.textContent = `${slider.value}%`;
+      const soundProfileSelect = document.getElementById('setting-sound-profile') as HTMLSelectElement | null;
+      const profile = (soundProfileSelect?.value as SoundProfile) || 'creamy-thock';
+      soundEngine.setSettings({ volume: vol, profile, enabled: true });
+      soundEngine.playKey('a');
+    }
+  });
+
+  document.addEventListener('astro:page-load', loadSettingsIntoModal);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadSettingsIntoModal);
+  } else {
+    loadSettingsIntoModal();
+  }
+</script>

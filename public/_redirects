@@ -1,0 +1,12 @@
+# Cloudflare Pages Redirects & Routing Rules
+/daily-typing-challenge  /daily-challenge  301
+/typing-games            /games            301
+/typing-race             /race             301
+/learn-typing            /learn            301
+/about-us                /about            301
+/contact                 /contact-us       301
+/privacy                 /privacy-policy   301
+/terms                   /terms-and-conditions 301
+/cookies                 /cookie-policy    301
+/cookie                  /cookie-policy    301
+

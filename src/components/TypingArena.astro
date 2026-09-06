@@ -1,0 +1,1166 @@
+---
+import { textManager, type Language, type Difficulty } from '../lib/texts';
+import { DailyChallengeManager } from '../lib/dailyChallenge';
+import { UnicodeHelper } from '../lib/unicode';
+
+interface Props {
+  initialLanguage?: 'english' | 'marathi' | 'hindi';
+  initialDuration?: number;
+  initialDifficulty?: 'easy' | 'medium' | 'hard' | 'extreme';
+  mode?: 'timed' | 'words' | 'quote' | 'daily';
+  showControls?: boolean;
+}
+
+const {
+  initialLanguage = 'english',
+  initialDuration = 60,
+  initialDifficulty = 'medium',
+  mode = 'timed',
+  showControls = true
+} = Astro.props;
+
+// Compute initial text on the server for instant, zero-delay pre-rendering
+let initialText = '';
+if (mode === 'daily') {
+  const dc = DailyChallengeManager.getTodaysChallenge();
+  if (initialLanguage === 'marathi') initialText = dc.marathiChallenge.textItem.text;
+  else if (initialLanguage === 'hindi') initialText = dc.hindiChallenge.textItem.text;
+  else initialText = dc.englishChallenge.textItem.text;
+} else {
+  const item = textManager.getRandomText(initialLanguage, initialDifficulty);
+  initialText = item ? item.text : '';
+}
+
+if (!initialText || initialText.trim().length === 0) {
+  if (initialLanguage === 'marathi') {
+    initialText = "मराठी टायपिंगचा नियमित सराव केल्याने टायपिंग गती आणि अचूकता वेगाने वाढते. होम रो कीजवर बोटे व्यवस्थित ठेवून दररोज सराव करा.";
+  } else if (initialLanguage === 'hindi') {
+    initialText = "हिंदी टाइपिंग का नियमित अभ्यास करने से आपकी गति और शुद्धता में तेजी से सुधार होता है। होम रो कीज पर उंगलियां रखकर प्रतिदिन अभ्यास करें।";
+  } else {
+    initialText = "The quick brown fox jumps over the lazy dog near the peaceful river bank where calm waters flow gently under the warm morning sun. Learning touch typing is one of the most valuable foundational skills you can develop for school, university, and daily professional career work.";
+  }
+}
+
+const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initialText.trim()));
+---
+
+<div
+  class="arena-card glass-panel"
+  id="typing-arena-component"
+  data-initial-lang={initialLanguage}
+  data-initial-duration={initialDuration}
+  data-initial-diff={initialDifficulty}
+  data-mode={mode}
+>
+  <!-- Arena Top Controls / Selectors -->
+  {showControls && (
+    <div class="arena-toolbar">
+      <!-- Language Selector -->
+      <div class="control-pill-group">
+        <button class={`pill-btn ${initialLanguage === 'english' ? 'active' : ''}`} data-set-lang="english">
+          🇬🇧 English
+        </button>
+        <button class={`pill-btn ${initialLanguage === 'hindi' ? 'active' : ''}`} data-set-lang="hindi">
+          🇮🇳 हिंदी
+        </button>
+        <button class={`pill-btn ${initialLanguage === 'marathi' ? 'active' : ''}`} data-set-lang="marathi">
+          🇮🇳 मराठी
+        </button>
+      </div>
+
+      <!-- Duration Selector (for timed mode) -->
+      <div class="control-pill-group" id="duration-group">
+        <button class={`pill-btn ${initialDuration === 60 ? 'active' : ''}`} data-set-time="60">60s</button>
+        <button class={`pill-btn ${initialDuration === 180 ? 'active' : ''}`} data-set-time="180">180s</button>
+      </div>
+
+      <!-- Difficulty Selector -->
+      <div class="control-pill-group">
+        <button class={`pill-btn ${initialDifficulty === 'easy' ? 'active' : ''}`} data-set-diff="easy">Easy</button>
+        <button class={`pill-btn ${initialDifficulty === 'medium' ? 'active' : ''}`} data-set-diff="medium">Medium</button>
+        <button class={`pill-btn ${initialDifficulty === 'hard' ? 'active' : ''}`} data-set-diff="hard">Hard</button>
+        <button class={`pill-btn ${initialDifficulty === 'extreme' ? 'active' : ''}`} data-set-diff="extreme">Extreme</button>
+      </div>
+    </div>
+  )}
+
+  <!-- Live HUD (WPM, Accuracy, Time, Errors) -->
+  <div class="arena-hud">
+    <div class="hud-card">
+      <span class="hud-val" id="hud-wpm">0</span>
+      <span class="hud-lbl">WPM</span>
+    </div>
+    <div class="hud-card">
+      <span class="hud-val" id="hud-acc">100%</span>
+      <span class="hud-lbl">Accuracy</span>
+    </div>
+    <div class="hud-card" id="hud-timer-card">
+      <span class="hud-val" id="hud-timer">{initialDuration}s</span>
+      <span class="hud-lbl">Time Left</span>
+    </div>
+    <div class="hud-card">
+      <span class="hud-val text-red" id="hud-errors">0</span>
+      <span class="hud-lbl">Errors</span>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-track">
+    <div id="arena-progress-bar" class="progress-fill" style="width: 0%;"></div>
+  </div>
+
+  <!-- Main Interactive Typing Container -->
+  <div class="typing-container-rel" id="typing-box-container">
+    <!-- Click to Focus prompt when unfocused -->
+    <div id="focus-overlay" class="focus-overlay hidden">
+      <span class="focus-icon">🖱️</span>
+      <span>Click here or press any key to focus</span>
+    </div>
+
+    <!-- Hidden native input to capture keyboard events & mobile IME input safely -->
+    <input
+      type="text"
+      id="arena-hidden-input"
+      class="hidden-capture-input"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      inputmode="text"
+      aria-label="Typing input area"
+    />
+
+    <!-- Rendered Text Box (Pre-populated on server to eliminate any chance of empty box) -->
+    <div id="arena-text-display" class={`typing-box ${initialLanguage === 'marathi' ? 'lang-marathi' : ''}`}>
+      {(() => {
+        const words: { char: string; isCurrent: boolean; isSpace: boolean; idx: number }[][] = [];
+        let curWord: { char: string; isCurrent: boolean; isSpace: boolean; idx: number }[] = [];
+        for (let i = 0; i < initialTokens.length; i++) {
+          const char = initialTokens[i];
+          const isCurrent = i === 0;
+          const isSpace = char === ' ';
+          curWord.push({ char, isCurrent, isSpace, idx: i });
+          if (isSpace || i === initialTokens.length - 1) {
+            words.push([...curWord]);
+            curWord = [];
+          }
+        }
+        return words.map((word) => (
+          <span class="word-token">
+            {word.map(({ char, isCurrent, isSpace, idx }) => (
+              <span class={`char-token pending ${isCurrent ? 'active-cursor' : ''} ${isSpace ? 'space-char' : ''}`} data-idx={idx}>
+                {isSpace ? '\u00A0' : char}
+              </span>
+            ))}
+          </span>
+        ));
+      })()}
+    </div>
+  </div>
+
+  <!-- Arena Footer Actions -->
+  <div class="arena-footer">
+    <div class="footer-tips">
+      <span class="keyboard-tip">💡 Tip: Tap box to type on Phone Keypad / Keyboard • <kbd>Tab</kbd> + <kbd>Enter</kbd> to restart</span>
+    </div>
+    <button id="arena-restart-btn" class="btn-secondary restart-btn" title="Restart test">
+      <span>🔄 Restart Test</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  .arena-card {
+    padding: clamp(16px, 2.5vw, 28px);
+    margin: 16px 0 24px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .arena-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 18px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 4px 8px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .control-pill-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(14, 20, 36, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    padding: 5px;
+    gap: 4px;
+    box-sizing: border-box;
+    max-width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .pill-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted, #94a3b8);
+    font-size: clamp(12px, 1.1vw, 13.5px);
+    font-weight: 700;
+    padding: 7px 15px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    box-sizing: border-box;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .pill-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .pill-btn.active {
+    background: linear-gradient(135deg, #0070f3 0%, #2563eb 100%);
+    color: #ffffff !important;
+    border: 1px solid #00f0ff;
+    box-shadow: 0 2px 10px rgba(0, 112, 243, 0.45);
+    font-weight: 800;
+  }
+
+  .toolbar-divider {
+    width: 1px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .arena-hud {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(8px, 1.5vw, 14px);
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hud-card {
+    background: rgba(12, 18, 32, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: clamp(8px, 1.2vw, 12px) clamp(10px, 1.5vw, 16px);
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .hud-card.hud-timer-box {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.35);
+  }
+
+  .hud-val {
+    display: block;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 800;
+    font-family: var(--font-mono);
+    color: var(--accent-cyan);
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hud-val.text-red {
+    color: var(--status-error);
+  }
+
+  .hud-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--gradient-accent);
+    transition: width 0.1s linear;
+  }
+
+  .typing-container-rel {
+    position: relative;
+    cursor: text;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hidden-capture-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: text;
+    pointer-events: auto;
+    font-size: 16px;
+  }
+
+  .focus-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 15, 28, 0.85);
+    backdrop-filter: blur(3px);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    z-index: 20;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+  }
+
+  .focus-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .typing-box {
+    background: rgba(8, 12, 22, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg, 18px);
+    padding: clamp(18px, 2.5vw, 26px) clamp(20px, 3vw, 30px);
+    font-family: var(--font-mono);
+    font-size: clamp(20px, 2.5vw, 24px);
+    line-height: 1.9em;
+    user-select: none;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: calc(6 * 1.9em + 52px);
+    min-height: calc(6 * 1.9em + 52px);
+    max-height: calc(6 * 1.9em + 52px);
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    scroll-behavior: smooth;
+    box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .typing-box.is-focused {
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.4), 0 0 24px rgba(0, 240, 255, 0.16);
+  }
+
+  .typing-box.lang-marathi {
+    font-family: var(--font-marathi);
+    font-size: clamp(21px, 2.6vw, 25px);
+    line-height: 1.55em;
+    height: calc(6 * 1.55em + 44px);
+    min-height: calc(6 * 1.55em + 44px);
+    max-height: calc(6 * 1.55em + 44px);
+  }
+
+  .word-token {
+    display: inline-block;
+    margin-right: 0;
+    white-space: nowrap;
+  }
+
+  .char-token {
+    display: inline;
+    color: var(--text-dim);
+    transition: color 0.08s ease, background 0.08s ease;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .char-token.correct {
+    color: var(--accent-cyan);
+  }
+
+  .char-token.incorrect {
+    color: var(--status-error);
+    background: rgba(239, 68, 68, 0.25);
+    text-decoration: underline;
+  }
+
+  .char-token.active-cursor {
+    color: #060913 !important;
+    background: #00f0ff !important;
+    border-radius: 4px !important;
+    border-bottom: 2.5px solid #ffffff !important;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.95), 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+    font-weight: 900 !important;
+    animation: cursorPulse 1.2s ease-in-out infinite;
+  }
+
+  .char-token.space-char {
+    display: inline;
+  }
+
+  .char-token.space-char.incorrect {
+    background: rgba(239, 68, 68, 0.4);
+  }
+
+  @keyframes cursorPulse {
+    0%, 100% {
+      border-bottom-color: var(--accent-cyan);
+    }
+    50% {
+      border-bottom-color: transparent;
+    }
+  }
+
+  .arena-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    flex-wrap: wrap;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .footer-tips {
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+
+  .footer-tips kbd {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .restart-btn {
+    padding: 6px 14px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    .arena-card {
+      padding: 12px 10px;
+    }
+    .arena-toolbar {
+      row-gap: 10px;
+      column-gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .control-pill-group {
+      padding: 4px;
+      gap: 3px;
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .control-pill-group#duration-group {
+      max-width: 220px;
+    }
+    .pill-btn {
+      flex: 1;
+      min-width: 0;
+      padding: 7px 6px;
+      font-size: 12px;
+      text-align: center;
+      justify-content: center;
+    }
+    .arena-hud {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .hud-card {
+      padding: 8px 6px;
+    }
+    .hud-val {
+      font-size: 18px;
+    }
+    .hud-lbl {
+      font-size: 9.5px;
+    }
+    .typing-box {
+      font-size: 16.5px;
+      line-height: 1.5em;
+      padding: 12px 14px;
+      height: calc(5 * 1.5em + 24px);
+      min-height: calc(5 * 1.5em + 24px);
+      max-height: calc(5 * 1.5em + 24px);
+    }
+    .typing-box.lang-marathi {
+      font-size: 17.5px;
+      line-height: 1.55em;
+      padding: 12px 14px;
+      height: calc(5 * 1.55em + 24px);
+      min-height: calc(5 * 1.55em + 24px);
+      max-height: calc(5 * 1.55em + 24px);
+    }
+    .arena-footer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      text-align: center;
+    }
+    .restart-btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .arena-card {
+      padding: 8px 6px;
+    }
+    .control-pill-group {
+      padding: 2px;
+      gap: 2px;
+    }
+    .pill-btn {
+      padding: 4px 6px;
+      font-size: 10px;
+    }
+    .typing-box {
+      font-size: 15px;
+      line-height: 1.5em;
+      padding: 10px 12px;
+      height: calc(4 * 1.5em + 20px);
+      min-height: calc(4 * 1.5em + 20px);
+      max-height: calc(4 * 1.5em + 20px);
+    }
+    .typing-box.lang-marathi {
+      font-size: 16px;
+      line-height: 1.55em;
+      padding: 10px 12px;
+      height: calc(4 * 1.55em + 20px);
+      min-height: calc(4 * 1.55em + 20px);
+      max-height: calc(4 * 1.55em + 20px);
+    }
+  }
+
+  /* Explicit Light Theme Styling */
+  :global([data-theme='light']) .arena-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 10px 32px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  :global([data-theme='light']) .arena-toolbar {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  :global([data-theme='light']) .control-pill-group {
+    background: #f1f5f9 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  :global([data-theme='light']) .pill-btn {
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    font-weight: 700 !important;
+  }
+
+  :global([data-theme='light']) .pill-btn:hover {
+    color: #0070f3 !important;
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+  }
+
+  :global([data-theme='light']) .pill-btn.active {
+    background: linear-gradient(135deg, #0070f3 0%, #2563eb 100%) !important;
+    color: #ffffff !important;
+    border: 1.5px solid #0070f3 !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.35) !important;
+    font-weight: 800 !important;
+  }
+
+  :global([data-theme='light']) .toolbar-divider {
+    background: #cbd5e1 !important;
+  }
+
+  :global([data-theme='light']) .hud-card {
+    background: #f8fafc !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  :global([data-theme='light']) .hud-card.hud-timer-box {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border-color: rgba(245, 158, 11, 0.4) !important;
+  }
+
+  :global([data-theme='light']) .hud-val {
+    color: #0f172a !important;
+  }
+
+  :global([data-theme='light']) .hud-lbl {
+    color: #64748b !important;
+  }
+
+  :global([data-theme='light']) .typing-box {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #1e293b !important;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.03), 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  :global([data-theme='light']) .typing-box.is-focused {
+    border-color: #0070f3 !important;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.03), 0 0 20px rgba(0, 112, 243, 0.2) !important;
+  }
+
+  :global([data-theme='light']) .char-token.pending {
+    color: #334155 !important;
+    opacity: 1 !important;
+  }
+
+  :global([data-theme='light']) .char-token.correct {
+    color: #15803d !important;
+    background: transparent !important;
+    text-shadow: none !important;
+  }
+
+  :global([data-theme='light']) .char-token.active-cursor {
+    color: #ffffff !important;
+    background: #000000 !important;
+    border-radius: 4px !important;
+    border-bottom: 2.5px solid #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    text-shadow: none !important;
+  }
+
+  :global([data-theme='light']) .char-token.incorrect {
+    color: #dc2626 !important;
+    background: rgba(220, 38, 38, 0.15) !important;
+    text-decoration: underline !important;
+    text-decoration-color: #dc2626 !important;
+  }
+</style>
+
+<script>
+  import { TypingEngine } from '../lib/typingEngine';
+  import { textManager, type Language, type Difficulty } from '../lib/texts';
+  import { DailyChallengeManager } from '../lib/dailyChallenge';
+  import { StorageManager } from '../lib/storage';
+
+  let currentLang: Language = 'english';
+  let currentDiff: Difficulty = 'medium';
+  let currentDuration = 60;
+  let currentMode = 'timed';
+  let engine: TypingEngine | null = null;
+  let activeCleanupFns: Array<() => void> = [];
+
+  function initArena() {
+    // Clear any previous listeners or engines
+    activeCleanupFns.forEach(fn => fn());
+    activeCleanupFns = [];
+
+    const arenaCard = document.getElementById('typing-arena-component');
+    const arenaContainer = document.getElementById('typing-box-container');
+    const textDisplay = document.getElementById('arena-text-display');
+    const hiddenInput = document.getElementById('arena-hidden-input') as HTMLInputElement | null;
+    const focusOverlay = document.getElementById('focus-overlay');
+    const restartBtn = document.getElementById('arena-restart-btn');
+
+    const hudWpm = document.getElementById('hud-wpm');
+    const hudAcc = document.getElementById('hud-acc');
+    const hudTimer = document.getElementById('hud-timer');
+    const hudErrors = document.getElementById('hud-errors');
+    const progressBar = document.getElementById('arena-progress-bar');
+
+    // If typing arena is not present on current page, abort
+    if (!arenaCard || !textDisplay || !hiddenInput) {
+      return;
+    }
+
+    const settings = StorageManager.getSettings();
+    const datasetLang = (arenaCard.dataset.initialLang as Language) || settings.defaultLanguage || 'english';
+    const datasetDiff = (arenaCard.dataset.initialDiff as Difficulty) || settings.defaultDifficulty || 'medium';
+    const datasetDuration = Number(arenaCard.dataset.initialDuration) || 60;
+    currentMode = arenaCard.dataset.mode || 'timed';
+
+    currentLang = datasetLang;
+    currentDiff = datasetDiff;
+    currentDuration = datasetDuration;
+
+    // Sync button UI with initial values
+    document.querySelectorAll('[data-set-lang]').forEach(b => {
+      if ((b as HTMLElement).dataset.setLang === currentLang) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    document.querySelectorAll('[data-set-diff]').forEach(b => {
+      if ((b as HTMLElement).dataset.setDiff === currentDiff) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    document.querySelectorAll('[data-set-time]').forEach(b => {
+      if (Number((b as HTMLElement).dataset.setTime) === currentDuration) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    if (hudTimer) hudTimer.textContent = `${currentDuration}s`;
+
+    // Instantiate or reconfigure TypingEngine
+    engine = new TypingEngine({
+      language: currentLang,
+      difficulty: currentDiff,
+      durationSec: currentDuration,
+      strictMode: settings.strictMode,
+      soundEnabled: settings.soundEnabled,
+      mode: currentMode as any
+    });
+
+    function updateHUD() {
+      if (!engine) return;
+      const m = engine.getMetrics();
+      if (hudWpm) hudWpm.textContent = String(m.wpm);
+      if (hudAcc) hudAcc.textContent = `${m.accuracy}%`;
+      if (hudTimer) hudTimer.textContent = `${m.remainingSec}s`;
+      if (hudErrors) hudErrors.textContent = String(m.errors);
+      if (progressBar) progressBar.style.width = `${m.progressPercent}%`;
+
+      const curToken = engine.getCurrentToken();
+      if (curToken) {
+        window.dispatchEvent(new CustomEvent('active-token-changed', {
+          detail: { char: curToken.char, language: currentLang }
+        }));
+      }
+    }
+
+    function loadNewText() {
+      if (!engine || !textDisplay) return;
+
+      let text = '';
+      if (currentMode === 'daily') {
+        const dc = DailyChallengeManager.getTodaysChallenge();
+        const challenge = currentLang === 'marathi' ? dc.marathiChallenge : dc.englishChallenge;
+        text = challenge && challenge.textItem ? challenge.textItem.text : '';
+      } else {
+        const item = textManager.getRandomText(currentLang, currentDiff, undefined, currentDuration);
+        text = item ? item.text : '';
+      }
+
+      // Infallible fallback if text is empty
+      if (!text || text.trim().length === 0) {
+        if (currentLang === 'marathi') {
+          text = "मराठी टायपिंगचा नियमित सराव केल्याने टायपिंग गती आणि अचूकता वेगाने वाढते. होम रो कीजवर बोटे व्यवस्थित ठेवून दररोज सराव करा.";
+        } else if (currentLang === 'hindi') {
+          text = "हिंदी टाइपिंग का नियमित अभ्यास करने से आपकी गति और शुद्धता में तेजी से सुधार होता है। होम रो कीज पर उंगलियां रखकर प्रतिदिन अभ्यास करें।";
+        } else {
+          text = "The quick brown fox jumps over the lazy dog near the peaceful river bank where calm waters flow gently under the warm morning sun. Learning touch typing is one of the most valuable foundational skills you can develop for school, university, and daily professional career work.";
+        }
+      }
+
+      engine.setText(text);
+      textDisplay.scrollTop = 0;
+      textDisplay.scrollLeft = 0;
+      renderTokens();
+      updateHUD();
+      focusHiddenInput();
+    }
+
+    function autoScrollActiveToken() {
+      if (!textDisplay) return;
+      const activeEl = textDisplay.querySelector('.char-token.active-cursor') as HTMLElement;
+      if (!activeEl) {
+        textDisplay.scrollTop = 0;
+        return;
+      }
+
+      const firstWord = (textDisplay.querySelector('.word-token') || textDisplay.firstElementChild) as HTMLElement;
+      const computedStyle = window.getComputedStyle(textDisplay);
+      const paddingTop = parseFloat(computedStyle.paddingTop) || 20;
+      const baseTop = firstWord ? firstWord.offsetTop : paddingTop;
+      const tokenTop = activeEl.offsetTop;
+      const lineHeight = Math.max(26, activeEl.offsetHeight || (firstWord ? firstWord.offsetHeight : 40));
+
+      const currentLine = Math.max(0, Math.round((tokenTop - baseTop) / lineHeight));
+      if (currentLine <= 1) {
+        textDisplay.scrollTop = 0;
+      } else {
+        textDisplay.scrollTop = (currentLine - 1) * lineHeight;
+      }
+    }
+
+    function renderTokens() {
+      if (!engine || !textDisplay) return;
+      textDisplay.className = `typing-box ${currentLang === 'marathi' || currentLang === 'hindi' ? 'lang-marathi' : ''}`;
+      const tokens = engine.getTokens();
+      const statuses = engine.getCharStatuses();
+      const metrics = engine.getMetrics();
+
+      if (!tokens || tokens.length === 0) {
+        loadNewText();
+        return;
+      }
+
+      let html = '';
+      let currentWordHtml = '';
+
+      for (let i = 0; i < tokens.length; i++) {
+        const char = tokens[i];
+        const status = statuses[i] || 'pending';
+        const isCurrent = i === metrics.currentIndex;
+        const displayChar = char === ' ' ? '&nbsp;' : char;
+        const activeClass = isCurrent ? 'active-cursor' : '';
+        const isSpace = char === ' ';
+
+        const charHtml = `<span class="char-token ${status} ${activeClass} ${isSpace ? 'space-char' : ''}" data-idx="${i}">${displayChar}</span>`;
+        currentWordHtml += charHtml;
+
+        if (isSpace || i === tokens.length - 1) {
+          html += `<span class="word-token">${currentWordHtml}</span>`;
+          currentWordHtml = '';
+        }
+      }
+      textDisplay.innerHTML = html;
+      autoScrollActiveToken();
+    }
+
+    function focusHiddenInput() {
+      if (hiddenInput) {
+        const prevScrollX = window.scrollX || window.pageXOffset || 0;
+        const prevScrollY = window.scrollY || window.pageYOffset || 0;
+        try {
+          hiddenInput.focus({ preventScroll: true });
+        } catch {
+          hiddenInput.focus();
+        }
+        if ((window.scrollY || window.pageYOffset || 0) !== prevScrollY || (window.scrollX || window.pageXOffset || 0) !== prevScrollX) {
+          window.scrollTo({ left: prevScrollX, top: prevScrollY, behavior: 'instant' as ScrollBehavior });
+        }
+        focusOverlay?.classList.add('hidden');
+      }
+    }
+
+    // Load initial text and render immediately
+    loadNewText();
+
+    let hasStartedThisSession = false;
+
+    // Engine callbacks
+    engine.onUpdate(() => {
+      if (!hasStartedThisSession && engine && engine.getState() === 'running') {
+        hasStartedThisSession = true;
+        try {
+          if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+            (window as any).trackTypeBaaziEvent(currentMode === 'daily' ? 'start_daily_challenge' : 'start_typing_test', {
+              language: currentLang,
+              duration: currentDuration,
+              difficulty: currentDiff,
+              mode: currentMode
+            });
+          }
+        } catch {}
+      }
+      renderTokens();
+      updateHUD();
+    });
+
+    engine.onFinish((metrics) => {
+      if (currentMode === 'daily') {
+        try {
+          if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+            (window as any).trackTypeBaaziEvent('complete_daily_challenge', {
+              language: currentLang,
+              wpm: metrics.wpm,
+              accuracy: metrics.accuracy
+            });
+          }
+        } catch {}
+      }
+      window.dispatchEvent(new CustomEvent('show-test-results', {
+        detail: {
+          result: {
+            language: currentLang,
+            mode: currentMode,
+            wpm: metrics.wpm,
+            netWpm: metrics.netWpm,
+            accuracy: metrics.accuracy,
+            errors: metrics.errors,
+            durationSec: metrics.elapsedSec,
+            difficulty: currentDiff
+          }
+        }
+      }));
+    });
+
+    // Hidden input listeners
+    const onInput = (e: Event) => {
+      if (!engine) return;
+      const inputEv = e as InputEvent;
+      const val = hiddenInput.value;
+      if (inputEv.inputType === 'deleteContentBackward') {
+        engine.handleBackspace();
+      } else if (val && val.length > 0) {
+        for (const char of val) {
+          engine.handleInput(char);
+        }
+      }
+      hiddenInput.value = '';
+    };
+
+    const onCompositionEnd = (e: CompositionEvent) => {
+      if (!engine) return;
+      if (e.data) {
+        for (const char of e.data) {
+          engine.handleInput(char);
+        }
+      }
+      hiddenInput.value = '';
+    };
+
+    const onPaste = (e: ClipboardEvent) => {
+      e.preventDefault();
+      alert('Pasting text is disabled during typing tests!');
+    };
+
+    const onFocus = () => {
+      focusOverlay?.classList.add('hidden');
+      textDisplay?.classList.add('is-focused');
+    };
+
+    const onBlur = () => {
+      textDisplay?.classList.remove('is-focused');
+    };
+
+    hiddenInput.addEventListener('input', onInput);
+    hiddenInput.addEventListener('compositionend', onCompositionEnd);
+    hiddenInput.addEventListener('paste', onPaste);
+    hiddenInput.addEventListener('focus', onFocus);
+    hiddenInput.addEventListener('blur', onBlur);
+
+    activeCleanupFns.push(() => {
+      hiddenInput.removeEventListener('input', onInput);
+      hiddenInput.removeEventListener('compositionend', onCompositionEnd);
+      hiddenInput.removeEventListener('paste', onPaste);
+      hiddenInput.removeEventListener('focus', onFocus);
+      hiddenInput.removeEventListener('blur', onBlur);
+    });
+
+    // Global Keydown Handler
+    let isTabHeld = false;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (!engine) return;
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        isTabHeld = true;
+      }
+      if (e.key === 'Enter' && isTabHeld) {
+        e.preventDefault();
+        isTabHeld = false;
+        loadNewText();
+        return;
+      }
+
+      if (document.getElementById('mobile-drawer')?.classList.contains('open')) {
+        return;
+      }
+
+      if (document.querySelector('.modal-overlay:not(.hidden), .profile-modal-overlay:not(.hidden), #typebaazi-profile-modal:not(.hidden), #settings-modal:not(.hidden), #certificate-modal:not(.hidden)')) {
+        return;
+      }
+
+      const target = e.target as HTMLElement;
+      if (target && target !== hiddenInput && (target.tagName === 'INPUT' || target.tagName === 'SELECT' || target.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      if (e.key === 'Backspace') {
+        e.preventDefault();
+        engine.handleBackspace();
+      } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+        e.preventDefault();
+        engine.handleInput(e.key);
+      }
+    };
+
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        isTabHeld = false;
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    activeCleanupFns.push(() => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+    });
+
+    // Virtual Keyboard Click/Tap
+    const onVirtualKeyClick = (e: Event) => {
+      if (!engine) return;
+      const custom = e as CustomEvent<{ key: string }>;
+      if (!custom.detail) return;
+      const key = custom.detail.key;
+
+      const prevScrollX = window.scrollX || window.pageXOffset || 0;
+      const prevScrollY = window.scrollY || window.pageYOffset || 0;
+
+      if (key === 'Backspace') {
+        engine.handleBackspace();
+      } else if (key.length === 1) {
+        engine.handleInput(key);
+      }
+
+      if ((window.scrollY || window.pageYOffset || 0) !== prevScrollY || (window.scrollX || window.pageXOffset || 0) !== prevScrollX) {
+        window.scrollTo({ left: prevScrollX, top: prevScrollY, behavior: 'instant' as ScrollBehavior });
+      }
+    };
+
+    window.addEventListener('virtual-key-click', onVirtualKeyClick);
+    activeCleanupFns.push(() => {
+      window.removeEventListener('virtual-key-click', onVirtualKeyClick);
+    });
+
+    // Focus triggers
+    arenaContainer?.addEventListener('click', focusHiddenInput);
+    arenaContainer?.addEventListener('touchstart', focusHiddenInput, { passive: true });
+    textDisplay?.addEventListener('click', focusHiddenInput);
+    textDisplay?.addEventListener('touchstart', focusHiddenInput, { passive: true });
+    focusOverlay?.addEventListener('click', focusHiddenInput);
+    focusOverlay?.addEventListener('touchstart', focusHiddenInput, { passive: true });
+
+    document.querySelectorAll('.start-typing-btn').forEach(btn => {
+      const onStartCta = () => {
+        setTimeout(focusHiddenInput, 150);
+      };
+      btn.addEventListener('click', onStartCta);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onStartCta));
+    });
+
+    // Restart button
+    const onRestartClick = () => {
+      loadNewText();
+    };
+    restartBtn?.addEventListener('click', onRestartClick);
+    activeCleanupFns.push(() => {
+      restartBtn?.removeEventListener('click', onRestartClick);
+    });
+
+    // Toolbar Controls
+    const langBtns = document.querySelectorAll('[data-set-lang]');
+    langBtns.forEach(btn => {
+      const onLangClick = (e: Event) => {
+        const lang = (e.currentTarget as HTMLElement).dataset.setLang as Language;
+        currentLang = lang;
+        langBtns.forEach(b => b.classList.remove('active'));
+        (e.currentTarget as HTMLElement).classList.add('active');
+        engine?.setConfig({ language: lang });
+        window.dispatchEvent(new CustomEvent('change-keyboard-language', { detail: { language: lang } }));
+        loadNewText();
+      };
+      btn.addEventListener('click', onLangClick);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onLangClick));
+    });
+
+    const timeBtns = document.querySelectorAll('[data-set-time]');
+    timeBtns.forEach(btn => {
+      const onTimeClick = (e: Event) => {
+        const t = Number((e.currentTarget as HTMLElement).dataset.setTime);
+        currentDuration = t;
+        timeBtns.forEach(b => b.classList.remove('active'));
+        (e.currentTarget as HTMLElement).classList.add('active');
+        engine?.setConfig({ durationSec: t });
+        if (hudTimer) hudTimer.textContent = `${t}s`;
+        loadNewText();
+      };
+      btn.addEventListener('click', onTimeClick);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onTimeClick));
+    });
+
+    const diffBtns = document.querySelectorAll('[data-set-diff]');
+    diffBtns.forEach(btn => {
+      const onDiffClick = (e: Event) => {
+        const diff = (e.currentTarget as HTMLElement).dataset.setDiff as Difficulty;
+        currentDiff = diff;
+        diffBtns.forEach(b => b.classList.remove('active'));
+        (e.currentTarget as HTMLElement).classList.add('active');
+        engine?.setConfig({ difficulty: diff });
+        loadNewText();
+      };
+      btn.addEventListener('click', onDiffClick);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onDiffClick));
+    });
+
+    // Custom restart event
+    const onCustomRestart = () => {
+      loadNewText();
+    };
+    window.addEventListener('restart-active-test', onCustomRestart);
+    activeCleanupFns.push(() => window.removeEventListener('restart-active-test', onCustomRestart));
+
+    // Custom language switch from navbar
+    const onNavLangChanged = (e: Event) => {
+      const custom = e as CustomEvent<{ language: Language }>;
+      if (custom.detail) {
+        currentLang = custom.detail.language;
+        langBtns.forEach(b => {
+          if ((b as HTMLElement).dataset.setLang === currentLang) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+        engine?.setConfig({ language: currentLang });
+        loadNewText();
+      }
+    };
+    window.addEventListener('language-changed', onNavLangChanged);
+    activeCleanupFns.push(() => window.removeEventListener('language-changed', onNavLangChanged));
+  }
+
+  // Hook into Astro client router lifecycle and initial load
+  document.addEventListener('astro:page-load', initArena);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArena);
+  } else {
+    initArena();
+  }
+</script>

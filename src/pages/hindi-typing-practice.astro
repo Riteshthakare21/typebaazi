@@ -1,0 +1,466 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TypingArena from "../components/TypingArena.astro";
+import VirtualKeyboard from "../components/VirtualKeyboard.astro";
+
+const pageTitle =
+  "Hindi Typing Practice Online (हिंदी टाइपिंग अभ्यास) | TypeBaazi";
+const pageDesc =
+  "Practice Hindi typing online for free. Master Devanagari keyboard layouts, vowels, consonants, and conjuncts (संयुक्ताक्षर) to increase your typing speed up to 40 WPM on TypeBaazi.";
+const pageKeywords =
+  "hindi typing practice online, hindi typing practice, हिंदी टाइपिंग सराव, learn hindi typing, devanagari typing practice, ssc hindi typing, inscript hindi typing, typebaazi";
+
+const hindiPracticeFaqs = [
+  {
+    question: "How do I start Hindi typing practice as a beginner?",
+    answer:
+      "Start by learning the home row keys on your physical or virtual keyboard. Practice individual letters, then move on to matras (मात्राएं), and finally type short sentences and full paragraphs on TypeBaazi.",
+  },
+  {
+    question: "Which keyboard layout is recommended for Hindi typing practice?",
+    answer:
+      "For government exams like SSC, CPCT, and High Court recruitment, Inscript Devanagari is standard. TypeBaazi provides instant visual key assistance for smooth learning.",
+  },
+  {
+    question: "How can I improve my Hindi typing accuracy?",
+    answer:
+      "Practice slowly without rushing. Pay extra attention to halant (्) combinations and matras. Aim for 98%+ accuracy before attempting to type faster.",
+  },
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Hindi Typing Test", url: "https://typebaazi.com/hindi-typing-test" },
+  {
+    name: "Hindi Practice",
+    url: "https://typebaazi.com/hindi-typing-practice",
+  },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  lang="hi"
+  activePath="/hindi-typing-practice"
+  faqItems={hindiPracticeFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <div class="container page-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="/hindi-typing-test">Hindi Typing Test</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Hindi Practice</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-gold">🇮🇳 Devanagari Hindi Typing Masterclass</div>
+      <h1 class="page-title">
+        Hindi Typing Practice Online (हिंदी टाइपिंग अभ्यास)
+      </h1>
+      <p class="page-sub">
+        Learn touch typing in Hindi with Devanagari Inscript layout. Practice
+        vowels (स्वर), consonants (व्यंजन), matras (मात्राएं), and difficult
+        words at your own pace.
+      </p>
+      <div class="header-cta-row">
+        <a href="#hindi-practice-arena" class="btn-primary start-typing-btn">
+          <span>✍️ Start Hindi Practice Now</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Interactive Typing Arena -->
+    <section
+      class="arena-section"
+      id="hindi-practice-arena"
+      aria-label="हिंदी टाइपिंग प्रॅक्टिस अरेना"
+    >
+      <TypingArena
+        initialLanguage="hindi"
+        initialDuration={60}
+        initialDifficulty="easy"
+        showControls={true}
+      />
+      <VirtualKeyboard language="hindi" visible={true} />
+    </section>
+
+    <!-- Practice Guide & Exercises -->
+    <section class="practice-guide-panel glass-panel">
+      <h2>Step-by-Step Hindi Typing Lessons</h2>
+      <div class="lessons-grid">
+        <div class="lesson-card">
+          <span class="lesson-badge">Lesson 1</span>
+          <h3>Home Row Keys (होम रो कीज)</h3>
+          <p>
+            Learn finger positioning on ASDF (ो े ् ि) and JKL; (र क त स).
+            Anchor your index fingers on F and J.
+          </p>
+        </div>
+        <div class="lesson-card">
+          <span class="lesson-badge">Lesson 2</span>
+          <h3>Top Row Keys (अपर रो कीज)</h3>
+          <p>
+            Practice vowels and consonants on QWERTY (ौ ै ा ी ू ब ह ग द ज ड)
+            using upper finger reaches.
+          </p>
+        </div>
+        <div class="lesson-card">
+          <span class="lesson-badge">Lesson 3</span>
+          <h3>Bottom Row Keys (बॉटम रो कीज)</h3>
+          <p>
+            Master bottom row characters (ं ृ ़ े ् म न व ल स) for smooth word
+            transitions.
+          </p>
+        </div>
+        <div class="lesson-card">
+          <span class="lesson-badge">Lesson 4</span>
+          <h3>Shift Keys &amp; Conjuncts (संयुक्ताक्षर)</h3>
+          <p>
+            Type upper characters (ओ, ऐ, आ, ई, ऊ, भ, ङ, घ, ध, झ, ढ) and combine
+            consonants with halant (्).
+          </p>
+        </div>
+      </div>
+
+      <!-- Practice Tips -->
+      <h2>Essential Tips for Hindi Typing Mastery</h2>
+      <div class="tips-box">
+        <ul>
+          <li>
+            <strong>Never look at your keyboard:</strong> Trust muscle memory and
+            let the on-screen visual guide guide your fingers.
+          </li>
+          <li>
+            <strong>Master the Halant (् / D key):</strong> In Hindi Inscript, press
+            the consonant, then press <code>D</code> (्), followed by the second consonant
+            to create conjuncts (e.g. क + ् + ष = क्ष).
+          </li>
+          <li>
+            <strong>Consistent rhythm:</strong> Maintain an even typing tempo rather
+            than typing in sporadic bursts.
+          </li>
+          <li>
+            <strong>Test under timed conditions:</strong> After practicing drills,
+            take the <strong>7-Minute Exam Test</strong> to evaluate your real exam
+            readiness.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Related Links -->
+      <div class="related-links-box">
+        <h3>More Typing Hubs on TypeBaazi</h3>
+        <div class="links-grid">
+          <a href="/hindi-typing-test" class="hub-link-card">
+            <span class="hub-icon">⏱️</span>
+            <div>
+              <strong>Hindi Typing Test</strong>
+              <span
+                >Timed 1-min &amp; 7-min speed tests with PDF certificates.</span
+              >
+            </div>
+          </a>
+          <a href="/seven-minute-typing-test" class="hub-link-card">
+            <span class="hub-icon">📋</span>
+            <div>
+              <strong>7-Minute Exam Simulator</strong>
+              <span>30 WPM &amp; 40 WPM mock test with 50+ passages.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🇮🇳</span>
+            <div>
+              <strong>Marathi Typing Practice</strong>
+              <span>Devanagari Marathi letters &amp; paragraph drills.</span>
+            </div>
+          </a>
+          <a href="/race" class="hub-link-card">
+            <span class="hub-icon">🏎️</span>
+            <div>
+              <strong>Typing Race Game</strong>
+              <span>Compete against AI cars with nitro boosts in Hindi!</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-container {
+    padding: clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 20px) 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-gold);
+    text-decoration: none;
+  }
+
+  .breadcrumb-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .bc-sep {
+    opacity: 0.4;
+  }
+
+  .bc-current {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-title {
+    font-size: clamp(24px, 4.5vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0 10px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    font-family: var(--font-marathi);
+  }
+
+  .page-sub {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-muted);
+    max-width: 780px;
+    margin: 0 auto 16px;
+    line-height: 1.55;
+  }
+
+  .header-cta-row {
+    margin-top: 4px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 18px var(--accent-gold-glow);
+    transition: all 0.2s ease;
+  }
+
+  .start-typing-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  .practice-guide-panel {
+    padding: clamp(20px, 3.5vw, 36px);
+    border-radius: var(--radius-lg);
+    background: rgba(12, 18, 30, 0.7);
+    border: 1px solid var(--border-subtle);
+    margin-top: 24px;
+  }
+
+  .practice-guide-panel h2 {
+    font-size: clamp(20px, 3vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px;
+  }
+
+  .practice-guide-panel h2:not(:first-child) {
+    margin-top: 32px;
+  }
+
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .lesson-card {
+    padding: 20px;
+    background: rgba(18, 27, 46, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    position: relative;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .lesson-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(251, 191, 36, 0.3);
+  }
+
+  .lesson-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent-gold);
+    background: rgba(251, 191, 36, 0.12);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .lesson-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+  }
+
+  .lesson-card p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .tips-box {
+    background: rgba(18, 27, 46, 0.5);
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .tips-box ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .tips-box li {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .tips-box li:last-child {
+    margin-bottom: 0;
+  }
+
+  .tips-box code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent-gold);
+    font-family: var(--font-mono);
+  }
+
+  /* Related Links */
+  .related-links-box {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .related-links-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(18, 27, 46, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .hub-link-card:hover {
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .hub-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .hub-link-card strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+
+  .hub-link-card span {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
+
+  /* Light Theme Specific Overrides */
+  [data-theme="light"] .page-title,
+  [data-theme="light"] .practice-guide-panel h2,
+  [data-theme="light"] .lesson-card h3,
+  [data-theme="light"] .related-links-box h3,
+  [data-theme="light"] .hub-link-card strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme="light"] .page-sub,
+  [data-theme="light"] .lesson-card p,
+  [data-theme="light"] .tips-box li,
+  [data-theme="light"] .hub-link-card span {
+    color: #475569 !important;
+  }
+
+  [data-theme="light"] .practice-guide-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme="light"] .lesson-card,
+  [data-theme="light"] .tips-box,
+  [data-theme="light"] .hub-link-card {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+</style>

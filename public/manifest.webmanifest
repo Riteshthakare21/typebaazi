@@ -1,0 +1,74 @@
+{
+  "name": "TypeBaazi — English, Hindi & Marathi Typing Platform",
+  "short_name": "TypeBaazi",
+  "description": "Master English, Hindi and Marathi speed typing, Grand Prix car racing game, and daily streaks.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#080e1b",
+  "background_color": "#080e1b",
+  "categories": ["education", "games", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png?v=3",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png?v=3",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.png?v=3",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png?v=3",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg?v=3",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Typing Test",
+      "short_name": "Typing",
+      "description": "Start an English or Hindi or Marathi typing test",
+      "url": "/typing-test",
+      "icons": [{ "src": "/icons/icon-192.png?v=3", "sizes": "192x192" }]
+    },
+    {
+      "name": "Grand Prix Race",
+      "short_name": "Race",
+      "description": "Race against the AI Bot in real-time",
+      "url": "/race",
+      "icons": [{ "src": "/icons/icon-192.png?v=3", "sizes": "192x192" }]
+    },
+    {
+      "name": "Daily Challenge",
+      "short_name": "Daily",
+      "description": "Maintain your typing streak",
+      "url": "/daily-challenge",
+      "icons": [{ "src": "/icons/icon-192.png?v=3", "sizes": "192x192" }]
+    },
+    {
+      "name": "Dashboard & Badges",
+      "short_name": "Dashboard",
+      "description": "View your speed progression and certificates",
+      "url": "/dashboard",
+      "icons": [{ "src": "/icons/icon-192.png?v=3", "sizes": "192x192" }]
+    }
+  ]
+}

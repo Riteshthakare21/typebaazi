@@ -1,0 +1,464 @@
+---
+/**
+ * TypeBaazi Clean Streak Breaking Warning Card
+ * Displays live countdown time showing exact time until the streak breaks,
+ * with Grace Period protection and direct click navigation to /daily-challenge.
+ */
+---
+
+<div id="streak-warning-banner" class="streak-banner-wrap hidden" role="alert" aria-live="assertive">
+  <div class="streak-warning-card" id="streak-warning-box" title="Click to open Today's Daily Challenge" role="button" tabindex="0">
+    <!-- Header with Fire Icon, Time Countdown & Close button -->
+    <div class="streak-header-row">
+      <div class="streak-title-group">
+        <span class="streak-flame-icon">🔥</span>
+        <span class="streak-break-heading">Typing Streak Remaining &bull; <strong id="streak-time-left" class="streak-timer-txt">11:51:51</strong> left</span>
+      </div>
+      <button id="streak-close-btn" class="streak-dismiss-x" type="button" title="Close" aria-label="Close streak warning">✕</button>
+    </div>
+
+    <!-- Body Message -->
+    <div class="streak-body-content">
+      <p class="streak-desc">
+        Keep your daily flame burning! Complete today's 60s challenge to maintain your <strong id="streak-num-highlight">1-Day</strong> streak &amp; unlock milestone rewards! <span class="streak-tap-action">⚡ Tap for Daily Challenge &rarr;</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .streak-banner-wrap {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 78px);
+    right: 16px;
+    z-index: 999980;
+    max-width: 420px;
+    width: calc(100% - 24px);
+    pointer-events: auto;
+    animation: streakSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    box-sizing: border-box;
+  }
+
+  .streak-banner-wrap.hidden {
+    display: none !important;
+  }
+
+  .streak-banner-wrap.is-dismissing {
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes streakSlideIn {
+    0% { transform: translateY(-24px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Default Dark Cyber Streak Card */
+  .streak-warning-card {
+    background: #080d1c !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid #f59e0b !important;
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(245, 158, 11, 0.25) !important;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .streak-warning-card:hover {
+    transform: translateY(-2px);
+    border-color: #00f0ff !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 240, 255, 0.4) !important;
+  }
+
+  .streak-warning-card:active {
+    transform: scale(0.98);
+  }
+
+  .streak-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .streak-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .streak-flame-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.9));
+    animation: flameFlicker 1.5s infinite alternate;
+  }
+
+  @keyframes flameFlicker {
+    0% { transform: scale(1) rotate(-3deg); }
+    100% { transform: scale(1.15) rotate(3deg); }
+  }
+
+  .streak-break-heading {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff !important;
+    line-height: 1.25;
+  }
+
+  .streak-timer-txt {
+    font-family: var(--font-mono, monospace);
+    font-size: 13px;
+    font-weight: 900;
+    color: #fbbf24 !important;
+    background: rgba(251, 191, 36, 0.15) !important;
+    border: 1px solid rgba(251, 191, 36, 0.4) !important;
+    padding: 1px 7px;
+    border-radius: 6px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    margin-left: 2px;
+  }
+
+  .streak-dismiss-x {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #cbd5e1 !important;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    pointer-events: auto;
+    touch-action: manipulation;
+    transition: all 0.15s ease;
+    z-index: 10;
+  }
+
+  .streak-dismiss-x:hover,
+  .streak-dismiss-x:active {
+    color: #ffffff !important;
+    background: rgba(239, 68, 68, 0.4) !important;
+    border-color: #ef4444 !important;
+    transform: scale(1.08);
+  }
+
+  .streak-body-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .streak-desc {
+    font-size: 12px;
+    color: #cbd5e1 !important;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  #streak-num-highlight {
+    color: #fbbf24 !important;
+    font-weight: 800;
+  }
+
+  .streak-tap-action {
+    color: #00f0ff !important;
+    font-weight: 800;
+    text-decoration: none !important;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 240, 255, 0.12);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    padding: 3px 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .streak-tap-action:hover {
+    background: rgba(0, 240, 255, 0.25);
+    border-color: #00f0ff;
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  }
+
+  /* =======================================================
+     Light Theme Streak Warning Card (Clean, High-Contrast White Surface)
+     ======================================================= */
+  [data-theme='light'] .streak-warning-card {
+    background: #ffffff !important;
+    border: 1.5px solid #f59e0b !important;
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12), 0 0 20px rgba(245, 158, 11, 0.15) !important;
+  }
+
+  [data-theme='light'] .streak-warning-card:hover {
+    border-color: #0070f3 !important;
+    box-shadow: 0 16px 45px rgba(15, 23, 42, 0.16), 0 0 24px rgba(0, 112, 243, 0.2) !important;
+  }
+
+  [data-theme='light'] .streak-break-heading {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .streak-timer-txt {
+    color: #b45309 !important;
+    background: #fffbeb !important;
+    border: 1px solid #fde68a !important;
+  }
+
+  [data-theme='light'] .streak-desc {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] #streak-num-highlight {
+    color: #d97706 !important;
+  }
+
+  [data-theme='light'] .streak-tap-action {
+    color: #0070f3 !important;
+    background: #eff6ff !important;
+    border: 1.5px solid #93c5fd !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(0, 112, 243, 0.12) !important;
+  }
+
+  [data-theme='light'] .streak-tap-action:hover {
+    background: #dbeafe !important;
+    border-color: #0070f3 !important;
+    color: #0056b3 !important;
+    transform: translateY(-1px);
+  }
+
+  [data-theme='light'] .streak-dismiss-x {
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] .streak-dismiss-x:hover,
+  [data-theme='light'] .streak-dismiss-x:active {
+    color: #b91c1c !important;
+    background: #fee2e2 !important;
+    border-color: #ef4444 !important;
+  }
+
+  @media (max-width: 680px) {
+    .streak-banner-wrap {
+      top: calc(env(safe-area-inset-top, 0px) + 76px);
+      left: 12px;
+      right: 12px;
+      margin: 0 auto;
+      width: calc(100% - 24px);
+      max-width: 440px;
+    }
+    .streak-warning-card {
+      padding: 12px 14px;
+    }
+    .streak-break-heading {
+      font-size: 13px;
+    }
+    .streak-timer-txt {
+      font-size: 12.5px;
+    }
+    .streak-desc {
+      font-size: 12px;
+      line-height: 1.45;
+    }
+  }
+</style>
+
+<script>
+  import { StreakNotificationManager } from '../lib/streakNotifications';
+
+  let isBannerDismissed = false;
+  let isSequenceDelayReady = false;
+  let isUserActivelyTyping = false;
+  let timerInterval: any = null;
+  let delayTimeoutId: any = null;
+  const DISMISS_STORAGE_KEY = 'typebaazi_streak_banner_dismissed_time';
+  const INITIAL_SESSION_DELAY_MS = 45000; // Wait 45s after opening app before evaluating reminder
+
+  function isDismissedRecently(): boolean {
+    if (isBannerDismissed) return true;
+    try {
+      const val = localStorage.getItem(DISMISS_STORAGE_KEY) || sessionStorage.getItem(DISMISS_STORAGE_KEY);
+      if (!val) return false;
+      const dismissedTime = parseInt(val, 10);
+      // Don't show again for 4 hours once dismissed
+      return Date.now() - dismissedTime < 4 * 60 * 60 * 1000;
+    } catch {
+      return isBannerDismissed;
+    }
+  }
+
+  function dismissBanner() {
+    isBannerDismissed = true;
+    try {
+      const nowStr = Date.now().toString();
+      localStorage.setItem(DISMISS_STORAGE_KEY, nowStr);
+      sessionStorage.setItem(DISMISS_STORAGE_KEY, nowStr);
+    } catch {}
+
+    const banner = document.getElementById('streak-warning-banner');
+    if (banner) {
+      banner.classList.add('is-dismissing');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+        banner.classList.remove('is-dismissing');
+      }, 250);
+    }
+  }
+
+  function hideIfActiveTyping() {
+    const banner = document.getElementById('streak-warning-banner');
+    if (banner) {
+      banner.classList.add('hidden');
+    }
+  }
+
+  function updateStreakBanner() {
+    const banner = document.getElementById('streak-warning-banner');
+    if (!banner) return;
+
+    // Never show on daily challenge page itself
+    if (window.location.pathname.startsWith('/daily-challenge')) {
+      banner.classList.add('hidden');
+      return;
+    }
+
+    // Hide if user is actively typing or dismissed
+    if (isUserActivelyTyping || isDismissedRecently()) {
+      banner.classList.add('hidden');
+      return;
+    }
+
+    const status = StreakNotificationManager.getStreakStatus();
+
+    // If already practiced today or no streak at risk, keep banner hidden
+    if (status.hasCompletedToday || (status.currentStreak === 0 && !status.isGraceActive)) {
+      banner.classList.add('hidden');
+      return;
+    }
+
+    const headingEl = banner.querySelector('.streak-break-heading');
+    const flameEl = banner.querySelector('.streak-flame-icon');
+    const numHighlight = document.getElementById('streak-num-highlight');
+
+    if (status.isGraceActive) {
+      if (flameEl) flameEl.textContent = '🛡️';
+      if (headingEl) {
+        headingEl.innerHTML = `Streak Grace Shield Active &bull; <strong id="streak-time-left" class="streak-timer-txt">11:51:51</strong> left`;
+      }
+    } else {
+      if (flameEl) flameEl.textContent = '🔥';
+      if (headingEl) {
+        headingEl.innerHTML = `Typing Streak Remaining &bull; <strong id="streak-time-left" class="streak-timer-txt">11:51:51</strong> left`;
+      }
+    }
+
+    if (numHighlight) {
+      numHighlight.textContent = `${status.currentStreak}-Day`;
+    }
+
+    // Calculate time left until streak expires today
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+    const diffSec = Math.max(0, Math.floor((midnight.getTime() - now.getTime()) / 1000));
+    const h = String(Math.floor(diffSec / 3600)).padStart(2, '0');
+    const m = String(Math.floor((diffSec % 3600) / 60)).padStart(2, '0');
+    const s = String(diffSec % 60).padStart(2, '0');
+
+    const updatedTimerDisplay = document.getElementById('streak-time-left');
+    if (updatedTimerDisplay) {
+      updatedTimerDisplay.textContent = `${h}:${m}:${s}`;
+    }
+
+    // Only show banner once initial session delay has passed AND user is inactive
+    if (isSequenceDelayReady && !isUserActivelyTyping) {
+      banner.classList.remove('hidden');
+    }
+  }
+
+  function initStreakBanner() {
+    const btnClose = document.getElementById('streak-close-btn');
+    const warningBox = document.getElementById('streak-warning-box');
+
+    // Close button dismiss handler
+    if (btnClose) {
+      btnClose.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dismissBanner();
+      };
+      btnClose.ontouchstart = (e) => {
+        e.stopPropagation();
+      };
+    }
+
+    // Card click handler: Clicking notification navigates to /daily-challenge
+    if (warningBox) {
+      warningBox.onclick = (e) => {
+        const target = e.target as HTMLElement;
+        if (target && target.closest('#streak-close-btn')) {
+          return;
+        }
+        window.location.href = '/daily-challenge';
+      };
+      warningBox.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          window.location.href = '/daily-challenge';
+        }
+      };
+    }
+
+    // Active typing detection: immediately hide reminder when user starts typing
+    const onTypingStart = () => {
+      isUserActivelyTyping = true;
+      hideIfActiveTyping();
+    };
+
+    window.addEventListener('typing-test-started', onTypingStart);
+    window.addEventListener('race-started', onTypingStart);
+    window.addEventListener('daily-challenge-started', onTypingStart);
+
+    // Initial delayed evaluation: Wait 45 seconds after opening app
+    if (delayTimeoutId) clearTimeout(delayTimeoutId);
+    delayTimeoutId = setTimeout(() => {
+      isSequenceDelayReady = true;
+      updateStreakBanner();
+    }, INITIAL_SESSION_DELAY_MS);
+
+    updateStreakBanner();
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(updateStreakBanner, 1000);
+  }
+
+  document.addEventListener('astro:page-load', initStreakBanner);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStreakBanner);
+  } else {
+    initStreakBanner();
+  }
+
+  window.addEventListener('stats-updated', updateStreakBanner);
+</script>

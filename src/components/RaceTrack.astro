@@ -1,0 +1,1005 @@
+---
+import { textManager, type Language, type Difficulty } from '../lib/texts';
+
+interface Props {
+  initialLanguage?: 'english' | 'marathi' | 'hindi';
+  initialDifficulty?: 'easy' | 'medium' | 'hard' | 'extreme';
+}
+
+const { initialLanguage = 'english', initialDifficulty = 'medium' } = Astro.props;
+
+const initialTextItem = textManager.getRandomText(initialLanguage, initialDifficulty);
+const initialTokens = Array.from(initialTextItem.text);
+---
+
+<div class="race-component-wrapper" id="race-component" data-initial-lang={initialLanguage} data-initial-diff={initialDifficulty}>
+  <!-- AI Bot Challenge & Certificate Prize Promotional Banner -->
+  <div class="bot-challenge-banner">
+    <div class="challenge-left">
+      <span class="challenge-trophy-pulse">🏆</span>
+      <div class="challenge-texts">
+        <div class="challenge-main-heading">
+          <span class="highlight-gold">BEAT OUR AI BOT</span> &amp; CLAIM YOUR <span class="highlight-cyan">OFFICIAL CERTIFICATE &amp; PRIZES!</span>
+        </div>
+        <div class="challenge-sub-text">
+          AI बॉटला हरवा आणि TypeBaazi अधिकृत गौरव प्रमाणपत्र, ट्रॉफी बॅजेस आणि बोनस XP बक्षिसे जिंका!
+        </div>
+      </div>
+    </div>
+    <div class="challenge-perks-row">
+      <span class="perk-tag tag-cert">🎓 Official Certificate</span>
+      <span class="perk-tag tag-badge">🏆 Grand Prix Trophy</span>
+      <span class="perk-tag tag-xp">⚡ +150 Bonus XP</span>
+    </div>
+  </div>
+
+  <!-- Track Settings / Mode Bar -->
+  <div class="race-toolbar glass-panel" id="race-toolbar-panel">
+    <div class="toolbar-left">
+      <!-- Language Select -->
+      <div class="control-pill-group">
+        <button class={`pill-btn ${initialLanguage === 'english' ? 'active' : ''}`} data-race-lang="english">
+          🇬🇧 English
+        </button>
+        <button class={`pill-btn ${initialLanguage === 'hindi' ? 'active' : ''}`} data-race-lang="hindi">
+          🇮🇳 हिंदी
+        </button>
+        <button class={`pill-btn ${initialLanguage === 'marathi' ? 'active' : ''}`} data-race-lang="marathi">
+          🇮🇳 मराठी
+        </button>
+      </div>
+
+      <!-- Difficulty Select -->
+      <div class="control-pill-group">
+        <button class={`pill-btn ${initialDifficulty === 'easy' ? 'active' : ''}`} data-race-diff="easy" title="AI Opponent ~18-24 WPM (Beginner Friendly)">
+          🟢 Easy
+        </button>
+        <button class={`pill-btn ${initialDifficulty === 'medium' ? 'active' : ''}`} data-race-diff="medium" title="AI Opponent ~35-44 WPM (Intermediate)">
+          🟡 Medium
+        </button>
+        <button class={`pill-btn ${initialDifficulty === 'hard' ? 'active' : ''}`} data-race-diff="hard" title="AI Opponent ~58-68 WPM (Advanced Pro)">
+          🔴 Hard
+        </button>
+        <button class={`pill-btn ${initialDifficulty === 'extreme' ? 'active' : ''}`} data-race-diff="extreme" title="AI Opponent ~82-102 WPM (Grand Prix Champion)">
+          ⚡ Extreme
+        </button>
+      </div>
+    </div>
+
+    <div class="toolbar-right">
+      <!-- Track Theme Select -->
+      <div class="control-pill-group">
+        <button class="pill-btn active" data-race-theme="neon-city">🏙️ Neon</button>
+        <button class="pill-btn" data-race-theme="expressway">🛣️ Highway</button>
+        <button class="pill-btn" data-race-theme="synthwave">🌅 Synth</button>
+      </div>
+
+      <!-- Quick Toggle Keyboard -->
+      <button class="pill-btn" id="btn-toggle-race-keyboard" title="Toggle On-Screen Virtual Keyboard">
+        ⌨️ Keyboard
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Race Track Arena Visualizer -->
+  <div class="race-track-container track-theme-neon-city" id="track-visual-container">
+    <!-- Track Header with Live Delta -->
+    <div class="track-header">
+      <div class="track-status-badge">
+        <span class="pulse-dot"></span>
+        <span id="race-status-label">READY TO RACE</span>
+      </div>
+      <div class="race-delta-badge" id="race-delta-box">
+        <span id="delta-txt">0.0m Delta</span>
+      </div>
+    </div>
+
+    <!-- 3-2-1-GO Countdown Overlay -->
+    <div class="countdown-overlay hidden" id="race-countdown-overlay">
+      <span class="countdown-number" id="countdown-num">3</span>
+      <span class="countdown-sub">Get your fingers ready!</span>
+    </div>
+
+    <!-- The 2 Lanes Track -->
+    <div class="track-arena">
+      <!-- Player Lane -->
+      <div class="track-lane">
+        <div class="car-wrapper" id="player-car" style="left: 15px;">
+          <span class="racer-label player-label" id="player-label-txt">You (0 WPM)</span>
+          <div class="nitro-flame" id="player-nitro"></div>
+          <!-- Player Cyan Vector Sports Car -->
+          <svg width="64" height="28" viewBox="0 0 120 56" fill="none" class="car-svg">
+            <path d="M12 40 L28 18 L82 18 L106 38 L114 42 L114 48 L8 48 L8 42 Z" fill="#00f0ff" />
+            <path d="M34 22 L58 22 L58 36 L24 36 Z" fill="#0f172a" opacity="0.8" />
+            <path d="M62 22 L78 22 L92 36 L62 36 Z" fill="#0f172a" opacity="0.8" />
+            <circle cx="32" cy="48" r="9" fill="#1e293b" stroke="#00f0ff" stroke-width="3" />
+            <circle cx="92" cy="48" r="9" fill="#1e293b" stroke="#00f0ff" stroke-width="3" />
+            <path d="M112 40 L118 40 L116 44 L110 44 Z" fill="#ffffff" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- AI Opponent Lane -->
+      <div class="track-lane">
+        <div class="car-wrapper" id="bot-car" style="left: 15px;">
+          <span class="racer-label bot-label" id="bot-label-txt">Speedy Bot AI (40 WPM)</span>
+          <!-- Bot Magenta Vector Sports Car -->
+          <svg width="64" height="28" viewBox="0 0 120 56" fill="none" class="car-svg">
+            <path d="M12 40 L28 18 L82 18 L106 38 L114 42 L114 48 L8 48 L8 42 Z" fill="#ff007a" />
+            <path d="M34 22 L58 22 L58 36 L24 36 Z" fill="#0f172a" opacity="0.8" />
+            <path d="M62 22 L78 22 L92 36 L62 36 Z" fill="#0f172a" opacity="0.8" />
+            <circle cx="32" cy="48" r="9" fill="#1e293b" stroke="#ff007a" stroke-width="3" />
+            <circle cx="92" cy="48" r="9" fill="#1e293b" stroke="#ff007a" stroke-width="3" />
+            <path d="M112 40 L118 40 L116 44 L110 44 Z" fill="#ffffff" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Grand Prix Neon Finish Gate & Checkered Line -->
+      <div class="finish-line finish-line-structure" id="finish-gate">
+        <div class="finish-line-pylon top-pylon"></div>
+        <div class="finish-gantry-top">
+          <span class="finish-flag-left">🏁</span>
+          <span class="finish-banner">FINISH</span>
+          <span class="finish-flag-right">🏁</span>
+        </div>
+        <div class="finish-checker-beam"></div>
+        <div class="finish-laser-glow"></div>
+        <div class="finish-line-pylon bottom-pylon"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Race Typing HUD & Input Container -->
+  <div class="race-typing-box glass-panel" id="race-typing-container">
+    <div class="arena-hud">
+      <div class="hud-card">
+        <span class="hud-val" id="race-hud-wpm">0</span>
+        <span class="hud-lbl">Your WPM</span>
+      </div>
+      <div class="hud-card">
+        <span class="hud-val" id="race-hud-acc">100%</span>
+        <span class="hud-lbl">Accuracy</span>
+      </div>
+      <div class="hud-card">
+        <span class="hud-val text-red" id="race-hud-errors">0</span>
+        <span class="hud-lbl">Errors</span>
+      </div>
+      <div class="hud-card">
+        <span class="hud-val" id="race-hud-time">0.0s</span>
+        <span class="hud-lbl">Time</span>
+      </div>
+    </div>
+
+    <!-- Hidden Native Input for Touch & Soft Keyboards -->
+    <input
+      type="text"
+      id="race-hidden-input"
+      class="hidden-capture-input"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      inputmode="text"
+      aria-label="Race Typing Input"
+    />
+
+    <!-- Rendered Target Text (Pre-populated on server so passage is instantly visible) -->
+    <div
+      id="race-text-display"
+      class={`typing-box ${initialLanguage === 'marathi' ? 'lang-marathi' : ''}`}
+      tabindex="0"
+      role="textbox"
+      aria-label="Type this text to race"
+      data-initial-passage={initialTextItem.text}
+    >
+      {(() => {
+        const words: { char: string; isCurrent: boolean; isSpace: boolean; idx: number }[][] = [];
+        let curWord: { char: string; isCurrent: boolean; isSpace: boolean; idx: number }[] = [];
+        for (let i = 0; i < initialTokens.length; i++) {
+          const char = initialTokens[i];
+          const isCurrent = i === 0;
+          const isSpace = char === ' ';
+          curWord.push({ char, isCurrent, isSpace, idx: i });
+          if (isSpace || i === initialTokens.length - 1) {
+            words.push([...curWord]);
+            curWord = [];
+          }
+        }
+        return words.map((word) => (
+          <span class="word-token">
+            {word.map(({ char, isCurrent, isSpace, idx }) => (
+              <span class={`char-token pending ${isCurrent ? 'active-cursor' : ''} ${isSpace ? 'space-char' : ''}`} data-idx={idx}>
+                {isSpace ? '\u00A0' : char}
+              </span>
+            ))}
+          </span>
+        ));
+      })()}
+    </div>
+
+    <!-- Race Action Buttons -->
+    <div class="race-actions-row">
+      <button id="btn-start-race" class="btn-primary" title="Start Countdown and Race">
+        <span>🚀 Start Race</span>
+      </button>
+      <button id="btn-change-race-text" class="btn-secondary" title="Load New Race Track Text">
+        <span>🔀 New Text</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Finish Results Popup Modal Message -->
+  <div id="race-result-modal" class="results-overlay hidden">
+    <div class="results-card">
+      <div class="results-header">
+        <div id="race-res-badge" class="badge badge-gold">🏆 Race Completed</div>
+        <h2 id="race-res-title" class="results-title">YOU WON THE GRAND PRIX!</h2>
+        <p class="results-sub">Speed summary comparison vs Virtual Opponent</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-box primary-box">
+          <span class="metric-label">Your Speed</span>
+          <div class="metric-main">
+            <span id="race-res-user-wpm" class="metric-huge">78</span>
+            <span class="metric-unit">WPM</span>
+          </div>
+          <span id="race-res-user-time" class="metric-note">Time: 12.4s</span>
+        </div>
+
+        <div class="metric-box">
+          <span class="metric-label">AI Opponent</span>
+          <div class="metric-main">
+            <span id="race-res-bot-wpm" class="metric-large">52</span>
+            <span class="metric-unit">WPM</span>
+          </div>
+          <span id="race-res-bot-time" class="metric-note">Time: 15.1s</span>
+        </div>
+
+        <div class="metric-box">
+          <span class="metric-label">Accuracy</span>
+          <div class="metric-main">
+            <span id="race-res-acc" class="metric-large">98%</span>
+          </div>
+          <span id="race-res-errors" class="metric-note text-red">0 Errors</span>
+        </div>
+      </div>
+
+      <!-- Dynamic Achievement & Motivation Banner -->
+      <div id="race-res-feedback-card" class="race-feedback-banner is-winner">
+        <div class="feedback-icon" id="race-feedback-icon">🎉</div>
+        <div class="feedback-content">
+          <h4 id="race-feedback-heading" class="feedback-heading">Speed Demon Achievement Unlocked!</h4>
+          <p id="race-feedback-desc" class="feedback-desc">+100 Bonus XP • Podium Champion</p>
+        </div>
+      </div>
+
+      <!-- Finish Modal Action Buttons - Structured Clean Rows -->
+      <div class="race-result-actions-container">
+        <!-- Hero Certificate Claim Button (Full width at top when winner) -->
+        <button id="race-btn-claim-cert" class="race-cert-hero-btn" style="display: none;">
+          <span>🎓 Claim Official Certificate</span>
+        </button>
+
+        <!-- Symmetrical 3-Button Row -->
+        <div class="race-modal-btn-row">
+          <button id="race-btn-again" class="btn-primary race-action-btn" title="Start next race">
+            <span>🔄 Race Again</span>
+          </button>
+          <button id="race-btn-new-track" class="btn-secondary race-action-btn" title="Load new race track text">
+            <span>🔀 New Track</span>
+          </button>
+          <a href="/games" class="btn-secondary race-action-btn" title="Explore more arcade games">
+            <span>🎮 Arcade</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { RaceEngine, type TrackTheme } from '../lib/raceEngine';
+  import { TypingEngine } from '../lib/typingEngine';
+  import { textManager, type Language, type Difficulty } from '../lib/texts';
+  import { StorageManager } from '../lib/storage';
+  import { downloadGrandPrixCertificatePdf } from '../lib/certificateGenerator';
+
+  let currentLang: Language = 'english';
+  let currentDiff: Difficulty = 'medium';
+  let currentTheme: TrackTheme = 'neon-city';
+  let currentPassage = '';
+
+  let raceEngine: RaceEngine | null = null;
+  let typingEngine: TypingEngine | null = null;
+  let activeCleanupFns: Array<() => void> = [];
+  let lastRaceResult = { wpm: 0, accuracy: 100, errors: 0, elapsedSec: 0, winner: 'bot' };
+
+  function initRace() {
+    // Clean up previous event listeners
+    activeCleanupFns.forEach(fn => fn());
+    activeCleanupFns = [];
+
+    const raceComponent = document.getElementById('race-component');
+    const trackContainer = document.getElementById('track-visual-container');
+    const textDisplay = document.getElementById('race-text-display');
+    const hiddenInput = document.getElementById('race-hidden-input') as HTMLInputElement | null;
+
+    if (!raceComponent || !textDisplay || !hiddenInput) {
+      return;
+    }
+
+    const playerCar = document.getElementById('player-car');
+    const botCar = document.getElementById('bot-car');
+    const playerLabelTxt = document.getElementById('player-label-txt');
+    const playerNitro = document.getElementById('player-nitro');
+    const botLabelTxt = document.getElementById('bot-label-txt');
+    const deltaBox = document.getElementById('race-delta-box');
+    const deltaTxt = document.getElementById('delta-txt');
+    const raceStatusLabel = document.getElementById('race-status-label');
+
+    const countdownOverlay = document.getElementById('race-countdown-overlay');
+    const countdownNum = document.getElementById('countdown-num');
+
+    const btnStart = document.getElementById('btn-start-race');
+    const btnChangeText = document.getElementById('btn-change-race-text');
+    const btnToggleKb = document.getElementById('btn-toggle-race-keyboard');
+
+    const hudWpm = document.getElementById('race-hud-wpm');
+    const hudAcc = document.getElementById('race-hud-acc');
+    const hudErrors = document.getElementById('race-hud-errors');
+    const hudTime = document.getElementById('race-hud-time');
+
+    const resultModal = document.getElementById('race-result-modal');
+    const raceResTitle = document.getElementById('race-res-title');
+    const raceResBadge = document.getElementById('race-res-badge');
+    const raceResUserWpm = document.getElementById('race-res-user-wpm');
+    const raceResUserTime = document.getElementById('race-res-user-time');
+    const raceResBotWpm = document.getElementById('race-res-bot-wpm');
+    const raceResBotTime = document.getElementById('race-res-bot-time');
+    const raceResAcc = document.getElementById('race-res-acc');
+    const raceResErrors = document.getElementById('race-res-errors');
+    const raceFeedbackCard = document.getElementById('race-res-feedback-card');
+    const raceFeedbackIcon = document.getElementById('race-feedback-icon');
+    const raceFeedbackHeading = document.getElementById('race-feedback-heading');
+    const raceFeedbackDesc = document.getElementById('race-feedback-desc');
+    const btnRaceAgain = document.getElementById('race-btn-again');
+    const btnRaceNewTrack = document.getElementById('race-btn-new-track');
+    const btnClaimCert = document.getElementById('race-btn-claim-cert');
+
+    const settings = StorageManager.getSettings();
+    const initialLang = (raceComponent.getAttribute('data-initial-lang') || settings.defaultLanguage || 'english') as Language;
+    const initialDiff = (raceComponent.getAttribute('data-initial-diff') || settings.defaultDifficulty || 'medium') as Difficulty;
+
+    currentLang = initialLang;
+    currentDiff = initialDiff;
+
+    // Sync button active classes
+    document.querySelectorAll<HTMLElement>('[data-race-lang]').forEach(b => {
+      if (b.dataset.raceLang === currentLang) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    document.querySelectorAll<HTMLElement>('[data-race-diff]').forEach(b => {
+      if (b.dataset.raceDiff === currentDiff) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+    document.querySelectorAll<HTMLElement>('[data-race-theme]').forEach(b => {
+      if (b.dataset.raceTheme === currentTheme) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+
+    if (textDisplay.dataset.initialPassage) {
+      currentPassage = textDisplay.dataset.initialPassage;
+    } else {
+      const textItem = textManager.getRandomText(currentLang, currentDiff);
+      currentPassage = textItem ? textItem.text : '';
+    }
+
+    raceEngine = new RaceEngine({
+      language: currentLang,
+      difficulty: currentDiff,
+      trackTheme: currentTheme,
+      targetText: currentPassage
+    });
+
+    typingEngine = new TypingEngine({
+      language: currentLang,
+      difficulty: currentDiff,
+      mode: 'race',
+      strictMode: false,
+      soundEnabled: true
+    });
+
+    function resetCarPositions() {
+      if (playerCar) playerCar.style.left = '15px';
+      if (botCar) botCar.style.left = '15px';
+      if (playerLabelTxt) playerLabelTxt.textContent = 'You (0 WPM)';
+      if (deltaTxt) deltaTxt.textContent = '0.0m Delta';
+      if (deltaBox) deltaBox.className = 'race-delta-badge';
+      if (raceStatusLabel) raceStatusLabel.textContent = 'READY TO RACE';
+      if (playerNitro) playerNitro.style.display = 'none';
+
+      if (hudWpm) hudWpm.textContent = '0';
+      if (hudAcc) hudAcc.textContent = '100%';
+      if (hudErrors) hudErrors.textContent = '0';
+      if (hudTime) hudTime.textContent = '0.0s';
+    }
+
+    function renderRaceTokens() {
+      if (!textDisplay || !typingEngine) return;
+      textDisplay.className = `typing-box ${currentLang === 'marathi' ? 'lang-marathi' : ''}`;
+      const tokens = typingEngine.getTokens();
+      const statuses = typingEngine.getCharStatuses();
+      const metrics = typingEngine.getMetrics();
+
+      let html = '';
+      let currentWordHtml = '';
+
+      for (let i = 0; i < tokens.length; i++) {
+        const char = tokens[i];
+        const status = statuses[i] || 'pending';
+        const isCurrent = i === metrics.currentIndex;
+        const displayChar = char === ' ' ? '&nbsp;' : char;
+        const activeClass = isCurrent ? 'active-cursor' : '';
+        const isSpace = char === ' ';
+
+        const charHtml = `<span class="char-token ${status} ${activeClass} ${isSpace ? 'space-char' : ''}" data-idx="${i}">${displayChar}</span>`;
+        currentWordHtml += charHtml;
+
+        if (isSpace || i === tokens.length - 1) {
+          html += `<span class="word-token">${currentWordHtml}</span>`;
+          currentWordHtml = '';
+        }
+      }
+      textDisplay.innerHTML = html;
+
+      // Auto-scroll following cursor
+      const activeEl = textDisplay.querySelector('.char-token.active-cursor') as HTMLElement;
+      if (activeEl) {
+        const firstWord = (textDisplay.querySelector('.word-token') || textDisplay.firstElementChild) as HTMLElement;
+        const computedStyle = window.getComputedStyle(textDisplay);
+        const paddingTop = parseFloat(computedStyle.paddingTop) || 12;
+        const baseTop = firstWord ? firstWord.offsetTop : paddingTop;
+        const tokenTop = activeEl.offsetTop;
+        const lineHeight = Math.max(22, activeEl.offsetHeight || (firstWord ? firstWord.offsetHeight : 34));
+
+        const currentLine = Math.max(0, Math.round((tokenTop - baseTop) / lineHeight));
+        if (currentLine <= 1) {
+          textDisplay.scrollTop = 0;
+        } else {
+          textDisplay.scrollTop = (currentLine - 1) * lineHeight;
+        }
+      } else {
+        textDisplay.scrollTop = 0;
+      }
+
+      const curToken = typingEngine.getCurrentToken();
+      if (curToken) {
+        window.dispatchEvent(new CustomEvent('highlight-target-key', { detail: { char: curToken } }));
+      }
+    }
+
+    function loadSession(fetchNewText: boolean = false) {
+      if (!raceEngine || !typingEngine) return;
+
+      if (fetchNewText || !currentPassage) {
+        const textItem = textManager.getRandomText(currentLang, currentDiff);
+        currentPassage = textItem ? textItem.text : '';
+      }
+
+      resultModal?.classList.add('hidden');
+      countdownOverlay?.classList.add('hidden');
+      if (btnClaimCert) btnClaimCert.style.display = 'none';
+
+      raceEngine.setConfig({
+        language: currentLang,
+        difficulty: currentDiff,
+        trackTheme: currentTheme,
+        targetText: currentPassage
+      });
+
+      typingEngine.setConfig({
+        language: currentLang,
+        difficulty: currentDiff
+      });
+
+      typingEngine.setText(currentPassage);
+
+      renderRaceTokens();
+      resetCarPositions();
+
+      if (btnStart) {
+        btnStart.innerHTML = '<span>🚀 Start Race</span>';
+      }
+
+      window.dispatchEvent(new CustomEvent('race-state-change', { detail: { state: 'idle' } }));
+    }
+
+    function focusTyping() {
+      if (hiddenInput) {
+        hiddenInput.focus({ preventScroll: true });
+      }
+      if (textDisplay) {
+        textDisplay.classList.add('is-focused');
+      }
+    }
+
+    function startRaceFlow() {
+      if (!raceEngine || !typingEngine) return;
+      focusTyping();
+      if (raceEngine.getState() === 'countdown' || raceEngine.getState() === 'racing') return;
+
+      window.dispatchEvent(new CustomEvent('race-state-change', { detail: { state: 'racing' } }));
+
+      if (btnStart) {
+        btnStart.innerHTML = '<span>⚡ Racing...</span>';
+      }
+
+      try {
+        if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+          (window as any).trackTypeBaaziEvent('start_typing_race', {
+            language: currentLang,
+            difficulty: currentDiff,
+            theme: currentTheme
+          });
+        }
+      } catch {}
+
+      raceEngine.startCountdown(() => {
+        typingEngine?.start();
+        if (raceStatusLabel) raceStatusLabel.textContent = 'RACING IN PROGRESS ⚡';
+        focusTyping();
+      });
+    }
+
+    // Race Engine loop updates
+    raceEngine.onUpdate((m) => {
+      if (!raceEngine) return;
+      const trackArena = document.querySelector('.track-arena') as HTMLElement;
+      const finishGate = document.getElementById('finish-gate') as HTMLElement;
+      const trackWidth = trackArena ? trackArena.clientWidth : (trackContainer ? trackContainer.clientWidth : 600);
+      const gateOffset = finishGate ? finishGate.offsetLeft : (trackWidth - 45);
+      const startX = 15;
+      const finishLineX = Math.max(120, gateOffset - 10);
+      const travelDistance = Math.max(80, finishLineX - startX);
+
+      const pPercent = Math.min(100, Math.max(0, m.player.progressPercent));
+      const bPercent = Math.min(100, Math.max(0, m.bot.progressPercent));
+
+      let playerPos = startX + (pPercent * 0.01 * travelDistance);
+      let botPos = startX + (bPercent * 0.01 * travelDistance);
+
+      if (m.player.isFinished || pPercent >= 100) {
+        playerPos = finishLineX + 22; // Clearly crosses through the checkered finish gate beam!
+      }
+      if (m.bot.isFinished || bPercent >= 100) {
+        botPos = finishLineX + 22;
+      }
+
+      if (playerCar) playerCar.style.left = `${playerPos}px`;
+      if (botCar) botCar.style.left = `${botPos}px`;
+
+      if (playerLabelTxt) playerLabelTxt.textContent = `You (${m.player.currentWpm} WPM)`;
+      if (botLabelTxt) botLabelTxt.textContent = `${m.bot.name} (${m.bot.currentWpm} WPM)`;
+
+      if (deltaTxt && deltaBox) {
+        const sign = m.deltaMeters >= 0 ? '+' : '';
+        const aheadState = m.deltaMeters >= 0 ? 'Ahead' : 'Behind';
+        deltaTxt.textContent = `${sign}${m.deltaMeters}m ${aheadState}`;
+        deltaBox.className = `race-delta-badge ${m.deltaMeters >= 0 ? 'ahead' : 'behind'}`;
+      }
+
+      if (playerNitro) {
+        playerNitro.style.display = m.isNitroActive ? 'block' : 'none';
+      }
+
+      if (hudTime) hudTime.textContent = `${m.elapsedSec}s`;
+
+      if (m.state === 'countdown') {
+        countdownOverlay?.classList.remove('hidden');
+        if (countdownNum) {
+          countdownNum.textContent = m.countdownValue === 0 ? 'GO!' : String(m.countdownValue);
+        }
+      } else {
+        countdownOverlay?.classList.add('hidden');
+      }
+
+      if (m.state === 'racing') {
+        if (m.bot.isFinished && !m.player.isFinished) {
+          if (raceStatusLabel) raceStatusLabel.textContent = '⚡ Bot crossed the line! Keep typing to finish your run!';
+        } else if (!m.bot.isFinished && !m.player.isFinished) {
+          if (raceStatusLabel) raceStatusLabel.textContent = 'RACING IN PROGRESS ⚡';
+        }
+      }
+    });
+
+    // Race Engine finish
+    raceEngine.onFinish((m) => {
+      if (!typingEngine) return;
+      const typeMetrics = typingEngine.getMetrics();
+      if (raceStatusLabel) raceStatusLabel.textContent = 'RACE FINISHED 🏁';
+
+      window.dispatchEvent(new CustomEvent('race-state-change', { detail: { state: 'finished' } }));
+
+      const finishDuration = Number((m.player.finishTimeSec || m.elapsedSec || 12.0).toFixed(1));
+      const userSettings = StorageManager.getSettings();
+      const playerName = (userSettings.userName || 'Ritesh Thakare').trim();
+      const todayFormatted = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const uniqueVerificationId = '#TB-' + Math.floor(100000 + Math.random() * 900000);
+
+      try {
+        if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+          (window as any).trackTypeBaaziEvent('complete_typing_race', {
+            language: currentLang,
+            difficulty: currentDiff,
+            winner: m.winner,
+            wpm: typeMetrics.wpm,
+            net_wpm: typeMetrics.netWpm,
+            accuracy: typeMetrics.accuracy,
+            duration: finishDuration
+          });
+        }
+      } catch {}
+
+      StorageManager.recordTestResult({
+        language: currentLang,
+        mode: 'race',
+        wpm: typeMetrics.wpm,
+        netWpm: typeMetrics.netWpm,
+        accuracy: typeMetrics.accuracy,
+        errors: typeMetrics.errors,
+        durationSec: finishDuration,
+        difficulty: currentDiff
+      });
+
+      lastRaceResult = {
+        playerName,
+        wpm: typeMetrics.wpm,
+        accuracy: typeMetrics.accuracy,
+        errors: typeMetrics.errors,
+        elapsedSec: finishDuration,
+        date: todayFormatted,
+        verificationId: uniqueVerificationId,
+        winner: m.winner
+      };
+
+      if (m.winner === 'player') {
+        StorageManager.recordBotVictory(typeMetrics.wpm, typeMetrics.accuracy, finishDuration);
+        if (raceResTitle) raceResTitle.textContent = '🏆 YOU WON THE GRAND PRIX!';
+        if (raceResBadge) raceResBadge.textContent = '1st Place Victory';
+        if (raceFeedbackCard) raceFeedbackCard.className = 'race-feedback-banner is-winner';
+        if (raceFeedbackIcon) raceFeedbackIcon.textContent = '🎉';
+        if (raceFeedbackHeading) raceFeedbackHeading.textContent = 'Grand Prix Champion! Official Certificate Unlocked 🎓';
+        if (raceFeedbackDesc) raceFeedbackDesc.textContent = '⭐ Outstanding Victory! +150 Bonus XP earned for defeating the AI Bot. Claim your official champion certificate below!';
+        if (btnClaimCert) {
+          btnClaimCert.style.display = 'inline-flex';
+          btnClaimCert.innerHTML = '<span>🎓 Claim Official Certificate</span>';
+          (btnClaimCert as HTMLButtonElement).disabled = false;
+        }
+      } else {
+        if (raceResTitle) raceResTitle.textContent = '🥈 2ND PLACE FINISHER';
+        if (raceResBadge) raceResBadge.textContent = 'Speedy Bot Won';
+        if (raceFeedbackCard) raceFeedbackCard.className = 'race-feedback-banner is-runnerup';
+        if (raceFeedbackIcon) raceFeedbackIcon.textContent = '💪';
+        if (raceFeedbackHeading) raceFeedbackHeading.textContent = '+50 XP Earned • Keep Up The Momentum!';
+        if (btnClaimCert) {
+          btnClaimCert.style.display = 'none';
+        }
+        const tips = [
+          '💡 "Speed flows from accuracy. Relax your hands, keep fingers on the home row, and race again!"',
+          '💡 "Every race builds stronger muscle memory. Focus on steady rhythm to beat the bot next time!"',
+          '💡 "Avoid rushing hard keys. Smooth typing is the secret to 100+ WPM velocity!"'
+        ];
+        const randomTip = tips[Math.floor(Math.random() * tips.length)];
+        if (raceFeedbackDesc) raceFeedbackDesc.textContent = randomTip;
+      }
+
+      if (raceResUserWpm) raceResUserWpm.textContent = String(typeMetrics.wpm);
+      if (raceResUserTime) raceResUserTime.textContent = `Time: ${finishDuration.toFixed(1)}s`;
+      if (raceResBotWpm) raceResBotWpm.textContent = String(m.bot.currentWpm);
+      if (raceResBotTime) raceResBotTime.textContent = `Time: ${m.bot.finishTimeSec.toFixed(1)}s`;
+      if (raceResAcc) raceResAcc.textContent = `${typeMetrics.accuracy}%`;
+      if (raceResErrors) raceResErrors.textContent = typeMetrics.errors === 1 ? '1 Error' : `${typeMetrics.errors} Errors`;
+
+      resultModal?.classList.remove('hidden');
+    });
+
+    // Typing Engine updates
+    typingEngine.onUpdate((m) => {
+      renderRaceTokens();
+      if (hudWpm) hudWpm.textContent = String(m.wpm);
+      if (hudAcc) hudAcc.textContent = `${m.accuracy}%`;
+      if (hudErrors) hudErrors.textContent = String(m.errors);
+
+      raceEngine?.updatePlayerProgress(m.correctChars, m.wpm);
+    });
+
+    // Typing Engine completed
+    typingEngine.onFinish(() => {
+      raceEngine?.finishRace();
+    });
+
+    // DOM Event Listeners
+    const onFocusClick = () => focusTyping();
+    textDisplay.addEventListener('click', onFocusClick);
+    trackContainer?.addEventListener('click', onFocusClick);
+    raceComponent.addEventListener('click', onFocusClick);
+    textDisplay.addEventListener('touchstart', onFocusClick, { passive: true });
+    trackContainer?.addEventListener('touchstart', onFocusClick, { passive: true });
+    raceComponent.addEventListener('touchstart', onFocusClick, { passive: true });
+
+    activeCleanupFns.push(() => {
+      textDisplay.removeEventListener('click', onFocusClick);
+      trackContainer?.removeEventListener('click', onFocusClick);
+      raceComponent.removeEventListener('click', onFocusClick);
+      textDisplay.removeEventListener('touchstart', onFocusClick);
+      trackContainer?.removeEventListener('touchstart', onFocusClick);
+      raceComponent.removeEventListener('touchstart', onFocusClick);
+    });
+
+    // Hidden input listeners
+    const onInput = (e: Event) => {
+      if (!raceEngine || !typingEngine) return;
+      const inputEv = e as InputEvent;
+      const val = hiddenInput.value;
+
+      if (raceEngine.getState() === 'idle') {
+        startRaceFlow();
+      } else if (raceEngine.getState() === 'racing') {
+        if (inputEv.inputType === 'deleteContentBackward') {
+          typingEngine.handleBackspace();
+        } else if (val && val.length > 0) {
+          for (const char of val) {
+            typingEngine.handleInput(char);
+          }
+        }
+      }
+      hiddenInput.value = '';
+    };
+
+    const onCompositionEnd = (e: CompositionEvent) => {
+      if (!raceEngine || !typingEngine) return;
+      if (raceEngine.getState() === 'idle') {
+        startRaceFlow();
+      } else if (raceEngine.getState() === 'racing' && e.data) {
+        for (const char of e.data) {
+          typingEngine.handleInput(char);
+        }
+      }
+      hiddenInput.value = '';
+    };
+
+    hiddenInput.addEventListener('input', onInput);
+    hiddenInput.addEventListener('compositionend', onCompositionEnd);
+    activeCleanupFns.push(() => {
+      hiddenInput.removeEventListener('input', onInput);
+      hiddenInput.removeEventListener('compositionend', onCompositionEnd);
+    });
+
+    // Desktop Keydown Handler
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (!raceEngine || !typingEngine) return;
+      const targetTag = (e.target as HTMLElement)?.tagName;
+      if (targetTag === 'INPUT' && e.target !== hiddenInput) return;
+      if (targetTag === 'TEXTAREA' || targetTag === 'SELECT') return;
+      if (document.querySelector('.modal-overlay:not(.hidden), .profile-modal-overlay:not(.hidden), #typebaazi-profile-modal:not(.hidden), #settings-modal:not(.hidden), #typebaazi-certificate-modal:not(.hidden)')) return;
+
+      const state = raceEngine.getState();
+
+      if (state === 'idle') {
+        if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          e.stopPropagation();
+          startRaceFlow();
+        } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+          e.preventDefault();
+          startRaceFlow();
+        }
+      } else if (state === 'racing') {
+        if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          if (e.target !== hiddenInput) {
+            typingEngine.handleInput(' ');
+          }
+        } else if (e.target !== hiddenInput) {
+          if (e.key === 'Backspace') {
+            e.preventDefault();
+            typingEngine.handleBackspace();
+          } else if (e.key === 'Tab') {
+            e.preventDefault();
+          } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+            e.preventDefault();
+            typingEngine.handleInput(e.key);
+          }
+        }
+      } else if (state === 'finished') {
+        if (e.key === 'Enter' && resultModal && !resultModal.classList.contains('hidden')) {
+          e.preventDefault();
+          btnRaceAgain?.click();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    activeCleanupFns.push(() => window.removeEventListener('keydown', onKeyDown));
+
+    // Hidden input keydown listener to completely block page scroll on space
+    const onHiddenInputKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        if (raceEngine?.getState() === 'idle') {
+          startRaceFlow();
+        } else if (raceEngine?.getState() === 'racing') {
+          typingEngine?.handleInput(' ');
+        }
+      }
+    };
+    hiddenInput.addEventListener('keydown', onHiddenInputKeyDown);
+    activeCleanupFns.push(() => hiddenInput.removeEventListener('keydown', onHiddenInputKeyDown));
+
+    // Virtual Keyboard Click/Tap Events
+    const onVirtualKey = (e: Event) => {
+      if (!raceEngine || !typingEngine) return;
+      const custom = e as CustomEvent<{ key: string }>;
+      if (!custom.detail) return;
+      const key = custom.detail.key;
+
+      if (raceEngine.getState() === 'idle') {
+        startRaceFlow();
+      } else if (raceEngine.getState() === 'racing') {
+        if (key === 'Backspace') {
+          typingEngine.handleBackspace();
+        } else if (key.length === 1) {
+          typingEngine.handleInput(key);
+        }
+      }
+    };
+
+    window.addEventListener('virtual-key-click', onVirtualKey);
+    activeCleanupFns.push(() => window.removeEventListener('virtual-key-click', onVirtualKey));
+
+    // Action Buttons
+    const onStartClick = () => startRaceFlow();
+    btnStart?.addEventListener('click', onStartClick);
+    activeCleanupFns.push(() => btnStart?.removeEventListener('click', onStartClick));
+
+    const onChangeTextClick = () => loadSession(true);
+    btnChangeText?.addEventListener('click', onChangeTextClick);
+    activeCleanupFns.push(() => btnChangeText?.removeEventListener('click', onChangeTextClick));
+
+    const onRaceAgainClick = () => {
+      loadSession(false);
+      startRaceFlow();
+    };
+    btnRaceAgain?.addEventListener('click', onRaceAgainClick);
+    activeCleanupFns.push(() => btnRaceAgain?.removeEventListener('click', onRaceAgainClick));
+
+    const onNewTrackClick = () => loadSession(true);
+    btnRaceNewTrack?.addEventListener('click', onNewTrackClick);
+    activeCleanupFns.push(() => btnRaceNewTrack?.removeEventListener('click', onNewTrackClick));
+
+    // Claim Certificate Button (Opens interactive certificate modal with preview, PDF download, and image save)
+    const onClaimCertClick = (e: Event) => {
+      e.stopPropagation();
+      window.dispatchEvent(new CustomEvent('open-certificate-modal', {
+        detail: {
+          type: 'race-victory',
+          playerName: lastRaceResult.playerName,
+          userName: lastRaceResult.playerName,
+          wpm: lastRaceResult.wpm,
+          accuracy: lastRaceResult.accuracy,
+          errors: lastRaceResult.errors,
+          timeSec: lastRaceResult.elapsedSec,
+          raceDuration: lastRaceResult.elapsedSec,
+          date: lastRaceResult.date,
+          issueDate: lastRaceResult.date,
+          certificateId: lastRaceResult.verificationId,
+          verificationId: lastRaceResult.verificationId,
+          trackName: currentTheme,
+          gameMode: 'Grand Prix Speed Championship'
+        }
+      }));
+    };
+    btnClaimCert?.addEventListener('click', onClaimCertClick);
+    activeCleanupFns.push(() => btnClaimCert?.removeEventListener('click', onClaimCertClick));
+
+    // Keyboard Toggle Button
+    const currentSettings = StorageManager.getSettings();
+    const isKbActive = currentSettings.showKeyboard !== false;
+    if (btnToggleKb) {
+      btnToggleKb.classList.toggle('active', isKbActive);
+    }
+
+    const onToggleKbClick = (e: Event) => {
+      e.stopPropagation();
+      const kbWrapper = document.getElementById('virtual-keyboard-wrapper');
+      if (kbWrapper) {
+        kbWrapper.classList.toggle('hidden');
+        const isVisible = !kbWrapper.classList.contains('hidden');
+        btnToggleKb?.classList.toggle('active', isVisible);
+        StorageManager.saveSettings({ showKeyboard: isVisible });
+      }
+    };
+    btnToggleKb?.addEventListener('click', onToggleKbClick);
+    activeCleanupFns.push(() => btnToggleKb?.removeEventListener('click', onToggleKbClick));
+
+    const onKbToggled = (e: Event) => {
+      const custom = e as CustomEvent<{ visible: boolean }>;
+      if (btnToggleKb && custom.detail) {
+        btnToggleKb.classList.toggle('active', custom.detail.visible);
+      }
+    };
+    window.addEventListener('virtual-keyboard-toggled', onKbToggled);
+    activeCleanupFns.push(() => window.removeEventListener('virtual-keyboard-toggled', onKbToggled));
+
+    // Language Buttons
+    const langBtns = document.querySelectorAll<HTMLElement>('[data-race-lang]');
+    langBtns.forEach(btn => {
+      const onLangClick = (e: Event) => {
+        e.stopPropagation();
+        const target = e.currentTarget as HTMLElement;
+        currentLang = target.dataset.raceLang as Language;
+        langBtns.forEach(b => b.classList.remove('active'));
+        target.classList.add('active');
+        window.dispatchEvent(new CustomEvent('change-keyboard-language', { detail: { language: currentLang } }));
+        loadSession(true);
+      };
+      btn.addEventListener('click', onLangClick);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onLangClick));
+    });
+
+    // Difficulty Buttons
+    const diffBtns = document.querySelectorAll<HTMLElement>('[data-race-diff]');
+    diffBtns.forEach(btn => {
+      const onDiffClick = (e: Event) => {
+        e.stopPropagation();
+        const target = e.currentTarget as HTMLElement;
+        currentDiff = target.dataset.raceDiff as Difficulty;
+        diffBtns.forEach(b => b.classList.remove('active'));
+        target.classList.add('active');
+        loadSession(true);
+      };
+      btn.addEventListener('click', onDiffClick);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onDiffClick));
+    });
+
+    // Theme Buttons
+    const themeBtns = document.querySelectorAll<HTMLElement>('[data-race-theme]');
+    themeBtns.forEach(btn => {
+      const onThemeClick = (e: Event) => {
+        e.stopPropagation();
+        const target = e.currentTarget as HTMLElement;
+        const theme = target.dataset.raceTheme as TrackTheme;
+        if (!theme) return;
+        currentTheme = theme;
+        themeBtns.forEach(b => b.classList.remove('active'));
+        target.classList.add('active');
+        if (trackContainer) {
+          trackContainer.className = `race-track-container track-theme-${currentTheme}`;
+        }
+        if (raceEngine) {
+          raceEngine.setConfig({
+            language: currentLang,
+            difficulty: currentDiff,
+            trackTheme: currentTheme,
+            targetText: currentPassage
+          });
+        }
+      };
+      btn.addEventListener('click', onThemeClick);
+      activeCleanupFns.push(() => btn.removeEventListener('click', onThemeClick));
+    });
+
+    // Initial session load
+    loadSession(false);
+  }
+
+  // Lifecycle hooks for instant first load & Astro page transitions
+  document.addEventListener('astro:page-load', initRace);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRace);
+  } else {
+    initRace();
+  }
+</script>

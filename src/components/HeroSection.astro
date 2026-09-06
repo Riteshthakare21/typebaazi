@@ -1,0 +1,513 @@
+---
+---
+
+<section class="hero-section">
+  <!-- Glowing Background Orbs -->
+  <div class="glow-orb-cyan" style="top: -100px; left: 10%;"></div>
+  <div class="glow-orb-pink" style="top: 50px; right: 5%;"></div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <!-- Live Pill Badge -->
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        <span>⚡ #1 Free Online Typing Practice &amp; Racing Platform</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title">
+        Online Typing Practice &amp; Speed Games <br />
+        <span class="gradient-text">Master English, Hindi &amp; Marathi.</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="hero-subtitle">
+        Boost your typing velocity and accuracy with real-time WPM analytics, live AI car racing, 7-minute GCC-TBC exam tests, daily streak challenges, and verified digital speed certificates.
+      </p>
+
+      <!-- Action CTA Buttons -->
+      <div class="hero-actions">
+        <a href="#quick-typing-arena" class="btn-primary btn-hero-primary" data-analytics-cta="hero_start_typing_test" title="Start Free 1-Minute Typing Test">
+          <span>⚡ Start Typing Test</span>
+        </a>
+        <a href="/race" class="btn-secondary btn-hero-race" data-analytics-cta="hero_start_typing_race" title="Race Against AI Bots in Live Grand Prix">
+          <span>🏎️ Race Against Others</span>
+        </a>
+        <a href="/daily-challenge" class="btn-secondary btn-hero-daily" data-analytics-cta="hero_daily_challenge" title="Take Today's Daily Streak Challenge">
+          <span>🔥 Daily Challenge</span>
+        </a>
+        <a href="/seven-minute-typing-test" class="btn-secondary btn-hero-exam" data-analytics-cta="hero_7min_exam" title="Take 7-Minute GCC-TBC Exam Test">
+          <span>⏱️ 7-Min Exam Test</span>
+        </a>
+      </div>
+
+      <!-- Feature Checklist -->
+      <div class="hero-perks">
+        <div class="perk-item">
+          <span class="perk-icon">🎧</span>
+          <span>Mechanical Sound FX</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">🛡️</span>
+          <span>100% Free &amp; Client-Side</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">📜</span>
+          <span>Downloadable Certificates</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">🏆</span>
+          <span>Daily Streaks &amp; XP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated Racing / Live Typing Showcase Card -->
+    <div class="hero-visual">
+      <div class="hero-card glass-panel">
+        <div class="hero-card-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="hero-card-title">Live Speed Simulation</span>
+          <span class="badge badge-cyan">94 WPM</span>
+        </div>
+
+        <div class="hero-mini-race">
+          <!-- Player Car Lane -->
+          <div class="mini-lane">
+            <div class="mini-car-wrapper player-car-anim">
+              <svg width="44" height="22" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 35 L25 15 L70 15 L90 35 L95 38 L95 42 L5 42 L5 38 Z" fill="#00f0ff" />
+                <circle cx="25" cy="42" r="7" fill="#111827" stroke="#00f0ff" stroke-width="2" />
+                <circle cx="75" cy="42" r="7" fill="#111827" stroke="#00f0ff" stroke-width="2" />
+                <path d="M30 18 L48 18 L48 32 L20 32 Z" fill="#ffffff" opacity="0.8"/>
+                <path d="M52 18 L66 18 L76 32 L52 32 Z" fill="#ffffff" opacity="0.8"/>
+              </svg>
+              <div class="mini-nitro-flame"></div>
+            </div>
+            <span class="lane-label">You (Player)</span>
+          </div>
+
+          <!-- AI Opponent Car Lane -->
+          <div class="mini-lane">
+            <div class="mini-car-wrapper bot-car-anim">
+              <svg width="44" height="22" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 35 L25 15 L70 15 L90 35 L95 38 L95 42 L5 42 L5 38 Z" fill="#ff007a" />
+                <circle cx="25" cy="42" r="7" fill="#111827" stroke="#ff007a" stroke-width="2" />
+                <circle cx="75" cy="42" r="7" fill="#111827" stroke="#ff007a" stroke-width="2" />
+                <path d="M30 18 L48 18 L48 32 L20 32 Z" fill="#ffffff" opacity="0.8"/>
+                <path d="M52 18 L66 18 L76 32 L52 32 Z" fill="#ffffff" opacity="0.8"/>
+              </svg>
+            </div>
+            <span class="lane-label">Cyber Bot AI</span>
+          </div>
+        </div>
+
+        <!-- Mini Live Typing Teaser Box -->
+        <div class="hero-typing-teaser">
+          <div class="teaser-text">
+            <span class="t-correct">The quick brown fox</span> <span class="t-correct">jumps</span> <span class="t-cursor">o</span><span class="t-pending">ver the lazy dog...</span>
+          </div>
+          <div class="teaser-stats">
+            <span>Accuracy: <strong>99.4%</strong></span>
+            <span>Speed: <strong>94 WPM</strong></span>
+            <span>Errors: <strong style="color: #10b981;">0</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding: 60px 0 50px;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+  }
+
+  .pill-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-cyan);
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-title {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin-bottom: 18px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, #38bdf8 50%, var(--accent-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    align-items: center;
+  }
+
+  .btn-hero-primary {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: var(--radius-full, 9999px);
+    background: linear-gradient(135deg, #00f0ff 0%, #0070f3 100%);
+    color: #040814;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.45), 0 0 35px rgba(0, 240, 255, 0.25);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-hero-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.65), 0 0 45px rgba(0, 240, 255, 0.4);
+    color: #000000;
+  }
+
+  :global([data-theme='light']) .btn-hero-primary {
+    background: linear-gradient(135deg, #0070f3 0%, #2563eb 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(0, 112, 243, 0.35) !important;
+  }
+
+  :global([data-theme='light']) .btn-hero-primary:hover {
+    box-shadow: 0 6px 24px rgba(0, 112, 243, 0.5) !important;
+  }
+
+  .hero-perks {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .perk-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  /* Hero Card Visual */
+  .hero-card {
+    padding: 24px;
+    background: rgba(14, 21, 37, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.15);
+  }
+
+  .hero-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #ef4444; }
+  .dot.yellow { background: #f59e0b; }
+  .dot.green { background: #10b981; }
+
+  .hero-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .hero-mini-race {
+    background: #080d1a;
+    border-radius: var(--radius-md);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .mini-lane {
+    position: relative;
+    height: 38px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+  }
+
+  .mini-car-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+  }
+
+  .player-car-anim {
+    animation: drivePlayer 5s infinite ease-in-out;
+  }
+
+  .bot-car-anim {
+    animation: driveBot 5s infinite ease-in-out;
+  }
+
+  .mini-nitro-flame {
+    position: absolute;
+    left: -14px;
+    width: 16px;
+    height: 8px;
+    background: linear-gradient(to left, #00f0ff, transparent);
+    border-radius: 50% 0 0 50%;
+  }
+
+  @keyframes drivePlayer {
+    0% { left: 0%; }
+    50% { left: 75%; }
+    100% { left: 90%; }
+  }
+
+  @keyframes driveBot {
+    0% { left: 0%; }
+    50% { left: 60%; }
+    100% { left: 78%; }
+  }
+
+  .lane-label {
+    position: absolute;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+  }
+
+  .hero-typing-teaser {
+    background: rgba(8, 12, 20, 0.85);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    font-family: var(--font-mono);
+  }
+
+  .teaser-text {
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .t-correct {
+    color: #00f0ff;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  }
+
+  .t-cursor {
+    background: rgba(0, 240, 255, 0.4);
+    color: #ffffff;
+    border-radius: 2px;
+    padding: 0 2px;
+    font-weight: 700;
+  }
+
+  .t-pending {
+    color: #94a3b8;
+    font-weight: 500;
+  }
+
+  .teaser-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #cbd5e1;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 10px;
+    font-weight: 600;
+  }
+
+  .teaser-stats strong {
+    color: #ffffff;
+    font-weight: 800;
+  }
+
+  :global([data-theme='light']) .hero-typing-teaser {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  }
+
+  :global([data-theme='light']) .t-correct {
+    color: #0284c7 !important;
+  }
+
+  :global([data-theme='light']) .t-pending {
+    color: #475569 !important;
+  }
+
+  :global([data-theme='light']) .teaser-stats {
+    color: #334155 !important;
+    border-top-color: #e2e8f0 !important;
+  }
+
+  :global([data-theme='light']) .teaser-stats strong {
+    color: #0f172a !important;
+  }
+
+  @media (max-width: 960px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-pill {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-actions {
+      justify-content: center;
+    }
+    .hero-perks {
+      justify-content: center;
+    }
+    .hero-title {
+      font-size: clamp(32px, 6vw, 44px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-section {
+      padding: 20px 0 32px;
+    }
+    .hero-container {
+      text-align: center;
+    }
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+    .hero-title {
+      font-size: clamp(28px, 7.5vw, 36px);
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .hero-pill {
+      font-size: 11.5px;
+      padding: 5px 14px;
+      max-width: 100%;
+      box-sizing: border-box;
+      white-space: normal;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-subtitle {
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      margin-bottom: 20px;
+      align-items: stretch;
+    }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 12px 18px;
+    }
+    .hero-perks {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .perk-item {
+      justify-content: center;
+    }
+    .hero-card {
+      padding: 16px 12px;
+    }
+  }
+</style>

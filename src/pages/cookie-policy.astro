@@ -1,0 +1,330 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Cookie Policy",
+      "item": "https://typebaazi.com/cookie-policy"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Cookie Policy — TypeBaazi Free Online Typing Platform"
+  description="Read TypeBaazi's Cookie Policy. Learn about our client-side storage, Google Analytics cookies, future Google AdSense advertising cookies, and cookie management options."
+  activePath="/cookie-policy"
+  keywords="typebaazi cookie policy, typing test cookies, google analytics cookies, adsense cookie policy, cookie settings"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-cyan">🍪 Privacy &amp; Data Transparency</div>
+      <h1 class="page-title">Cookie Policy</h1>
+      <p class="page-sub">
+        Last Updated: August 2026 • <em>Understanding how TypeBaazi uses cookies and local browser storage.</em>
+      </p>
+    </div>
+
+    <div class="legal-card glass-panel">
+      <div class="legal-section">
+        <h2>1. What Are Cookies and Local Storage?</h2>
+        <p>
+          Cookies are small text files placed on your computer or mobile device by websites that you visit. They are widely used to make websites work properly, provide smooth navigation, remember your preferences, and deliver anonymous usage insights.
+        </p>
+        <p>
+          In addition to standard cookies, modern web platforms like <strong>TypeBaazi</strong> use <strong>HTML5 Local Storage (<code>localStorage</code>)</strong> to store data locally on your device with zero cloud transmission.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. How TypeBaazi Uses Cookies &amp; Storage Technologies</h2>
+        <p>
+          We categorize our storage and tracking technologies into three specific functional groups:
+        </p>
+
+        <!-- Category A: Essential Local Storage -->
+        <div class="cookie-group-card">
+          <div class="cookie-group-header">
+            <span class="cookie-type-badge essential">Essential Functionality</span>
+            <h3>A. Local Browser Storage (Strictly Necessary)</h3>
+          </div>
+          <p>
+            TypeBaazi processes all typing velocity tests and keystroke metrics directly in your device's memory. We use browser <code>localStorage</code> exclusively on your device to persist your session settings without requiring login:
+          </p>
+          <ul class="legal-bullets">
+            <li><strong>Theme Preference:</strong> Saves your selected interface mode (Dark, Light, Cyberpunk).</li>
+            <li><strong>Audio Synthesizer Settings:</strong> Remembers your preferred sound profile (Mechanical, Creamy Thock, Blue Switch) and volume level.</li>
+            <li><strong>Personal Best Records &amp; Streaks:</strong> Saves your highest WPM, accuracy %, daily streak counter, and level XP locally.</li>
+            <li><strong>Player Profile:</strong> Stores your chosen local username and avatar icon.</li>
+          </ul>
+          <div class="policy-highlight-box green">
+            <strong>🔒 Zero Keystroke Logging:</strong> Typed sentences and keystroke data are never written to cookies or sent to any server.
+          </div>
+        </div>
+
+        <!-- Category B: Analytics Cookies -->
+        <div class="cookie-group-card">
+          <div class="cookie-group-header">
+            <span class="cookie-type-badge analytics">Performance &amp; Analytics</span>
+            <h3>B. Google Analytics (GA4) Cookies</h3>
+          </div>
+          <p>
+            We use Google Analytics 4 to collect aggregated, anonymous information about how visitors navigate TypeBaazi (e.g., total visitor count, popular practice languages, average test completion rates). This helps us optimize site performance, reduce load times, and improve typing lessons.
+          </p>
+          <ul class="legal-bullets">
+            <li><code>_ga</code>: Distinguishes unique users anonymously across browsing sessions (expires after 2 years).</li>
+            <li><code>_ga_*</code>: Maintains session state and page interaction events (expires after 2 years).</li>
+          </ul>
+          <p>
+            Google Analytics operates with IP anonymization enabled and does not collect personally identifiable information.
+          </p>
+        </div>
+
+        <!-- Category C: Advertising Cookies -->
+        <div class="cookie-group-card">
+          <div class="cookie-group-header">
+            <span class="cookie-type-badge ads">Advertising &amp; Monetization</span>
+            <h3>C. Google AdSense &amp; Third-Party Advertising Cookies</h3>
+          </div>
+          <p>
+            To keep TypeBaazi 100% free for all students, job aspirants, and typing enthusiasts, we display advertisements provided by Google AdSense and its authorized advertising partners.
+          </p>
+          <ul class="legal-bullets">
+            <li>Third-party vendors, including Google, use cookies (such as the DoubleClick DART cookie) to serve ads based on a user's prior visits to TypeBaazi or other websites.</li>
+            <li>Google's use of advertising cookies enables it and its partners to serve ads based on your visit to TypeBaazi and/or other sites on the Internet.</li>
+            <li>Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Google Ads Settings</a> or <a href="https://aboutads.info/choices" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">www.aboutads.info</a>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <h2>3. How You Can Control and Manage Cookies</h2>
+        <p>
+          You have the right to accept, configure, or refuse cookies. You can manage your preferences through your web browser settings:
+        </p>
+        <ul class="legal-bullets">
+          <li><strong>Google Chrome:</strong> Settings &gt; Privacy and security &gt; Third-party cookies.</li>
+          <li><strong>Mozilla Firefox:</strong> Settings &gt; Privacy &amp; Security &gt; Enhanced Tracking Protection.</li>
+          <li><strong>Apple Safari:</strong> Preferences &gt; Privacy &gt; Prevent cross-site tracking.</li>
+          <li><strong>Microsoft Edge:</strong> Settings &gt; Cookies and site permissions &gt; Manage and delete cookies.</li>
+        </ul>
+        <p>
+          You can also clear local browser storage at any time by clearing your browser cache/site data, or opting out of Google Analytics via the official <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Google Analytics Opt-out Browser Add-on</a>.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>4. Updates to This Cookie Policy</h2>
+        <p>
+          We may update this Cookie Policy from time to time to reflect changes in web technologies, operational practices, or legal requirements. The updated policy will be posted on this page with an updated revision date.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Contact Us</h2>
+        <p>
+          If you have any questions about our use of cookies or other tracking technologies, please contact us at:
+        </p>
+        <p>
+          📧 <a href="mailto:riteshthakareofficial@gmail.com" style="color: var(--accent-cyan);"><strong>riteshthakareofficial@gmail.com</strong></a> or via our <a href="/contact-us" style="color: var(--accent-cyan);"><strong>Contact Us Page</strong></a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(24px, 4vw, 48px) clamp(12px, 2.5vw, 24px) 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .page-title {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 10px 0 6px;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 2vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+  }
+
+  .legal-card {
+    padding: clamp(20px, 4vw, 40px);
+    border-radius: var(--radius-xl, 20px);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    box-sizing: border-box;
+  }
+
+  .legal-section h2 {
+    font-size: clamp(17px, 2.8vw, 21px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .legal-section p {
+    font-size: clamp(13.5px, 1.8vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    margin: 0 0 12px;
+    text-align: left;
+  }
+
+  .cookie-group-card {
+    background: rgba(14, 20, 36, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg, 16px);
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .cookie-group-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .cookie-group-header h3 {
+    font-size: clamp(15px, 2.2vw, 18px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .cookie-type-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+  }
+
+  .cookie-type-badge.essential {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .cookie-type-badge.analytics {
+    background: rgba(0, 240, 255, 0.15);
+    color: #00f0ff;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+  }
+
+  .cookie-type-badge.ads {
+    background: rgba(255, 0, 122, 0.15);
+    color: #ff007a;
+    border: 1px solid rgba(255, 0, 122, 0.3);
+  }
+
+  .policy-highlight-box {
+    border-radius: var(--radius-md, 12px);
+    padding: 12px 16px;
+    font-size: clamp(12.5px, 1.6vw, 14px);
+    line-height: 1.6;
+    margin: 10px 0;
+    text-align: left;
+  }
+
+  .policy-highlight-box.green {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
+    color: #d1fae5;
+  }
+
+  .legal-bullets {
+    margin: 8px 0 12px;
+    padding-left: 22px;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legal-bullets li {
+    font-size: clamp(13.5px, 1.8vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  .legal-bullets strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  code {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--accent-cyan, #00f0ff);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  [data-theme='light'] .legal-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  [data-theme='light'] .cookie-group-card {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .cookie-group-header h3,
+  [data-theme='light'] .legal-section h2,
+  [data-theme='light'] .legal-bullets strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .legal-section p,
+  [data-theme='light'] .cookie-group-card p,
+  [data-theme='light'] .legal-bullets li {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] code {
+    background: #f1f5f9 !important;
+    color: #0369a1 !important;
+  }
+
+  [data-theme='light'] .policy-highlight-box.green {
+    background: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+    color: #065f46 !important;
+  }
+</style>

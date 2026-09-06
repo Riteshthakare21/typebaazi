@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LearnGuide from '../components/LearnGuide.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Learn Touch Typing",
+      "item": "https://typebaazi.com/learn"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Learn Touch Typing — Free Tutorials & Finger Placement Guide | TypeBaazi"
+  description="Master touch typing with our free comprehensive guide. Learn home row finger placement, posture, WPM benchmarks, and English, Hindi and Marathi Devanagari typing on TypeBaazi."
+  keywords="learn touch typing, typing tutorial, touch typing guide, finger placement typing, hindi typing guide, marathi typing guide, devanagari inscript guide, wpm typing tips, typebaazi"
+  activePath="/learn"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-cyan">📖 Touch Typing Academy</div>
+      <h1 class="page-title">How to Type Faster &amp; Smarter</h1>
+      <p class="page-sub">
+        Explore structured lessons on finger ergonomics, keyboard muscle memory, and English, Hindi &amp; Marathi Devanagari typing techniques.
+      </p>
+    </div>
+
+    <!-- Learn Guide Component -->
+    <LearnGuide />
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: 40px 20px 60px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+  }
+
+  .page-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+</style>

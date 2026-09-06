@@ -1,0 +1,1302 @@
+---
+/**
+ * TypeBaazi Hall of Fame & Leaderboard Widget
+ * 100% responsive, beautiful, well-organized player rankings for Desktop, Tablet, and Mobile.
+ * Uses is:global styling so dynamically generated elements render with perfect CSS.
+ */
+---
+
+<div class="leaderboard-card glass-panel" id="leaderboard-component">
+  <div class="leaderboard-header">
+    <div class="lb-title-box">
+      <span class="lb-trophy">🏆</span>
+      <div>
+        <h2 class="lb-title">TypeBaazi Hall of Fame</h2>
+        <p class="lb-sub">Global Speed Masters &amp; Racing Champions</p>
+      </div>
+    </div>
+
+    <!-- Category Tabs Container with Subtle Modern Background -->
+    <div class="lb-tabs-wrapper">
+      <div class="lb-tabs-bg-shape" aria-hidden="true"></div>
+      <div class="lb-category-tabs">
+        <button class="pill-btn lb-cat-btn active" data-lb-tab="english">
+          <span class="cat-icon">🇬🇧</span>
+          <span class="cat-text">English WPM</span>
+        </button>
+        <button class="pill-btn lb-cat-btn" data-lb-tab="hindi">
+          <span class="cat-icon">🇮🇳</span>
+          <span class="cat-text">हिंदी WPM</span>
+        </button>
+        <button class="pill-btn lb-cat-btn" data-lb-tab="marathi">
+          <span class="cat-icon">🇮🇳</span>
+          <span class="cat-text">मराठी WPM</span>
+        </button>
+        <button class="pill-btn lb-cat-btn" data-lb-tab="race">
+          <span class="cat-icon">🏎️</span>
+          <span class="cat-text">Race Wins</span>
+        </button>
+        <button class="pill-btn lb-cat-btn" data-lb-tab="streak">
+          <span class="cat-icon">🔥</span>
+          <span class="cat-text">Streaks</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top 3 Podium (Desktop & Tablet) -->
+  <div class="podium-grid desktop-only" id="lb-podium-container">
+    <!-- Populated via JS -->
+  </div>
+
+  <!-- Desktop Rankings Table (Screens > 680px) -->
+  <div class="lb-table-wrapper desktop-only">
+    <table class="lb-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Language</th>
+          <th>Score / Metric</th>
+          <th>Badge</th>
+        </tr>
+      </thead>
+      <tbody id="lb-table-body">
+        <!-- Populated via JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile User-Friendly Ranked Cards List (Screens <= 860px) -->
+  <div class="lb-mobile-list mobile-only" id="lb-mobile-list">
+    <!-- Populated via JS -->
+  </div>
+
+  <!-- Dedicated User Position Strip / Status Card (Below the 5 students) -->
+  <div class="lb-user-position-section" id="lb-user-position-section">
+    <!-- Populated via JS -->
+  </div>
+</div>
+
+<style is:global>
+  .leaderboard-card {
+    padding: clamp(14px, 2.5vw, 28px);
+    margin: 16px 0;
+    border-radius: var(--radius-xl, 24px);
+    background: rgba(10, 16, 28, 0.95);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.08);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .leaderboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .lb-title-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .lb-trophy {
+    font-size: clamp(26px, 3.5vw, 36px);
+    flex-shrink: 0;
+  }
+
+  .lb-title {
+    font-size: clamp(19px, 2.5vw, 24px);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .lb-sub {
+    font-size: clamp(12px, 1.4vw, 13.5px);
+    color: var(--text-muted, #94a3b8);
+    margin: 4px 0 0;
+    line-height: 1.4;
+  }
+
+  /* Category Tabs Container & Subtle Modern Background Shape */
+  .lb-tabs-wrapper {
+    position: relative;
+    padding: 8px;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .lb-tabs-bg-shape {
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 112, 243, 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .lb-category-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .lb-cat-btn,
+  .lb-category-tabs .pill-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 46px;
+    min-height: 46px;
+    padding: 0 14px !important;
+    border-radius: 12px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-decoration: none;
+    background: rgba(18, 27, 46, 0.75);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+
+  .lb-cat-btn .cat-icon {
+    font-size: 16px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lb-cat-btn .cat-text {
+    line-height: 1;
+  }
+
+  .lb-cat-btn:hover,
+  .lb-category-tabs .pill-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .lb-cat-btn:active,
+  .lb-category-tabs .pill-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Active Button State */
+  .lb-cat-btn.active,
+  .lb-category-tabs .pill-btn.active {
+    background: rgba(0, 112, 243, 0.18) !important;
+    border: 1.5px solid #0070f3 !important;
+    color: #38bdf8 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 2px 12px rgba(0, 112, 243, 0.35) !important;
+  }
+
+  /* Top 3 Podium Grid (Desktop & Tablet > 860px) */
+  .podium-grid,
+  .podium-grid.desktop-only {
+    display: grid !important;
+    grid-template-columns: 1fr 1.15fr 1fr !important;
+    gap: clamp(10px, 2vw, 18px);
+    align-items: flex-end;
+    margin-bottom: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .podium-card {
+    background: rgba(12, 18, 34, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg, 16px);
+    padding: clamp(14px, 2vw, 22px) clamp(8px, 1.2vw, 14px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .podium-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .podium-rank-1 {
+    border-color: rgba(245, 158, 11, 0.6);
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.2) 0%, rgba(14, 22, 38, 0.95) 100%);
+    box-shadow: 0 12px 32px rgba(245, 158, 11, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-6px);
+    z-index: 2;
+  }
+
+  .podium-rank-2 {
+    border-color: rgba(0, 240, 255, 0.4);
+    background: linear-gradient(180deg, rgba(0, 240, 255, 0.12) 0%, rgba(14, 22, 38, 0.95) 100%);
+    box-shadow: 0 8px 24px rgba(0, 240, 255, 0.15);
+  }
+
+  .podium-rank-3 {
+    border-color: rgba(255, 0, 122, 0.4);
+    background: linear-gradient(180deg, rgba(255, 0, 122, 0.12) 0%, rgba(14, 22, 38, 0.95) 100%);
+    box-shadow: 0 8px 24px rgba(255, 0, 122, 0.15);
+  }
+
+  .podium-medal {
+    font-size: clamp(22px, 3.5vw, 34px);
+    margin-bottom: 4px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  }
+
+  .podium-name {
+    font-size: clamp(12px, 1.5vw, 15px);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .podium-score {
+    font-size: clamp(15px, 2.2vw, 22px);
+    font-weight: 900;
+    font-family: var(--font-mono, monospace);
+    color: var(--accent-cyan, #00f0ff);
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+    white-space: nowrap;
+  }
+
+  .podium-lbl {
+    font-size: clamp(9px, 1.1vw, 11px);
+    font-weight: 700;
+    color: var(--text-muted, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* Desktop Table (> 860px) */
+  .desktop-only {
+    display: block;
+  }
+  .mobile-only {
+    display: none;
+  }
+
+  .lb-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md, 12px);
+    background: rgba(8, 12, 22, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .lb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .lb-table th {
+    padding: 12px 16px;
+    color: var(--text-muted, #94a3b8);
+    font-weight: 800;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(14, 20, 36, 0.8);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+  }
+
+  .lb-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text-main, #f8fafc);
+    vertical-align: middle;
+  }
+
+  .lb-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .user-highlight-row td {
+    background: rgba(0, 240, 255, 0.12) !important;
+    border-left: none !important;
+    font-weight: 700;
+  }
+
+  .user-highlight-row td:first-child {
+    border-left: 3px solid var(--accent-cyan, #00f0ff) !important;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .user-highlight-row td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  /* Mobile Ranked Card Boxes (<= 860px) */
+  .lb-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .lb-mobile-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: rgba(14, 21, 38, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .lb-mobile-card:hover {
+    background: rgba(18, 28, 50, 0.95);
+    border-color: rgba(0, 240, 255, 0.35);
+  }
+
+  .lb-mobile-card.is-top-1 {
+    border-color: rgba(251, 191, 36, 0.5);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.12) 0%, rgba(14, 21, 38, 0.95) 100%);
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.15);
+  }
+
+  .lb-mobile-card.is-top-2 {
+    border-color: rgba(0, 240, 255, 0.4);
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(14, 21, 38, 0.95) 100%);
+  }
+
+  .lb-mobile-card.is-top-3 {
+    border-color: rgba(255, 0, 122, 0.4);
+    background: linear-gradient(135deg, rgba(255, 0, 122, 0.08) 0%, rgba(14, 21, 38, 0.95) 100%);
+  }
+
+  .lb-mobile-card.is-current-user {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(14, 21, 38, 0.98) 100%);
+    border: 1.5px solid rgba(0, 240, 255, 0.6);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+  }
+
+  .lb-card-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .lb-card-rank {
+    font-family: var(--font-mono, monospace);
+    font-weight: 900;
+    font-size: 14px;
+    color: #ffffff;
+    min-width: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .lb-card-rank.rank-1 { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
+  .lb-card-rank.rank-2 { color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.6); }
+  .lb-card-rank.rank-3 { color: #ff007a; text-shadow: 0 0 10px rgba(255, 0, 122, 0.6); }
+
+  .lb-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .lb-card-name {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .lb-card-lang {
+    font-size: 11px;
+    color: var(--text-muted, #94a3b8);
+    font-weight: 600;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .lb-card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .lb-card-score {
+    font-size: 15px;
+    font-weight: 900;
+    font-family: var(--font-mono, monospace);
+    color: var(--accent-cyan, #00f0ff);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .lb-card-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 9px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    line-height: 1;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--accent-cyan, #00f0ff);
+  }
+
+  .lb-card-badge.gold-badge {
+    border-color: rgba(251, 191, 36, 0.45);
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+  }
+
+  .lb-card-badge.pink-badge {
+    border-color: rgba(255, 0, 122, 0.4);
+    background: rgba(255, 0, 122, 0.12);
+    color: #ff007a;
+  }
+
+  /* Dedicated User Position Box */
+  .lb-user-position-section {
+    margin-top: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .lb-user-pinned-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0, 112, 243, 0.15) 0%, rgba(14, 21, 38, 0.95) 100%);
+    border: 1.5px solid rgba(0, 240, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+    box-sizing: border-box;
+    width: 100%;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .lb-user-pinned-card.in-top-5 {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(14, 21, 38, 0.95) 100%);
+    border-color: rgba(251, 191, 36, 0.6);
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.2);
+  }
+
+  .lb-user-pinned-card.unranked {
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.1) 0%, rgba(14, 21, 38, 0.95) 100%);
+    border-color: rgba(148, 163, 184, 0.3);
+    box-shadow: none;
+  }
+
+  .user-pinned-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    flex: 1 1 280px;
+  }
+
+  .user-pinned-rank-pill {
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 900;
+    font-family: var(--font-mono, monospace);
+    background: rgba(0, 240, 255, 0.18);
+    color: #00f0ff;
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .user-pinned-rank-pill.gold {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.5);
+  }
+
+  .user-pinned-rank-pill.unranked-pill {
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+    border-color: rgba(148, 163, 184, 0.3);
+    font-size: 12px;
+  }
+
+  .user-pinned-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .user-pinned-name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .user-pinned-name {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .user-pinned-sub {
+    font-size: 12px;
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.35;
+  }
+
+  .user-pinned-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .user-pinned-score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+
+  .user-pinned-score {
+    font-size: 18px;
+    font-weight: 900;
+    font-family: var(--font-mono, monospace);
+    color: var(--accent-cyan, #00f0ff);
+  }
+
+  .user-pinned-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 800;
+    text-decoration: none;
+    background: linear-gradient(135deg, #0070f3, #00d2ff);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .user-pinned-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 112, 243, 0.45);
+  }
+
+  /* Progress bar for qualification */
+  .qual-progress-bar {
+    width: 100%;
+    max-width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  .qual-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0070f3, #00f0ff);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  @media (max-width: 860px) {
+    .desktop-only {
+      display: none !important;
+    }
+    .mobile-only {
+      display: flex !important;
+    }
+    .leaderboard-card {
+      padding: 16px 12px;
+      margin: 12px 0;
+    }
+    .leaderboard-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+    }
+    .lb-tabs-wrapper {
+      width: 100%;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    .lb-category-tabs {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+    .lb-cat-btn,
+    .lb-category-tabs .pill-btn {
+      width: 100% !important;
+      min-height: 46px !important;
+      height: 46px !important;
+      padding: 0 10px !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      border-radius: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+    }
+    .lb-user-pinned-card {
+      padding: 12px 14px;
+    }
+    .user-pinned-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .leaderboard-card {
+      padding: 10px 6px;
+    }
+    .lb-mobile-card {
+      padding: 10px 10px;
+      gap: 8px;
+    }
+    .lb-card-name {
+      font-size: 12px;
+    }
+    .lb-card-score {
+      font-size: 13.5px;
+    }
+    .lb-card-badge {
+      font-size: 9px;
+      height: 22px;
+      padding: 0 6px;
+    }
+    .lb-cat-btn,
+    .lb-category-tabs .pill-btn {
+      font-size: 12px !important;
+      gap: 6px !important;
+    }
+  }
+
+  /* Explicit Light Theme Leaderboard Overrides */
+  [data-theme='light'] .leaderboard-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .lb-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .lb-table-wrapper {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .lb-table th {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .lb-table td {
+    color: #0f172a !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+  }
+
+  [data-theme='light'] .top-podium-card,
+  [data-theme='light'] .podium-card {
+    background: #f8fafc !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .podium-rank-1 {
+    background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%) !important;
+    border-color: #f59e0b !important;
+  }
+
+  [data-theme='light'] .podium-name {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  .podium-rank-1 .podium-lbl {
+    color: #fbbf24 !important;
+    font-weight: 800 !important;
+  }
+
+  .podium-rank-2 .podium-lbl {
+    color: #00f0ff !important;
+    font-weight: 800 !important;
+  }
+
+  .podium-rank-3 .podium-lbl {
+    color: #ff007a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .podium-rank-1 .podium-lbl {
+    color: #92400e !important;
+  }
+
+  [data-theme='light'] .podium-rank-2 .podium-lbl {
+    color: #0369a1 !important;
+  }
+
+  [data-theme='light'] .podium-rank-3 .podium-lbl {
+    color: #be123c !important;
+  }
+
+  [data-theme='light'] .lb-stat-badge {
+    background: #eff6ff !important;
+    color: #0070f3 !important;
+    border: 1px solid #bfdbfe !important;
+  }
+
+  [data-theme='light'] .lb-mobile-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  [data-theme='light'] .lb-card-name {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .lb-card-score {
+    color: #0070f3 !important;
+    text-shadow: none !important;
+  }
+
+  [data-theme='light'] .lb-tabs-wrapper {
+    background: rgba(241, 245, 249, 0.75) !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  [data-theme='light'] .lb-tabs-bg-shape {
+    background: radial-gradient(circle at 50% 50%, rgba(0, 112, 243, 0.05), transparent 70%) !important;
+  }
+
+  [data-theme='light'] .lb-cat-btn,
+  [data-theme='light'] .lb-category-tabs .pill-btn {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    color: #334155 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme='light'] .lb-cat-btn:hover,
+  [data-theme='light'] .lb-category-tabs .pill-btn:hover {
+    color: #0f172a !important;
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.08) !important;
+  }
+
+  [data-theme='light'] .lb-cat-btn.active,
+  [data-theme='light'] .lb-category-tabs .pill-btn.active {
+    background: #eff6ff !important;
+    border: 1.5px solid #0070f3 !important;
+    color: #0070f3 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 2px 10px rgba(0, 112, 243, 0.2) !important;
+  }
+
+  [data-theme='light'] .lb-user-pinned-card {
+    background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%) !important;
+    border: 1.5px solid #93c5fd !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.08) !important;
+  }
+
+  [data-theme='light'] .lb-user-pinned-card.in-top-5 {
+    background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%) !important;
+    border-color: #fcd34d !important;
+  }
+
+  [data-theme='light'] .lb-user-pinned-card.unranked {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .user-pinned-name {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .user-pinned-sub {
+    color: #64748b !important;
+  }
+</style>
+
+<script>
+  import { StorageManager } from '../lib/storage';
+
+  interface DemoStudent {
+    name: string;
+    scoreVal: number;
+    scoreText: string;
+    lang: string;
+    badge: string;
+  }
+
+  interface RenderRow {
+    rank: number;
+    name: string;
+    scoreText: string;
+    lang: string;
+    badge: string;
+    isCurrentUser: boolean;
+  }
+
+  const TOTAL_STUDENTS = 500;
+
+  const BASE_LEADERS: Record<string, DemoStudent[]> = {
+    english: [
+      { name: 'Aarav Sharma', scoreVal: 128, scoreText: '128 WPM', lang: '🇬🇧 English', badge: '👑 GRANDMASTER' },
+      { name: 'Tanvi Deshmukh', scoreVal: 116, scoreText: '116 WPM', lang: '🇬🇧 English', badge: '🔥 NITRO GOD' },
+      { name: 'Rohan Kulkarni', scoreVal: 108, scoreText: '108 WPM', lang: '🇬🇧 English', badge: '⚡ VELOCITY PRO' },
+      { name: 'Pooja Patil', scoreVal: 98, scoreText: '98 WPM', lang: '🇬🇧 English', badge: '🏎️ SPEED DEMON' },
+      { name: 'Vikram Jadhav', scoreVal: 92, scoreText: '92 WPM', lang: '🇬🇧 English', badge: '🎯 PRECISION' }
+    ],
+    hindi: [
+      { name: 'Amit Kumar Sharma', scoreVal: 88, scoreText: '88 WPM', lang: '🇮🇳 Hindi', badge: '👑 HINDI SPEED KING' },
+      { name: 'Priya Verma', scoreVal: 82, scoreText: '82 WPM', lang: '🇮🇳 Hindi', badge: '⚡ STENO MASTER' },
+      { name: 'Rahul Singh', scoreVal: 76, scoreText: '76 WPM', lang: '🇮🇳 Hindi', badge: '🎯 ACCURACY PRO' },
+      { name: 'Pooja Gupta', scoreVal: 71, scoreText: '71 WPM', lang: '🇮🇳 Hindi', badge: '🏎️ SPEED DEMON' },
+      { name: 'Vikas Yadav', scoreVal: 67, scoreText: '67 WPM', lang: '🇮🇳 Hindi', badge: '⚡ FAST TYPIST' }
+    ],
+    marathi: [
+      { name: 'Ananya Sawant', scoreVal: 94, scoreText: '94 WPM', lang: '🇮🇳 Marathi', badge: '🚩 TYPING SAMRAT' },
+      { name: 'Omkar Joshi', scoreVal: 88, scoreText: '88 WPM', lang: '🇮🇳 Marathi', badge: '⚡ SPEED CHAMPION' },
+      { name: 'Prasad Gaikwad', scoreVal: 82, scoreText: '82 WPM', lang: '🇮🇳 Marathi', badge: '🏎️ TRACK RACER' },
+      { name: 'Snehal Shinde', scoreVal: 76, scoreText: '76 WPM', lang: '🇮🇳 Marathi', badge: '🎯 ACCURACY PRO' },
+      { name: 'Mahesh Borse', scoreVal: 70, scoreText: '70 WPM', lang: '🇮🇳 Marathi', badge: '🔥 SPEED MASTER' }
+    ],
+    race: [
+      { name: 'Speedy Phoenix', scoreVal: 420, scoreText: '420 Wins', lang: 'Multi', badge: '🏆 GRAND PRIX KING' },
+      { name: 'Turbo Maharashtra', scoreVal: 380, scoreText: '380 Wins', lang: 'Multi', badge: '⚡ NITRO MASTER' },
+      { name: 'Apex Racer 99', scoreVal: 345, scoreText: '345 Wins', lang: 'Multi', badge: '🏎️ TRACK LEGEND' },
+      { name: 'Cyber Glide', scoreVal: 290, scoreText: '290 Wins', lang: 'Multi', badge: '🔥 ASPHALT KING' },
+      { name: 'Key Viper', scoreVal: 260, scoreText: '260 Wins', lang: 'Multi', badge: '🚀 SONIC DRIFT' }
+    ],
+    streak: [
+      { name: 'Gaurav Shirodkar', scoreVal: 124, scoreText: '124 Days', lang: 'Global', badge: '🔥 STREAK LEGEND' },
+      { name: 'Manasi Chitnis', scoreVal: 98, scoreText: '98 Days', lang: 'Global', badge: '🔥 CENTURY STREAK' },
+      { name: 'Deepak More', scoreVal: 82, scoreText: '82 Days', lang: 'Global', badge: '🔥 FIRE MASTER' },
+      { name: 'Shreya Pawar', scoreVal: 64, scoreText: '64 Days', lang: 'Global', badge: '⚡ DAILY WARRIOR' },
+      { name: 'Nikhil Rane', scoreVal: 50, scoreText: '50 Days', lang: 'Global', badge: '🎯 CONSISTENT' }
+    ]
+  };
+
+  let activeTab = 'english';
+
+  function renderLeaderboard() {
+    const stats = StorageManager.getStats();
+    const settings = StorageManager.getSettings();
+    const userName = (settings.userName && settings.userName.trim()) ? settings.userName : 'You (Local Player)';
+
+    // Update active tab buttons visual state
+    document.querySelectorAll('[data-lb-tab]').forEach(b => {
+      const tabKey = (b as HTMLElement).dataset.lbTab;
+      if (tabKey === activeTab) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
+
+    // 1. Calculate Qualification: User must complete >= 3 tests/races to unlock official ranking
+    const totalPlays = Math.max(
+      (stats.english?.totalTests || 0) + (stats.english?.totalRaces || 0) +
+      (stats.hindi?.totalTests || 0) + (stats.hindi?.totalRaces || 0) +
+      (stats.marathi?.totalTests || 0) + (stats.marathi?.totalRaces || 0),
+      Array.isArray(stats.history) ? stats.history.length : 0
+    );
+    const isQualified = totalPlays >= 3;
+
+    // 2. Extract Active Metric Value
+    let userVal = 0;
+    let userScoreText = '0 WPM';
+    let unit = 'WPM';
+
+    if (activeTab === 'english') {
+      userVal = stats.english?.bestWpm || 0;
+      userScoreText = `${userVal} WPM`;
+      unit = 'WPM';
+    } else if (activeTab === 'hindi') {
+      userVal = stats.hindi?.bestWpm || 0;
+      userScoreText = `${userVal} WPM`;
+      unit = 'WPM';
+    } else if (activeTab === 'marathi') {
+      userVal = stats.marathi?.bestWpm || 0;
+      userScoreText = `${userVal} WPM`;
+      unit = 'WPM';
+    } else if (activeTab === 'race') {
+      userVal = (stats.english?.totalRaces || 0) + (stats.hindi?.totalRaces || 0) + (stats.marathi?.totalRaces || 0);
+      userScoreText = `${userVal} Wins`;
+      unit = 'Wins';
+    } else if (activeTab === 'streak') {
+      userVal = stats.currentStreak || 0;
+      userScoreText = `${userVal} Days`;
+      unit = 'Days';
+    }
+
+    const baseList = BASE_LEADERS[activeTab] || [];
+    const top5Threshold = baseList[4]?.scoreVal || 50;
+
+    // 3. Dynamic Rank Calculation across 500 Students
+    let userRank = TOTAL_STUDENTS;
+    let userBadge = '🌱 KEYBOARD ROOKIE';
+
+    if (userVal >= baseList[0].scoreVal) {
+      userRank = 1;
+      userBadge = '👑 GRANDMASTER';
+    } else if (userVal >= baseList[1].scoreVal) {
+      userRank = 2;
+      userBadge = '🔥 NITRO GOD';
+    } else if (userVal >= baseList[2].scoreVal) {
+      userRank = 3;
+      userBadge = '⚡ VELOCITY PRO';
+    } else if (userVal >= baseList[3].scoreVal) {
+      userRank = 4;
+      userBadge = '🏎️ SPEED DEMON';
+    } else if (userVal >= baseList[4].scoreVal) {
+      userRank = 5;
+      userBadge = '🎯 PRECISION';
+    } else if (userVal > 0) {
+      // Smooth power curve mapping score between 0 and top5Threshold into ranks 500 down to 6
+      const ratio = Math.min(1, Math.max(0, userVal / top5Threshold));
+      const rankCurve = 1 - Math.pow(ratio, 1.25);
+      userRank = Math.max(6, Math.min(TOTAL_STUDENTS, Math.round(6 + rankCurve * (TOTAL_STUDENTS - 6))));
+
+      if (userRank <= 50) {
+        userBadge = '⚡ ELITE TOP 10%';
+      } else if (userRank <= 150) {
+        userBadge = '🎯 SPEED CHASER';
+      } else if (userRank <= 300) {
+        userBadge = '⚡ ACTIVE RACER';
+      } else {
+        userBadge = '🌱 KEYBOARD ROOKIE';
+      }
+    }
+
+    // 4. Construct Exactly 5 Students Data for Leaderboard Display
+    let top5ToDisplay: RenderRow[] = [];
+
+    if (isQualified && userRank <= 5 && userVal > 0) {
+      // User is officially in the Top 5! Combine and sort
+      const combined = [
+        ...baseList.map(s => ({
+          name: s.name,
+          scoreVal: s.scoreVal,
+          scoreText: s.scoreText,
+          lang: s.lang,
+          badge: s.badge,
+          isCurrentUser: false
+        })),
+        {
+          name: `${userName} (You)`,
+          scoreVal: userVal,
+          scoreText: userScoreText,
+          lang: activeTab === 'hindi' ? '🇮🇳 Hindi' : activeTab === 'marathi' ? '🇮🇳 Marathi' : activeTab === 'race' ? 'Multi' : activeTab === 'streak' ? 'Global' : '🇬🇧 English',
+          badge: userBadge,
+          isCurrentUser: true
+        }
+      ];
+
+      combined.sort((a, b) => b.scoreVal - a.scoreVal);
+      top5ToDisplay = combined.slice(0, 5).map((item, idx) => ({
+        rank: idx + 1,
+        name: item.name,
+        scoreText: item.scoreText,
+        lang: item.lang,
+        badge: item.badge,
+        isCurrentUser: item.isCurrentUser
+      }));
+    } else {
+      // Show default 5 top leaders
+      top5ToDisplay = baseList.slice(0, 5).map((item, idx) => ({
+        rank: idx + 1,
+        name: item.name,
+        scoreText: item.scoreText,
+        lang: item.lang,
+        badge: item.badge,
+        isCurrentUser: false
+      }));
+    }
+
+    // 5. Render Top 3 Podium (Desktop)
+    const podiumContainer = document.getElementById('lb-podium-container');
+    if (podiumContainer && top5ToDisplay.length >= 3) {
+      const first = top5ToDisplay[0];
+      const second = top5ToDisplay[1];
+      const third = top5ToDisplay[2];
+
+      podiumContainer.innerHTML = `
+        <div class="podium-card podium-rank-2">
+          <span class="podium-medal">🥈</span>
+          <span class="podium-name">${second.name}</span>
+          <span class="podium-score">${second.scoreText}</span>
+          <span class="podium-lbl">2nd Place</span>
+        </div>
+        <div class="podium-card podium-rank-1">
+          <span class="podium-medal">🥇</span>
+          <span class="podium-name">${first.name}</span>
+          <span class="podium-score">${first.scoreText}</span>
+          <span class="podium-lbl">Champion</span>
+        </div>
+        <div class="podium-card podium-rank-3">
+          <span class="podium-medal">🥉</span>
+          <span class="podium-name">${third.name}</span>
+          <span class="podium-score">${third.scoreText}</span>
+          <span class="podium-lbl">3rd Place</span>
+        </div>
+      `;
+    }
+
+    // 6. Render Desktop Table View (Exactly 5 Rows)
+    const tbody = document.getElementById('lb-table-body');
+    if (tbody) {
+      tbody.innerHTML = top5ToDisplay.map(item => `
+        <tr class="${item.isCurrentUser ? 'user-highlight-row' : ''}">
+          <td><strong>#${item.rank}</strong></td>
+          <td>${item.name}</td>
+          <td>${item.lang}</td>
+          <td><strong style="color: var(--accent-cyan); font-family: var(--font-mono);">${item.scoreText}</strong></td>
+          <td><span class="lb-card-badge ${item.rank === 1 ? 'gold-badge' : item.rank === 3 ? 'pink-badge' : ''}">${item.badge}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    // 7. Render Mobile Cards List (Exactly 5 Cards)
+    const mobileListContainer = document.getElementById('lb-mobile-list');
+    if (mobileListContainer) {
+      mobileListContainer.innerHTML = top5ToDisplay.map(item => `
+        <div class="lb-mobile-card ${item.rank === 1 ? 'is-top-1' : item.rank === 2 ? 'is-top-2' : item.rank === 3 ? 'is-top-3' : ''} ${item.isCurrentUser ? 'is-current-user' : ''}">
+          <div class="lb-card-left">
+            <div class="lb-card-rank rank-${item.rank}">
+              ${item.rank === 1 ? '🥇 #1' : item.rank === 2 ? '🥈 #2' : item.rank === 3 ? '🥉 #3' : '#' + item.rank}
+            </div>
+            <div class="lb-card-info">
+              <span class="lb-card-name">${item.name}</span>
+              <span class="lb-card-lang">${item.lang}</span>
+            </div>
+          </div>
+          <div class="lb-card-right">
+            <div class="lb-card-score">${item.scoreText}</div>
+            <span class="lb-card-badge ${item.rank === 1 ? 'gold-badge' : item.rank === 3 ? 'pink-badge' : ''}">${item.badge}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 8. Render Dedicated User Position Strip (Below Top 5 Students)
+    const userSection = document.getElementById('lb-user-position-section');
+    if (userSection) {
+      if (!isQualified) {
+        // Less than 3 tests played
+        userSection.innerHTML = `
+          <div class="lb-user-pinned-card unranked">
+            <div class="user-pinned-left">
+              <div class="user-pinned-rank-pill unranked-pill">Unranked</div>
+              <div class="user-pinned-info">
+                <div class="user-pinned-name-row">
+                  <span class="user-pinned-name">${userName} (You)</span>
+                  <span class="lb-card-badge" style="background: rgba(255,255,255,0.08); color: #cbd5e1; border-color: rgba(255,255,255,0.15);">⏳ QUALIFICATION IN PROGRESS</span>
+                </div>
+                <span class="user-pinned-sub">Play <strong>${3 - totalPlays} more test(s)</strong> (3 required) to unlock your official leaderboard ranking!</span>
+                <div class="qual-progress-bar">
+                  <div class="qual-progress-fill" style="width: ${(totalPlays / 3) * 100}%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="user-pinned-right">
+              <div class="user-pinned-score-box">
+                <span class="user-pinned-score" style="color: #94a3b8;">${userScoreText}</span>
+              </div>
+              <a href="/race" class="user-pinned-cta">
+                <span>🏎️ Play Test &bull; ${totalPlays}/3</span>
+              </a>
+            </div>
+          </div>
+        `;
+      } else if (userRank <= 5 && userVal > 0) {
+        // Qualified and in Top 5!
+        userSection.innerHTML = `
+          <div class="lb-user-pinned-card in-top-5">
+            <div class="user-pinned-left">
+              <div class="user-pinned-rank-pill gold">🏆 Rank #${userRank}</div>
+              <div class="user-pinned-info">
+                <div class="user-pinned-name-row">
+                  <span class="user-pinned-name">${userName} (You)</span>
+                  <span class="lb-card-badge gold-badge">${userBadge}</span>
+                </div>
+                <span class="user-pinned-sub" style="color: #fbbf24;">🎉 <strong>Outstanding!</strong> You have officially claimed <strong>Rank #${userRank}</strong> in the Top 5 Hall of Fame!</span>
+              </div>
+            </div>
+            <div class="user-pinned-right">
+              <div class="user-pinned-score-box">
+                <span class="user-pinned-score" style="color: #fbbf24;">${userScoreText}</span>
+              </div>
+              <a href="/race" class="user-pinned-cta" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                <span>🏎️ Defend Your Rank</span>
+              </a>
+            </div>
+          </div>
+        `;
+      } else {
+        // Qualified and ranked outside Top 5 (e.g. Rank #42)
+        const diff = Math.max(1, baseList[4].scoreVal - userVal + 1);
+        userSection.innerHTML = `
+          <div class="lb-user-pinned-card">
+            <div class="user-pinned-left">
+              <div class="user-pinned-rank-pill">#${userRank}</div>
+              <div class="user-pinned-info">
+                <div class="user-pinned-name-row">
+                  <span class="user-pinned-name">${userName} (You)</span>
+                  <span class="lb-card-badge">${userBadge}</span>
+                </div>
+                <span class="user-pinned-sub">Rank <strong>#${userRank}</strong> &bull; Improve by <strong>+${diff} ${unit}</strong> to overtake #5 ${baseList[4].name} (${baseList[4].scoreText})!</span>
+              </div>
+            </div>
+            <div class="user-pinned-right">
+              <div class="user-pinned-score-box">
+                <span class="user-pinned-score">${userScoreText}</span>
+              </div>
+              <a href="/race" class="user-pinned-cta">
+                <span>⚡ Climb Rank</span>
+              </a>
+            </div>
+          </div>
+        `;
+      }
+    }
+  }
+
+  // Delegated document click listener for tab switching
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const tabBtn = target.closest('[data-lb-tab]') as HTMLElement | null;
+    if (tabBtn) {
+      const tab = tabBtn.dataset.lbTab;
+      if (tab) {
+        activeTab = tab;
+        try {
+          if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+            (window as any).trackTypeBaaziEvent('leaderboard_view', { tab: tab });
+          }
+        } catch {}
+        renderLeaderboard();
+      }
+    }
+  });
+
+  function initLeaderboard() {
+    renderLeaderboard();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLeaderboard);
+  } else {
+    initLeaderboard();
+  }
+
+  document.addEventListener('astro:page-load', initLeaderboard);
+</script>

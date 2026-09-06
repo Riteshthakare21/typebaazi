@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SevenMinuteTypingTest from '../components/SevenMinuteTypingTest.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "7 Minute Typing Test Online (GCC-TBC 30/40 WPM Exam Simulation) | TypeBaazi";
+const pageDesc = "Official 7-minute GCC-TBC computer typing exam simulation for Maharashtra state exams. Real exam timer, mistake calculations, pass/fail result, and certificate.";
+const pageKeywords = "7 minute typing test, 7 min typing test, 30 wpm typing test, 40 wpm typing test, hindi 7 minute typing test, marathi 7 minute typing test, english 7 minute typing test, gcc tbc 7 minute typing test, mpsc clerk 7 min typing test, typebaazi";
+
+const examFaqs = [
+  {
+    question: "How does the 7-Minute Typing Test on TypeBaazi work?",
+    answer: "The 7-minute typing test accurately simulates government and state board certification examinations. You select your language (English, Hindi, or Marathi), your target speed (30 WPM or 40 WPM), and a curated exam passage. The timer runs for exactly 7:00 minutes and calculates Gross WPM, Net WPM, accuracy, and total marks."
+  },
+  {
+    question: "What is the passing criteria for 30 WPM and 40 WPM 7-minute typing tests?",
+    answer: "For 30 WPM certification, candidates must type at least 210 correct words in 7 minutes with over 90% accuracy. For 40 WPM certification, candidates must type at least 280 correct words with high accuracy and minimal errors."
+  },
+  {
+    question: "Can I practice 7-minute Hindi and Marathi typing tests?",
+    answer: "Yes, TypeBaazi provides authentic 7-minute Hindi and Marathi Devanagari typing passages specially designed for SSC, CPCT, GCC-TBC Marathi 30/40 WPM, and state government recruitment exams."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "7-Minute Typing Test", url: "https://typebaazi.com/seven-minute-typing-test" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  activePath="/seven-minute-typing-test"
+  faqItems={examFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+
+  <div class="container page-container">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">7-Minute Typing Test</span>
+    </nav>
+
+    <!-- Page Header with Primary H1 -->
+    <header class="page-header" style="text-align: center; margin-bottom: 24px;">
+      <h1 class="page-title" style="font-size: clamp(22px, 3.5vw, 32px); font-weight: 900; color: #ffffff; margin-bottom: 8px;">
+        7-Minute Typing Test Online (English, Hindi &amp; Marathi 30/40 WPM)
+      </h1>
+      <p class="page-subtitle" style="font-size: 14px; color: var(--text-muted); max-width: 680px; margin: 0 auto;">
+        Simulate GCC-TBC, SSC, CPCT, and MPSC typing exams with official 7-minute passages and real Net WPM evaluation.
+      </p>
+    </header>
+
+    <!-- Main 7-Minute Component -->
+    <SevenMinuteTypingTest />
+
+    <!-- Virtual Keyboard -->
+    <VirtualKeyboard language="english" visible={true} />
+
+    <!-- Educational & Exam Guidelines Section -->
+    <section class="test-guide-card glass-panel" style="margin-top: 36px;">
+      <h2 style="font-size: 22px; font-weight: 900; color: #ffffff; margin-bottom: 14px;">
+        🏛️ About the 7-Minute Government Typing Test Simulation
+      </h2>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+        State government examination boards, court stenographer commissions, and commercial typing institutes (including GCC-TBC in Maharashtra) standardly conduct speed assessments with strict 7-minute time limits. This practice test provides a 1:1 replica of the official exam environment.
+      </p>
+
+      <div class="exam-tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>30 WPM Target (Clerk Grade)</h4>
+          <p>Requires typing 210+ words in 7 minutes (1,050 keystrokes) with at least 90% Net accuracy.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⚡</span>
+          <h4>40 WPM Target (Senior Typist)</h4>
+          <p>Requires typing 280+ words in 7 minutes (1,400 keystrokes) with error deduction penalties.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">📊</span>
+          <h4>Net WPM &amp; Marks Calculation</h4>
+          <p>Scored on a 50-mark scale where each uncorrected mistake incurs deductions against your gross speed.</p>
+        </div>
+      </div>
+
+      <!-- Related Exam & Speed Test Links -->
+      <div class="exam-related-links-box" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">📚 Explore More Examination &amp; Speed Practice</h3>
+        <div class="exam-related-grid" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <a href="/government-exam-typing-practice" class="btn-secondary" data-analytics-cta="7min_rel_govt_exam" style="font-size: 13px; padding: 8px 16px;">
+            <span>🏛️ Government Exam Typing Hub (SSC, MPSC, CPCT)</span>
+          </a>
+          <a href="/marathi-typing-test" class="btn-secondary" data-analytics-cta="7min_rel_marathi" style="font-size: 13px; padding: 8px 16px;">
+            <span>🇮🇳 Marathi Typing Test (मराठी टायपिंग)</span>
+          </a>
+          <a href="/hindi-typing-test" class="btn-secondary" data-analytics-cta="7min_rel_hindi" style="font-size: 13px; padding: 8px 16px;">
+            <span>🇮🇳 Hindi Typing Test (हिंदी टाइपिंग)</span>
+          </a>
+          <a href="/typing-test" class="btn-secondary" data-analytics-cta="7min_rel_typing_test" style="font-size: 13px; padding: 8px 16px;">
+            <span>⌨️ 1-Minute Quick Speed Test</span>
+          </a>
+          <a href="/race" class="btn-secondary" data-analytics-cta="7min_rel_race" style="font-size: 13px; padding: 8px 16px;">
+            <span>🏎️ AI Car Typing Race</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-container {
+    padding: clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 20px) 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+  }
+
+  .exam-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .tip-card {
+    padding: 16px;
+    background: rgba(16, 24, 40, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  .tip-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 6px 0 4px;
+  }
+
+  .tip-card p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+  }
+
+  [data-theme='light'] .tip-card {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+  [data-theme='light'] .tip-card h4 {
+    color: #0f172a !important;
+  }
+  [data-theme='light'] .test-guide-card h2 {
+    color: #0f172a !important;
+  }
+</style>

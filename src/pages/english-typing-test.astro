@@ -1,0 +1,559 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "English Typing Test 1, 2, 5 Min — Check Typing Speed WPM | TypeBaazi";
+const pageDesc = "Test your English typing speed (WPM & Accuracy) with 1, 2, 3, and 5-minute typing tests. Practice live keystrokes, track progress, and earn speed certificates free.";
+const pageKeywords = "english typing test online, english typing test, english typing speed test, typing speed test, free typing test, wpm test english, typing practice, typing certificate, typebaazi, 1 minute typing test, 5 minute typing test";
+
+const englishFaqs = [
+  {
+    question: "What is an English typing test?",
+    answer: "An English typing test measures your keyboard typing speed in Words Per Minute (WPM) and accuracy percentage over a timed period (typically 60 seconds). It tests how fast and accurately your fingers translate text into keystrokes."
+  },
+  {
+    question: "How is WPM and Net WPM calculated?",
+    answer: "Gross WPM = (Total Characters Typed / 5) / Time in Minutes. Net WPM subtracts uncorrected errors: Net WPM = Gross WPM - (Errors / Time in Minutes). 5 characters equal 1 standardized word."
+  },
+  {
+    question: "What is an average vs good English typing speed?",
+    answer: "The average typing speed is 40 WPM. A speed of 50–65 WPM is considered good, while 70–90+ WPM is professional grade. Speeds above 100 WPM place you in the top 1% of competitive typists."
+  },
+  {
+    question: "Can I get a free typing certificate on TypeBaazi?",
+    answer: "Yes! When you complete any 60-second typing test on TypeBaazi with at least 90% accuracy, you can instantly download an official digital typing certificate in PDF or PNG format."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "English Typing Test", url: "https://typebaazi.com/english-typing-test" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  activePath="/english-typing-test"
+  faqItems={englishFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+
+  <div class="container page-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">English Typing Test</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-cyan">🇬🇧 Official English Speed Test</div>
+      <h1 class="page-title">English Typing Test Online (WPM Speed Test)</h1>
+      <p class="page-sub">
+        Test and improve your English typing speed with TypeBaazi. Practice with real typing challenges, track your WPM and accuracy, and claim your verified speed certificate.
+      </p>
+      <div class="header-cta-row">
+        <a href="#english-test-arena" class="btn-primary start-typing-btn">
+          <span>⚡ Start English Typing Test</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Interactive Typing Arena -->
+    <section class="arena-section" id="english-test-arena" aria-label="English Typing Arena">
+      <TypingArena initialLanguage="english" initialDuration={60} initialDifficulty="medium" showControls={true} />
+      <VirtualKeyboard language="english" visible={true} />
+    </section>
+
+    <!-- Speed Classification & Benchmark Table -->
+    <section class="guide-panel glass-panel">
+      <h2>What is a Good English Typing Speed?</h2>
+      <p class="panel-text">
+        Typing speed is measured in <strong>Words Per Minute (WPM)</strong>. Check where your speed ranks on the international typing skill scale:
+      </p>
+
+      <div class="table-responsive">
+        <table class="speed-benchmark-table">
+          <thead>
+            <tr>
+              <th>Skill Level</th>
+              <th>Speed (WPM)</th>
+              <th>Accuracy Target</th>
+              <th>Typical Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>🌱 Beginner</strong></td>
+              <td><span class="speed-tag">20 – 35 WPM</span></td>
+              <td>90% – 94%</td>
+              <td>Two-finger typists, beginners</td>
+            </tr>
+            <tr>
+              <td><strong>⚡ Average</strong></td>
+              <td><span class="speed-tag">38 – 50 WPM</span></td>
+              <td>95%+</td>
+              <td>Office workers, students</td>
+            </tr>
+            <tr>
+              <td><strong>🚀 Above Average</strong></td>
+              <td><span class="speed-tag">55 – 70 WPM</span></td>
+              <td>97%+</td>
+              <td>Writers, competitive exam aspirants</td>
+            </tr>
+            <tr>
+              <td><strong>🏎️ Professional</strong></td>
+              <td><span class="speed-tag">75 – 90 WPM</span></td>
+              <td>98%+</td>
+              <td>Programmers, transcribers, data entry pros</td>
+            </tr>
+            <tr>
+              <td><strong>👑 Master / Top 1%</strong></td>
+              <td><span class="speed-tag gold">95 – 120+ WPM</span></td>
+              <td>99%+</td>
+              <td>Competitive esports typists</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>How to Improve English Typing Speed? (7 Proven Tips)</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🏠</span>
+          <h4>1. Anchor to Home Row (ASDF - JKL;)</h4>
+          <p>Always return your index fingers to F and J bumps. This enables typing without looking down.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">👁️</span>
+          <h4>2. Keep Eyes on the Screen</h4>
+          <p>Look ahead at upcoming words rather than focusing on the key you are currently striking.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>3. Maintain 98%+ Accuracy</h4>
+          <p>Fixing mistakes with backspace costs 3x more time than typing at a steady, accurate pace.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🖐️</span>
+          <h4>4. Use All 10 Fingers</h4>
+          <p>Assign specific fingers to specific keys to distribute work evenly and prevent hand strain.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⏱️</span>
+          <h4>5. Practice in 60s Bursts</h4>
+          <p>Short, intense 1-minute tests build quick muscle memory and rapid neural reflexes.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🏎️</span>
+          <h4>6. Compete in Typing Races</h4>
+          <p>Playing in the TypeBaazi AI Car Race pushes your subconscious to type faster under competition.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Internal Linking -->
+      <div class="related-links-box">
+        <h3>Explore Other TypeBaazi Tools</h3>
+        <div class="links-grid">
+          <a href="/hindi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Typing Test</strong>
+              <span>Devanagari Hindi speed test &amp; SSC exam prep.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🚩</span>
+            <div>
+              <strong>Marathi Typing Test</strong>
+              <span>Devanagari Marathi speed evaluation &amp; practice.</span>
+            </div>
+          </a>
+          <a href="/typing-speed-test" class="hub-link-card">
+            <span class="hub-icon">⚡</span>
+            <div>
+              <strong>Typing Speed Test</strong>
+              <span>1-Minute online WPM calculator &amp; speed rank.</span>
+            </div>
+          </a>
+          <a href="/government-exam-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Practice</strong>
+              <span>MPSC, UPSC, SSC, and Court skill test simulator.</span>
+            </div>
+          </a>
+          <a href="/hindi-typing-practice" class="hub-link-card">
+            <span class="hub-icon">✍️</span>
+            <div>
+              <strong>Hindi Typing Practice</strong>
+              <span>Untimed Hindi keyboard drills &amp; letter practice.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🚩</span>
+            <div>
+              <strong>Marathi Typing Practice</strong>
+              <span>Untimed Marathi key drills &amp; letter practice.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-panel glass-panel">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-accordion">
+        {englishFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-arrow">&darr;</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(14px, 2.5vw, 28px) clamp(10px, 2vw, 20px) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan, #00f0ff);
+    text-decoration: none;
+  }
+
+  .bc-sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .bc-current {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.6vw, 15.5px);
+    color: var(--text-muted, #94a3b8);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-cta-row {
+    margin-top: 16px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  .guide-panel,
+  .faq-panel {
+    padding: clamp(20px, 3vw, 32px);
+    margin: 24px 0;
+    border-radius: var(--radius-xl, 24px);
+    background: rgba(10, 16, 28, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .guide-panel h2,
+  .faq-panel h2 {
+    font-size: clamp(19px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 24px 0 12px;
+  }
+
+  .guide-panel h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .panel-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin-bottom: 28px;
+  }
+
+  .speed-benchmark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+
+  .speed-benchmark-table th {
+    padding: 12px 14px;
+    background: rgba(0, 240, 255, 0.1);
+    color: #00f0ff;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  }
+
+  .speed-benchmark-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #cbd5e1;
+  }
+
+  .speed-tag {
+    display: inline-block;
+    background: rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-family: var(--font-mono, monospace);
+  }
+
+  .speed-tag.gold {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .tip-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tip-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #00f0ff;
+    margin: 0 0 6px;
+  }
+
+  .tip-card p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .related-links-box {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .related-links-box h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .hub-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .hub-link-card strong {
+    font-size: 13.5px;
+    color: #ffffff;
+    display: block;
+  }
+
+  .hub-link-card span {
+    font-size: 11.5px;
+    color: #94a3b8;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .hub-link-card:hover {
+    border-color: #00f0ff;
+    background: rgba(0, 240, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-item {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0, 240, 255, 0.4);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    color: #00f0ff;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .faq-answer p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .page-title,
+  [data-theme='light'] .guide-panel h2,
+  [data-theme='light'] .faq-panel h2,
+  [data-theme='light'] .related-links-box h3,
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .guide-panel,
+  [data-theme='light'] .faq-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .speed-benchmark-table th {
+    background: #f1f5f9 !important;
+    color: #0284c7 !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .speed-benchmark-table td {
+    color: #334155 !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .tip-card,
+  [data-theme='light'] .hub-link-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .tip-card p,
+  [data-theme='light'] .panel-text,
+  [data-theme='light'] .faq-answer p {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .hub-link-card strong {
+    color: #0f172a !important;
+  }
+</style>

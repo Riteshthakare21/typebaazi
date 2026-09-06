@@ -1,0 +1,1057 @@
+---
+/**
+ * TypeBaazi Official Certificate Modal
+ * Clean, elegant, attractive, and prestigious Certificate of Excellence
+ * for Grand Prix AI Bot victories and streak milestones.
+ */
+---
+
+<div id="typebaazi-certificate-modal" class="cert-overlay hidden">
+  <div class="cert-dialog-container">
+    <!-- Certificate Top Toolbar -->
+    <div class="cert-toolbar no-print">
+      <div class="toolbar-name-input-box">
+        <label for="cert-name-input" class="toolbar-lbl">👤 Certificate Name:</label>
+        <input
+          type="text"
+          id="cert-name-input"
+          class="cert-input-field"
+          placeholder="Enter Your Full Name..."
+          maxlength="40"
+        />
+      </div>
+
+      <div class="toolbar-actions">
+        <button id="btn-download-pdf-certificate" class="btn-primary cert-action-btn" title="Download Official High-Resolution PDF Certificate">
+          <span>📥 Download PDF</span>
+        </button>
+        <button id="btn-download-img-certificate" class="btn-secondary cert-action-btn" title="Download High-Resolution PNG Image for Mobile Gallery">
+          <span>🖼️ Save Image</span>
+        </button>
+        <button id="btn-whatsapp-certificate" class="btn-whatsapp cert-action-btn" title="Share Certificate on WhatsApp">
+          <span>💬 WhatsApp</span>
+        </button>
+        <button id="btn-close-certificate" class="btn-secondary cert-close-btn" title="Close Certificate">
+          <span>✕ Close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- The Printable Certificate Document Frame -->
+    <div class="certificate-frame" id="printable-certificate">
+      <!-- Clean Luxury Double Gold Border -->
+      <div class="cert-border-outer">
+        <div class="cert-border-inner">
+          <!-- Fine Corner Accents -->
+          <div class="cert-corner corner-tl">✦</div>
+          <div class="cert-corner corner-tr">✦</div>
+          <div class="cert-corner corner-bl">✦</div>
+          <div class="cert-corner corner-br">✦</div>
+
+          <!-- Certificate Header -->
+          <div class="cert-header">
+            <div class="cert-logo-row">
+              <div class="cert-logo-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#d4af37" stroke="#b89726" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="cert-brand-titles">
+                <span class="cert-brand-name">TYPEBAAZI</span>
+                <span class="cert-brand-sub">OFFICIAL SPEED TYPING ACADEMY • अधिकृत गौरव प्रमाणपत्र</span>
+              </div>
+            </div>
+            <div class="cert-badge-ribbon" id="cert-ribbon-tag">🏆 GRAND PRIX 1ST PLACE CHAMPION 🏆</div>
+          </div>
+
+          <!-- Main Title -->
+          <div class="cert-title-section">
+            <div class="cert-main-title" id="cert-heading-title" role="heading" aria-level="2">CERTIFICATE OF VICTORY</div>
+            <p class="cert-conferred-text">THIS DISTINCTION IS PROUDLY CONFERRED UPON</p>
+          </div>
+
+          <!-- Recipient Name -->
+          <div class="cert-recipient-box">
+            <div class="cert-recipient-name" id="cert-display-name" role="heading" aria-level="3">Ritesh Thakare</div>
+            <div class="cert-name-underline">
+              <span class="underline-diamond">✦</span>
+            </div>
+          </div>
+
+          <!-- Citation Narrative -->
+          <p class="cert-citation" id="cert-citation-body">
+            For demonstrating supreme keyboard dexterity, lightning-fast typing velocity, and achieving glorious 1st Place Victory against the TypeBaazi AI Bot in the Grand Prix Speed Championship race.
+          </p>
+
+          <!-- 4 Performance Metric Cards (Exact Match to Visual Reference PDF) -->
+          <div class="cert-metrics-row">
+            <div class="cert-metric-pill metric-velocity">
+              <div class="m-accent-bar bar-cyan"></div>
+              <span class="m-lbl">TYPING VELOCITY</span>
+              <strong class="m-val" id="cert-speed-val">28 WPM</strong>
+            </div>
+            <div class="cert-metric-pill metric-accuracy">
+              <div class="m-accent-bar bar-green"></div>
+              <span class="m-lbl">ACCURACY</span>
+              <strong class="m-val" id="cert-acc-val">90.4%</strong>
+            </div>
+            <div class="cert-metric-pill metric-errors">
+              <div class="m-accent-bar bar-red"></div>
+              <span class="m-lbl">TOTAL ERRORS</span>
+              <strong class="m-val" id="cert-errors-val">0 Errors</strong>
+            </div>
+            <div class="cert-metric-pill metric-duration">
+              <div class="m-accent-bar bar-amber"></div>
+              <span class="m-lbl">RACE DURATION</span>
+              <strong class="m-val" id="cert-duration-val">12.0s</strong>
+            </div>
+          </div>
+
+          <!-- Footer with Official Golden Seal, Date & Authentic Signature -->
+          <div class="cert-footer">
+            <!-- Left Info: Date of Issuance & Verification ID -->
+            <div class="cert-left-meta">
+              <span class="cert-meta-lbl">DATE OF ISSUANCE</span>
+              <strong class="cert-meta-val" id="cert-date-val">Aug 20, 2026</strong>
+              <span class="cert-meta-id">VERIFICATION ID: <span id="cert-id-val">#TB-765493</span></span>
+            </div>
+
+            <!-- Center: Official Embossed Gold Seal Medallion -->
+            <div class="cert-gold-seal-wrap">
+              <div class="seal-ribbon-tail left-tail"></div>
+              <div class="seal-ribbon-tail right-tail"></div>
+              <div class="cert-gold-seal">
+                <div class="seal-inner">
+                  <span class="seal-star">★</span>
+                  <span class="seal-text">TYPEBAAZI</span>
+                  <span class="seal-sub">OFFICIAL WINNER</span>
+                  <span class="seal-verified">★ VERIFIED ★</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Official Handwritten Signature -->
+            <div class="cert-signature-box">
+              <div class="cert-sig-img-wrap">
+                <img src="/signature-thakare.png" alt="R. Thakare Signature" class="cert-sig-img" />
+              </div>
+              <div class="cert-sig-line">TypeBaazi Certification Board</div>
+              <span class="cert-sig-title">DIRECTOR OF SPEED ASSESSMENTS</span>
+            </div>
+          </div>
+
+          <!-- Bottom Security Bar -->
+          <div class="cert-security-footer">
+            🔒 Digitally Verified Certificate of Achievement • Authenticated on TypeBaazi Global Cloud • https://typebaazi.com
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .cert-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 6, 14, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: fadeIn 0.2s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .cert-overlay.hidden {
+    display: none !important;
+  }
+
+  .cert-dialog-container {
+    width: 100%;
+    max-width: 900px;
+    max-height: 94vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .cert-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f172a;
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    gap: 14px;
+    max-width: 100%;
+  }
+
+  .toolbar-name-input-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 440px;
+  }
+
+  .toolbar-lbl {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #f8fafc !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cert-input-field {
+    background: #090e1a !important;
+    border: 1.5px solid #d4af37 !important;
+    color: #fbbf24 !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    outline: none;
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  .cert-input-field:focus {
+    border-color: #fef08a !important;
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.45) !important;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .cert-action-btn,
+  .cert-close-btn {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  .btn-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3) !important;
+  }
+
+  .btn-whatsapp:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45) !important;
+  }
+
+  @media (max-width: 660px) {
+    .cert-overlay {
+      padding: 10px 8px;
+      align-items: flex-start;
+    }
+    .cert-toolbar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+    .toolbar-name-input-box {
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
+    .toolbar-lbl {
+      font-size: 12.5px;
+    }
+    .toolbar-actions {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+    .cert-action-btn,
+    .cert-close-btn {
+      width: 100%;
+      min-width: 0;
+      font-size: 12px !important;
+      padding: 9px 6px !important;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .toolbar-actions {
+      gap: 6px;
+    }
+    .cert-action-btn,
+    .cert-close-btn {
+      font-size: 11px !important;
+      padding: 8px 4px !important;
+      gap: 4px;
+    }
+  }
+
+  /* Certificate Document Frame - Luxury Ivory & Gold Design matching Reference PDF */
+  .certificate-frame {
+    width: 100%;
+    background: #fdfbf7 !important;
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.3);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .cert-border-outer {
+    padding: 14px;
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%) !important;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .cert-border-inner {
+    background: linear-gradient(180deg, #fefcf8 0%, #f9f5ea 40%, #f4eee0 100%) !important;
+    border: 2px solid #c5a059 !important;
+    border-radius: 10px;
+    padding: clamp(20px, 3.5vw, 36px) clamp(18px, 4vw, 40px);
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+  }
+
+  .cert-corner {
+    position: absolute;
+    color: #b89726 !important;
+    font-size: 18px;
+    font-weight: 900;
+  }
+  .corner-tl { top: 8px; left: 10px; }
+  .corner-tr { top: 8px; right: 10px; }
+  .corner-bl { bottom: 8px; left: 10px; }
+  .corner-br { bottom: 8px; right: 10px; }
+
+  /* Header */
+  .cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid rgba(197, 160, 89, 0.35) !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cert-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .cert-logo-badge {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%) !important;
+    border: 1.5px solid #78350f !important;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-brand-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #0f172a !important;
+  }
+
+  .cert-brand-sub {
+    font-size: 11px;
+    color: #854d0e !important;
+    font-weight: 700;
+  }
+
+  .cert-badge-ribbon {
+    font-size: 11.5px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #78350f 0%, #b45309 50%, #78350f 100%) !important;
+    border: 1.5px solid #fef08a !important;
+    color: #ffffff !important;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 8px rgba(120, 53, 15, 0.3);
+  }
+
+  /* Titles */
+  .cert-main-title {
+    font-size: clamp(20px, 3.2vw, 30px) !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.5px;
+    color: #0f172a !important;
+    margin: 6px 0 3px;
+    text-transform: uppercase;
+    font-family: 'Cinzel', Georgia, serif;
+  }
+
+  .cert-conferred-text {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2.5px;
+    color: #64748b !important;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  /* Recipient Name */
+  .cert-recipient-box {
+    margin: 8px 0 14px;
+  }
+
+  .cert-recipient-name {
+    font-size: clamp(28px, 4.5vw, 42px) !important;
+    font-weight: 900 !important;
+    color: #1e3a8a !important;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    font-family: Georgia, 'Playfair Display', serif;
+  }
+
+  .cert-name-underline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px auto 0;
+    max-width: 380px;
+  }
+
+  .cert-name-underline::before,
+  .cert-name-underline::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: #d4af37 !important;
+  }
+
+  .underline-diamond {
+    color: #b89726 !important;
+    font-size: 14px;
+  }
+
+  .cert-citation {
+    font-size: clamp(12.5px, 1.6vw, 14.5px) !important;
+    color: #334155 !important;
+    max-width: 680px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* 4 Metrics Row (Exact Match to Reference PDF) */
+  .cert-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(8px, 1.5vw, 16px);
+    margin-bottom: 20px;
+  }
+
+  .cert-metric-pill {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    padding: 10px 12px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .m-accent-bar {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 3.5px;
+    border-radius: 0 0 3px 3px;
+  }
+  .bar-cyan { background: #0284c7; }
+  .bar-green { background: #059669; }
+  .bar-red { background: #dc2626; }
+  .bar-amber { background: #d97706; }
+
+  .cert-metric-pill .m-lbl {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: #64748b !important;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin: 4px 0 2px;
+  }
+
+  .cert-metric-pill .m-val {
+    font-size: clamp(15px, 2.2vw, 20px) !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+  }
+
+  /* Footer, Date, Signatures & Seal */
+  .cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 14px;
+    border-top: 1.5px solid rgba(197, 160, 89, 0.3) !important;
+    margin-bottom: 10px;
+  }
+
+  .cert-left-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    min-width: 150px;
+  }
+
+  .cert-meta-lbl {
+    font-size: 10px !important;
+    color: #64748b !important;
+    text-transform: uppercase;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+  }
+
+  .cert-meta-val {
+    font-size: 15px !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    margin: 1px 0;
+  }
+
+  .cert-meta-id {
+    font-size: 11px !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    font-family: var(--font-mono, monospace);
+  }
+
+  /* Center Gold Seal */
+  .cert-gold-seal-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .seal-ribbon-tail {
+    position: absolute;
+    width: 14px;
+    height: 32px;
+    background: #92400e;
+    bottom: -18px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+    z-index: 1;
+  }
+  .left-tail { left: 14px; transform: rotate(12deg); }
+  .right-tail { right: 14px; transform: rotate(-12deg); }
+
+  .cert-gold-seal {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fef08a 0%, #eab308 50%, #a16207 100%);
+    box-shadow: 0 4px 14px rgba(161, 98, 7, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #78350f;
+    position: relative;
+    z-index: 2;
+    margin: 0 8px;
+  }
+
+  .seal-inner {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #ca8a04;
+    border: 1px solid #fef9c3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #451a03;
+    line-height: 1.05;
+  }
+
+  .seal-star {
+    font-size: 7px;
+    color: #451a03;
+  }
+
+  .seal-text {
+    font-size: 6.5px;
+    font-weight: 900;
+    color: #451a03;
+  }
+
+  .seal-sub {
+    font-size: 6.5px;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 1px 0;
+  }
+
+  .seal-verified {
+    font-size: 5.5px;
+    font-weight: 800;
+    color: #451a03;
+  }
+
+  /* Signature Box */
+  .cert-signature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 170px;
+  }
+
+  .cert-sig-img-wrap {
+    height: 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: -6px;
+  }
+
+  .cert-sig-img {
+    max-height: 48px;
+    max-width: 160px;
+    object-fit: contain;
+  }
+
+  .cert-sig-line {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid #94a3b8 !important;
+    width: 100%;
+    margin-bottom: 2px;
+    letter-spacing: 0.3px;
+  }
+
+  .cert-sig-title {
+    font-size: 9.5px !important;
+    color: #64748b !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.4px;
+  }
+
+  .cert-security-footer {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 650px) {
+    .cert-border-outer {
+      padding: 8px;
+    }
+    .cert-border-inner {
+      padding: 18px 10px;
+    }
+    .cert-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .cert-logo-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+    }
+    .cert-brand-titles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .cert-brand-sub {
+      font-size: 10px;
+      line-height: 1.3;
+    }
+    .cert-badge-ribbon {
+      font-size: 10.5px;
+      padding: 4px 12px;
+      text-align: center;
+    }
+    .cert-citation {
+      padding: 0 4px;
+      font-size: 12.5px !important;
+    }
+    .cert-metrics-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    .cert-metric-pill {
+      min-width: 0;
+      padding: 8px 6px;
+    }
+    .cert-footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .cert-left-meta {
+      align-items: center;
+      text-align: center;
+      min-width: unset;
+    }
+    .cert-signature-box {
+      min-width: unset;
+    }
+    .cert-gold-seal-wrap {
+      order: -1;
+    }
+    .cert-security-footer {
+      font-size: 8.5px;
+      line-height: 1.4;
+      padding: 0 4px;
+      word-break: break-word;
+    }
+  }
+
+  /* Print Media Rules */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .no-print {
+      display: none !important;
+    }
+    #typebaazi-certificate-modal,
+    #printable-certificate,
+    #printable-certificate * {
+      visibility: visible;
+    }
+    #typebaazi-certificate-modal {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background: #ffffff !important;
+      padding: 0;
+      margin: 0;
+    }
+    .cert-dialog-container {
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+    .certificate-frame {
+      box-shadow: none !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+
+<script>
+  import { StorageManager } from '../lib/storage';
+  import { downloadGrandPrixCertificatePdf, downloadGrandPrixCertificateImage, type CertificateData } from '../lib/certificateGenerator';
+
+  let certCleanupFns: Array<() => void> = [];
+  let currentCertificateResult: CertificateData = {
+    userName: 'Ritesh Thakare',
+    playerName: 'Ritesh Thakare',
+    wpm: 28,
+    accuracy: 90.4,
+    errors: 0,
+    timeSec: 12.0,
+    raceDuration: 12.0,
+    date: 'Aug 20, 2026',
+    issueDate: 'Aug 20, 2026',
+    certificateId: '#TB-765493',
+    verificationId: '#TB-765493',
+    trackName: 'neon-city',
+    gameMode: 'Grand Prix Speed Championship'
+  };
+
+  function initCertModal() {
+    certCleanupFns.forEach(fn => fn());
+    certCleanupFns = [];
+
+    const certModal = document.getElementById('typebaazi-certificate-modal');
+    const nameInput = document.getElementById('cert-name-input') as HTMLInputElement | null;
+    const displayName = document.getElementById('cert-display-name');
+    const speedVal = document.getElementById('cert-speed-val');
+    const accVal = document.getElementById('cert-acc-val');
+    const errorsVal = document.getElementById('cert-errors-val');
+    const durationVal = document.getElementById('cert-duration-val');
+    const dateVal = document.getElementById('cert-date-val');
+    const idVal = document.getElementById('cert-id-val');
+    const citationBody = document.getElementById('cert-citation-body');
+    const headingTitle = document.getElementById('cert-heading-title');
+    const ribbonTag = document.getElementById('cert-ribbon-tag');
+
+    const btnDownloadPdf = document.getElementById('btn-download-pdf-certificate') as HTMLButtonElement | null;
+    const btnDownloadImg = document.getElementById('btn-download-img-certificate') as HTMLButtonElement | null;
+    const btnWhatsappCert = document.getElementById('btn-whatsapp-certificate') as HTMLButtonElement | null;
+    const btnClose = document.getElementById('btn-close-certificate');
+
+    function setRecipientName(name: string) {
+      const clean = name.trim() || 'Ritesh Thakare';
+      if (displayName) displayName.textContent = clean;
+      if (nameInput) nameInput.value = clean;
+      currentCertificateResult.userName = clean;
+      currentCertificateResult.playerName = clean;
+    }
+
+    // Handle live name edit
+    const onNameInput = (e: Event) => {
+      const val = (e.target as HTMLInputElement).value;
+      const clean = val.trim() || 'Ritesh Thakare';
+      if (displayName) displayName.textContent = clean;
+      currentCertificateResult.userName = clean;
+      currentCertificateResult.playerName = clean;
+      StorageManager.saveSettings({ userName: clean });
+    };
+    nameInput?.addEventListener('input', onNameInput);
+    certCleanupFns.push(() => nameInput?.removeEventListener('input', onNameInput));
+
+    // Open Certificate Event Listener
+    const onOpenModal = (e: Event) => {
+      const custom = e as CustomEvent<CertificateData & { type?: string; streakDays?: number }>;
+      const data = custom.detail || {};
+
+      const savedName = StorageManager.getSettings().userName || data.userName || data.playerName || 'Ritesh Thakare';
+      const wpmVal = data.wpm ?? 28;
+      const rawAcc = data.accuracy ?? 90.4;
+      const accNum = typeof rawAcc === 'number' ? rawAcc : parseFloat(String(rawAcc)) || 90.4;
+      const errorsNum = data.errors ?? 0;
+      const rawTime = data.timeSec ?? data.raceDuration ?? 12.0;
+      const timeNum = typeof rawTime === 'number' ? rawTime : parseFloat(String(rawTime)) || 12.0;
+      const issueDate = data.date || data.issueDate || new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const certId = data.certificateId || data.verificationId || ('#TB-' + Math.floor(100000 + Math.random() * 900000));
+
+      currentCertificateResult = {
+        userName: savedName,
+        playerName: savedName,
+        wpm: wpmVal,
+        accuracy: accNum,
+        errors: errorsNum,
+        timeSec: timeNum,
+        raceDuration: timeNum,
+        date: issueDate,
+        issueDate: issueDate,
+        certificateId: certId,
+        verificationId: certId,
+        trackName: data.trackName || 'neon-city',
+        gameMode: data.gameMode || 'Grand Prix Speed Championship'
+      };
+
+      setRecipientName(savedName);
+
+      if (speedVal) speedVal.textContent = `${wpmVal} WPM`;
+      if (accVal) accVal.textContent = `${accNum}%`;
+      if (errorsVal) errorsVal.textContent = errorsNum === 1 ? '1 Error' : `${errorsNum} Errors`;
+      if (durationVal) durationVal.textContent = `${timeNum.toFixed(1)}s`;
+      if (dateVal) dateVal.textContent = issueDate;
+      if (idVal) idVal.textContent = certId;
+
+      if (data.type === 'streak-50' || data.type === 'streak-100' || data.type === 'streak-25' || data.type === 'streak-365') {
+        const days = data.streakDays || (data.type === 'streak-100' ? 100 : data.type === 'streak-50' ? 50 : data.type === 'streak-365' ? 365 : 25);
+        if (headingTitle) headingTitle.textContent = `${days}-DAY STREAK MASTERY CERTIFICATE`;
+        if (ribbonTag) ribbonTag.textContent = `🔥 ${days} DAYS DEDICATION`;
+        if (citationBody) {
+          citationBody.textContent = `For demonstrating unwavering discipline, persistent typing dedication, and completing an extraordinary ${days}-day daily typing streak on TypeBaazi.`;
+        }
+      } else {
+        if (headingTitle) headingTitle.textContent = 'CERTIFICATE OF VICTORY';
+        if (ribbonTag) ribbonTag.textContent = '🏆 GRAND PRIX 1ST PLACE CHAMPION 🏆';
+        if (citationBody) {
+          citationBody.textContent = `For demonstrating supreme keyboard dexterity, lightning-fast typing velocity, and achieving glorious 1st Place Victory against the TypeBaazi AI Bot in the Grand Prix Speed Championship race.`;
+        }
+      }
+
+      if (certModal) {
+        certModal.classList.remove('hidden');
+      }
+    };
+    window.addEventListener('open-certificate-modal', onOpenModal);
+    certCleanupFns.push(() => window.removeEventListener('open-certificate-modal', onOpenModal));
+
+    // Download PDF Handler
+    const onDownloadPdf = async (e: Event) => {
+      e.stopPropagation();
+      if (!btnDownloadPdf || btnDownloadPdf.disabled) return;
+      const originalHtml = btnDownloadPdf.innerHTML;
+      btnDownloadPdf.disabled = true;
+      btnDownloadPdf.innerHTML = '<span>⏳ Generating PDF...</span>';
+
+      try {
+        const name = nameInput ? nameInput.value.trim() || currentCertificateResult.userName || 'Ritesh Thakare' : currentCertificateResult.userName || 'Ritesh Thakare';
+        currentCertificateResult.userName = name;
+        currentCertificateResult.playerName = name;
+
+        try {
+          if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+            (window as any).trackTypeBaaziEvent('certificate_download', {
+              format: 'pdf',
+              type: currentCertificateResult.type || 'victory',
+              wpm: currentCertificateResult.wpm
+            });
+          }
+        } catch {}
+
+        const success = await downloadGrandPrixCertificatePdf(currentCertificateResult);
+        btnDownloadPdf.innerHTML = success ? '<span>✅ PDF Downloaded!</span>' : '<span>✅ Downloaded!</span>';
+      } catch (err) {
+        console.error('PDF download error:', err);
+        btnDownloadPdf.innerHTML = '<span>⚠️ Retry Download</span>';
+      } finally {
+        setTimeout(() => {
+          if (btnDownloadPdf) {
+            btnDownloadPdf.innerHTML = originalHtml;
+            btnDownloadPdf.disabled = false;
+          }
+        }, 2500);
+      }
+    };
+    btnDownloadPdf?.addEventListener('click', onDownloadPdf);
+    certCleanupFns.push(() => btnDownloadPdf?.removeEventListener('click', onDownloadPdf));
+
+    // Download Image (PNG) Handler
+    const onDownloadImg = async (e: Event) => {
+      e.stopPropagation();
+      if (!btnDownloadImg || btnDownloadImg.disabled) return;
+      const originalHtml = btnDownloadImg.innerHTML;
+      btnDownloadImg.disabled = true;
+      btnDownloadImg.innerHTML = '<span>⏳ Saving Image...</span>';
+
+      try {
+        const name = nameInput ? nameInput.value.trim() || currentCertificateResult.userName || 'Ritesh Thakare' : currentCertificateResult.userName || 'Ritesh Thakare';
+        currentCertificateResult.userName = name;
+        currentCertificateResult.playerName = name;
+
+        try {
+          if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+            (window as any).trackTypeBaaziEvent('certificate_download', {
+              format: 'png',
+              type: currentCertificateResult.type || 'victory',
+              wpm: currentCertificateResult.wpm
+            });
+          }
+        } catch {}
+
+        const success = await downloadGrandPrixCertificateImage(currentCertificateResult);
+        btnDownloadImg.innerHTML = success ? '<span>✅ Image Saved!</span>' : '<span>✅ Saved!</span>';
+      } catch (err) {
+        console.error('Image download error:', err);
+        btnDownloadImg.innerHTML = '<span>⚠️ Retry Save</span>';
+      } finally {
+        setTimeout(() => {
+          if (btnDownloadImg) {
+            btnDownloadImg.innerHTML = originalHtml;
+            btnDownloadImg.disabled = false;
+          }
+        }, 2500);
+      }
+    };
+    btnDownloadImg?.addEventListener('click', onDownloadImg);
+    certCleanupFns.push(() => btnDownloadImg?.removeEventListener('click', onDownloadImg));
+
+    // WhatsApp Share Handler with UTM Attribution
+    const onWhatsapp = (e: Event) => {
+      e.stopPropagation();
+      const name = currentCertificateResult.userName || 'Champion';
+      const wpm = currentCertificateResult.wpm || 28;
+      const acc = currentCertificateResult.accuracy || 90.4;
+      const time = currentCertificateResult.timeSec || 12.0;
+      const certId = currentCertificateResult.certificateId || '#TB-765493';
+      const shareRaceUrl = 'https://typebaazi.com/race?utm_source=whatsapp&utm_medium=social_share&utm_campaign=certificate_victory';
+      const text = `🏆 I just won the Grand Prix Speed Championship on TypeBaazi!\n\n⚡ Speed: ${wpm} WPM\n🎯 Accuracy: ${acc}%\n⏱️ Time: ${time}s\n🎓 Certificate: ${certId}\n\nCan you beat my typing speed? Race now: ${shareRaceUrl}`;
+      
+      try {
+        if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+          (window as any).trackTypeBaaziEvent('share_result', { channel: 'whatsapp_certificate', cert_id: certId, wpm: wpm });
+        }
+      } catch {}
+      
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    };
+    btnWhatsappCert?.addEventListener('click', onWhatsapp);
+    certCleanupFns.push(() => btnWhatsappCert?.removeEventListener('click', onWhatsapp));
+
+    // Close Modal Handler
+    const onClose = (e: Event) => {
+      e.stopPropagation();
+      certModal?.classList.add('hidden');
+    };
+    btnClose?.addEventListener('click', onClose);
+    certCleanupFns.push(() => btnClose?.removeEventListener('click', onClose));
+
+    // Backdrop click
+    const onBackdrop = (e: MouseEvent) => {
+      if (e.target === certModal) {
+        certModal.classList.add('hidden');
+      }
+    };
+    certModal?.addEventListener('click', onBackdrop);
+    certCleanupFns.push(() => certModal?.removeEventListener('click', onBackdrop));
+  }
+
+  document.addEventListener('astro:page-load', initCertModal);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCertModal);
+  } else {
+    initCertModal();
+  }
+</script>

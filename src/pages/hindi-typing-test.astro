@@ -1,0 +1,449 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "Hindi Typing Test Online (हिंदी टाइपिंग टेस्ट) — InScript & Remington | TypeBaazi";
+const pageDesc = "Free online Hindi typing speed test and practice (हिंदी टाइपिंग टेस्ट). Measure WPM, accuracy & errors with InScript and Remington layouts for SSC, CPCT & Govt exams.";
+const pageKeywords = "hindi typing test online, hindi typing practice, hindi typing speed test, hindi typing test, hindi typing online, devanagari typing test, hindi typing practice online, hindi typing speed, Hindi typing exam, Hindi typing test free, हिंदी टाइपिंग टेस्ट, हिंदी टाइपिंग सराव";
+
+const hindiFaqs = [
+  {
+    question: "What is a Hindi typing test?",
+    answer: "A Hindi typing test measures how many Devanagari Hindi words and characters you can type accurately per minute (WPM). It evaluates your keystroke speed, error rate, and proficiency in Hindi keyboard layouts like Inscript and Remington."
+  },
+  {
+    question: "What is a good Hindi typing speed for government exams?",
+    answer: "A speed of 30 to 35 WPM with 95%+ accuracy is the standard benchmark required for central and state government recruitment exams like SSC CGL, SSC CHSL, CPCT, High Court Clerks, and State PSCs."
+  },
+  {
+    question: "How can I practice Hindi typing online for free on TypeBaazi?",
+    answer: "You can practice Hindi typing for free directly on TypeBaazi. Choose 30s, 60s, or 7-minute exam rounds, practice with on-screen Inscript virtual keyboard guides, and download free verified speed certificates."
+  },
+  {
+    question: "Which keyboard layout is used for Hindi typing in TypeBaazi?",
+    answer: "TypeBaazi supports the standard Devanagari Inscript keyboard layout recommended by the Government of India for all official recruitment tests."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Hindi Typing Test Online", url: "https://typebaazi.com/hindi-typing-test" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  lang="hi"
+  activePath="/hindi-typing-test"
+  faqItems={hindiFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <div class="container page-container">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Hindi Typing Test</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-gold">🇮🇳 Official Devanagari Hindi Speed Test</div>
+      <h1 class="page-title">Hindi Typing Test Online</h1>
+      <p class="page-sub">
+        Practice Hindi typing online with TypeBaazi. Test your Hindi typing speed and accuracy with real Devanagari exam passages, track your Net WPM, and download official certificates.
+      </p>
+      <div class="header-cta-row">
+        <a href="#hindi-test-arena" class="btn-primary start-typing-btn">
+          <span>⚡ Start Hindi Typing Test Now</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Interactive Typing Arena -->
+    <section class="arena-section" id="hindi-test-arena" aria-label="हिंदी टाइपिंग अरेना">
+      <TypingArena initialLanguage="hindi" initialDuration={60} initialDifficulty="medium" showControls={true} />
+      <VirtualKeyboard language="hindi" visible={true} />
+    </section>
+
+    <!-- Educational & Practical Guide -->
+    <section class="hindi-info-panel glass-panel">
+      <h2>What is a Hindi Typing Test?</h2>
+      <p class="panel-text">
+        A Hindi typing test evaluates your typing fluency in Devanagari script. It measures your <strong>Words Per Minute (WPM)</strong>, <strong>Net WPM</strong>, and <strong>Accuracy percentage</strong>. In Hindi, one standardized word is calculated as 5 characters (including vowels, consonants, matras, and spaces).
+      </p>
+
+      <h2>How to Improve Hindi Typing Speed? (Top 6 Tips)</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🏠</span>
+          <h4>1. Master the Home Row</h4>
+          <p>Keep your index fingers anchored on the home row keys (F and J) to build muscle memory for Devanagari characters.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⌨️</span>
+          <h4>2. Master Devanagari Inscript Layout</h4>
+          <p>Learn the logical layout where vowels are on the left hand and consonants are on the right hand.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>3. Focus on 98%+ Accuracy First</h4>
+          <p>Speed naturally follows accuracy. Avoiding backspace and incorrect keystrokes will instantly raise your Net WPM score.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🔤</span>
+          <h4>4. Practice Conjuncts (संयुक्ताक्षर)</h4>
+          <p>Regularly practice half-letters and complex conjuncts (जैसे क्ष, ज्ञ, त्र, श्र, प्र, क्र) using halant (्) combinations.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⏱️</span>
+          <h4>5. Take Daily 1-Minute Drills</h4>
+          <p>Consistent daily practice of 15 minutes is 10x more effective than irregular long sessions.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">📜</span>
+          <h4>6. Prepare for Government Exams (SSC, CPCT, High Court)</h4>
+          <p>Central &amp; state exams require 30-35 WPM with strict error limits. Use TypeBaazi's mock passages to meet exam criteria.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Internal Linking -->
+      <div class="related-links-box">
+        <h3>Explore Other TypeBaazi Practice Hubs</h3>
+        <div class="links-grid">
+          <a href="/seven-minute-typing-test" class="hub-link-card">
+            <span class="hub-icon">⏱️</span>
+            <div>
+              <strong>7-Minute Exam Test</strong>
+              <span>30 &amp; 40 WPM timer test with 50+ exam passages.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇮🇳</span>
+            <div>
+              <strong>Marathi Typing Test</strong>
+              <span>Devanagari Marathi speed test &amp; GCC-TBC prep.</span>
+            </div>
+          </a>
+          <a href="/typing-speed-test" class="hub-link-card">
+            <span class="hub-icon">⚡</span>
+            <div>
+              <strong>English Typing Test</strong>
+              <span>1-Minute online WPM calculator &amp; free certificate.</span>
+            </div>
+          </a>
+          <a href="/government-exam-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Practice</strong>
+              <span>SSC, Court, and State exam simulation hub.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="seo-faq-block">
+        <h3>Frequently Asked Questions (हिंदी टाइपिंग FAQ)</h3>
+        <div class="faq-item">
+          <h4>Q1: What is the difference between Inscript and Remington layouts?</h4>
+          <p>Inscript is the official Indian national Devanagari keyboard standard built into all modern operating systems (Windows, Mac, Android, Linux). Remington mimics the traditional mechanical typewriter layout. TypeBaazi's interactive visual keyboard supports standard Inscript typing.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q2: What is a passing score in SSC / CPCT Hindi typing?</h4>
+          <p>Most exams require 30 WPM with at least 90% to 95% net accuracy over a 10-minute or 15-minute testing window.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q3: How do I get my official TypeBaazi certificate?</h4>
+          <p>Complete any 60-second test or 7-minute test with 90%+ accuracy, and tap "Claim Official Certificate" to generate and download your verified PDF.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-container {
+    padding: clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 20px) 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .breadcrumb-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .bc-sep {
+    opacity: 0.4;
+  }
+
+  .bc-current {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-title {
+    font-size: clamp(24px, 4.5vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0 10px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    font-family: var(--font-marathi);
+  }
+
+  .page-sub {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--text-muted);
+    max-width: 780px;
+    margin: 0 auto 16px;
+    line-height: 1.55;
+  }
+
+  .header-cta-row {
+    margin-top: 4px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 18px var(--accent-gold-glow);
+    transition: all 0.2s ease;
+  }
+
+  .start-typing-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  /* Educational Info Panel */
+  .hindi-info-panel {
+    padding: clamp(20px, 3.5vw, 36px);
+    border-radius: var(--radius-lg);
+    background: rgba(12, 18, 30, 0.7);
+    border: 1px solid var(--border-subtle);
+    margin-top: 24px;
+  }
+
+  .hindi-info-panel h2 {
+    font-size: clamp(20px, 3vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hindi-info-panel h2:not(:first-child) {
+    margin-top: 32px;
+  }
+
+  .panel-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .tip-card {
+    padding: 18px;
+    background: rgba(18, 27, 46, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .tip-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(251, 191, 36, 0.3);
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tip-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+
+  .tip-card p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Related Links */
+  .related-links-box {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .related-links-box h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(18, 27, 46, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .hub-link-card:hover {
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .hub-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .hub-link-card strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+
+  .hub-link-card span {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
+
+  /* SEO FAQ Block */
+  .seo-faq-block {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .seo-faq-block h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .faq-item {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background: rgba(18, 27, 46, 0.4);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .faq-item h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin: 0 0 6px;
+  }
+
+  .faq-item p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Light Theme Specific Overrides */
+  [data-theme='light'] .page-title,
+  [data-theme='light'] .hindi-info-panel h2,
+  [data-theme='light'] .tip-card h4,
+  [data-theme='light'] .related-links-box h3,
+  [data-theme='light'] .seo-faq-block h3,
+  [data-theme='light'] .hub-link-card strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .page-sub,
+  [data-theme='light'] .panel-text,
+  [data-theme='light'] .tip-card p,
+  [data-theme='light'] .hub-link-card span,
+  [data-theme='light'] .faq-item p {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .hindi-info-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme='light'] .tip-card,
+  [data-theme='light'] .hub-link-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+</style>

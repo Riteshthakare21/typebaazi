@@ -1,0 +1,369 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RaceTrack from '../components/RaceTrack.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const raceFaqs = [
+  {
+    question: "How does the TypeBaazi Grand Prix Typing Car Race work?",
+    answer: "You control a high-speed racing car on a futuristic track. Every accurate character you type moves your car forward. Typing with high WPM and 98%+ accuracy activates nitro turbo boosts to overtake the AI bot and cross the finish line."
+  },
+  {
+    question: "Can I race in Hindi and Marathi as well as English?",
+    answer: "Yes! You can choose English, Hindi (हिंदी), or Marathi (मराठी) race passages with full Devanagari Inscript support and race against adaptive AI bots."
+  },
+  {
+    question: "Do I get a certificate for winning the typing race?",
+    answer: "Yes, when you defeat the AI bot and win 1st Place in the Grand Prix race, you unlock an official verified digital Certificate of Victory available in high-resolution PDF and PNG formats."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "AI Car Typing Race", url: "https://typebaazi.com/race" }
+];
+---
+
+<Layout
+  title="Typing Race Game Online — #1 Car Race Game & Speed Duel | TypeBaazi"
+  description="Play the ultimate free typing race game online! Race high-speed cars against smart AI bots with accurate keystrokes in English, Hindi & Marathi, win Grand Prix & download certificates."
+  keywords="typing race game, race game, car typing race, car race typing game, typing games, nitro type alternative, typing speed race, english typing race, hindi typing race, marathi typing race, typebaazi grand prix"
+  activePath="/race"
+  faqItems={raceFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <!-- VideoGame Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "TypeBaazi Grand Prix AI Car Race",
+    "description": "Real-time vector car racing typing game where keyboard typing speed powers racing cars against intelligent AI opponents across English, Hindi, and Marathi.",
+    "genre": ["Racing", "Educational", "Typing Game"],
+    "playMode": "SinglePlayer",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All (Web, Android, Windows, macOS, iOS)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  })} />
+  <div class="race-page-container" id="race-page-root">
+    <!-- Compact Game Header -->
+    <header class="race-page-header">
+      <div class="header-badge-row">
+        <span class="badge badge-pink">🏎️ TypeBaazi Grand Prix</span>
+        <span class="header-tagline">AI Speed Duel • English, हिंदी &amp; मराठी</span>
+      </div>
+      <h1 class="page-title">Real-Time AI Typing Race</h1>
+    </header>
+
+    <!-- Main Active Race Game Viewport -->
+    <main class="race-game-arena">
+      <!-- The Dedicated Race Track Component -->
+      <RaceTrack initialLanguage="english" initialDifficulty="medium" />
+
+      <!-- Responsive Virtual Keyboard -->
+      <VirtualKeyboard language="english" visible={true} />
+    </main>
+
+    <!-- Collapsible Educational & SEO Guide (Below Active Game) -->
+    <section class="race-guide-section">
+      <details class="race-info-accordion glass-panel" id="race-info-accordion">
+        <summary class="accordion-summary">
+          <span class="summary-title">📖 How the AI Typing Race Works &amp; Pro Racing Tips</span>
+          <span class="summary-chevron">▼</span>
+        </summary>
+        <div class="accordion-content">
+          <div class="race-rules-grid">
+            <div class="rule-box">
+              <span class="rule-icon">🚦</span>
+              <h4>3-2-1-GO Countdown</h4>
+              <p>Get ready on the starting grid. The race clock and AI driver start precisely when GO appears.</p>
+            </div>
+            <div class="rule-box">
+              <span class="rule-icon">🚗</span>
+              <h4>Dynamic AI Speed Engine</h4>
+              <p>The virtual opponent races with realistic human speed curves across 4 calibrated difficulty tiers (18 to 102+ WPM).</p>
+            </div>
+            <div class="rule-box">
+              <span class="rule-icon">🔥</span>
+              <h4>Nitro Overdrive</h4>
+              <p>Surge past 75+ WPM to trigger your car's rear nitro exhaust flames and speed ahead in the standings.</p>
+            </div>
+            <div class="rule-box">
+              <span class="rule-icon">🏆</span>
+              <h4>Rewards &amp; XP</h4>
+              <p>Winning races awards bonus XP, advances your player level, and unlocks exclusive racing trophy badges.</p>
+            </div>
+          </div>
+
+          <!-- Related Modes Navigation Strip -->
+          <div class="race-related-strip" style="margin-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px;">
+            <h4 style="font-size: 14.5px; font-weight: 800; color: #ffffff; margin-bottom: 10px;">⚡ Continue Your Typing Journey</h4>
+            <div class="race-related-grid">
+              <a href="/typing-test" class="race-rel-card" data-analytics-cta="race_rel_typing_test">
+                <span>⌨️ Online Typing Speed Test</span>
+              </a>
+              <a href="/daily-challenge" class="race-rel-card" data-analytics-cta="race_rel_daily">
+                <span>🔥 Daily Typing Challenge (+100 XP)</span>
+              </a>
+              <a href="/seven-minute-typing-test" class="race-rel-card" data-analytics-cta="race_rel_7min">
+                <span>⏱️ 7-Minute GCC-TBC Exam Test</span>
+              </a>
+              <a href="/games" class="race-rel-card" data-analytics-cta="race_rel_games">
+                <span>🎮 Falling Words Arcade Matrix</span>
+              </a>
+              <a href="/leaderboard" class="race-rel-card" data-analytics-cta="race_rel_leaderboard">
+                <span>🏆 Global Leaderboard &amp; Hall of Fame</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+  </div>
+</Layout>
+
+<style is:global>
+  .race-page-container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(6px, 1.2vh, 14px) clamp(8px, 1.8vw, 16px) clamp(20px, 3vh, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.2vh, 12px);
+    box-sizing: border-box;
+  }
+
+  .race-page-header {
+    text-align: center;
+  }
+
+  .header-badge-row {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+
+  .header-tagline {
+    font-size: clamp(10.5px, 1.3vw, 12px);
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .page-title {
+    font-size: clamp(20px, 4.5vw, 28px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 2px 0 0;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .race-game-arena {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Guide Accordion */
+  .race-guide-section {
+    margin-top: clamp(12px, 2vh, 24px);
+    width: 100%;
+  }
+
+  .race-info-accordion {
+    padding: 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+  }
+
+  .accordion-summary {
+    padding: clamp(10px, 1.5vw, 14px) clamp(14px, 2vw, 20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background: rgba(15, 23, 42, 0.6);
+    list-style: none;
+    font-size: clamp(12px, 1.5vw, 14px);
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-summary:hover {
+    background: rgba(0, 240, 255, 0.08);
+    color: var(--accent-cyan);
+  }
+
+  .summary-chevron {
+    font-size: 10px;
+    transition: transform var(--transition-fast);
+    color: var(--text-muted);
+  }
+
+  .race-info-accordion[open] .summary-chevron {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    padding: clamp(12px, 2vw, 20px);
+    background: rgba(8, 12, 20, 0.4);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .race-rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(10px, 1.5vw, 16px);
+  }
+
+  .rule-box {
+    background: rgba(12, 18, 30, 0.7);
+    border: 1px solid var(--border-subtle);
+    padding: clamp(10px, 1.5vw, 16px);
+    border-radius: var(--radius-md);
+  }
+
+  .rule-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .rule-box h4 {
+    font-size: clamp(12px, 1.4vw, 14px);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .rule-box p {
+    font-size: clamp(11px, 1.2vw, 12px);
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Automatically collapse or dim distractions when racing */
+  .is-racing-active .race-guide-section {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* Light Theme Overrides for Race Page */
+  [data-theme='light'] .race-page-container .page-title {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    background: none !important;
+  }
+
+  [data-theme='light'] .header-tagline {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .race-info-accordion {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .accordion-summary {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .accordion-summary:hover {
+    background: #eff6ff !important;
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .summary-chevron {
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .accordion-content {
+    background: #ffffff !important;
+    border-top: 1px solid #e2e8f0 !important;
+  }
+
+  /* Race Related Modes Grid */
+  .race-related-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-top: 8px;
+  }
+
+  .race-rel-card {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    background: rgba(14, 21, 37, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-full, 9999px);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .race-rel-card:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--accent-cyan, #00f0ff);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  [data-theme='light'] .race-related-strip h4 {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .race-rel-card {
+    background: #f1f5f9 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #1e293b !important;
+  }
+
+  [data-theme='light'] .race-rel-card:hover {
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+    color: #0070f3 !important;
+  }
+</style>
+
+<script>
+  const raceRoot = document.getElementById('race-page-root');
+  const guideAccordion = document.getElementById('race-info-accordion') as HTMLDetailsElement;
+
+  // Listen to race state change events
+  window.addEventListener('race-state-change', (e: Event) => {
+    const custom = e as CustomEvent<{ state: string }>;
+    if (!custom.detail) return;
+
+    if (custom.detail.state === 'racing') {
+      raceRoot?.classList.add('is-racing-active');
+      if (guideAccordion && guideAccordion.open) {
+        guideAccordion.open = false;
+      }
+    } else {
+      raceRoot?.classList.remove('is-racing-active');
+    }
+  });
+</script>
