@@ -1,0 +1,456 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "Marathi Typing Test Online (मराठी टायपिंग टेस्ट 30/40 WPM) | TypeBaazi";
+const pageDesc = "Free Marathi typing speed test & practice (मराठी टायपिंग सराव). Practice official GCC-TBC 30 WPM & 40 WPM exam passages with instant speed analysis and certificates.";
+const pageKeywords = "marathi typing test online, marathi typing test, marathi typing speed test, मराठी टायपिंग टेस्ट, gcc tbc marathi typing 30 wpm, marathi typing practice online, devanagari typing test, typebaazi, मराठी टायपिंग सराव, mpsc marathi typing";
+
+const marathiFaqs = [
+  {
+    question: "What is a Marathi typing test?",
+    answer: "A Marathi typing test measures how many Devanagari words and characters you can type accurately per minute (WPM). It evaluates your keystroke speed, error rate, and knowledge of Marathi keyboard layouts like Remington and Inscript."
+  },
+  {
+    question: "What is a good Marathi typing speed for GCC-TBC exams?",
+    answer: "A speed of 30 WPM with 95%+ accuracy is the standard benchmark required for government certification (GCC-TBC) and clerk-typist recruitment in Maharashtra. Speeds above 40 WPM are considered professional grade."
+  },
+  {
+    question: "How can I practice Marathi typing online for free on TypeBaazi?",
+    answer: "You can practice Marathi typing for free directly on TypeBaazi. Choose between 60s, 180s, or official 7-minute test rounds, practice with on-screen virtual keyboard guides, and download free verified speed certificates."
+  },
+  {
+    question: "Is TypeBaazi free for students and exam aspirants?",
+    answer: "Yes, TypeBaazi is 100% free with unlimited tests, practice paragraphs, live AI racing games, and downloadable digital certificates."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Marathi Typing Test Online (मराठी टायपिंग टेस्ट)", url: "https://typebaazi.com/marathi-typing-test" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  lang="mr"
+  activePath="/marathi-typing-test"
+  faqItems={marathiFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+
+  <div class="container page-container">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Marathi Typing Test (मराठी टायपिंग टेस्ट)</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-pink">🚩 Official Devanagari Speed Test</div>
+      <h1 class="page-title">Marathi Typing Test Online (मराठी टायपिंग टेस्ट)</h1>
+      <p class="page-sub">
+        Test and improve your Marathi typing speed with TypeBaazi. Practice with real typing challenges, track your speed and accuracy, and compete with other users.
+      </p>
+      <div class="header-cta-row">
+        <a href="#marathi-test-arena" class="btn-primary start-typing-btn">
+          <span>⚡ Start Marathi Typing Test Now (मराठी टायपिंग टेस्ट सुरू करा)</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Interactive Typing Arena -->
+    <section class="arena-section" id="marathi-test-arena" aria-label="मराठी टायपिंग अरेना">
+      <TypingArena initialLanguage="marathi" initialDuration={60} initialDifficulty="medium" showControls={true} />
+      <VirtualKeyboard language="marathi" visible={true} />
+    </section>
+
+    <!-- Educational & Practical Guide -->
+    <section class="marathi-info-panel glass-panel">
+      <h2>What is a Marathi Typing Test?</h2>
+      <p class="panel-text">
+        A Marathi typing test evaluates your typing fluency in Devanagari script. It measures your <strong>Words Per Minute (WPM)</strong>, <strong>Net WPM</strong>, and <strong>Accuracy percentage</strong>. In Marathi, one standardized word is calculated as 5 characters (including vowels, consonants, matras, and spaces).
+      </p>
+
+      <h2>How to Improve Marathi Typing Speed? (Top 8 Tips)</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🏠</span>
+          <h4>1. Master the Home Row</h4>
+          <p>Keep your index fingers anchored on the home row keys (F and J) to build muscle memory for Devanagari characters.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⌨️</span>
+          <h4>2. Learn Remington &amp; Inscript Layouts</h4>
+          <p>Understand key placements for vowels (स्वर), consonants (व्यंजने), and matras (काना, वेलांटी, उकार, मात्रा).</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>3. Focus on 98%+ Accuracy First</h4>
+          <p>Speed naturally follows accuracy. Avoiding backspace and incorrect keystrokes will instantly raise your Net WPM score.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🔤</span>
+          <h4>4. Practice Conjuncts (जोडाक्षरे)</h4>
+          <p>Regularly practice half-letters and complex conjuncts (उदा. क्ष, ज्ञ, त्र, प्र, क्र) using halant (्) combinations.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⏱️</span>
+          <h4>5. Take Daily 1-Minute Drills</h4>
+          <p>Consistent daily practice of 15 minutes is 10x more effective than irregular long sessions.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">📜</span>
+          <h4>6. Prepare for Government Exams (GCC-TBC &amp; MPSC)</h4>
+          <p>Maharashtra state exams require 30 WPM with strict error penalties. Use TypeBaazi's mock passages to meet exam criteria.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Internal Linking -->
+      <div class="related-links-box">
+        <h3>Explore Other TypeBaazi Practice Hubs</h3>
+        <div class="links-grid">
+          <a href="/hindi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Typing Test</strong>
+              <span>Devanagari Hindi speed test &amp; SSC/Court prep.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-practice" class="hub-link-card">
+            <span class="hub-icon">✍️</span>
+            <div>
+              <strong>Marathi Typing Practice</strong>
+              <span>Untimed Devanagari key drills &amp; letter practice.</span>
+            </div>
+          </a>
+          <a href="/english-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇬🇧</span>
+            <div>
+              <strong>English Typing Test</strong>
+              <span>Test and benchmark your English WPM speed.</span>
+            </div>
+          </a>
+          <a href="/typing-speed-test" class="hub-link-card">
+            <span class="hub-icon">⚡</span>
+            <div>
+              <strong>Typing Speed Test</strong>
+              <span>1-Minute online WPM calculator &amp; free certificate.</span>
+            </div>
+          </a>
+          <a href="/government-exam-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Practice</strong>
+              <span>MPSC, GCC-TBC, SSC, and Court skill test simulator.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-panel glass-panel">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-accordion">
+        {marathiFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-arrow">&darr;</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(14px, 2.5vw, 28px) clamp(10px, 2vw, 20px) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan, #00f0ff);
+    text-decoration: none;
+  }
+
+  .bc-sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .bc-current {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.6vw, 15.5px);
+    color: var(--text-muted, #94a3b8);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-cta-row {
+    margin-top: 16px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  .marathi-info-panel,
+  .faq-panel {
+    padding: clamp(20px, 3vw, 32px);
+    margin: 24px 0;
+    border-radius: var(--radius-xl, 24px);
+    background: rgba(10, 16, 28, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .marathi-info-panel h2,
+  .faq-panel h2 {
+    font-size: clamp(19px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 20px 0 10px;
+  }
+
+  .marathi-info-panel h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .panel-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .tip-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tip-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #00f0ff;
+    margin: 0 0 6px;
+  }
+
+  .tip-card p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .related-links-box {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .related-links-box h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .hub-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .hub-link-card strong {
+    font-size: 13.5px;
+    color: #ffffff;
+    display: block;
+  }
+
+  .hub-link-card span {
+    font-size: 11.5px;
+    color: #94a3b8;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .hub-link-card:hover {
+    border-color: #00f0ff;
+    background: rgba(0, 240, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-item {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0, 240, 255, 0.4);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    color: #00f0ff;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .faq-answer p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .page-title,
+  [data-theme='light'] .marathi-info-panel h2,
+  [data-theme='light'] .faq-panel h2,
+  [data-theme='light'] .related-links-box h3,
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .marathi-info-panel,
+  [data-theme='light'] .faq-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .tip-card,
+  [data-theme='light'] .hub-link-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .tip-card p,
+  [data-theme='light'] .panel-text,
+  [data-theme='light'] .faq-answer p {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .hub-link-card strong {
+    color: #0f172a !important;
+  }
+</style>

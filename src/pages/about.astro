@@ -1,0 +1,771 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LearnGuide from '../components/LearnGuide.astro';
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About Us",
+      "item": "https://typebaazi.com/about"
+    }
+  ]
+};
+---
+
+<Layout
+  title="About TypeBaazi — Trilingual English, Hindi & Marathi Typing Platform"
+  description="Learn about TypeBaazi, the modern trilingual typing platform for English, Hindi, and Marathi. Master touch typing, contact our team, and explore our mission."
+  activePath="/about"
+  keywords="about typebaazi, learn typing, touch typing academy, contact typebaazi, riteshthakareofficial@gmail.com, typebaazi privacy policy, typebaazi terms, typing test about"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <!-- Header -->
+    <div class="page-header">
+      <div class="badge badge-cyan">ℹ️ About &amp; Learn Hub</div>
+      <h1 class="page-title">About TypeBaazi &amp; Touch Typing Academy</h1>
+      <p class="page-sub">
+        <em>"Type. Race. Win." • "टाइप करा. शर्यत लावा. जिंका."</em>
+      </p>
+    </div>
+
+    <!-- Interactive Navigation Tab Pills -->
+    <div class="about-nav-tabs">
+      <button class="about-tab-btn active" data-tab="tab-about">
+        <span>ℹ️ About Us</span>
+      </button>
+      <button class="about-tab-btn" data-tab="tab-learn">
+        <span>📖 Learn Typing</span>
+      </button>
+      <button class="about-tab-btn" data-tab="tab-contact">
+        <span>📬 Contact Us</span>
+      </button>
+      <button class="about-tab-btn" data-tab="tab-privacy">
+        <span>🔒 Privacy Policy</span>
+      </button>
+      <button class="about-tab-btn" data-tab="tab-terms">
+        <span>📜 Terms &amp; Conditions</span>
+      </button>
+      <button class="about-tab-btn" data-tab="tab-faq">
+        <span>💡 FAQ</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: ABOUT US -->
+    <div id="tab-about" class="about-tab-content active">
+      <div class="about-grid">
+        <div class="about-card glass-panel">
+          <h2>🎯 Our Mission</h2>
+          <p>
+            TypeBaazi was built to bring gaming-tier aesthetics, ultra-low latency acoustics, and true trilingual support to typing practice. We believe typing tests shouldn't look like boring 90s forms — they should feel like high-speed racing games and skill battles that motivate you to practice every day.
+          </p>
+          <p>
+            <strong>"बाजी" (Baazi)</strong> represents competition, mastery, and winning spirit. TypeBaazi treats <strong>English</strong>, <strong>हिंदी (Hindi Devanagari)</strong>, and <strong>मराठी (Marathi Devanagari)</strong> as first-class citizens with dedicated typing engines, Unicode grapheme segmentation, and tailored text datasets.
+          </p>
+        </div>
+
+        <div class="about-card glass-panel border-green">
+          <h2>🛡️ 100% Client-Side Privacy</h2>
+          <p>
+            Your typing stays private. All typing input is processed strictly inside your browser window. Zero typed characters or sentences are transmitted to any server.
+          </p>
+          <div class="privacy-highlight">
+            <strong>No Keystroke Tracking:</strong> Every keypress is calculated in local memory. Personal bests, streaks, and settings are saved locally on your device via <code>localStorage</code>.
+          </div>
+        </div>
+
+        <div class="about-card glass-panel">
+          <h2>⚡ Procedural Zero-Latency Audio</h2>
+          <p>
+            Unlike traditional typing sites that load heavy sound files over the network, TypeBaazi features a custom <strong>Web Audio API procedural sound synthesizer</strong>.
+          </p>
+          <p>
+            Every mechanical click, creamy switch thock, spacebar thud, and racing engine rumble is generated algorithmically in real-time with sub-millisecond audio latency.
+          </p>
+        </div>
+
+        <div class="about-card glass-panel">
+          <h2>🎮 What Makes TypeBaazi Unique?</h2>
+          <ul class="perk-bullets">
+            <li><strong>Real-Time AI Car Racing:</strong> Race against virtual computer opponents across animated tracks.</li>
+            <li><strong>Arcade Typing Game:</strong> Falling Words Matrix cyber defense challenge and speed mode.</li>
+            <li><strong>Deterministic Daily Challenges:</strong> Worldwide calendar-synced daily goals with streak rewards.</li>
+            <li><strong>Virtual Keyboard Visualizer:</strong> Active key lighting and finger home-row zones.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: LEARN TYPING -->
+    <div id="tab-learn" class="about-tab-content">
+      <LearnGuide />
+    </div>
+
+    <!-- TAB 3: CONTACT US -->
+    <div id="tab-contact" class="about-tab-content">
+      <div class="contact-grid">
+        <div class="contact-info-col">
+          <div class="info-card glass-panel">
+            <div class="info-icon">📧</div>
+            <h3>Direct Email Contact</h3>
+            <p>For support, business inquiries, bug reports, or feature suggestions, write to:</p>
+            <a href="mailto:riteshthakareofficial@gmail.com" class="direct-email-pill">
+              <span>✉️ riteshthakareofficial@gmail.com</span>
+            </a>
+          </div>
+
+          <div class="info-card glass-panel">
+            <div class="info-icon">🚩</div>
+            <h3>English, Hindi &amp; Marathi Passages</h3>
+            <p>Want your custom English, Hindi, or Marathi literature or exam practice passage featured in the daily challenge?</p>
+            <a href="mailto:riteshthakareofficial@gmail.com?subject=TypeBaazi%20Passage%20Submission" class="contact-link">Submit Passages →</a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-card glass-panel">
+          <h2>Send Us a Direct Message</h2>
+          <p class="form-desc">Fill out the form below and we will get back to you at your email address.</p>
+
+          <form id="unified-contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="contact-name">Your Full Name <span class="req">*</span></label>
+              <input type="text" id="contact-name" name="name" placeholder="e.g. Rahul Sharma" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Your Email Address <span class="req">*</span></label>
+              <input type="email" id="contact-email" name="email" placeholder="e.g. rahul@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Inquiry Subject <span class="req">*</span></label>
+              <select id="contact-subject" name="subject" required>
+                <option value="general">💬 General Question / Feedback</option>
+                <option value="feature">✨ New Feature Request</option>
+                <option value="bug">🐛 Bug Report / Technical Issue</option>
+                <option value="english">🇬🇧 English Passage Suggestion</option>
+                <option value="hindi">🇮🇳 Hindi Passage Suggestion</option>
+                <option value="marathi">🇮🇳 Marathi Passage Suggestion</option>
+                <option value="other">📝 Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message <span class="req">*</span></label>
+              <textarea id="contact-message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" id="unified-submit-btn" class="btn-primary" style="width: 100%; justify-content: center; padding: 12px 24px; font-size: 15px;">
+              <span id="unified-btn-text">🚀 Send Message to riteshthakareofficial@gmail.com</span>
+            </button>
+
+            <div id="unified-success-msg" class="contact-alert success hidden">
+              ✅ <strong>Thank you!</strong> Your message has been sent to <strong>riteshthakareofficial@gmail.com</strong>. We will reply shortly!
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: PRIVACY POLICY -->
+    <div id="tab-privacy" class="about-tab-content">
+      <div class="legal-card glass-panel">
+        <div class="legal-section">
+          <h2>1. 100% Client-Side Computing &amp; Zero Keystroke Logging</h2>
+          <p>
+            At <strong>TypeBaazi</strong>, your privacy is our foundational promise. Every keystroke you press and every sentence you complete is evaluated entirely within your device's browser memory. Zero typed characters are ever recorded, transmitted, or sold to external servers.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h2>2. Local Storage Usage</h2>
+          <p>
+            To provide persistent progress tracking, TypeBaazi saves your highest WPM, daily streaks, level XP, sound volume, and theme preferences locally inside your browser's <code>localStorage</code>.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h2>3. Cookies &amp; Third-Party Services</h2>
+          <p>
+            We use Google Analytics (GA4) to understand aggregate traffic patterns and partner with Google AdSense to support our free service. For complete details on cookies, third-party advertising, and opt-outs, view our full policies:
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+            <a href="/privacy-policy" class="contact-link" style="font-weight: 700;">Read Full Privacy Policy →</a>
+            <a href="/cookie-policy" class="contact-link" style="font-weight: 700;">Read Cookie Policy →</a>
+          </div>
+        </div>
+
+        <div class="legal-section">
+          <h2>4. Privacy Inquiries</h2>
+          <p>
+            For any questions regarding our privacy practices, email directly at: <a href="mailto:riteshthakareofficial@gmail.com" style="color: var(--accent-cyan);"><strong>riteshthakareofficial@gmail.com</strong></a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: TERMS & CONDITIONS -->
+    <div id="tab-terms" class="about-tab-content">
+      <div class="legal-card glass-panel">
+        <div class="legal-section">
+          <h2>1. Educational &amp; Entertainment Usage</h2>
+          <p>
+            TypeBaazi provides free typing speed tests, AI car racing games, English, Hindi, and Marathi typing practice for personal learning and exam readiness (GCC-TBC).
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h2>2. Fair Play &amp; Anti-Bot Rules</h2>
+          <p>
+            Users are prohibited from utilizing automated typing bots, macros, or scripts to submit falsified WPM records to the public leaderboards.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h2>3. Intellectual Property &amp; Legal Disclaimers</h2>
+          <p>
+            All custom vector car assets, procedural audio synthesizers, visual designs, and software code are the intellectual property of TypeBaazi.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+            <a href="/terms-and-conditions" class="contact-link" style="font-weight: 700;">Read Full Terms &amp; Conditions →</a>
+            <a href="/disclaimer" class="contact-link" style="font-weight: 700;">Read Website Disclaimer →</a>
+          </div>
+        </div>
+
+        <div class="legal-section">
+          <h2>4. Contact for Terms</h2>
+          <p>
+            Legal or terms questions can be sent to: <a href="mailto:riteshthakareofficial@gmail.com" style="color: var(--accent-cyan);"><strong>riteshthakareofficial@gmail.com</strong></a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: FAQ -->
+    <div id="tab-faq" class="about-tab-content">
+      <FaqSection showSchema={true} />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-container {
+    padding: clamp(24px, 4vw, 48px) clamp(12px, 2.5vw, 24px) 60px;
+    max-width: 1040px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: clamp(24px, 5.5vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.8vw, 16px);
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  /* Interactive Tab Switcher */
+  .about-nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    background: rgba(14, 21, 37, 0.7);
+    padding: 8px;
+    border-radius: var(--radius-lg, 16px);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .about-tab-btn {
+    padding: 9px 18px;
+    border-radius: var(--radius-md, 10px);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted, #94a3b8);
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .about-tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .about-tab-btn.active {
+    background: linear-gradient(135deg, var(--accent-cyan, #00f0ff), #0070f3);
+    color: #060b14 !important;
+    font-weight: 900;
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+  }
+
+  /* Tab Content Display */
+  .about-tab-content {
+    display: none;
+    animation: tabFadeIn 0.3s ease;
+  }
+
+  .about-tab-content.active {
+    display: block;
+  }
+
+  @keyframes tabFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(14px, 2vw, 24px);
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .about-card {
+    padding: clamp(16px, 2.5vw, 28px);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    border-radius: var(--radius-lg, 16px);
+  }
+
+  .border-green {
+    border-color: rgba(16, 185, 129, 0.35);
+  }
+
+  .about-card h2 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .about-card p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .privacy-highlight {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    color: #d1fae5;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .perk-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .perk-bullets li {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .perk-bullets strong {
+    color: var(--accent-cyan);
+  }
+
+  /* Contact Styles */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(16px, 2.5vw, 28px);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info-card {
+    padding: 20px;
+    border-radius: var(--radius-lg, 16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .info-icon {
+    font-size: 26px;
+  }
+
+  .info-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .info-card p {
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .direct-email-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 240, 255, 0.12);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    color: var(--accent-cyan, #00f0ff);
+    font-weight: 800;
+    font-size: 13.5px;
+    padding: 8px 14px;
+    border-radius: var(--radius-md, 8px);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    word-break: break-all;
+  }
+
+  .direct-email-pill:hover {
+    background: var(--accent-cyan, #00f0ff);
+    color: #060b14 !important;
+  }
+
+  .contact-link {
+    font-size: 13px;
+    color: var(--accent-cyan, #00f0ff);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .contact-form-card {
+    padding: clamp(20px, 4vw, 32px);
+    border-radius: var(--radius-xl, 20px);
+    border: 1.5px solid rgba(255, 0, 122, 0.3);
+    box-sizing: border-box;
+  }
+
+  .contact-form-card h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+
+  .form-desc {
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin: 0 0 18px;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+
+  .req {
+    color: #ff007a;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(14, 20, 36, 0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md, 10px);
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent-cyan, #00f0ff);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+    background: rgba(18, 28, 52, 0.95);
+  }
+
+  .contact-alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-md, 10px);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  .contact-alert.success {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1.5px solid #10b981;
+    color: #d1fae5;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Legal Styles */
+  .legal-card {
+    padding: clamp(20px, 4vw, 36px);
+    border-radius: var(--radius-xl, 20px);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-sizing: border-box;
+  }
+
+  .legal-section h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+  }
+
+  .legal-section p {
+    font-size: 13.5px;
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .about-nav-tabs {
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  [data-theme='light'] .about-tab-btn {
+    color: #475569 !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .about-tab-btn:hover {
+    color: #0f172a !important;
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .about-tab-btn.active {
+    background: linear-gradient(135deg, #0070f3 0%, #00b4d8 100%) !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.28) !important;
+  }
+
+  [data-theme='light'] .about-card,
+  [data-theme='light'] .info-card,
+  [data-theme='light'] .contact-form-card,
+  [data-theme='light'] .legal-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme='light'] .about-card h2,
+  [data-theme='light'] .info-card h3,
+  [data-theme='light'] .contact-form-card h2,
+  [data-theme='light'] .legal-section h2 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .about-card p,
+  [data-theme='light'] .info-card p,
+  [data-theme='light'] .form-desc,
+  [data-theme='light'] .legal-section p,
+  [data-theme='light'] .perk-bullets li {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .perk-bullets strong {
+    color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .privacy-highlight {
+    background: #ecfdf5 !important;
+    border: 1.5px solid #a7f3d0 !important;
+    color: #065f46 !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .privacy-highlight strong {
+    color: #047857 !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .privacy-highlight code {
+    background: #d1fae5 !important;
+    color: #065f46 !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .direct-email-pill {
+    background: #eff6ff !important;
+    border-color: #bfdbfe !important;
+    color: #0070f3 !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .direct-email-pill:hover {
+    background: #0070f3 !important;
+    color: #ffffff !important;
+  }
+
+  [data-theme='light'] .form-group label {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .form-group input,
+  [data-theme='light'] .form-group select,
+  [data-theme='light'] .form-group textarea {
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .form-group input:focus,
+  [data-theme='light'] .form-group select:focus,
+  [data-theme='light'] .form-group textarea:focus {
+    border-color: #0070f3 !important;
+    box-shadow: 0 0 12px rgba(0, 112, 243, 0.25) !important;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching logic + Hash routing support (e.g. /about#contact)
+  const tabBtns = document.querySelectorAll('.about-tab-btn');
+  const tabContents = document.querySelectorAll('.about-tab-content');
+
+  function switchTab(targetId: string) {
+    tabBtns.forEach(btn => {
+      if (btn.getAttribute('data-tab') === targetId) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    tabContents.forEach(content => {
+      if (content.id === targetId) {
+        content.classList.add('active');
+      } else {
+        content.classList.remove('active');
+      }
+    });
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      if (target) {
+        switchTab(target);
+        window.history.replaceState(null, '', `#${target.replace('tab-', '')}`);
+      }
+    });
+  });
+
+  // Check URL hash on page load
+  const hash = window.location.hash.toLowerCase().replace('#', '');
+  if (hash === 'learn' || hash === 'learn-typing') {
+    switchTab('tab-learn');
+  } else if (hash === 'contact' || hash === 'contact-us') {
+    switchTab('tab-contact');
+  } else if (hash === 'privacy' || hash === 'privacy-policy') {
+    switchTab('tab-privacy');
+  } else if (hash === 'terms' || hash === 'terms-and-conditions') {
+    switchTab('tab-terms');
+  } else if (hash === 'faq' || hash === 'faq-section') {
+    switchTab('tab-faq');
+  }
+
+  // Unified Contact Form Submission
+  const unifiedForm = document.getElementById('unified-contact-form') as HTMLFormElement | null;
+  const unifiedSubmitBtn = document.getElementById('unified-submit-btn') as HTMLButtonElement | null;
+  const unifiedBtnText = document.getElementById('unified-btn-text');
+  const unifiedSuccessMsg = document.getElementById('unified-success-msg');
+
+  unifiedForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (unifiedSubmitBtn) unifiedSubmitBtn.disabled = true;
+    if (unifiedBtnText) unifiedBtnText.textContent = '⏳ Sending to riteshthakareofficial@gmail.com...';
+
+    setTimeout(() => {
+      if (unifiedBtnText) unifiedBtnText.textContent = '✓ Sent!';
+      if (unifiedSuccessMsg) unifiedSuccessMsg.classList.remove('hidden');
+      unifiedForm.reset();
+
+      setTimeout(() => {
+        if (unifiedSubmitBtn) unifiedSubmitBtn.disabled = false;
+        if (unifiedBtnText) unifiedBtnText.textContent = '🚀 Send Message to riteshthakareofficial@gmail.com';
+      }, 4000);
+    }, 900);
+  });
+</script>

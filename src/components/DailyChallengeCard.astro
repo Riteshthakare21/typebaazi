@@ -1,0 +1,279 @@
+---
+/**
+ * Daily Challenge Preview Card Widget
+ * 100% Mobile responsive across 320px - 1440px with zero horizontal overflow.
+ */
+---
+
+<div class="daily-card glass-panel" id="daily-challenge-widget">
+  <div class="daily-top">
+    <div class="daily-badge">
+      <span class="flame-icon">🔥</span>
+      <span>Daily Typing Challenge</span>
+    </div>
+    <div class="streak-pill">
+      <span class="flame-text">🔥</span>
+      <span id="widget-streak-count">0</span> Day Streak
+    </div>
+  </div>
+
+  <div class="daily-content">
+    <h3 class="daily-title" id="widget-challenge-date">Today's Target Sprint</h3>
+    <p class="daily-desc">
+      Complete today's official challenge to keep your typing streak alive and earn <strong>+100 Bonus XP</strong>!
+    </p>
+
+    <div class="challenge-targets-row">
+      <div class="target-chip">
+        <span class="chip-flag">🇬🇧</span>
+        <span class="chip-info">Target: <strong id="widget-en-target">55 WPM</strong> (95% Acc)</span>
+      </div>
+      <div class="target-chip">
+        <span class="chip-flag">🇮🇳</span>
+        <span class="chip-info">हिंदी: <strong id="widget-hi-target">36 WPM</strong> (93% Acc)</span>
+      </div>
+      <div class="target-chip">
+        <span class="chip-flag">🇮🇳</span>
+        <span class="chip-info">मराठी: <strong id="widget-mr-target">36 WPM</strong> (93% Acc)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="daily-actions">
+    <a href="/daily-challenge" class="btn-secondary daily-play-btn" title="Play Daily Challenge">
+      <span>⚡ Play Today's Challenge</span>
+    </a>
+  </div>
+</div>
+
+<style is:global>
+  .daily-card {
+    padding: clamp(14px, 2.5vw, 24px);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: linear-gradient(145deg, rgba(18, 27, 46, 0.85), rgba(245, 158, 11, 0.06));
+    border-radius: var(--radius-lg, 18px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .daily-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .daily-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: clamp(11px, 2.5vw, 12px);
+    font-weight: 800;
+    color: var(--accent-gold, #f59e0b);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  .streak-pill {
+    padding: 3px 10px;
+    border-radius: var(--radius-full, 9999px);
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    font-size: clamp(10.5px, 2.4vw, 12px);
+    font-weight: 800;
+    color: #fde047;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .daily-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .daily-title {
+    font-size: clamp(16px, 3.2vw, 19px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .daily-desc {
+    font-size: clamp(12px, 2.4vw, 13.5px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.5;
+    margin: 0 0 4px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .challenge-targets-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .target-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: rgba(8, 12, 20, 0.6);
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+    border-radius: var(--radius-md, 12px);
+    font-size: clamp(10.5px, 2.3vw, 12px);
+    color: var(--text-main, #f8fafc);
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .chip-flag {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .chip-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .target-chip strong {
+    color: var(--accent-cyan, #00f0ff);
+  }
+
+  .daily-actions {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .daily-play-btn {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 16px !important;
+    font-size: clamp(12.5px, 2.6vw, 14px) !important;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 480px) {
+    .daily-card {
+      padding: 14px 12px;
+      gap: 12px;
+    }
+    .challenge-targets-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .target-chip {
+      padding: 6px 8px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .daily-card {
+      padding: 12px 10px;
+    }
+    .daily-badge {
+      font-size: 10.5px;
+    }
+    .streak-pill {
+      font-size: 10px;
+      padding: 2px 6px;
+    }
+    .daily-title {
+      font-size: 15px;
+    }
+    .daily-play-btn {
+      padding: 8px 12px !important;
+      font-size: 12px !important;
+    }
+  }
+
+  /* Explicit Light Theme Daily Challenge Card Overrides */
+  [data-theme='light'] .daily-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .daily-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .daily-sub {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .target-chip {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #1e293b !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  }
+
+  [data-theme='light'] .target-chip strong {
+    color: #0070f3 !important;
+    font-weight: 800 !important;
+  }
+</style>
+
+<script>
+  import { DailyChallengeManager } from '../lib/dailyChallenge';
+  import { StorageManager } from '../lib/storage';
+
+  function initDailyWidget() {
+    const info = DailyChallengeManager.getTodaysChallenge();
+    const stats = StorageManager.getStats();
+
+    const streakCount = document.getElementById('widget-streak-count');
+    const dateLabel = document.getElementById('widget-challenge-date');
+    const enTarget = document.getElementById('widget-en-target');
+    const hiTarget = document.getElementById('widget-hi-target');
+    const mrTarget = document.getElementById('widget-mr-target');
+
+    if (streakCount) streakCount.textContent = String(stats.currentStreak || 0);
+    if (dateLabel) {
+      const formatted = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', weekday: 'short' });
+      dateLabel.textContent = `Challenge for ${formatted}`;
+    }
+    if (enTarget) enTarget.textContent = `${info.englishChallenge.targetWpm} WPM`;
+    if (hiTarget) hiTarget.textContent = `${info.hindiChallenge.targetWpm} WPM`;
+    if (mrTarget) mrTarget.textContent = `${info.marathiChallenge.targetWpm} WPM`;
+  }
+
+  document.addEventListener('astro:page-load', initDailyWidget);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDailyWidget);
+  } else {
+    initDailyWidget();
+  }
+</script>

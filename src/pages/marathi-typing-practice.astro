@@ -1,0 +1,434 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "Marathi Typing Practice Online (मराठी टायपिंग सराव) | TypeBaazi";
+const pageDesc = "Practice Marathi typing online for free. Master Devanagari keyboard layouts, vowels, consonants, and conjuncts (जोडाक्षरे) to increase your typing speed up to 40 WPM on TypeBaazi.";
+const pageKeywords = "marathi typing practice online, marathi typing practice, मराठी टायपिंग सराव, learn marathi typing, devanagari typing practice, gcc tbc marathi typing 30 wpm, typebaazi";
+
+const marathiPracticeFaqs = [
+  {
+    question: "How do I start Marathi typing practice as a beginner?",
+    answer: "Start by learning the home row keys on your physical or virtual keyboard. Practice individual letters, then move on to matras (काना, मात्रा, वेलांटी), and finally type short sentences and full paragraphs on TypeBaazi."
+  },
+  {
+    question: "Which keyboard layout is recommended for Marathi typing practice?",
+    answer: "For government exams like GCC-TBC and MPSC, Remington Devanagari and Inscript layouts are standard. TypeBaazi provides instant visual key assistance for smooth learning."
+  },
+  {
+    question: "How can I improve my Marathi typing accuracy?",
+    answer: "Practice slowly without rushing. Pay extra attention to halant (्) combinations and matras. Aim for 98%+ accuracy before attempting to type faster."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Marathi Typing Practice Online", url: "https://typebaazi.com/marathi-typing-practice" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  lang="mr"
+  activePath="/marathi-typing-practice"
+  faqItems={marathiPracticeFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+
+  <div class="container page-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Marathi Typing Practice</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-cyan">🚩 Unlimited Devanagari Practice</div>
+      <h1 class="page-title">Marathi Typing Practice Online (मराठी टायपिंग सराव)</h1>
+      <p class="page-sub">
+        Improve your Marathi typing speed and accuracy with step-by-step practice paragraphs, Devanagari key drills, and live real-time feedback on TypeBaazi.
+      </p>
+      <div class="header-cta-row">
+        <a href="#marathi-practice-arena" class="btn-primary start-typing-btn">
+          <span>✍️ Start Marathi Practice</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Arena Section -->
+    <section class="arena-section" id="marathi-practice-arena" aria-label="मराठी सराव अरेना">
+      <TypingArena initialLanguage="marathi" initialDuration={60} initialDifficulty="medium" showControls={true} />
+      <VirtualKeyboard language="marathi" visible={true} />
+    </section>
+
+    <!-- Practice Drills & Guidelines -->
+    <section class="practice-card glass-panel">
+      <h2>How to Practice Marathi Typing Online?</h2>
+      <p class="panel-text">
+        Typing in Marathi requires building reflex memory for Devanagari characters, kanas, matras, and conjuncts (जोडाक्षरे). Follow this structured step-by-step guide to reach 30 to 40 WPM:
+      </p>
+
+      <div class="drills-grid">
+        <div class="drill-item">
+          <span class="drill-icon">🌱</span>
+          <h4>1. Home Row Anchor</h4>
+          <p>Rest your left hand fingers on क, ख, ग and right hand on त, थ, द to build finger independence.</p>
+        </div>
+        <div class="drill-item">
+          <span class="drill-icon">🔤</span>
+          <h4>2. Matras &amp; Vowels</h4>
+          <p>Practice vowels (अ, आ, इ, ई) and vowel signs (ा, ि, ी, ु, ू, े, ै, ो, ौ) without looking down at the keyboard.</p>
+        </div>
+        <div class="drill-item">
+          <span class="drill-icon">⚡</span>
+          <h4>3. Conjuncts Mastery (जोडाक्षरे)</h4>
+          <p>Master joining consonants using the Virama/Halant (्) key to type words like 'महाराष्ट्र', 'राज्य', 'विद्या'.</p>
+        </div>
+        <div class="drill-item">
+          <span class="drill-icon">⏱️</span>
+          <h4>4. Timed Sentence Drills</h4>
+          <p>Practice with 60-second and 120-second paragraphs on TypeBaazi to measure your speed progress daily.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Internal Linking -->
+      <div class="related-links-box">
+        <h3>Explore Other TypeBaazi Tools</h3>
+        <div class="links-grid">
+          <a href="/marathi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🚩</span>
+            <div>
+              <strong>Marathi Typing Test</strong>
+              <span>Take a timed Marathi WPM test and earn a certificate.</span>
+            </div>
+          </a>
+          <a href="/government-exam-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Practice</strong>
+              <span>Prepare for MPSC 30 WPM, GCC-TBC, and Court tests.</span>
+            </div>
+          </a>
+          <a href="/english-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇬🇧</span>
+            <div>
+              <strong>English Typing Test</strong>
+              <span>Practice English touch typing and speed tests.</span>
+            </div>
+          </a>
+          <a href="/typing-speed-test" class="hub-link-card">
+            <span class="hub-icon">⚡</span>
+            <div>
+              <strong>Typing Speed Test</strong>
+              <span>1-Minute online WPM calculator.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-panel glass-panel">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-accordion">
+        {marathiPracticeFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-arrow">&darr;</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(14px, 2.5vw, 28px) clamp(10px, 2vw, 20px) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan, #00f0ff);
+    text-decoration: none;
+  }
+
+  .bc-sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .bc-current {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.6vw, 15.5px);
+    color: var(--text-muted, #94a3b8);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-cta-row {
+    margin-top: 16px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  .practice-card,
+  .faq-panel {
+    padding: clamp(20px, 3vw, 32px);
+    margin: 24px 0;
+    border-radius: var(--radius-xl, 24px);
+    background: rgba(10, 16, 28, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .practice-card h2,
+  .faq-panel h2 {
+    font-size: clamp(19px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 20px 0 10px;
+  }
+
+  .practice-card h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .panel-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .drills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .drill-item {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .drill-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .drill-item h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #00f0ff;
+    margin: 0 0 6px;
+  }
+
+  .drill-item p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .related-links-box {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .related-links-box h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .hub-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .hub-link-card strong {
+    font-size: 13.5px;
+    color: #ffffff;
+    display: block;
+  }
+
+  .hub-link-card span {
+    font-size: 11.5px;
+    color: #94a3b8;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .hub-link-card:hover {
+    border-color: #00f0ff;
+    background: rgba(0, 240, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-item {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0, 240, 255, 0.4);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    color: #00f0ff;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .faq-answer p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .page-title,
+  [data-theme='light'] .practice-card h2,
+  [data-theme='light'] .faq-panel h2,
+  [data-theme='light'] .related-links-box h3,
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .practice-card,
+  [data-theme='light'] .faq-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .drill-item,
+  [data-theme='light'] .hub-link-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .drill-item p,
+  [data-theme='light'] .panel-text,
+  [data-theme='light'] .faq-answer p {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .hub-link-card strong {
+    color: #0f172a !important;
+  }
+</style>

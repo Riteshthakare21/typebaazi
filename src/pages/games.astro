@@ -1,0 +1,860 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Typing Games",
+      "item": "https://typebaazi.com/games"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Typing Games Online — Falling Words Matrix & Arcade Speed Practice | TypeBaazi"
+  description="Play fun and addictive typing games online in English, Hindi, and Marathi! Destroy falling words, improve keystroke accuracy, build reflex speed, and climb high score leaderboards on TypeBaazi."
+  keywords="typing games, typing game, arcade typing game, falling words typing game, fun typing games online, english typing game, hindi typing game, marathi typing game, free typing games, typebaazi games"
+  activePath="/games"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="game-page-wrapper" id="game-page-root">
+    <!-- Header -->
+    <header class="game-header">
+      <div class="game-badge-row">
+        <span class="badge badge-pink">🌧️ Arcade Matrix</span>
+        <span class="header-tagline">Cyber Defense Typing • English, हिंदी &amp; मराठी</span>
+      </div>
+      <h1 class="game-title">Falling Words Matrix</h1>
+      <p class="game-sub">
+        Type the falling cyber words to protect your defense barrier before they hit the ground!
+      </p>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="game-controls-bar glass-panel">
+      <div class="game-controls-left">
+        <!-- Language Selector -->
+        <div class="control-pill-group">
+          <button class="pill-btn active" data-game-lang="english">🇬🇧 English</button>
+          <button class="pill-btn" data-game-lang="hindi">🇮🇳 हिंदी</button>
+          <button class="pill-btn" data-game-lang="marathi">🇮🇳 मराठी</button>
+        </div>
+
+        <!-- Mode Badge -->
+        <div class="control-pill-group">
+          <span class="pill-btn active" style="cursor: default; pointer-events: none;">🛡️ Endless Defense (5 Lives)</span>
+        </div>
+      </div>
+
+      <div class="game-controls-right">
+        <!-- Keyboard Toggle -->
+        <button class="pill-btn" id="btn-game-toggle-kb" title="Toggle On-Screen Virtual Keyboard">
+          ⌨️ Keyboard
+        </button>
+        <a href="/race" class="pill-btn" style="text-decoration: none;">
+          🏎️ Grand Prix Race
+        </a>
+      </div>
+    </div>
+
+    <!-- HUD Metrics Bar -->
+    <div class="game-hud-bar glass-panel">
+      <div class="hud-item">
+        <span class="hud-item-lbl">Score</span>
+        <span class="hud-item-val text-cyan" id="hud-score-val">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-item-lbl">Highest Score</span>
+        <span class="hud-item-val text-gold" id="hud-high-score-val">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-item-lbl">Combo</span>
+        <span class="hud-item-val text-gold" id="hud-combo-val">0x</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-item-lbl">Destroyed</span>
+        <span class="hud-item-val text-green" id="hud-words-val">0</span>
+      </div>
+      <div class="hud-item" id="hud-lives-card">
+        <span class="hud-item-lbl">Barrier Health</span>
+        <div class="hearts-container" id="hud-hearts-box">
+          <span class="heart-icon">❤️</span>
+          <span class="heart-icon">❤️</span>
+          <span class="heart-icon">❤️</span>
+          <span class="heart-icon">❤️</span>
+          <span class="heart-icon">❤️</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Game Play Arena -->
+    <div class="falling-matrix-arena" id="falling-game-canvas">
+      <!-- Start Game Modal Overlay -->
+      <div class="game-overlay-panel" id="game-start-modal">
+        <div class="game-modal-card">
+          <span class="modal-icon">🌧️</span>
+          <h2 class="modal-title">Falling Words Matrix</h2>
+          <p class="modal-desc">
+            Words will fall from the cyber matrix. Type their characters to lock on and blast them before they breach the bottom laser barrier!
+          </p>
+          <div class="modal-actions" style="margin-top: 10px;">
+            <button id="btn-start-game-trigger" class="btn-primary" style="padding: 12px 28px; font-size: 16px;">
+              <span>🚀 Start Game</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Over Modal Overlay -->
+      <div class="game-overlay-panel hidden" id="game-over-modal">
+        <div class="game-modal-card">
+          <span class="modal-icon">🏆</span>
+          <h2 class="modal-title" id="game-over-title">Matrix Cleared!</h2>
+          <p class="modal-desc" id="game-over-sub">Defense barrier stats breakdown</p>
+
+          <div class="modal-stats-grid">
+            <div class="modal-stat-box">
+              <span class="stat-lbl">Final Score</span>
+              <span class="stat-num text-cyan" id="res-score-num">0</span>
+            </div>
+            <div class="modal-stat-box">
+              <span class="stat-lbl">Highest Score</span>
+              <span class="stat-num text-gold" id="res-high-score-num">0</span>
+            </div>
+            <div class="modal-stat-box">
+              <span class="stat-lbl">Words Blasted</span>
+              <span class="stat-num text-green" id="res-words-num">0</span>
+            </div>
+            <div class="modal-stat-box">
+              <span class="stat-lbl">Peak Combo</span>
+              <span class="stat-num text-gold" id="res-combo-num">0x</span>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button id="btn-play-again-trigger" class="btn-primary">
+              <span>🔄 Play Again (Enter)</span>
+            </button>
+            <a href="/race" class="btn-secondary" style="text-align: center;">
+              <span>🏎️ Play Grand Prix</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spawning Falling Word Nodes Container -->
+      <div id="falling-nodes-container" style="position: absolute; inset: 0; overflow: hidden; pointer-events: none;"></div>
+
+      <!-- Bottom Laser Defense Line -->
+      <div class="laser-defense-line">
+        <span class="barrier-label">⚡ QUANTUM DEFENSE BARRIER ⚡</span>
+      </div>
+    </div>
+
+    <!-- Active Typing Input & Target Bar -->
+    <div class="game-typing-input-bar glass-panel">
+      <input
+        type="text"
+        id="game-typing-input"
+        class="game-input-field"
+        placeholder="Type the falling words here..."
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="none"
+        spellcheck="false"
+        inputmode="text"
+        aria-label="Falling Words Input"
+      />
+      <div class="target-word-badge">
+        <span class="target-badge-lbl">Active Target:</span>
+        <span class="target-badge-word" id="target-word-display">None</span>
+      </div>
+    </div>
+
+    <!-- Large, Responsive On-Screen Virtual Keyboard -->
+    <div class="game-large-keyboard">
+      <VirtualKeyboard language="english" visible={true} />
+    </div>
+
+    <!-- Related Modes Navigation Strip -->
+    <div class="game-related-strip glass-panel" style="margin-top: 24px; padding: 18px 20px; border-radius: 14px; background: rgba(14, 21, 37, 0.7); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <h3 style="font-size: 15px; font-weight: 800; color: #ffffff; margin-bottom: 10px;">⚡ More Typing Challenges</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a href="/race" class="btn-secondary" data-analytics-cta="games_rel_race" style="font-size: 12.5px; padding: 7px 14px;">
+          <span>🏎️ Grand Prix AI Car Race</span>
+        </a>
+        <a href="/typing-test" class="btn-secondary" data-analytics-cta="games_rel_typing_test" style="font-size: 12.5px; padding: 7px 14px;">
+          <span>⌨️ 1-Minute Speed Test</span>
+        </a>
+        <a href="/daily-challenge" class="btn-secondary" data-analytics-cta="games_rel_daily" style="font-size: 12.5px; padding: 7px 14px;">
+          <span>🔥 Daily Streak Challenge</span>
+        </a>
+        <a href="/seven-minute-typing-test" class="btn-secondary" data-analytics-cta="games_rel_7min" style="font-size: 12.5px; padding: 7px 14px;">
+          <span>⏱️ 7-Minute GCC-TBC Exam</span>
+        </a>
+        <a href="/leaderboard" class="btn-secondary" data-analytics-cta="games_rel_leaderboard" style="font-size: 12.5px; padding: 7px 14px;">
+          <span>🏆 Hall of Fame</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { soundEngine } from '../lib/audio';
+  import { StorageManager } from '../lib/storage';
+
+  type GameLang = 'english' | 'marathi' | 'hindi';
+
+  interface FallingWord {
+    id: string;
+    word: string;
+    x: number; // percentage (8% to 85%)
+    y: number; // pixels from top
+    speed: number; // pixels per frame
+    matchedIndex: number;
+    el: HTMLElement | null;
+    isExploding?: boolean;
+  }
+
+  // Curated, clean, beginner-friendly simple word banks
+  const WORD_BANKS: Record<GameLang, string[]> = {
+    english: [
+      'cat', 'sun', 'sky', 'car', 'star', 'fire', 'glow', 'key', 'run', 'win',
+      'cool', 'hero', 'play', 'gold', 'blue', 'fast', 'wave', 'time', 'flow',
+      'moon', 'park', 'tree', 'bird', 'jump', 'game', 'bold', 'apex', 'neon',
+      'rush', 'zoom', 'beat', 'zen', 'calm', 'pure', 'rich', 'lion', 'ruby',
+      'dash', 'ring', 'song', 'rock', 'mind', 'hope', 'life', 'true', 'spark'
+    ],
+    hindi: [
+      'घर', 'मन', 'जल', 'हाथ', 'पैर', 'पेड़', 'गति', 'जीत', 'विजय', 'मदद',
+      'नाम', 'आनंद', 'सूर्य', 'मित्र', 'फूल', 'पत्ता', 'गीत', 'सत्य', 'वीर',
+      'राजा', 'दिन', 'शांत', 'दिशा', 'देव', 'देश', 'प्रेम', 'रंग', 'ज्ञान',
+      'कर्म', 'हवा', 'नदी', 'आग', 'रात', 'सवेरा', 'दीप', 'शक्ति', 'कमल'
+    ],
+    marathi: [
+      'घर', 'मन', 'जल', 'हात', 'पाय', 'झाड', 'वेग', 'सराव', 'जिंकू', 'विजय',
+      'मदत', 'नाव', 'आनंद', 'सूर्य', 'मित्र', 'फूल', 'पान', 'गाणे', 'सत्य',
+      'वीर', 'राजे', 'दिन', 'शांत', 'दिशा', 'देव', 'देश', 'प्रेम', 'रंग'
+    ]
+  };
+
+  // State
+  let isRunning = false;
+  let gameLang: GameLang = 'english';
+  let score = 0;
+  let combo = 0;
+  let peakCombo = 0;
+  let wordsDestroyed = 0;
+  let timeElapsed = 0;
+  let lives = 5;
+  let activeWords: FallingWord[] = [];
+  let targetedWordId: string | null = null;
+  let currentTypedBuffer = '';
+
+  // Timers & RAF
+  let animFrameId: number | null = null;
+  let secondTimerId: number | null = null;
+  let spawnTimerId: number | null = null;
+
+  // Elements
+  const gameCanvas = document.getElementById('falling-game-canvas');
+  const nodesContainer = document.getElementById('falling-nodes-container');
+  const typingInput = document.getElementById('game-typing-input') as HTMLInputElement | null;
+  const targetWordDisplay = document.getElementById('target-word-display');
+  const startModal = document.getElementById('game-start-modal');
+  const overModal = document.getElementById('game-over-modal');
+
+  // HUD
+  const hudScore = document.getElementById('hud-score-val');
+  const hudHighScore = document.getElementById('hud-high-score-val');
+  const hudCombo = document.getElementById('hud-combo-val');
+  const hudWords = document.getElementById('hud-words-val');
+  const hudHearts = document.getElementById('hud-hearts-box');
+
+  // Results Modal Elements
+  const gameOverTitle = document.getElementById('game-over-title');
+  const resScore = document.getElementById('res-score-num');
+  const resHighScore = document.getElementById('res-high-score-num');
+  const resWords = document.getElementById('res-words-num');
+  const resCombo = document.getElementById('res-combo-num');
+
+  // Buttons
+  const btnStartTrigger = document.getElementById('btn-start-game-trigger');
+  const btnPlayAgainTrigger = document.getElementById('btn-play-again-trigger');
+  const btnToggleKb = document.getElementById('btn-game-toggle-kb');
+
+  function normalizeText(str: string): string {
+    return str.normalize('NFC').trim().toLowerCase();
+  }
+
+  function initGame() {
+    const settings = StorageManager.getSettings();
+    if (settings.defaultLanguage === 'marathi') {
+      gameLang = 'marathi';
+      document.querySelectorAll('[data-game-lang]').forEach(b => {
+        b.classList.toggle('active', (b as HTMLElement).dataset.gameLang === 'marathi');
+      });
+      window.dispatchEvent(new CustomEvent('change-keyboard-language', { detail: { language: 'marathi' } }));
+    }
+    setupDOMListeners();
+    resetGameState();
+  }
+
+  function resetGameState() {
+    stopAllLoops();
+    isRunning = false;
+    score = 0;
+    combo = 0;
+    peakCombo = 0;
+    wordsDestroyed = 0;
+    timeElapsed = 0;
+    lives = 5;
+    activeWords = [];
+    targetedWordId = null;
+    currentTypedBuffer = '';
+
+    if (nodesContainer) nodesContainer.innerHTML = '';
+    if (typingInput) typingInput.value = '';
+    if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+
+    updateHUD();
+    startModal?.classList.remove('hidden');
+    overModal?.classList.add('hidden');
+  }
+
+  function startGame() {
+    stopAllLoops();
+    isRunning = true;
+    score = 0;
+    combo = 0;
+    peakCombo = 0;
+    wordsDestroyed = 0;
+    timeElapsed = 0;
+    lives = 5;
+    activeWords = [];
+    targetedWordId = null;
+    currentTypedBuffer = '';
+
+    if (nodesContainer) nodesContainer.innerHTML = '';
+    if (typingInput) {
+      typingInput.value = '';
+      typingInput.focus();
+    }
+    if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+
+    updateHUD();
+    startModal?.classList.add('hidden');
+    overModal?.classList.add('hidden');
+
+    try {
+      soundEngine.init();
+      soundEngine.playCountdownBeep(true);
+    } catch {}
+
+    try {
+      if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+        (window as any).trackTypeBaaziEvent('game_start', {
+          language: gameLang,
+          game_mode: 'falling_words_matrix'
+        });
+      }
+    } catch {}
+
+    spawnWord();
+    setTimeout(() => { if (isRunning && activeWords.length < 2) spawnWord(); }, 2500);
+
+    lastFrameTime = performance.now();
+    animFrameId = requestAnimationFrame(gamePhysicsLoop);
+    secondTimerId = window.setInterval(gameSecondTick, 1000);
+    scheduleNextSpawn();
+  }
+
+  function scheduleNextSpawn() {
+    if (!isRunning) return;
+    if (spawnTimerId !== null) {
+      clearTimeout(spawnTimerId);
+      spawnTimerId = null;
+    }
+
+    // Spawn interval starts relaxed (~3400ms) and smoothly decreases down to ~1500ms as score builds
+    const interval = Math.max(1500, 3400 - (wordsDestroyed * 35) - (timeElapsed * 6));
+    const maxActive = wordsDestroyed >= 28 ? 5 : (wordsDestroyed >= 14 ? 4 : (wordsDestroyed >= 5 ? 3 : 2));
+
+    spawnTimerId = window.setTimeout(() => {
+      if (isRunning && activeWords.length < maxActive) {
+        spawnWord();
+      }
+      scheduleNextSpawn();
+    }, interval);
+  }
+
+  function getDynamicSpeedMultiplier(): number {
+    // Smooth, continuous gradual acceleration:
+    // +0.026 per word blasted + 0.005 per second survived + combo momentum
+    const wordBonus = wordsDestroyed * 0.026;
+    const timeBonus = timeElapsed * 0.005;
+    const comboBonus = Math.min(combo * 0.008, 0.15);
+    
+    // Smoothly and gradually increases from 1.0x up to 3.4x
+    return Math.min(3.4, 1.0 + wordBonus + timeBonus + comboBonus);
+  }
+
+  function getRandomWord(): string {
+    const list = WORD_BANKS[gameLang] || WORD_BANKS.english;
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  function spawnWord() {
+    if (!isRunning || !nodesContainer) return;
+
+    let word = getRandomWord();
+    const existingWords = new Set(activeWords.map(w => w.word));
+    for (let tries = 0; tries < 6; tries++) {
+      if (!existingWords.has(word)) break;
+      word = getRandomWord();
+    }
+
+    const id = 'fw_' + Math.random().toString(36).substr(2, 7);
+    const xPercent = 10 + Math.random() * 75;
+    // Base speed: 0.48 px per frame (clear, smooth starting pace that gradually accelerates)
+    const baseSpeed = 0.48 + (Math.random() * 0.06);
+
+    const nodeEl = document.createElement('div');
+    nodeEl.className = 'falling-word-node';
+    nodeEl.id = id;
+    nodeEl.style.left = `${xPercent}%`;
+    nodeEl.style.top = '-20px';
+    nodeEl.innerHTML = `<span>${word}</span>`;
+    nodesContainer.appendChild(nodeEl);
+
+    activeWords.push({
+      id,
+      word,
+      x: xPercent,
+      y: -20,
+      speed: baseSpeed,
+      matchedIndex: 0,
+      el: nodeEl
+    });
+  }
+
+  let lastFrameTime = performance.now();
+
+  function gamePhysicsLoop(now: number) {
+    if (!isRunning) return;
+
+    const delta = Math.min(32, now - lastFrameTime);
+    lastFrameTime = now;
+    const arenaHeight = gameCanvas ? gameCanvas.clientHeight : 380;
+    const dangerZoneY = arenaHeight - 70;
+    const breachZoneY = arenaHeight - 34;
+    const speedMult = getDynamicSpeedMultiplier();
+
+    for (let i = activeWords.length - 1; i >= 0; i--) {
+      const item = activeWords[i];
+      if (item.isExploding) continue;
+
+      // Dynamic gradual speed calculation
+      item.y += ((item.speed * speedMult) * (delta / 16.6));
+
+      if (item.el) {
+        item.el.style.top = `${item.y}px`;
+        if (item.y >= dangerZoneY) item.el.classList.add('near-danger');
+        else item.el.classList.remove('near-danger');
+      }
+
+      if (item.y >= breachZoneY) {
+        handleBarrierBreach(item, i);
+      }
+    }
+
+    animFrameId = requestAnimationFrame(gamePhysicsLoop);
+  }
+
+  function handleBarrierBreach(item: FallingWord, index: number) {
+    try { soundEngine.playError(); } catch {}
+
+    lives--;
+    combo = 0;
+    updateHUD();
+
+    if (item.el) {
+      item.el.classList.add('word-exploded');
+      setTimeout(() => item.el?.remove(), 350);
+    }
+
+    if (targetedWordId === item.id) {
+      targetedWordId = null;
+      currentTypedBuffer = '';
+      if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+      if (typingInput) typingInput.value = '';
+    }
+
+    activeWords.splice(index, 1);
+
+    if (lives <= 0) {
+      endGame(false);
+    } else {
+      setTimeout(() => { if (isRunning) spawnWord(); }, 400);
+    }
+  }
+
+  function gameSecondTick() {
+    if (!isRunning) return;
+    timeElapsed++;
+  }
+
+  function handleCharacterInput(char: string) {
+    if (!isRunning) {
+      startGame();
+    }
+    if (!char) return;
+
+    const normChar = normalizeText(char);
+
+    // 1. If we already have a locked-on target
+    if (targetedWordId) {
+      const target = activeWords.find(w => w.id === targetedWordId && !w.isExploding);
+      if (target) {
+        const normTarget = normalizeText(target.word);
+        const expectedChar = normTarget[target.matchedIndex];
+
+        if (normChar === expectedChar) {
+          target.matchedIndex++;
+          currentTypedBuffer += normChar;
+          if (typingInput) typingInput.value = currentTypedBuffer;
+          renderTargetWordVisuals(target, target.matchedIndex);
+          try { soundEngine.playKey(normChar); } catch {}
+
+          if (target.matchedIndex >= normTarget.length) {
+            destroyWord(target);
+          }
+          return;
+        } else {
+          // Wrong key for active target
+          try { soundEngine.playError(); } catch {}
+          if (typingInput) {
+            typingInput.classList.add('input-error');
+            setTimeout(() => typingInput?.classList.remove('input-error'), 180);
+          }
+          return;
+        }
+      } else {
+        targetedWordId = null;
+      }
+    }
+
+    // 2. No target locked on: find candidate starting with normChar
+    const candidates = activeWords.filter(w => !w.isExploding && normalizeText(w.word).startsWith(normChar));
+    if (candidates.length > 0) {
+      // Pick the lowest (closest to laser barrier) candidate
+      candidates.sort((a, b) => b.y - a.y);
+      const chosen = candidates[0];
+      targetedWordId = chosen.id;
+      chosen.matchedIndex = 1;
+      currentTypedBuffer = normChar;
+      if (typingInput) typingInput.value = currentTypedBuffer;
+      renderTargetWordVisuals(chosen, 1);
+      try { soundEngine.playKey(normChar); } catch {}
+
+      if (chosen.matchedIndex >= normalizeText(chosen.word).length) {
+        destroyWord(chosen);
+      }
+    } else {
+      // No word starts with this character: reject cleanly, play error
+      try { soundEngine.playError(); } catch {}
+      if (typingInput) {
+        typingInput.value = '';
+        typingInput.classList.add('input-error');
+        setTimeout(() => typingInput?.classList.remove('input-error'), 180);
+      }
+      currentTypedBuffer = '';
+    }
+  }
+
+  function handleBackspace() {
+    if (targetedWordId) {
+      const target = activeWords.find(w => w.id === targetedWordId && !w.isExploding);
+      if (target && target.matchedIndex > 0) {
+        target.matchedIndex--;
+        currentTypedBuffer = currentTypedBuffer.slice(0, -1);
+        if (typingInput) typingInput.value = currentTypedBuffer;
+        try { soundEngine.playBackspace(); } catch {}
+        renderTargetWordVisuals(target, target.matchedIndex);
+
+        if (target.matchedIndex === 0) {
+          targetedWordId = null;
+          if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+        }
+      } else {
+        targetedWordId = null;
+        currentTypedBuffer = '';
+        if (typingInput) typingInput.value = '';
+        if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+      }
+    } else {
+      currentTypedBuffer = '';
+      if (typingInput) typingInput.value = '';
+      if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+    }
+  }
+
+  function renderTargetWordVisuals(item: FallingWord, matchedCount?: number) {
+    if (!item.el) return;
+
+    const matchLen = typeof matchedCount === 'number' ? matchedCount : item.matchedIndex;
+
+    activeWords.forEach(w => {
+      if (w.el) {
+        if (w.id === item.id) {
+          w.el.classList.add('is-targeted');
+        } else {
+          w.el.classList.remove('is-targeted');
+        }
+      }
+    });
+
+    if (targetWordDisplay) {
+      targetWordDisplay.textContent = `${item.word} (${matchLen}/${item.word.length})`;
+    }
+
+    const matched = item.word.slice(0, matchLen);
+    const nextChar = matchLen < item.word.length ? item.word[matchLen] : '';
+    const rest = item.word.slice(matchLen + (nextChar ? 1 : 0));
+
+    item.el.innerHTML = `
+      <span class="char-matched">${matched}</span><span class="char-next">${nextChar}</span><span class="char-pending">${rest}</span>
+    `;
+
+    if (nextChar) {
+      window.dispatchEvent(new CustomEvent('highlight-target-key', { detail: { char: nextChar } }));
+    }
+  }
+
+  function destroyWord(item: FallingWord) {
+    item.isExploding = true;
+    try { soundEngine.playAchievement(); } catch {}
+
+    combo++;
+    peakCombo = Math.max(peakCombo, combo);
+    wordsDestroyed++;
+    const points = 50 + (combo * 15) + (item.word.length * 10);
+    score += points;
+
+    updateHUD();
+
+    if (item.el) {
+      item.el.classList.add('word-exploded');
+      setTimeout(() => item.el?.remove(), 350);
+    }
+
+    targetedWordId = null;
+    currentTypedBuffer = '';
+    if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+    if (typingInput) {
+      typingInput.value = '';
+      typingInput.classList.add('input-success');
+      setTimeout(() => typingInput?.classList.remove('input-success'), 200);
+    }
+
+    const idx = activeWords.findIndex(w => w.id === item.id);
+    if (idx !== -1) {
+      activeWords.splice(idx, 1);
+    }
+
+    setTimeout(() => {
+      if (isRunning && activeWords.length < 4) spawnWord();
+    }, 250);
+  }
+
+  function updateHUD() {
+    const currentHigh = StorageManager.getGameHighScore(gameLang);
+    const displayHigh = Math.max(score, currentHigh);
+
+    if (hudScore) hudScore.textContent = String(score);
+    if (hudHighScore) hudHighScore.textContent = String(displayHigh);
+    if (hudCombo) hudCombo.textContent = `${combo}x`;
+    if (hudWords) hudWords.textContent = String(wordsDestroyed);
+
+    if (hudHearts) {
+      let html = '';
+      for (let i = 0; i < 5; i++) {
+        html += `<span class="heart-icon ${i < lives ? '' : 'lost'}">${i < lives ? '❤️' : '🖤'}</span>`;
+      }
+      hudHearts.innerHTML = html;
+    }
+  }
+
+  function stopAllLoops() {
+    if (animFrameId !== null) cancelAnimationFrame(animFrameId);
+    if (secondTimerId !== null) clearInterval(secondTimerId);
+    if (spawnTimerId !== null) clearTimeout(spawnTimerId);
+    animFrameId = secondTimerId = spawnTimerId = null;
+  }
+
+  function endGame(survived: boolean = false) {
+    stopAllLoops();
+    isRunning = false;
+
+    try {
+      if (survived) soundEngine.playVictory();
+      else soundEngine.playDefeat();
+    } catch {}
+
+    try {
+      if (typeof (window as any).trackTypeBaaziEvent === 'function') {
+        (window as any).trackTypeBaaziEvent('game_complete', {
+          language: gameLang,
+          score: score,
+          words_destroyed: wordsDestroyed,
+          peak_combo: peakCombo,
+          time_elapsed: timeElapsed,
+          survived: survived
+        });
+      }
+    } catch {}
+
+    StorageManager.recordTestResult({
+      language: gameLang,
+      mode: 'game',
+      wpm: Math.round(wordsDestroyed * 5),
+      netWpm: Math.round(wordsDestroyed * 5),
+      accuracy: Math.max(70, Math.min(100, 100 - (5 - lives) * 5)),
+      errors: 5 - lives,
+      durationSec: Math.max(1, timeElapsed),
+      difficulty: 'medium'
+    });
+
+    const gameRec = StorageManager.recordGameScore(score, gameLang, wordsDestroyed);
+
+    if (gameOverTitle) gameOverTitle.textContent = '💥 BARRIER BREACHED!';
+    if (resScore) resScore.textContent = String(score);
+    if (resHighScore) resHighScore.textContent = String(gameRec.highScore);
+    if (resWords) resWords.textContent = String(wordsDestroyed);
+    if (resCombo) resCombo.textContent = `${peakCombo}x`;
+
+    updateHUD();
+    overModal?.classList.remove('hidden');
+  }
+
+  function setupDOMListeners() {
+    gameCanvas?.addEventListener('click', () => {
+      typingInput?.focus();
+    });
+
+    typingInput?.addEventListener('input', (e) => {
+      const inputEl = e.target as HTMLInputElement;
+      const val = inputEl.value;
+      if (val.length > currentTypedBuffer.length) {
+        const added = val.slice(currentTypedBuffer.length);
+        for (const ch of added) {
+          handleCharacterInput(ch);
+        }
+      } else if (val.length < currentTypedBuffer.length) {
+        handleBackspace();
+      }
+    });
+
+    typingInput?.addEventListener('compositionend', (e) => {
+      const data = (e as CompositionEvent).data;
+      if (data) {
+        for (const ch of data) {
+          handleCharacterInput(ch);
+        }
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      const targetTag = (e.target as HTMLElement)?.tagName;
+      if (targetTag === 'INPUT' && e.target !== inputField) return;
+      if (targetTag === 'TEXTAREA' || targetTag === 'SELECT') return;
+      if (document.querySelector('.modal-overlay:not(.hidden), .profile-modal-overlay:not(.hidden), #typebaazi-profile-modal:not(.hidden), #settings-modal:not(.hidden), #certificate-modal:not(.hidden)')) return;
+
+      if (!isRunning) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          startGame();
+          return;
+        } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+          e.preventDefault();
+          startGame();
+          handleCharacterInput(e.key);
+          return;
+        }
+        return;
+      }
+
+      if (e.key === 'Backspace') {
+        e.preventDefault();
+        handleBackspace();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        if (targetedWordId) {
+          const target = activeWords.find(w => w.id === targetedWordId);
+          if (target) {
+            target.matchedIndex = 0;
+            renderTargetWordVisuals(target, 0);
+          }
+          targetedWordId = null;
+          currentTypedBuffer = '';
+          if (typingInput) typingInput.value = '';
+          if (targetWordDisplay) targetWordDisplay.textContent = 'None';
+        }
+      } else if (e.key === ' ' || e.key === 'Enter' || e.key === 'Tab') {
+        e.preventDefault();
+      } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+        e.preventDefault();
+        handleCharacterInput(e.key);
+      }
+    });
+
+    window.addEventListener('virtual-key-click', (e: Event) => {
+      const custom = e as CustomEvent<{ key: string }>;
+      if (!custom.detail) return;
+      const key = custom.detail.key;
+
+      if (!isRunning) startGame();
+
+      if (key === 'Backspace') {
+        handleBackspace();
+      } else if (key.length === 1) {
+        handleCharacterInput(key);
+      }
+    });
+
+    btnStartTrigger?.addEventListener('click', () => startGame());
+    btnPlayAgainTrigger?.addEventListener('click', () => startGame());
+    btnToggleKb?.addEventListener('click', () => {
+      const kbWrapper = document.getElementById('virtual-keyboard-wrapper');
+      if (kbWrapper) {
+        kbWrapper.classList.toggle('hidden');
+        StorageManager.saveSettings({ showKeyboard: !kbWrapper.classList.contains('hidden') });
+      }
+    });
+
+    document.querySelectorAll('[data-game-lang]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        gameLang = (e.currentTarget as HTMLElement).dataset.gameLang as GameLang;
+        document.querySelectorAll('[data-game-lang]').forEach(b => b.classList.remove('active'));
+        (e.currentTarget as HTMLElement).classList.add('active');
+        window.dispatchEvent(new CustomEvent('change-keyboard-language', { detail: { language: gameLang } }));
+        resetGameState();
+      });
+    });
+  }
+
+  initGame();
+</script>

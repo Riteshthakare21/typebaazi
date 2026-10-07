@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Disclaimer",
+      "item": "https://typebaazi.com/disclaimer"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Disclaimer — TypeBaazi Free Online Typing Platform"
+  description="Read the official TypeBaazi Disclaimer. Learn about our educational typing tests, speed calculation formulas, government exam simulation scope, and terms."
+  activePath="/disclaimer"
+  keywords="typebaazi disclaimer, typing test accuracy disclaimer, exam simulation disclaimer, wpm scoring disclaimer"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-gold">⚖️ Legal Information</div>
+      <h1 class="page-title">Website Disclaimer</h1>
+      <p class="page-sub">
+        Last Updated: August 2026 • <em>Please review this disclaimer regarding information and tools on TypeBaazi.</em>
+      </p>
+    </div>
+
+    <div class="legal-card glass-panel">
+      <div class="legal-section">
+        <h2>1. General Information &amp; Educational Purpose</h2>
+        <p>
+          The information, interactive typing tools, speed tests, and racing games provided on <strong>TypeBaazi</strong> (<code>https://typebaazi.com</code>) are offered in good faith for general informational, educational, and personal skill development purposes only.
+        </p>
+        <p>
+          While we strive to provide modern, responsive, and accurate typing evaluation software, TypeBaazi makes no warranties or representations of any kind regarding the completeness, absolute accuracy, reliability, or suitability of the website content and tools for any specific commercial or legal purpose.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. Typing Speed (WPM) &amp; Accuracy Calculation</h2>
+        <p>
+          TypeBaazi calculates typing metrics based on the internationally recognized standard typist formula:
+        </p>
+        <div class="policy-highlight-box blue">
+          <strong>📐 Standard Typist Formula:</strong> 1 Standard Word = 5 Keystrokes (including letters, punctuation, spaces, and Devanagari grapheme clusters). Gross WPM = (Total Keystrokes / 5) / Elapsed Minutes. Net WPM = Gross WPM − (Uncorrected Errors / Elapsed Minutes).
+        </div>
+        <p>
+          While this mathematical calculation accurately reflects your typing speed in standard environments, real-world typing speeds may vary depending on keyboard hardware, operating system key-repeat settings, browser performance, and physical typing ergonomics.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>3. Government Exam Simulations (Non-Affiliation Notice)</h2>
+        <p>
+          TypeBaazi offers exam practice modules, including the 7-Minute GCC-TBC (Maharashtra State Council of Examinations) 30/40 WPM simulator, SSC CGL/CHSL typing skill test practice, and court clerk exam modules.
+        </p>
+        <div class="policy-highlight-box yellow">
+          <strong>⚠️ Notice of Non-Affiliation:</strong> TypeBaazi is an independent educational platform and is <strong>NOT</strong> affiliated with, endorsed by, sponsored by, or officially associated with the Maharashtra State Council of Examination (MSCE), the Staff Selection Commission (SSC), the Union Public Service Commission (UPSC), any High Court, or any government body. All exam names and syllabi references are used solely for identification and practice purposes.
+        </div>
+      </div>
+
+      <div class="legal-section">
+        <h2>4. Digital Typing Certificates</h2>
+        <p>
+          Digital typing certificates generated and downloaded from TypeBaazi reflect the score achieved during an online test session on our website. These certificates are issued for personal tracking, motivation, and portfolio demonstration. They are not legal certifications or accredited vocational qualifications unless verified by official government testing authorities in supervised testing centers.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Procedural Web Audio API</h2>
+        <p>
+          TypeBaazi employs the standard HTML5 Web Audio API to synthesize procedural sound effects (mechanical switch clicks, thocks, and racing engine audio). These sounds are generated algorithmically in your browser without loading external media files or recording any user audio.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>6. External Links &amp; Third-Party Services</h2>
+        <p>
+          TypeBaazi may contain links to external third-party websites or services that are not operated or controlled by us. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party websites. Users are encouraged to review the policies of any external website they visit.
+        </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>7. Contact Us</h2>
+        <p>
+          If you have questions regarding this Disclaimer or require clarification on any of our tools and services, please contact us at:
+        </p>
+        <p>
+          📧 <a href="mailto:riteshthakareofficial@gmail.com" style="color: var(--accent-cyan);"><strong>riteshthakareofficial@gmail.com</strong></a> or visit our <a href="/contact-us" style="color: var(--accent-cyan);"><strong>Contact Page</strong></a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(24px, 4vw, 48px) clamp(12px, 2.5vw, 24px) 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .page-title {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 10px 0 6px;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 2vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+  }
+
+  .legal-card {
+    padding: clamp(20px, 4vw, 40px);
+    border-radius: var(--radius-xl, 20px);
+    border: 1.5px solid rgba(251, 191, 36, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    box-sizing: border-box;
+  }
+
+  .legal-section h2 {
+    font-size: clamp(17px, 2.8vw, 21px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .legal-section p {
+    font-size: clamp(13.5px, 1.8vw, 15px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    margin: 0 0 12px;
+    text-align: left;
+  }
+
+  .policy-highlight-box {
+    border-radius: var(--radius-md, 12px);
+    padding: 14px 18px;
+    font-size: clamp(13px, 1.8vw, 14.5px);
+    line-height: 1.6;
+    margin: 12px 0 14px;
+    text-align: left;
+  }
+
+  .policy-highlight-box.blue {
+    background: rgba(0, 240, 255, 0.08);
+    border: 1.5px solid rgba(0, 240, 255, 0.35);
+    color: #cffafe;
+  }
+
+  .policy-highlight-box.yellow {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1.5px solid rgba(251, 191, 36, 0.35);
+    color: #fef3c7;
+  }
+
+  [data-theme='light'] .legal-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  [data-theme='light'] .legal-section h2 {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .legal-section p {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .policy-highlight-box.blue {
+    background: #f0f9ff !important;
+    border-color: #bae6fd !important;
+    color: #0369a1 !important;
+  }
+
+  [data-theme='light'] .policy-highlight-box.yellow {
+    background: #fffbeb !important;
+    border-color: #fde68a !important;
+    color: #92400e !important;
+  }
+</style>

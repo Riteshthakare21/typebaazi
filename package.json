@@ -1,0 +1,27 @@
+{
+  "name": "typebaazi",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0 --port 4321",
+    "deploy": "astro build && wrangler pages deploy dist --project-name=typebaazi",
+    "deploy:pages": "astro build && wrangler pages deploy dist --project-name=typebaazi",
+    "deploy:workers": "astro build && wrangler deploy",
+    "deploy:vercel": "astro build && vercel --prod",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.0",
+    "@capacitor/cli": "8.5.0",
+    "@capacitor/core": "8.5.0",
+    "astro": "^7.2.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.123.0"
+  }
+}

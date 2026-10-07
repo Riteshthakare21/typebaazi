@@ -1,0 +1,1210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+import DailyChallengeCard from '../components/DailyChallengeCard.astro';
+import WeeklyChampionship from '../components/WeeklyChampionship.astro';
+import LeaderboardWidget from '../components/LeaderboardWidget.astro';
+import SevenMinuteTypingTest from '../components/SevenMinuteTypingTest.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const homeFaqs = [
+  {
+    question: "What is TypeBaazi and how does it help improve typing speed?",
+    answer: "TypeBaazi is India's premier free online typing platform offering multi-lingual typing speed tests in English, Hindi (हिंदी), and Marathi (मराठी). It features real-time WPM tracking, accuracy scoring, 7-minute GCC-TBC exam simulations, and multiplayer AI car racing games."
+  },
+  {
+    question: "How is typing speed (WPM) and accuracy calculated on TypeBaazi?",
+    answer: "Typing speed is calculated using the international standard formula: 1 Word = 5 keystrokes. WPM = (Total Keystrokes / 5) / Elapsed Minutes. Net WPM deducts penalties for uncorrected errors to give you true exam-grade typing velocity."
+  },
+  {
+    question: "Does TypeBaazi support Marathi GCC-TBC 30 WPM & 40 WPM exam practice?",
+    answer: "Yes! TypeBaazi has dedicated 7-minute typing exam modules strictly replicating the Maharashtra MSCE GCC-TBC typing pattern for 30 WPM and 40 WPM speeds, complete with instant error deduction and pass/fail evaluations."
+  },
+  {
+    question: "How do I practice Hindi typing on TypeBaazi?",
+    answer: "TypeBaazi fully supports Hindi typing with standard Devanagari InScript and Remington phonetic layouts. Our intelligent Unicode grapheme clustering ensures smooth typing of complex Hindi matras, halants, and conjuncts."
+  },
+  {
+    question: "Can I download an official verified typing certificate from TypeBaazi?",
+    answer: "Yes, upon completing speed tests or defeating the AI Bot in Grand Prix racing, you can instantly preview and download a 300 DPI high-resolution PDF certificate with your name, verified WPM, accuracy, and official TypeBaazi seal."
+  }
+];
+---
+
+<Layout
+  title="TypeBaazi — #1 Free Typing Website | English, Hindi & Marathi Typing Test & Race Game"
+  description="TypeBaazi is India's #1 free typing website for English, Hindi & Marathi typing tests, car race typing games, and 7-min GCC-TBC exam practice. Check WPM & download certificates."
+  keywords="typing website, best typing website, typing test, online typing test, typing speed test, race game, typing race game, car typing race, marathi typing, marathi typing test, मराठी टायपिंग, hindi typing, hindi typing test, हिंदी टाइपिंग, typing practice, free typing certificate, wpm test, gcc tbc 30 wpm, 40 wpm typing test, typebaazi"
+  activePath="/"
+  faqItems={homeFaqs}
+>
+  <!-- Hero Section -->
+  <HeroSection />
+
+  <!-- 6-Feature Direct Launchpad (Typing Test, Race, Daily Challenge, 7-Min Exam, Games, Leaderboard) -->
+  <section class="container features-hub-section">
+    <div class="section-title-box">
+      <div class="badge badge-cyan">🚀 Quick Launchpad</div>
+      <h2 class="arena-section-heading">Featured Typing Modes &amp; Practice Tools</h2>
+      <p class="arena-section-sub">Jump directly into your favorite typing mode — from timed speed tests and AI racing to competitive government exam practice.</p>
+    </div>
+
+    <div class="features-hub-grid">
+      <!-- 1. Typing Test -->
+      <a href="/typing-test" class="feature-hub-card glass-panel" data-analytics-cta="home_hub_typing_test" title="Take Free 1, 2, or 5-Minute Online Typing Test">
+        <div class="f-hub-top">
+          <span class="f-hub-icon">⌨️</span>
+          <span class="badge badge-cyan">1, 2, 5 Min</span>
+        </div>
+        <h3 class="f-hub-title">Online Typing Test</h3>
+        <p class="f-hub-desc">Measure Gross &amp; Net WPM, accuracy, and error deductions in English, Hindi, or Marathi.</p>
+        <div class="f-hub-cta">
+          <span>Start Typing Test &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 2. Typing Race -->
+      <a href="/race" class="feature-hub-card glass-panel" data-analytics-cta="home_hub_race" title="Race Against AI in Real-Time Grand Prix">
+        <div class="f-hub-top">
+          <span class="f-hub-icon">🏎️</span>
+          <span class="badge badge-pink">Grand Prix AI</span>
+        </div>
+        <h3 class="f-hub-title">Typing Race Game</h3>
+        <p class="f-hub-desc">Duel smart AI cars with fast typing velocity, trigger nitro boosts, and win certificates.</p>
+        <div class="f-hub-cta">
+          <span>Enter Live Race &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 3. Daily Challenge -->
+      <a href="/daily-challenge" class="feature-hub-card glass-panel" data-analytics-cta="home_hub_daily_challenge" title="Take Today's Daily Typing Sprint">
+        <div class="f-hub-top">
+          <span class="f-hub-icon">🔥</span>
+          <span class="badge badge-gold">+100 Bonus XP</span>
+        </div>
+        <h3 class="f-hub-title">Daily Streak Challenge</h3>
+        <p class="f-hub-desc">Daily deterministic typing sprints to build lasting keyboard habits and maintain streaks.</p>
+        <div class="f-hub-cta">
+          <span>Play Today's Target &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 4. 7-Minute Exam Simulator -->
+      <a href="/seven-minute-typing-test" class="feature-hub-card glass-panel" data-analytics-cta="home_hub_7min_test" title="Practice Official 7-Minute GCC-TBC Exam">
+        <div class="f-hub-top">
+          <span class="f-hub-icon">⏱️</span>
+          <span class="badge badge-green">30 &amp; 40 WPM</span>
+        </div>
+        <h3 class="f-hub-title">7-Minute Exam Test</h3>
+        <p class="f-hub-desc">Official MSCE GCC-TBC, SSC CGL &amp; MPSC exam simulation with strict error scoring.</p>
+        <div class="f-hub-cta">
+          <span>Start Exam Test &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 5. Typing Games -->
+      <a href="/games" class="feature-hub-card glass-panel" data-analytics-cta="home_hub_games" title="Play Falling Words Matrix Defense Game">
+        <div class="f-hub-top">
+          <span class="f-hub-icon">🎮</span>
+          <span class="badge badge-purple">Arcade Defense</span>
+        </div>
+        <h3 class="f-hub-title">Falling Words Arcade</h3>
+        <p class="f-hub-desc">Cyber matrix defense game. Type falling words to protect your defense barrier before impact.</p>
+        <div class="f-hub-cta">
+          <span>Play Arcade Game &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 6. Leaderboard & Championship -->
+      <a href="/leaderboard" class="feature-hub-card glass-panel" data-analytics-cta="home_hub_leaderboard" title="View Global Player Standings and Weekly Championship">
+        <div class="f-hub-top">
+          <span class="f-hub-icon">🏆</span>
+          <span class="badge badge-gold">Hall of Fame</span>
+        </div>
+        <h3 class="f-hub-title">Rankings &amp; Podium</h3>
+        <p class="f-hub-desc">Compete with global typists, check your rank, unlock badges, and claim your trophy spot.</p>
+        <div class="f-hub-cta">
+          <span>View Leaderboard &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 3-Language Selection Grid (English, Hindi, Marathi) -->
+  <section class="container language-hub-section">
+    <div class="section-title-box">
+      <div class="badge badge-gold">🌐 Trilingual Typing Hub</div>
+      <h2 class="arena-section-heading">Choose Your Typing Language</h2>
+      <p class="arena-section-sub">Practice speed tests, drills, competitive exam passages, and AI car racing across all three languages.</p>
+    </div>
+
+    <div class="lang-selection-grid">
+      <!-- English Card -->
+      <a href="/english-typing-test" class="lang-select-card card-english glass-panel">
+        <div class="lang-card-top">
+          <span class="lang-flag">🇬🇧</span>
+          <span class="lang-badge">Global Standard</span>
+        </div>
+        <h3 class="lang-card-title">English Typing</h3>
+        <p class="lang-card-desc">Standard QWERTY layout speed tests, competitive exam passages, and real-time WPM benchmarking.</p>
+        <div class="lang-card-cta">
+          <span>Start English Test &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Hindi Card -->
+      <a href="/hindi-typing-test" class="lang-select-card card-hindi glass-panel">
+        <div class="lang-card-top">
+          <span class="lang-flag">🇮🇳</span>
+          <span class="lang-badge">Devanagari Inscript</span>
+        </div>
+        <h3 class="lang-card-title">Hindi Typing (हिंदी)</h3>
+        <p class="lang-card-desc">Practice Hindi Inscript &amp; Remington layout typing, SSC CGL mock tests, and government exam drills.</p>
+        <div class="lang-card-cta">
+          <span>Start Hindi Test &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Marathi Card -->
+      <a href="/marathi-typing-test" class="lang-select-card card-marathi glass-panel">
+        <div class="lang-card-top">
+          <span class="lang-flag">🇮🇳</span>
+          <span class="lang-badge">GCC-TBC &amp; MPSC 30/40</span>
+        </div>
+        <h3 class="lang-card-title">Marathi Typing (मराठी)</h3>
+        <p class="lang-card-desc">Official GCC-TBC speed simulation, MPSC clerk-typist passages, and complex conjunct (जोडाक्षरे) practice.</p>
+        <div class="lang-card-cta">
+          <span>Start Marathi Test &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Quick Typing Arena -->
+  <section class="container" id="quick-typing-arena">
+    <div class="section-title-box">
+      <div class="badge badge-cyan">⚡ Live Typing Arena</div>
+      <h2 class="arena-section-heading">Instant Typing Speed Test (English, Hindi &amp; Marathi)</h2>
+      <p class="arena-section-sub">Choose your language, duration, and difficulty below. Start typing to test your speed and unlock your free certificate!</p>
+    </div>
+
+    <!-- The Typing Arena Component -->
+    <TypingArena initialLanguage="english" initialDuration={60} initialDifficulty="medium" />
+
+    <!-- Interactive On-Screen Virtual Keyboard -->
+    <VirtualKeyboard language="english" visible={true} />
+  </section>
+
+  <!-- Split Features: Daily Challenge & Race Teaser -->
+  <section class="container split-features-section">
+    <div class="features-dual-grid">
+      <!-- Daily Challenge Widget -->
+      <DailyChallengeCard />
+
+      <!-- Race Against AI Teaser Card -->
+      <div class="race-teaser-card glass-panel">
+        <div class="race-teaser-top">
+          <span class="badge badge-pink">🏎️ Real-Time Race Game</span>
+          <span class="badge badge-cyan">Multi-Theme Tracks</span>
+        </div>
+        <div class="race-teaser-body">
+          <h3>Grand Prix AI Car Typing Race</h3>
+          <p>
+            Put your typing skills into overdrive! Race your vector sports car against dynamic computer opponents with nitro flame boosts and realistic speed variations.
+          </p>
+          <div class="car-preview-row">
+            <span class="car-tag cyan">🚗 Player (You)</span>
+            <span class="vs-tag">VS</span>
+            <span class="car-tag pink">🏎️ Cyber Bot AI</span>
+          </div>
+        </div>
+        <div class="race-teaser-action">
+          <a href="/race" class="btn-secondary" style="width: 100%; text-align: center;">
+            <span>🏁 Enter the Typing Race Game</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arcade Game Showcase Section -->
+  <section class="container arcade-showcase-section">
+    <div class="section-title-box">
+      <div class="badge badge-gold">🎮 Arcade Typing Games</div>
+      <h2 class="arena-section-heading">Interactive Typing Games &amp; Defense Matrix</h2>
+      <p class="arena-section-sub">Level up your typing precision with engaging, fast-paced arcade challenges and racing games.</p>
+    </div>
+
+    <div class="arcade-grid">
+      <!-- Game 1: Race -->
+      <div class="game-card">
+        <div>
+          <div class="game-icon-box">🏎️</div>
+          <h3 class="game-title">Typing Race Game (Grand Prix)</h3>
+          <p class="game-desc">Race against computer opponents across Neon City and Mumbai Expressway tracks with nitro speed.</p>
+        </div>
+        <a href="/race" class="game-card-btn" style="margin-top: 18px;">Play Typing Race</a>
+      </div>
+
+      <!-- Game 2: Falling Words -->
+      <div class="game-card">
+        <div>
+          <div class="game-icon-box">🌧️</div>
+          <h3 class="game-title">Falling Words Matrix</h3>
+          <p class="game-desc">Words descend down cyber lanes. Type them before they hit the defense barrier!</p>
+        </div>
+        <a href="/games" class="game-card-btn" style="margin-top: 18px;">Play Falling Words Game</a>
+      </div>
+
+      <!-- Game 3: Daily Challenge -->
+      <div class="game-card">
+        <div>
+          <div class="game-icon-box">🔥</div>
+          <h3 class="game-title">Daily Streak Challenge</h3>
+          <p class="game-desc">Daily passages with streak multipliers. Build continuous daily typing habits!</p>
+        </div>
+        <a href="/daily-challenge" class="game-card-btn" style="margin-top: 18px;">Play Daily Challenge</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dedicated 7-Minute Government & Certification Typing Test Section -->
+  <section class="container" id="seven-minute-test" style="margin-top: 40px;">
+    <SevenMinuteTypingTest />
+  </section>
+
+  <!-- TypeBaazi Weekly Championship & Hall of Fame -->
+  <section class="container" style="margin-top: 40px;">
+    <WeeklyChampionship />
+    <LeaderboardWidget />
+  </section>
+
+  <!-- Comprehensive On-Page SEO Section (800+ Words) -->
+  <section class="container seo-content-section glass-panel" id="about-typing-tool" style="margin: 48px auto 60px;">
+    <div class="seo-inner">
+      <div class="seo-header-badge">
+        <span class="badge badge-cyan">📖 Complete Typing Guide &amp; Exam Hub</span>
+        <span class="badge badge-gold">⚡ Zero-Lag Engine</span>
+      </div>
+
+      <h2 class="seo-main-title">TypeBaazi: Free Typing Speed Test, English, Hindi &amp; Marathi Typing Practice, MPSC/UPSC Prep, Race Games &amp; Certificates</h2>
+      
+      <p class="seo-lead">
+        Welcome to <strong>TypeBaazi</strong>, the modern web platform engineered to help students, government job aspirants, and gamers master <strong>type</strong> and <strong>typing</strong>. Whether you need a 1-minute <strong>typing test</strong>, structured <strong>english typing</strong>, <strong>hindi typing (हिंदी टाइपिंग)</strong>, and <strong>marathi typing (मराठी टायपिंग)</strong> practice, simulated mock tests for <strong>SSC</strong>, <strong>MPSC</strong> and <strong>UPSC</strong> examinations, a high-octane <strong>typing race game</strong>, or a verified <strong>free typing certificate</strong>, TypeBaazi delivers a lightning-fast experience directly in your browser.
+      </p>
+
+      <div class="seo-grid-layout">
+        <!-- Column 1: Speed Tests & Benchmarking -->
+        <div class="seo-card">
+          <div class="seo-card-icon">⚡</div>
+          <h3>Precision Typing Test &amp; WPM Speed Calculator</h3>
+          <p>
+            Taking a regular <strong>typing test</strong> is essential for developing keyboard fluency. Inspired by enthusiast tools like <strong>monkey type</strong> and <strong>typing .com</strong>, TypeBaazi provides customizable test durations with live gross WPM, Net WPM, and character-by-character accuracy metrics. Take our <a href="/typing-speed-test" style="color: #00f0ff; text-decoration: underline;">Typing Speed Test</a> to measure your baseline speed today.
+          </p>
+        </div>
+
+        <!-- Column 2: Car Racing & Arcade Gaming -->
+        <div class="seo-card">
+          <div class="seo-card-icon">🏎️</div>
+          <h3>High-Octane Typing Race Game on the Track</h3>
+          <p>
+            Transform routine typing practice into an adrenaline-fueled <strong>typing race game</strong>. In our flagship <a href="/race" style="color: #00f0ff; text-decoration: underline;">Car Race Track Mode</a>, your keystroke speed controls your vector race car. Inspired by the mechanics of <strong>nitro type</strong>, maintaining high accuracy unleashes nitro boosts that propel your vehicle past AI bots and rivals.
+          </p>
+        </div>
+
+        <!-- Column 3: English, Hindi & Marathi Trilingual Mastery -->
+        <div class="seo-card">
+          <div class="seo-card-icon">🇮🇳</div>
+          <h3>English, Hindi &amp; Marathi Typing (हिंदी व मराठी टायपिंग सराव)</h3>
+          <p>
+            TypeBaazi is built for trilingual mastery. Practice fluent <a href="/english-typing-test" style="color: #00f0ff; text-decoration: underline;">English Typing</a>, authentic <a href="/hindi-typing-test" style="color: #00f0ff; text-decoration: underline;">Hindi Typing (हिंदी)</a>, and specialized <a href="/marathi-typing-test" style="color: #00f0ff; text-decoration: underline;">Marathi Typing (मराठी)</a>. Our Devanagari engine handles complex conjuncts (जोडाक्षरे / संयुक्ताक्षर), halants, and matras with Remington and Inscript keyboard guides.
+          </p>
+        </div>
+
+        <!-- Column 4: MPSC, UPSC & Govt Exam Hub -->
+        <div class="seo-card">
+          <div class="seo-card-icon">🏛️</div>
+          <h3>MPSC, UPSC &amp; Government Exam Typing Practice</h3>
+          <p>
+            Prepare for <strong>MPSC Group C Clerk-Typist</strong> (Marathi 30 WPM &amp; English 40 WPM), <strong>UPSC EPFO</strong>, SSC, High Court, and GCC-TBC certification tests with authentic exam passages. Explore our dedicated <a href="/government-exam-typing-practice" style="color: #00f0ff; text-decoration: underline;">Government Exam Typing Practice</a> and <a href="/mpsc-typing-practice" style="color: #00f0ff; text-decoration: underline;">MPSC Typing Practice</a> hubs.
+          </p>
+        </div>
+
+        <!-- Column 5: Free Typing Certificates -->
+        <div class="seo-card">
+          <div class="seo-card-icon">📜</div>
+          <h3>Official Free Downloadable Typing Certificates</h3>
+          <p>
+            Complete any typing test on TypeBaazi with at least 90% accuracy to generate and download an official <strong>typing certificate</strong> in crisp PDF or PNG format. Showcase your certified WPM speed, accuracy percentage, and test date on resumes, job applications, and social profiles via your <a href="/dashboard" style="color: #00f0ff; text-decoration: underline;">Player Dashboard</a>.
+          </p>
+        </div>
+
+        <!-- Column 6: Mechanical Switch Acoustics & Privacy -->
+        <div class="seo-card">
+          <div class="seo-card-icon">🎧</div>
+          <h3>Tactile Mechanical Audio &amp; 100% Private Engine</h3>
+          <p>
+            Enjoy procedural Web Audio sound simulations including Cherry MX Blue clicky switches, Creamy Thock keyboards, and vintage typewriters. Best of all, your <strong>typing practice</strong> is 100% private: all keystrokes and speed analytics are calculated client-side with zero latency.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Section Component -->
+      <FaqSection showSchema={true} />
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .section-title-box {
+    text-align: center;
+    margin-bottom: clamp(16px, 3vw, 24px);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .arena-section-heading {
+    font-size: clamp(20px, 4.5vw, 32px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 8px 0 4px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .arena-section-sub {
+    font-size: clamp(12px, 2.6vw, 15px);
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-wrap: anywhere;
+  }
+
+  .split-features-section {
+    margin: clamp(24px, 4vw, 40px) auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .features-dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(14px, 2.5vw, 24px);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .race-teaser-card {
+    padding: clamp(14px, 2.5vw, 24px);
+    border: 1px solid rgba(255, 0, 122, 0.3);
+    background: linear-gradient(145deg, rgba(18, 27, 46, 0.85), rgba(255, 0, 122, 0.06));
+    border-radius: var(--radius-lg, 18px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .race-teaser-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .race-teaser-body {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .race-teaser-body h3 {
+    font-size: clamp(16px, 3.2vw, 20px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .race-teaser-body p {
+    font-size: clamp(12px, 2.4vw, 13.5px);
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 12px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .car-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(11px, 2.4vw, 13px);
+    font-weight: 700;
+    flex-wrap: wrap;
+  }
+
+  .car-tag.cyan { color: var(--accent-cyan); }
+  .car-tag.pink { color: var(--accent-pink); }
+  .vs-tag { color: var(--text-subtle); font-size: 11px; }
+
+  .race-teaser-action {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .race-teaser-action a {
+    width: 100% !important;
+    max-width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px 16px !important;
+    font-size: clamp(12.5px, 2.6vw, 14px) !important;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .arcade-showcase-section {
+    margin: clamp(30px, 5vw, 50px) auto 30px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .arcade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .game-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(16px, 2.5vw, 24px);
+    background: rgba(14, 21, 37, 0.85);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg, 18px);
+    box-sizing: border-box;
+    min-width: 0;
+    width: 100%;
+    transition: all 0.25s ease;
+  }
+
+  .game-card:hover {
+    border-color: rgba(0, 240, 255, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .game-icon-box {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .game-title {
+    font-size: clamp(16px, 3vw, 18px);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .game-desc {
+    font-size: clamp(12px, 2.4vw, 13px);
+    color: var(--text-muted);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .game-card-btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 18px;
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%) !important;
+    color: #ffffff !important;
+    font-size: clamp(13px, 2.2vw, 14.5px) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35), 0 2px 6px rgba(37, 99, 235, 0.25) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .game-card-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 50%, #6d28d9 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5), 0 3px 8px rgba(37, 99, 235, 0.35) !important;
+    filter: brightness(1.06);
+  }
+
+  .game-card-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3) !important;
+    filter: brightness(0.96);
+  }
+
+  .game-card .btn-primary,
+  .game-card .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  .seo-content-section {
+    padding: clamp(20px, 4vw, 40px);
+    box-sizing: border-box;
+    width: 100%;
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    border-radius: var(--radius-xl, 22px);
+    background: linear-gradient(180deg, rgba(12, 18, 34, 0.95) 0%, rgba(8, 12, 22, 0.98) 100%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .seo-header-badge {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .seo-main-title {
+    font-size: clamp(20px, 4vw, 30px);
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 14px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .seo-lead {
+    font-size: clamp(13.5px, 2vw, 15.5px);
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    overflow-wrap: anywhere;
+  }
+
+  .seo-lead strong {
+    color: var(--accent-cyan, #00f0ff);
+  }
+
+  .seo-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(14px, 2.5vw, 22px);
+    margin-bottom: 36px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .seo-card {
+    background: rgba(16, 24, 44, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg, 16px);
+    padding: clamp(16px, 2.5vw, 24px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .seo-card:hover {
+    border-color: rgba(0, 240, 255, 0.35);
+    background: rgba(18, 28, 52, 0.85);
+    transform: translateY(-2px);
+  }
+
+  .seo-card-icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .seo-card h3 {
+    font-size: clamp(15px, 2.4vw, 18px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .seo-card p {
+    font-size: clamp(12.5px, 1.8vw, 14px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.6;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .seo-card p strong {
+    color: #f1f5f9;
+  }
+
+  .seo-faq-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 32px;
+    margin-top: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .faq-header-bar {
+    margin-bottom: 24px;
+  }
+
+  .seo-faq-heading {
+    font-size: clamp(18px, 3.2vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 8px 0 6px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .seo-faq-sub {
+    font-size: clamp(12.5px, 2vw, 14.5px);
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .faq-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .faq-accordion-item {
+    background: rgba(14, 20, 36, 0.7);
+    border: 1.5px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-md, 12px);
+    transition: all 0.2s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .faq-accordion-item[open] {
+    border-color: rgba(0, 240, 255, 0.4);
+    background: rgba(16, 26, 48, 0.85);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    font-size: clamp(13.5px, 2vw, 15.5px);
+    font-weight: 800;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q-text {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-chevron {
+    font-size: 16px;
+    color: var(--accent-cyan, #00f0ff);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-accordion-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 18px 16px;
+    font-size: clamp(12.5px, 1.8vw, 14px);
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.65;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 4px;
+    padding-top: 12px;
+  }
+
+  .faq-answer p {
+    margin: 0 0 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-answer ul,
+  .faq-answer ol {
+    margin: 6px 0 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .faq-answer li {
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-answer code {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--accent-cyan, #00f0ff);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 860px) {
+    .features-dual-grid,
+    .seo-grid-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .arcade-grid {
+      grid-template-columns: 1fr;
+    }
+    .faq-question {
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+    .faq-answer {
+      padding: 0 14px 14px;
+      font-size: 12px;
+    }
+  }
+
+  /* Light Theme Overrides for Home Page */
+  [data-theme='light'] .game-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .game-card:hover {
+    border-color: #0070f3 !important;
+    box-shadow: 0 8px 25px rgba(0, 112, 243, 0.12) !important;
+  }
+
+  [data-theme='light'] .game-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .game-desc {
+    color: #475569 !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .game-card-btn {
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35), 0 2px 6px rgba(37, 99, 235, 0.25) !important;
+  }
+
+  [data-theme='light'] .game-card-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #4338ca 50%, #6d28d9 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5), 0 3px 8px rgba(37, 99, 235, 0.35) !important;
+  }
+
+  [data-theme='light'] .race-teaser-card {
+    background: #ffffff !important;
+    border: 1.5px solid #fbcfe8 !important;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .race-teaser-body h3 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .race-teaser-body p {
+    color: #475569 !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .seo-content-section {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .seo-main-title {
+    color: #0f172a !important;
+    font-weight: 900 !important;
+  }
+
+  [data-theme='light'] .seo-lead {
+    color: #1e293b !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .seo-lead strong {
+    color: #0070f3 !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .seo-card {
+    background: #f8fafc !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .seo-card h3 {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .seo-card p {
+    color: #334155 !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .seo-card p strong {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  [data-theme='light'] .seo-faq-heading {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .seo-faq-sub {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .faq-accordion-item {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .faq-accordion-item[open] {
+    border-color: #0070f3 !important;
+    background: #ffffff !important;
+  }
+
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  /* 3-Language Hub Grid Styles */
+  .language-hub-section {
+    margin: 32px auto 16px;
+  }
+
+  .lang-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .lang-select-card {
+    padding: 22px 20px;
+    border-radius: var(--radius-lg, 16px);
+    background: rgba(15, 23, 42, 0.7);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .lang-select-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 10px 28px rgba(0, 240, 255, 0.15);
+  }
+
+  .card-english:hover {
+    border-color: #0070f3;
+    box-shadow: 0 10px 28px rgba(0, 112, 243, 0.2);
+  }
+
+  .card-hindi:hover {
+    border-color: #f59e0b;
+    box-shadow: 0 10px 28px rgba(245, 158, 11, 0.2);
+  }
+
+  .card-marathi:hover {
+    border-color: #ff007a;
+    box-shadow: 0 10px 28px rgba(255, 0, 122, 0.2);
+  }
+
+  .lang-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .lang-flag {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .lang-badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill, 9999px);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-muted, #94a3b8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .lang-card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+
+  .lang-card-desc {
+    font-size: 13.5px;
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.5;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+
+  .lang-card-cta {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent-cyan, #00f0ff);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s ease;
+  }
+
+  .lang-select-card:hover .lang-card-cta {
+    gap: 8px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 681px) {
+    .lang-selection-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .lang-selection-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .lang-select-card {
+      padding: 18px 16px;
+    }
+    .lang-card-title {
+      font-size: 16.5px;
+    }
+    .lang-card-desc {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+  }
+
+  [data-theme='light'] .lang-select-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme='light'] .lang-card-title {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .lang-card-desc {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .lang-badge {
+    background: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #64748b !important;
+  }
+
+  [data-theme='light'] .faq-answer {
+    color: #334155 !important;
+    border-top: 1px solid #f1f5f9 !important;
+  }
+
+  /* 6-Feature Launchpad Grid Styles */
+  .features-hub-section {
+    margin: 10px auto 36px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .features-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .feature-hub-card {
+    padding: 22px 20px;
+    border-radius: var(--radius-lg, 16px);
+    background: rgba(14, 21, 37, 0.85);
+    border: 1.5px solid rgba(0, 240, 255, 0.18);
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-hub-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 240, 255, 0.55);
+    box-shadow: 0 12px 32px rgba(0, 240, 255, 0.2), 0 0 20px rgba(0, 240, 255, 0.1);
+  }
+
+  .f-hub-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .f-hub-icon {
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .f-hub-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+
+  .f-hub-desc {
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    line-height: 1.5;
+    margin: 0 0 16px;
+    flex: 1;
+  }
+
+  .f-hub-cta {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent-cyan, #00f0ff);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s ease;
+  }
+
+  .feature-hub-card:hover .f-hub-cta {
+    gap: 8px;
+    color: #ffffff;
+  }
+
+  @media (max-width: 1024px) and (min-width: 681px) {
+    .features-hub-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .features-hub-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .feature-hub-card {
+      padding: 18px 16px;
+    }
+    .f-hub-title {
+      font-size: 16.5px;
+    }
+    .f-hub-desc {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+  }
+
+  [data-theme='light'] .feature-hub-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .feature-hub-card:hover {
+    border-color: #0070f3 !important;
+    box-shadow: 0 8px 24px rgba(0, 112, 243, 0.15) !important;
+  }
+
+  [data-theme='light'] .f-hub-title {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .f-hub-desc {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .f-hub-cta {
+    color: #0070f3 !important;
+  }
+</style>

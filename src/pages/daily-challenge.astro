@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Daily Typing Challenge",
+      "item": "https://typebaazi.com/daily-challenge"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Daily Typing Challenge & Streak — English, Hindi & Marathi | TypeBaazi"
+  description="Take on today's official Daily Typing Challenge. Maintain your consecutive day typing streak in English, Hindi, and Marathi, earn +100 bonus XP, and unlock streak badges on TypeBaazi."
+  activePath="/daily-challenge"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container page-container">
+    <div class="page-header">
+      <div class="badge badge-gold">🔥 Daily Challenge Sprint</div>
+      <h1 class="page-title">Today's Official Typing Challenge</h1>
+      <p class="page-sub">
+        Every calendar day brings a new deterministic typing sprint. Complete today's target to fuel your daily streak!
+      </p>
+    </div>
+
+    <!-- Daily Challenge Summary Card -->
+    <div class="daily-hero-card glass-panel">
+      <div class="daily-hero-left">
+        <div class="flame-badge-big">🔥</div>
+        <div>
+          <span class="daily-date-tag" id="dc-date-tag">Today's Mission</span>
+          <h2 class="daily-target-title">Target: <span id="dc-target-wpm" class="text-cyan">55 WPM</span> (95% Accuracy)</h2>
+          <p class="daily-bonus-txt">Reward: <strong>+100 Bonus XP</strong> &amp; Streak Increment</p>
+        </div>
+      </div>
+
+      <div class="streak-counter-box">
+        <span class="streak-huge-num" id="dc-streak-num">0</span>
+        <span class="streak-lbl">DAY STREAK</span>
+      </div>
+    </div>
+
+    <!-- Arena with preloaded Daily Challenge Text -->
+    <TypingArena initialLanguage="english" initialDuration={60} initialDifficulty="medium" mode="daily" showControls={true} />
+
+    <!-- Virtual Keyboard -->
+    <VirtualKeyboard language="english" visible={true} />
+
+    <!-- Streak Guide & Cross-Navigation -->
+    <div class="daily-guide-card glass-panel" style="margin-top: 28px; padding: 22px; border-radius: 16px; background: rgba(14, 21, 37, 0.85); border: 1px solid rgba(245, 158, 11, 0.25);">
+      <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">🔥 Why Maintain a Daily Typing Streak?</h3>
+      <p style="font-size: 13.5px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin-bottom: 16px;">
+        Daily deliberate practice creates strong neuro-muscular pathways in your hands and fingers. Just 1 minute of focused typing every day prevents speed decay, boosts finger memory, and steadily advances your player level.
+      </p>
+
+      <div class="daily-rel-grid" style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a href="/typing-test" class="btn-secondary" data-analytics-cta="daily_rel_typing_test" style="font-size: 13px; padding: 8px 16px;">
+          <span>⌨️ Standard Typing Speed Test</span>
+        </a>
+        <a href="/race" class="btn-secondary" data-analytics-cta="daily_rel_race" style="font-size: 13px; padding: 8px 16px;">
+          <span>🏎️ Grand Prix AI Car Race</span>
+        </a>
+        <a href="/seven-minute-typing-test" class="btn-secondary" data-analytics-cta="daily_rel_7min" style="font-size: 13px; padding: 8px 16px;">
+          <span>⏱️ 7-Minute GCC-TBC Exam Test</span>
+        </a>
+        <a href="/dashboard" class="btn-secondary" data-analytics-cta="daily_rel_dashboard" style="font-size: 13px; padding: 8px 16px;">
+          <span>📊 View Your Stats &amp; Badges</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(20px, 3vh, 40px) clamp(12px, 2vw, 20px) 60px;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: clamp(26px, 6vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.6vw, 16px);
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .daily-hero-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(16px, 2.5vw, 24px) clamp(16px, 3vw, 32px);
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(18, 27, 46, 0.95), rgba(245, 158, 11, 0.12));
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: var(--radius-lg);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .daily-hero-left {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 20px);
+  }
+
+  .flame-badge-big {
+    font-size: clamp(36px, 6vw, 48px);
+    flex-shrink: 0;
+  }
+
+  .daily-date-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  .daily-target-title {
+    font-size: clamp(18px, 3.5vw, 22px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 4px 0;
+  }
+
+  .daily-bonus-txt {
+    font-size: clamp(12px, 1.5vw, 13px);
+    color: var(--text-muted);
+  }
+
+  .streak-counter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 18px;
+    border-radius: var(--radius-md);
+    background: rgba(8, 12, 20, 0.7);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    min-width: 90px;
+  }
+
+  .streak-huge-num {
+    font-size: clamp(28px, 5vw, 36px);
+    font-weight: 900;
+    font-family: var(--font-mono);
+    color: var(--accent-gold);
+    line-height: 1;
+  }
+
+  .streak-lbl {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.8px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 640px) {
+    .daily-hero-card {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      padding: 14px 12px;
+    }
+    .daily-hero-left {
+      width: 100%;
+      gap: 10px;
+    }
+    .streak-counter-box {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 14px;
+    }
+    .streak-lbl {
+      margin-top: 0;
+    }
+  }
+
+  [data-theme='light'] .daily-guide-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .daily-guide-card h3 {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .daily-guide-card p {
+    color: #475569 !important;
+  }
+</style>
+
+<script>
+  import { DailyChallengeManager } from '../lib/dailyChallenge';
+  import { StorageManager } from '../lib/storage';
+
+  function initDailyPage() {
+    const challenge = DailyChallengeManager.getTodaysChallenge();
+    const stats = StorageManager.getStats();
+
+    const dateTag = document.getElementById('dc-date-tag');
+    const targetWpm = document.getElementById('dc-target-wpm');
+    const streakNum = document.getElementById('dc-streak-num');
+
+    if (dateTag) {
+      dateTag.textContent = `Challenge for ${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`;
+    }
+    if (targetWpm) {
+      targetWpm.textContent = `${challenge.englishChallenge.targetWpm} WPM`;
+    }
+    if (streakNum) {
+      streakNum.textContent = String(stats.currentStreak || 0);
+    }
+  }
+
+  document.addEventListener('astro:page-load', initDailyPage);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDailyPage);
+  } else {
+    initDailyPage();
+  }
+</script>

@@ -1,0 +1,435 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SettingsModal from '../components/SettingsModal.astro';
+import ResultsModal from '../components/ResultsModal.astro';
+import CertificateModal from '../components/CertificateModal.astro';
+import ProfileModal from '../components/ProfileModal.astro';
+import AuthModal from '../components/AuthModal.astro';
+import PwaInstallPrompt from '../components/PwaInstallPrompt.astro';
+import StreakNotificationBanner from '../components/StreakNotificationBanner.astro';
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import '../styles/racing.css';
+import '../styles/games.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  activePath?: string;
+  keywords?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  canonical?: string;
+  hreflangAlternates?: Array<{ lang: string; href: string }>;
+  noindex?: boolean;
+  faqItems?: Array<{ question: string; answer: string }>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const {
+  title = 'TypeBaazi — #1 Free English, Hindi & Marathi Typing Speed Test',
+  description = 'Test & boost your typing speed with TypeBaazi. Practice 1, 2, 5-min English, Hindi and Marathi typing tests, play typing games, race AI bots, and simulate GCC-TBC 30/40 WPM exams for free.',
+  lang = 'en',
+  activePath = '/',
+  keywords = 'Hindi Typing Test, Hindi Typing Practice, English Typing Test, Marathi Typing Test, Typing Speed Test, Online Typing Test, English Hindi Marathi Typing Test, type, typing, typing test, english typing, hindi typing, हिंदी टाइपिंग, marathi typing, मराठी टायपिंग, mpsc, upsc, ssc cgl typing, mpsc typing practice, upsc typing test, typing practice, typing game, typing race game, car race typing, typing certificate, free typing certificate, wpm test, gcc tbc marathi typing 30 wpm, monkey type, nitro type, touch typing online',
+  ogTitle,
+  ogDescription,
+  ogImage = 'https://typebaazi.com/og-image.png',
+  ogImageAlt,
+  ogType = 'website',
+  twitterTitle,
+  twitterDescription,
+  canonical,
+  hreflangAlternates,
+  noindex = false,
+  faqItems,
+  breadcrumbs,
+} = Astro.props;
+
+const cleanPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
+const canonicalURL = canonical || `https://typebaazi.com${cleanPath}`;
+
+const finalOgTitle = ogTitle || title;
+const finalOgDesc = ogDescription || description;
+const finalTwitterTitle = twitterTitle || ogTitle || title;
+const finalTwitterDesc = twitterDescription || ogDescription || description;
+const finalOgImage = ogImage || 'https://typebaazi.com/og-image.png';
+const finalOgImageAlt = ogImageAlt || (lang === 'hi' ? 'TypeBaazi - Hindi Typing Test, Speed & Practice' : (lang === 'mr' ? 'TypeBaazi - Marathi Typing Test, Speed & Practice' : 'TypeBaazi - English, Hindi & Marathi Typing Speed Tests & Practice'));
+
+// Dynamic hreflang detection for equivalent multilingual hubs
+let alternates = hreflangAlternates;
+if (!alternates) {
+  if (['/typing-test', '/english-typing-test', '/hindi-typing-test', '/marathi-typing-test'].includes(cleanPath)) {
+    alternates = [
+      { lang: 'en', href: 'https://typebaazi.com/english-typing-test' },
+      { lang: 'hi', href: 'https://typebaazi.com/hindi-typing-test' },
+      { lang: 'mr', href: 'https://typebaazi.com/marathi-typing-test' },
+      { lang: 'x-default', href: 'https://typebaazi.com/typing-test' },
+    ];
+  } else if (['/hindi-typing-practice', '/marathi-typing-practice'].includes(cleanPath)) {
+    alternates = [
+      { lang: 'hi', href: 'https://typebaazi.com/hindi-typing-practice' },
+      { lang: 'mr', href: 'https://typebaazi.com/marathi-typing-practice' },
+    ];
+  }
+}
+
+// Build Breadcrumb Schema
+const breadcrumbItems = breadcrumbs || [
+  { name: 'Home', url: 'https://typebaazi.com/' },
+  ...(cleanPath !== '/' ? [{ name: title.split('—')[0].split('|')[0].trim(), url: canonicalURL }] : [])
+];
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <ClientRouter fallback="swap" />
+
+    <!-- Immediate Theme Application to prevent flash -->
+    <script is:inline>
+      try {
+        const stored = localStorage.getItem('typebaazi_settings_v1');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed && parsed.theme) {
+            document.documentElement.setAttribute('data-theme', parsed.theme);
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-J55H539QSK"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J55H539QSK', {
+        send_page_view: false // Managed explicitly for SPA / Astro ClientRouter transitions
+      });
+
+      // Track initial pageview & all subsequent Astro ClientRouter transitions
+      function trackAstroPageView() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'page_view', {
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: window.location.pathname
+          });
+        }
+      }
+
+      document.addEventListener('astro:page-load', trackAstroPageView);
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        trackAstroPageView();
+      }
+    </script>
+
+    <!-- Google AdSense Verification & Auto Ads -->
+    <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5060556948017928" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-5060556948017928" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    
+    <!-- DNS Prefetch & Preconnect for Fast Core Web Vitals -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon & Touch Icons (Google Search & Mobile Guidelines) -->
+    <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/icon-48.png?v=3" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96.png?v=3" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/icons/icon-144.png?v=3" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png?v=3" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png?v=3" />
+    <link rel="shortcut icon" href="/favicon.ico?v=3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png?v=3" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- PWA & Mobile Web App Meta Tags -->
+    <link rel="manifest" href="/manifest.webmanifest?v=3" />
+    <meta name="theme-color" content="#080e1b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="TypeBaazi" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {alternates && alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+    ))}
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="TypeBaazi" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={finalOgTitle} />
+    <meta property="og:description" content={finalOgDesc} />
+    <meta property="og:site_name" content="TypeBaazi" />
+    <meta property="og:locale" content={lang === 'hi' ? 'hi_IN' : (lang === 'mr' ? 'mr_IN' : 'en_IN')} />
+    <meta property="og:image" content={finalOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={finalOgImageAlt} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={finalTwitterTitle} />
+    <meta name="twitter:description" content={finalTwitterDesc} />
+    <meta name="twitter:image" content={finalOgImage} />
+    <meta name="twitter:image:alt" content={finalOgImageAlt} />
+
+    <!-- 1. WebSite Schema with SearchAction -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TypeBaazi",
+      "alternateName": ["TypeBaazi Typing Test", "TypeBaazi.com", "TypeBaazi Online Typing"],
+      "url": "https://typebaazi.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://typebaazi.com/typing-test?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+
+    <!-- 2. Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TypeBaazi",
+      "alternateName": "TypeBaazi Platform",
+      "url": "https://typebaazi.com",
+      "logo": "https://typebaazi.com/icons/icon-512.png",
+      "sameAs": [
+        "https://typebaazi.com"
+      ]
+    })} />
+
+    <!-- 3. WebApplication & EducationalTool Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TypeBaazi",
+      "alternateName": "TypeBaazi Web Application",
+      "url": "https://typebaazi.com",
+      "description": description,
+      "applicationCategory": "EducationalApplication, GameApplication, ProductivityApplication",
+      "operatingSystem": "All (Android, Windows, macOS, iOS, Linux, ChromeOS)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "featureList": [
+        "Free 1-Minute English Typing Speed Test (WPM & Accuracy)",
+        "Devanagari Hindi Typing Test & Practice (हिंदी टाइपिंग सराव)",
+        "Devanagari Marathi Typing Test & Practice (मराठी टायपिंग सराव)",
+        "SSC, MPSC Group C Clerk-Typist & Tax Assistant 30/40 WPM Exam Prep",
+        "UPSC EPFO, Central & State Government Exam Typing Skill Tests",
+        "High Court & District Court Stenographer Legal Typing Mock Tests",
+        "Real-Time Multiplayer AI Car Race Track Typing Game",
+        "Matrix Falling Words Arcade Typing Defense Game",
+        "Procedural Mechanical Switch Audio (Creamy Thock, Blue Switch)",
+        "Instant Downloadable Verified Typing Speed Certificates (PDF/PNG)",
+        "Daily Streak Challenge with Anti-Loss Notifications",
+        "100% Client-Side Privacy-Safe Speed Evaluation"
+      ]
+    })} />
+
+    <!-- 4. BreadcrumbList Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": item.name,
+        "item": item.url
+      }))
+    })} />
+
+    <!-- 5. Dynamic FAQPage Schema (when faqItems provided) -->
+    {faqItems && faqItems.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      })} />
+    )}
+
+    <!-- 6. Educational Course / Certificate Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "TypeBaazi Trilingual Touch Typing & Exam Speed Mastery",
+      "description": "Comprehensive online touch-typing masterclass and speed testing platform for English, Hindi, and Marathi Devanagari keyboards, GCC-TBC certifications, SSC, MPSC, and UPSC skill evaluations.",
+      "provider": {
+        "@type": "Organization",
+        "name": "TypeBaazi",
+        "sameAs": "https://typebaazi.com"
+      },
+      "educationalCredentialAwarded": "Official TypeBaazi Digital Typing Speed & Accuracy Certificate",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "courseWorkload": "PT1M",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
+      }
+    })} />
+
+    <!-- 7. HowTo Schema for Google Rich Snippets (1-Minute Typing Test) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Test Your Typing Speed & Get a Free Certificate on TypeBaazi",
+      "description": "Step-by-step guide to test your typing speed in Words Per Minute (WPM) and accuracy in English, Hindi, or Marathi, and download a verified certificate.",
+      "totalTime": "PT1M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Choose Your Language & Test Duration",
+          "text": "Select English, Hindi (हिंदी), or Marathi (मराठी) and choose 15s, 30s, 60s (1 min), or 5-minute test duration.",
+          "url": "https://typebaazi.com/typing-test"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Type the Highlighted Passage",
+          "text": "Type the displayed words on your physical keyboard or on-screen virtual keyboard with live real-time WPM and accuracy tracking.",
+          "url": "https://typebaazi.com/english-typing-test"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "View Detailed Analytics & Claim Certificate",
+          "text": "Review your Gross WPM, Net WPM, accuracy %, and keystroke consistency, then download your official 300 DPI speed certificate.",
+          "url": "https://typebaazi.com/dashboard"
+        }
+      ]
+    })} />
+
+    <!-- 8. Speakable Schema for AI & Voice Search Discovery -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": title,
+      "url": canonicalURL,
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".page-title", ".page-sub", ".arena-section-heading", ".faq-question"]
+      }
+    })} />
+
+    <!-- GA4 Telemetry & Conversion Event Tracking -->
+    <script is:inline>
+      window.trackTypeBaaziEvent = function(eventName, params) {
+        try {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, params || {});
+          }
+        } catch (e) {
+          console.warn('TypeBaazi Analytics Event Error:', e);
+        }
+      };
+
+      // Delegated CTA Click Tracker for conversion funnels
+      document.addEventListener('click', function(e) {
+        var target = e.target;
+        var ctaEl = target && typeof target.closest === 'function' ? target.closest('[data-analytics-cta]') : null;
+        if (ctaEl) {
+          var ctaName = ctaEl.getAttribute('data-analytics-cta') || 'unnamed_cta';
+          var ctaDest = ctaEl.getAttribute('href') || ctaEl.getAttribute('data-destination') || '';
+          window.trackTypeBaaziEvent('cta_click', {
+            cta_name: ctaName,
+            cta_destination: ctaDest,
+            page_path: window.location.pathname
+          });
+        }
+      }, { passive: true });
+    </script>
+  </head>
+  <body class="cyber-bg-grid">
+    <!-- Navbar -->
+    <Navbar activePath={activePath} />
+
+    <!-- PWA Install Banner in Document Flow below Navbar -->
+    <PwaInstallPrompt />
+
+    <!-- Main Content Body -->
+    <main style="flex: 1;">
+      <slot />
+    </main>
+
+    <!-- Modals -->
+    <SettingsModal />
+    <ResultsModal />
+    <CertificateModal />
+    <ProfileModal />
+    <AuthModal />
+
+    <!-- 3-Stage Streak Protection Notification Banner -->
+    <StreakNotificationBanner />
+
+    <!-- Footer -->
+    <Footer />
+
+    <!-- Button Haptic Vibration Engine & Daily Streak Notification Scheduler -->
+    <script>
+      import { HapticsManager } from '../lib/haptics';
+      import { streakNotifManager } from '../lib/streakNotifications';
+
+      HapticsManager.initGlobalListener();
+      streakNotifManager.autoPromptPermission();
+      streakNotifManager.startScheduler();
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script is:inline>
+      if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch((err) => {
+            console.warn('TypeBaazi SW registration failed:', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

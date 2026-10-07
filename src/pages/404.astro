@@ -1,0 +1,338 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://typebaazi.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Page Not Found",
+      "item": "https://typebaazi.com/404"
+    }
+  ]
+};
+---
+
+<Layout
+  title="404: Page Not Found — TypeBaazi Free Typing Platform"
+  description="The page you were looking for could not be found. Explore free English, Hindi & Marathi typing tests, Grand Prix AI racing, and government exam practice on TypeBaazi."
+  noindex={true}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <div class="container not-found-container">
+    <div class="not-found-card glass-panel">
+      <!-- 404 Visual Icon & Code -->
+      <div class="code-badge">404 ERROR</div>
+      <h1 class="error-title">Page Not Found</h1>
+      <p class="error-desc">
+        We couldn't find the page or typing module you're looking for. It might have been moved, renamed, or temporarily unavailable.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="action-buttons">
+        <a href="/" class="btn-primary">
+          <span>🏠 Return to Home</span>
+        </a>
+        <a href="/typing-test" class="btn-secondary">
+          <span>⌨️ Start Typing Test</span>
+        </a>
+      </div>
+
+      <!-- Quick Directory of Popular Hubs -->
+      <div class="quick-directory">
+        <h2 class="directory-title">Popular Typing Arenas &amp; Tools</h2>
+        <div class="directory-grid">
+          <a href="/english-typing-test" class="directory-card">
+            <span class="dir-icon">🇬🇧</span>
+            <div>
+              <strong>English Typing Test</strong>
+              <span>1, 2, 5 Min speed tests</span>
+            </div>
+          </a>
+
+          <a href="/hindi-typing-test" class="directory-card">
+            <span class="dir-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Typing Test</strong>
+              <span>Devanagari Inscript &amp; Practice</span>
+            </div>
+          </a>
+
+          <a href="/marathi-typing-test" class="directory-card">
+            <span class="dir-icon">🚩</span>
+            <div>
+              <strong>Marathi Typing Test</strong>
+              <span>मराठी टायपिंग सराव व परीक्षा</span>
+            </div>
+          </a>
+
+          <a href="/seven-minute-typing-test" class="directory-card">
+            <span class="dir-icon">⏱️</span>
+            <div>
+              <strong>7-Min GCC-TBC Simulator</strong>
+              <span>30 &amp; 40 WPM exam patterns</span>
+            </div>
+          </a>
+
+          <a href="/race" class="directory-card">
+            <span class="dir-icon">🏎️</span>
+            <div>
+              <strong>Grand Prix Typing Race</strong>
+              <span>Compete with smart AI racers</span>
+            </div>
+          </a>
+
+          <a href="/games" class="directory-card">
+            <span class="dir-icon">🎮</span>
+            <div>
+              <strong>Arcade Falling Words Game</strong>
+              <span>Matrix cyber typing defense</span>
+            </div>
+          </a>
+
+          <a href="/daily-challenge" class="directory-card">
+            <span class="dir-icon">🔥</span>
+            <div>
+              <strong>Daily Streak Challenge</strong>
+              <span>Daily goal &amp; XP multipliers</span>
+            </div>
+          </a>
+
+          <a href="/learn" class="directory-card">
+            <span class="dir-icon">📖</span>
+            <div>
+              <strong>Learn Touch Typing</strong>
+              <span>Finger placement &amp; home row guide</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Help Contact -->
+      <div class="help-footer">
+        <span>Need assistance? Reach us at <a href="mailto:riteshthakareofficial@gmail.com">riteshthakareofficial@gmail.com</a> or visit our <a href="/contact-us">Contact Page</a>.</span>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .not-found-container {
+    padding: clamp(32px, 5vw, 64px) clamp(16px, 3vw, 24px) 80px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  .not-found-card {
+    width: 100%;
+    padding: clamp(24px, 4vw, 48px);
+    border-radius: var(--radius-xl, 24px);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .code-badge {
+    background: rgba(255, 0, 122, 0.15);
+    border: 1.5px solid #ff007a;
+    color: #ff007a;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .error-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+
+  .error-desc {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: var(--text-muted, #94a3b8);
+    max-width: 580px;
+    margin: 0 0 28px;
+    line-height: 1.6;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #00f0ff, #0070f3);
+    color: #080e1b;
+    box-shadow: 0 4px 16px rgba(0, 240, 255, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 240, 255, 0.45);
+    color: #000000;
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .quick-directory {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
+    margin-bottom: 24px;
+  }
+
+  .directory-title {
+    font-size: clamp(16px, 2.4vw, 20px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 20px;
+  }
+
+  .directory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    width: 100%;
+  }
+
+  .directory-card {
+    background: rgba(14, 20, 36, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg, 14px);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    text-align: left;
+    transition: all 0.2s ease;
+  }
+
+  .directory-card:hover {
+    background: rgba(20, 30, 55, 0.9);
+    border-color: var(--accent-cyan, #00f0ff);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 240, 255, 0.15);
+  }
+
+  .dir-icon {
+    font-size: 24px;
+  }
+
+  .directory-card strong {
+    display: block;
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+
+  .directory-card span {
+    font-size: 12px;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .help-footer {
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin-top: 12px;
+  }
+
+  .help-footer a {
+    color: var(--accent-cyan, #00f0ff);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .help-footer a:hover {
+    text-decoration: underline;
+  }
+
+  [data-theme='light'] .not-found-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  [data-theme='light'] .error-title,
+  [data-theme='light'] .directory-title,
+  [data-theme='light'] .directory-card strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .error-desc,
+  [data-theme='light'] .directory-card span,
+  [data-theme='light'] .help-footer {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .btn-primary {
+    background: linear-gradient(135deg, #0070f3, #0051a2) !important;
+    color: #ffffff !important;
+  }
+
+  [data-theme='light'] .btn-secondary {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .directory-card {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .directory-card:hover {
+    background: #ffffff !important;
+    border-color: #0070f3 !important;
+    box-shadow: 0 6px 20px rgba(0, 112, 243, 0.12) !important;
+  }
+
+  [data-theme='light'] .quick-directory {
+    border-top-color: #e2e8f0 !important;
+  }
+</style>

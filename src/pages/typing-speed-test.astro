@@ -1,0 +1,448 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "Typing Speed Test Online — Free 1-Minute WPM Calculator & Certificate | TypeBaazi";
+const pageDesc = "Calculate your exact typing speed and accuracy in 60 seconds with TypeBaazi. Take free trilingual English, Hindi & Marathi WPM tests, track progress, and download official certificates.";
+const pageKeywords = "typing speed test, typing speed test 1 minute, wpm test, hindi typing test, marathi typing test, typing test online, typing speed calculator, free speed test, words per minute test, typing certificate, typebaazi";
+
+const speedFaqs = [
+  {
+    question: "How is typing speed calculated in Words Per Minute (WPM)?",
+    answer: "Typing speed is calculated by dividing total typed characters by 5 (the standardized word length) and then dividing by the test duration in minutes. Net WPM subtracts error penalties."
+  },
+  {
+    question: "What is a 1-minute typing speed test?",
+    answer: "A 1-minute typing speed test evaluates how many words you can type cleanly in 60 seconds. It is the international standard test duration used by employers and certification bodies."
+  },
+  {
+    question: "How can I double my typing speed?",
+    answer: "Learn touch typing to use all 10 fingers without looking at keys, focus on 98%+ accuracy to reduce backspace usage, and practice 15 minutes daily on TypeBaazi."
+  },
+  {
+    question: "Is the TypeBaazi typing speed test certificate free?",
+    answer: "Yes! Completing any 60-second test with 90%+ accuracy generates an instant, verifiable digital typing certificate in PDF or PNG format for free."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Typing Speed Test Online", url: "https://typebaazi.com/typing-speed-test" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  activePath="/typing-speed-test"
+  faqItems={speedFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+
+  <div class="container page-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Typing Speed Test</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-gold">⚡ Free 1-Minute WPM Calculator</div>
+      <h1 class="page-title">Typing Speed Test (Online WPM Calculator)</h1>
+      <p class="page-sub">
+        Calculate your typing speed and accuracy in 60 seconds. Take trilingual English, Hindi &amp; Marathi typing tests, download official certificates, and climb the global leaderboard.
+      </p>
+      <div class="header-cta-row">
+        <a href="#speed-test-arena" class="btn-primary start-typing-btn">
+          <span>⏱️ Start 1-Minute Speed Test</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Arena Section -->
+    <section class="arena-section" id="speed-test-arena" aria-label="Typing Speed Arena">
+      <TypingArena initialLanguage="english" initialDuration={60} initialDifficulty="medium" showControls={true} />
+      <VirtualKeyboard language="english" visible={true} />
+    </section>
+
+    <!-- Speed Analytics & WPM Guide -->
+    <section class="guide-panel glass-panel">
+      <h2>How Does the Typing Speed Test Work?</h2>
+      <p class="panel-text">
+        When you start typing, TypeBaazi calculates your <strong>Gross WPM</strong> (raw keystroke speed), <strong>Net WPM</strong> (speed minus error penalties), and <strong>Accuracy percentage</strong> in real-time. Every 5 keystrokes count as one standardized word.
+      </p>
+
+      <h2>7 Actionable Steps to Double Your Typing Speed</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🧘</span>
+          <h4>1. Proper Hand Posture</h4>
+          <p>Keep your wrists slightly elevated off the desk and fingers curved naturally over the keyboard.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>2. Accuracy Over Velocity</h4>
+          <p>Never rush keystrokes. Typing at 45 WPM with 100% accuracy beats typing at 60 WPM with 85% accuracy.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">👀</span>
+          <h4>3. Look Ahead at Words</h4>
+          <p>Train your eyes to read 2–3 words ahead of what your fingers are currently typing.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⌨️</span>
+          <h4>4. Memorize Muscle Positions</h4>
+          <p>Learn key positions through touch typing so you never need to look down at your hands.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🔥</span>
+          <h4>5. Build Daily Streaks</h4>
+          <p>Complete at least one daily challenge test to maintain nervous system reflex memory.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🏆</span>
+          <h4>6. Compete in Races</h4>
+          <p>Join the TypeBaazi AI Car Race to push your brain into instinctive, high-speed typing flow.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Internal Linking -->
+      <div class="related-links-box">
+        <h3>Explore Other TypeBaazi Hubs</h3>
+        <div class="links-grid">
+          <a href="/english-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇬🇧</span>
+            <div>
+              <strong>English Typing Test</strong>
+              <span>Full English typing drills with accuracy analytics.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🚩</span>
+            <div>
+              <strong>Marathi Typing Test</strong>
+              <span>Devanagari script typing &amp; Remington layout.</span>
+            </div>
+          </a>
+          <a href="/government-exam-typing-practice" class="hub-link-card">
+            <span class="hub-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Practice</strong>
+              <span>MPSC, UPSC, SSC, and Court skill test simulator.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-practice" class="hub-link-card">
+            <span class="hub-icon">✍️</span>
+            <div>
+              <strong>Marathi Typing Practice</strong>
+              <span>Untimed letter and paragraph drills.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-panel glass-panel">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-accordion">
+        {speedFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-arrow">&darr;</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(14px, 2.5vw, 28px) clamp(10px, 2vw, 20px) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan, #00f0ff);
+    text-decoration: none;
+  }
+
+  .bc-sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .bc-current {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.6vw, 15.5px);
+    color: var(--text-muted, #94a3b8);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-cta-row {
+    margin-top: 16px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  .guide-panel,
+  .faq-panel {
+    padding: clamp(20px, 3vw, 32px);
+    margin: 24px 0;
+    border-radius: var(--radius-xl, 24px);
+    background: rgba(10, 16, 28, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .guide-panel h2,
+  .faq-panel h2 {
+    font-size: clamp(19px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 24px 0 12px;
+  }
+
+  .guide-panel h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .panel-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .tip-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tip-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #00f0ff;
+    margin: 0 0 6px;
+  }
+
+  .tip-card p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .related-links-box {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .related-links-box h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .hub-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .hub-link-card strong {
+    font-size: 13.5px;
+    color: #ffffff;
+    display: block;
+  }
+
+  .hub-link-card span {
+    font-size: 11.5px;
+    color: #94a3b8;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .hub-link-card:hover {
+    border-color: #00f0ff;
+    background: rgba(0, 240, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-item {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0, 240, 255, 0.4);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    color: #00f0ff;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .faq-answer p {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .page-title,
+  [data-theme='light'] .guide-panel h2,
+  [data-theme='light'] .faq-panel h2,
+  [data-theme='light'] .related-links-box h3,
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .guide-panel,
+  [data-theme='light'] .faq-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  [data-theme='light'] .tip-card,
+  [data-theme='light'] .hub-link-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .tip-card p,
+  [data-theme='light'] .panel-text,
+  [data-theme='light'] .faq-answer p {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .hub-link-card strong {
+    color: #0f172a !important;
+  }
+</style>

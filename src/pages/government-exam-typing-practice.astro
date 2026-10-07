@@ -1,0 +1,583 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TypingArena from '../components/TypingArena.astro';
+import VirtualKeyboard from '../components/VirtualKeyboard.astro';
+
+const pageTitle = "Government Exam Typing Practice — SSC CGL, MPSC & Court Clerk Mock Test | TypeBaazi";
+const pageDesc = "Comprehensive typing test practice for government exams: SSC CGL, CHSL, MPSC Group C Clerk-Typist, RRB NTPC, and High Court Stenographer with live exam rules.";
+const pageKeywords = "government exam typing practice, mpsc typing practice, upsc typing test, ssc chsl typing test, ssc cgl typing test, high court clerk typing test, gcc tbc marathi typing 30 wpm, typebaazi";
+
+const govtFaqs = [
+  {
+    question: "What is the typing speed required for MPSC Clerk-Typist and GCC-TBC exams?",
+    answer: "For Maharashtra MPSC Group C Clerk-Typist and GCC-TBC examinations, candidates require Marathi typing speed of 30 WPM or English typing speed of 40 WPM with at least 95% accuracy."
+  },
+  {
+    question: "What is the speed requirement for UPSC and SSC typing tests?",
+    answer: "UPSC EPFO / Junior Assistant and SSC CHSL / CGL DEST tests require 35 WPM (10,500 KDPH / 1750 key depressions in 10 minutes) for English or 30 WPM for Hindi/Regional languages."
+  },
+  {
+    question: "How is Net WPM calculated in government typing tests?",
+    answer: "Net WPM is calculated as Gross WPM minus error penalties. A single uncorrected spelling or omitted word can deduct significant points, making accuracy the most critical factor."
+  },
+  {
+    question: "Is TypeBaazi government exam practice free?",
+    answer: "Yes, TypeBaazi provides 100% free simulated exam passages for MPSC, UPSC, SSC, Court, and GCC-TBC certifications with live accuracy scoring and error penalty metrics."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Government Exam Typing Practice", url: "https://typebaazi.com/government-exam-typing-practice" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  activePath="/government-exam-typing-practice"
+  faqItems={govtFaqs}
+  breadcrumbs={breadcrumbItems}
+>
+
+  <div class="container page-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Government Exam Typing Practice</span>
+    </nav>
+
+    <!-- Header & Main H1 -->
+    <header class="page-header">
+      <div class="badge badge-cyan">🏛️ Central &amp; State Recruitment Simulator</div>
+      <h1 class="page-title">Government Exam Typing Practice (MPSC, UPSC, SSC, Courts)</h1>
+      <p class="page-sub">
+        Prepare for MPSC Clerk-Typist, GCC-TBC 30/40 WPM, UPSC EPFO, SSC CGL/CHSL, High Court, and Railway typing skill tests with exam-simulated passages and Net WPM scoring.
+      </p>
+      <div class="header-cta-row">
+        <a href="#govt-exam-arena" class="btn-primary start-typing-btn">
+          <span>🏛️ Start Exam Typing Practice</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Arena Section -->
+    <section class="arena-section" id="govt-exam-arena" aria-label="Government Exam Arena">
+      <TypingArena initialLanguage="english" initialDuration={60} initialDifficulty="hard" showControls={true} />
+      <VirtualKeyboard language="english" visible={true} />
+    </section>
+
+    <!-- Exam Benchmarks Table & Guide -->
+    <section class="guide-panel glass-panel">
+      <h2>All-India Government Typing Exam Benchmarks</h2>
+      <p class="panel-text">
+        Different recruitment boards have distinct speed and accuracy thresholds. Review the official criteria below:
+      </p>
+
+      <div class="table-responsive">
+        <table class="exam-benchmarks-table">
+          <thead>
+            <tr>
+              <th>Exam / Recruitment Commission</th>
+              <th>Language</th>
+              <th>Required Speed</th>
+              <th>Permissible Error Cap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>MPSC Group C Clerk-Typist</strong></td>
+              <td>मराठी / English</td>
+              <td><span class="speed-pill">30 WPM / 40 WPM</span></td>
+              <td>5% max (GCC-TBC)</td>
+            </tr>
+            <tr>
+              <td><strong>UPSC (EPFO / Junior Assistant)</strong></td>
+              <td>English / Hindi</td>
+              <td><span class="speed-pill">35 WPM / 30 WPM</span></td>
+              <td>5% max</td>
+            </tr>
+            <tr>
+              <td><strong>SSC CHSL &amp; CGL (DEST)</strong></td>
+              <td>English / Hindi</td>
+              <td><span class="speed-pill">27 to 35 WPM</span></td>
+              <td>5% to 7% max</td>
+            </tr>
+            <tr>
+              <td><strong>High Court &amp; District Court Clerk</strong></td>
+              <td>English / Marathi</td>
+              <td><span class="speed-pill">30 to 40 WPM</span></td>
+              <td>3% to 5% strict</td>
+            </tr>
+            <tr>
+              <td><strong>Railway RRB NTPC</strong></td>
+              <td>English / Hindi</td>
+              <td><span class="speed-pill">30 WPM / 25 WPM</span></td>
+              <td>5% mistake cap</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>5 Proven Strategies to Clear Government Typing Tests</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>1. 98%+ Accuracy Discipline</h4>
+          <p>Government exams penalize errors heavily. Maintain steady rhythm and avoid reckless sprinting.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⌨️</span>
+          <h4>2. Practice on Desktop Keyboards</h4>
+          <p>Exam centers use physical membrane keyboards. Practice using a standard keyboard on TypeBaazi.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⏱️</span>
+          <h4>3. Master 5 &amp; 10-Minute Endurance</h4>
+          <p>Finger fatigue causes errors in the final minutes. Build stamina with continuous multi-minute drills.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🚩</span>
+          <h4>4. Remington &amp; Inscript Fluency</h4>
+          <p>For Marathi MPSC and GCC-TBC, practice Devanagari joḍākṣare (जोडाक्षरे) and special symbols.</p>
+        </div>
+      </div>
+
+      <!-- Contextual Internal Linking -->
+      <div class="related-links-box">
+        <h3>Explore Other TypeBaazi Hubs</h3>
+        <div class="links-grid">
+          <a href="/hindi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Typing Test</strong>
+              <span>SSC CGL, CPCT &amp; Railway Hindi typing exam practice.</span>
+            </div>
+          </a>
+          <a href="/marathi-typing-test" class="hub-link-card">
+            <span class="hub-icon">🚩</span>
+            <div>
+              <strong>Marathi Typing Test</strong>
+              <span>Devanagari speed test with GCC-TBC mock drills.</span>
+            </div>
+          </a>
+          <a href="/english-typing-test" class="hub-link-card">
+            <span class="hub-icon">🇬🇧</span>
+            <div>
+              <strong>English Typing Test</strong>
+              <span>Take a timed English WPM test and earn a certificate.</span>
+            </div>
+          </a>
+          <a href="/seven-minute-typing-test" class="hub-link-card">
+            <span class="hub-icon">⏱️</span>
+            <div>
+              <strong>7-Minute Exam Simulator</strong>
+              <span>Official 7-minute test with 30 &amp; 40 WPM scoring.</span>
+            </div>
+          </a>
+          <a href="/typing-speed-test" class="hub-link-card">
+            <span class="hub-icon">⚡</span>
+            <div>
+              <strong>Typing Speed Test</strong>
+              <span>1-Minute online WPM calculator.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-panel glass-panel">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-accordion">
+        {govtFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>{item.question}</span>
+              <span class="faq-arrow">&darr;</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: clamp(14px, 2.5vw, 28px) clamp(10px, 2vw, 20px) 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan, #00f0ff);
+    text-decoration: none;
+  }
+
+  .bc-sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .bc-current {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 8px 0;
+    line-height: 1.2;
+  }
+
+  .page-sub {
+    font-size: clamp(13px, 1.6vw, 15.5px);
+    color: var(--text-muted, #94a3b8);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-cta-row {
+    margin-top: 16px;
+  }
+
+  .start-typing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+  }
+
+  .arena-section {
+    margin-bottom: 36px;
+  }
+
+  .guide-panel,
+  .faq-panel {
+    padding: clamp(20px, 3vw, 32px);
+    margin: 24px 0;
+    border-radius: var(--radius-xl, 24px);
+    background: rgba(10, 16, 28, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+  }
+
+  .guide-panel h2,
+  .faq-panel h2 {
+    font-size: clamp(19px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 24px 0 12px;
+  }
+
+  .guide-panel h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .panel-text {
+    font-size: 14.5px;
+    color: #e2e8f0;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin-bottom: 28px;
+  }
+
+  .exam-benchmarks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .exam-benchmarks-table th {
+    padding: 14px 16px;
+    background: rgba(0, 112, 243, 0.18);
+    color: #38bdf8;
+    font-weight: 900;
+    font-size: 14px;
+    border-bottom: 2px solid rgba(0, 240, 255, 0.35);
+    letter-spacing: 0.3px;
+  }
+
+  .exam-benchmarks-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    font-weight: 500;
+  }
+
+  .exam-benchmarks-table td strong {
+    color: #ffffff;
+    font-weight: 800;
+  }
+
+  .speed-pill {
+    display: inline-block;
+    background: rgba(0, 112, 243, 0.22);
+    color: #38bdf8;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 800;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .tip-card {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .tip-card h4 {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: #38bdf8;
+    margin: 0 0 6px;
+  }
+
+  .tip-card p {
+    font-size: 13.5px;
+    color: #e2e8f0;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .related-links-box {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .related-links-box h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+
+  .hub-link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .hub-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .hub-link-card strong {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 800;
+    display: block;
+  }
+
+  .hub-link-card span {
+    font-size: 12px;
+    color: #cbd5e1;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  .hub-link-card:hover {
+    border-color: #00f0ff;
+    background: rgba(0, 112, 243, 0.18);
+    transform: translateY(-2px);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-item {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0, 240, 255, 0.45);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    color: #38bdf8;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .faq-answer p {
+    font-size: 13.5px;
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Light Theme - WCAG High Contrast */
+  [data-theme='light'] .page-title,
+  [data-theme='light'] .guide-panel h2,
+  [data-theme='light'] .faq-panel h2,
+  [data-theme='light'] .related-links-box h3,
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+    font-weight: 900 !important;
+  }
+
+  [data-theme='light'] .guide-panel,
+  [data-theme='light'] .faq-panel {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  [data-theme='light'] .exam-benchmarks-table th {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
+    border-bottom: 2px solid #0284c7 !important;
+    font-weight: 900 !important;
+  }
+
+  [data-theme='light'] .exam-benchmarks-table td {
+    color: #1e293b !important;
+    border-color: #e2e8f0 !important;
+    font-weight: 600 !important;
+  }
+
+  [data-theme='light'] .exam-benchmarks-table td strong {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .speed-pill {
+    background: #e0f2fe !important;
+    color: #0369a1 !important;
+    border: 1.5px solid #7dd3fc !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .tip-card,
+  [data-theme='light'] .hub-link-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border: 1.5px solid #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .tip-card h4 {
+    color: #0369a1 !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .tip-card p,
+  [data-theme='light'] .panel-text,
+  [data-theme='light'] .faq-answer p {
+    color: #1e293b !important;
+    font-weight: 500 !important;
+  }
+
+  [data-theme='light'] .hub-link-card strong {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
+  [data-theme='light'] .hub-link-card span {
+    color: #475569 !important;
+    font-weight: 600 !important;
+  }
+
+  [data-theme='light'] .hub-link-card:hover {
+    background: #e0f2fe !important;
+    border-color: #0284c7 !important;
+  }
+
+  [data-theme='light'] .faq-arrow {
+    color: #0369a1 !important;
+  }
+</style>
