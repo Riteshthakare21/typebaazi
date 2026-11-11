@@ -1,0 +1,384 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const pageTitle = "Typing Guides & Examination Resources | TypeBaazi";
+const pageDesc = "Free comprehensive guides for touch typing mastery, GCC-TBC Maharashtra exams, Hindi & Marathi InScript keyboard layouts, and standard WPM calculations.";
+const pageKeywords = "typing guides, gcc tbc guide, marathi typing tutorial, hindi typing test preparation, touch typing tips, wpm calculation guide, inscript keyboard layout";
+
+const guides = [
+  {
+    title: "GCC-TBC Typing Exam Guide: Syllabus, Marking & Preparation Strategy",
+    url: "/guides/gcc-tbc-exam-guide",
+    category: "Government Exams",
+    readTime: "12 min read",
+    description: "The complete handbook for Maharashtra MSCE GCC-TBC 30 & 40 WPM computer typing examinations. Covers speed passage formulas, email, statement formatting, and 30-day practice roadmap.",
+    updated: "Nov 2026",
+    badgeColor: "#38bdf8"
+  },
+  {
+    title: "Marathi InScript Keyboard Layout: Finger Placement & Keystrokes",
+    url: "/guides/marathi-inscript-keyboard-guide",
+    category: "Keyboard Mastery",
+    readTime: "10 min read",
+    description: "Master the official Indian Script (InScript) standard for Marathi typing. Detailed finger mapping, halant rules, conjunct (जोडाक्षरे) keystroke cheat sheet, and common pitfalls.",
+    updated: "Nov 2026",
+    badgeColor: "#a855f7"
+  },
+  {
+    title: "Touch Typing Technique & Ergonomics: Blueprint for Speed & Health",
+    url: "/guides/touch-typing-rules-ergonomics",
+    category: "Fundamentals & Health",
+    readTime: "10 min read",
+    description: "The anatomical science of 10-finger blind typing. Home row anchor keys, tactile orientation, wrist alignment, and exercises to prevent Carpal Tunnel and repetitive strain injury.",
+    updated: "Nov 2026",
+    badgeColor: "#10b981"
+  },
+  {
+    title: "Hindi Typing Exam Preparation: Handbook for SSC, RRB & Court Exams",
+    url: "/guides/hindi-typing-exam-preparation",
+    category: "Government Exams",
+    readTime: "11 min read",
+    description: "Comprehensive preparation guide for SSC CGL, CHSL DEST, Railway RRB NTPC, and Court clerk Hindi tests. InScript vs Remington Gail, Key Depressions (KDPH), and error penalties.",
+    updated: "Nov 2026",
+    badgeColor: "#f59e0b"
+  },
+  {
+    title: "Typing Speed (WPM) and Accuracy Metrics: The Standard Mathematical Guide",
+    url: "/guides/wpm-accuracy-calculation",
+    category: "Measurement & Science",
+    readTime: "9 min read",
+    description: "Understand the mathematical equations behind Gross WPM, Net WPM, Accuracy Percentage, and Key Depressions Per Hour (KDPH). Detailed worked examples and the Backspace paradox.",
+    updated: "Nov 2026",
+    badgeColor: "#ec4899"
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Guides", url: "https://typebaazi.com/guides" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  canonical="https://typebaazi.com/guides"
+  breadcrumbs={breadcrumbItems}
+>
+  <main class="guides-hub-container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Guides &amp; Resources</span>
+    </nav>
+
+    <header class="hub-header text-center">
+      <div class="hub-badge">
+        <span class="badge-icon">📚</span>
+        <span>Educational Resource Center</span>
+      </div>
+      <h1 class="hub-title">Comprehensive Typing &amp; Exam Guides</h1>
+      <p class="hub-subtitle">
+        In-depth, expert-reviewed documentation designed to help students, government exam aspirants, and professional typists build speed, master layouts, and pass competitive certifications.
+      </p>
+    </header>
+
+    <section class="guides-grid">
+      {guides.map((guide) => (
+        <article class="guide-card glass-panel">
+          <div class="card-meta">
+            <span class="card-category" style={`color: ${guide.badgeColor}; border-color: ${guide.badgeColor}40; background: ${guide.badgeColor}15;`}>
+              {guide.category}
+            </span>
+            <span class="card-read-time">{guide.readTime}</span>
+          </div>
+
+          <h2 class="card-title">
+            <a href={guide.url}>{guide.title}</a>
+          </h2>
+
+          <p class="card-desc">
+            {guide.description}
+          </p>
+
+          <div class="card-footer">
+            <span class="card-updated">Updated: {guide.updated}</span>
+            <a href={guide.url} class="card-read-link">
+              Read Guide
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="hub-bottom-banner glass-panel">
+      <div class="banner-content">
+        <h3>Ready to Practice What You've Learned?</h3>
+        <p>Apply your skills in real-time with instant WPM, accuracy feedback, and competitive benchmarks.</p>
+      </div>
+      <div class="banner-buttons">
+        <a href="/english-typing-test" class="btn btn-primary">English Test</a>
+        <a href="/marathi-typing-test" class="btn btn-secondary">Marathi Test</a>
+        <a href="/hindi-typing-test" class="btn btn-outline">Hindi Test</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .guides-hub-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+    color: var(--text-color, #f1f5f9);
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--text-muted, #94a3b8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-nav a:hover {
+    color: var(--primary, #38bdf8);
+  }
+
+  .bc-sep {
+    color: var(--text-muted, #64748b);
+  }
+
+  .bc-current {
+    color: var(--primary, #38bdf8);
+    font-weight: 500;
+  }
+
+  .hub-header {
+    margin-bottom: 3.5rem;
+    text-align: center;
+  }
+
+  .hub-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary, #38bdf8);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hub-title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--text-heading, #ffffff);
+    margin-bottom: 1rem;
+  }
+
+  .hub-subtitle {
+    font-size: 1.15rem;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: var(--text-muted, #cbd5e1);
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.75rem;
+    margin-bottom: 4rem;
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.75rem;
+    border-radius: 1rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .guide-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: 0 12px 24px -10px rgba(56, 189, 248, 0.15);
+  }
+
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .card-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+
+  .card-read-time {
+    font-size: 0.8125rem;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.85rem;
+  }
+
+  .card-title a {
+    color: var(--text-heading, #ffffff);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .card-title a:hover {
+    color: var(--primary, #38bdf8);
+  }
+
+  .card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-body, #94a3b8);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.06));
+    padding-top: 1rem;
+  }
+
+  .card-updated {
+    font-size: 0.8125rem;
+    color: var(--text-muted, #64748b);
+  }
+
+  .card-read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary, #38bdf8);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+
+  .card-read-link:hover {
+    gap: 0.55rem;
+  }
+
+  .hub-bottom-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(168, 85, 247, 0.08));
+    border: 1px solid rgba(56, 189, 248, 0.2);
+  }
+
+  @media (min-width: 768px) {
+    .hub-bottom-banner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      padding: 2.5rem 2.5rem;
+    }
+  }
+
+  .banner-content h3 {
+    font-size: 1.35rem;
+    color: #ffffff;
+    margin-bottom: 0.35rem;
+  }
+
+  .banner-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #94a3b8);
+    margin: 0;
+  }
+
+  .banner-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary, #38bdf8);
+    color: #0b1120;
+  }
+
+  .btn-primary:hover {
+    background: #0ea5e9;
+  }
+
+  .btn-secondary {
+    background: #a855f7;
+    color: #ffffff;
+  }
+
+  .btn-secondary:hover {
+    background: #9333ea;
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .btn-outline:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
+</style>
+

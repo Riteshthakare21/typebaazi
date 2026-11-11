@@ -1,0 +1,632 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const pageTitle = "Touch Typing Rules & Ergonomics: Complete Guide for Speed & Health";
+const pageDesc = "Master touch typing from the ground up. Learn home row finger positioning, blind typing techniques, ergonomic posture to prevent RSI, and progressive training drills.";
+const pageKeywords = "touch typing, touch typing guide, typing ergonomics, home row keys, how to type faster, prevent carpal tunnel typing, typing posture, touch typing rules";
+
+const faqs = [
+  {
+    question: "What is touch typing and why is it superior to hunt-and-peck?",
+    answer: "Touch typing is typing without looking at the keyboard, relying entirely on muscle memory and dedicated finger-to-key assignments. Unlike hunt-and-peck (which caps out around 30-40 WPM), touch typing easily scales past 70-100+ WPM while keeping your eyes focused entirely on the screen or text source."
+  },
+  {
+    question: "What are the tactile bumps on the F and J keys for?",
+    answer: "The small raised ridges on the 'F' and 'J' keys are reference locators for your index fingers. They allow you to place both hands correctly onto the Home Row (ASDF - JKL;) entirely by touch without glancing down at your keyboard."
+  },
+  {
+    question: "How do I prevent wrist pain and Carpal Tunnel Syndrome while typing?",
+    answer: "Maintain neutral wrist alignment—never bend your wrists upward or rest your palms on the desk while actively keystroking. Keep your elbows at an open angle of 90 to 100 degrees, position your monitor at eye level, and take a 30-second micro-break every 20 minutes to stretch."
+  },
+  {
+    question: "How long does it take to learn touch typing from scratch?",
+    answer: "With 20 to 30 minutes of daily deliberate practice on TypeBaazi, most learners establish solid home row muscle memory within 14 days and surpass their old hunt-and-peck speed within 4 to 6 weeks."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Guides", url: "https://typebaazi.com/guides" },
+  { name: "Touch Typing & Ergonomics", url: "https://typebaazi.com/guides/touch-typing-rules-ergonomics" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  canonical="https://typebaazi.com/guides/touch-typing-rules-ergonomics"
+  faqItems={faqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <main class="guide-article-container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="/guides">Guides</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Touch Typing &amp; Ergonomics</span>
+    </nav>
+
+    <article class="guide-article">
+      <header class="article-header">
+        <div class="article-meta-badge">
+          <span class="badge-category">Fundamentals &amp; Health</span>
+          <span class="badge-dot">•</span>
+          <span class="badge-read-time">10 min read</span>
+          <span class="badge-dot">•</span>
+          <span class="badge-date">Updated November 2026</span>
+        </div>
+        <h1 class="article-title">Touch Typing Technique &amp; Ergonomics: The Definitive Blueprint for Speed and Longevity</h1>
+        <p class="article-lead">
+          Typing fast is useless if chronic hand fatigue, wrist pain, or poor posture forces you to stop. This comprehensive manual details the mechanical science of 10-finger touch typing alongside clinical ergonomic standards to protect your musculoskeletal health.
+        </p>
+      </header>
+
+      <div class="article-toc glass-panel">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ul class="toc-list">
+          <li><a href="#foundational-philosophy">1. The Core Philosophy of Touch Typing</a></li>
+          <li><a href="#home-row-geometry">2. The Home Row: Finger Anchors and Mapping</a></li>
+          <li><a href="#golden-rules">3. The 5 Golden Rules of Touch Typing</a></li>
+          <li><a href="#ergonomics-posture">4. Ergonomic Architecture: Neutral Wrist and Spine Alignment</a></li>
+          <li><a href="#preventing-rsi">5. Preventing RSI, Carpal Tunnel, and Tendinitis</a></li>
+          <li><a href="#practice-roadmap">6. Structured Practice Routine (0 to 60+ WPM)</a></li>
+          <li><a href="#faqs">7. Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <!-- Section 1 -->
+      <section id="foundational-philosophy" class="article-section">
+        <h2>1. The Core Philosophy of Touch Typing</h2>
+        <p>
+          The human brain possesses an extraordinary capacity called <em>proprioception</em>—the internal sense of body position and movement in space. Hunt-and-peck typists continuously bottleneck their cognitive capacity by dividing visual attention between three points: the source text, the physical keyboard, and the monitor screen.
+        </p>
+        <p>
+          Touch typing converts keystroking into subconscious motor reflexes governed by the cerebellum. Once your fingers memorize key distances relative to home row anchor points, your conscious brain focuses purely on comprehension, composition, and cadence. This eliminates cognitive friction and dramatically reduces typing errors.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="home-row-geometry" class="article-section">
+        <h2>2. The Home Row: Finger Anchors and Mapping</h2>
+        <p>
+          The standard QWERTY and Devanagari InScript keyboards are organized around the <strong>Home Row</strong>. Every finger has a designated home position and a specific zone of surrounding keys it is responsible for actuating.
+        </p>
+
+        <div class="keyboard-mapping-grid">
+          <div class="finger-card left-hand">
+            <h3>Left Hand Allocations</h3>
+            <ul>
+              <li><strong>Pinky (Little Finger):</strong> Home: <code>A</code> | Reaches: <code>~</code>, <code>1</code>, <code>Q</code>, <code>Z</code>, <code>Tab</code>, <code>Caps Lock</code>, <code>Left Shift</code></li>
+              <li><strong>Ring Finger:</strong> Home: <code>S</code> | Reaches: <code>2</code>, <code>W</code>, <code>X</code></li>
+              <li><strong>Middle Finger:</strong> Home: <code>D</code> | Reaches: <code>3</code>, <code>E</code>, <code>C</code></li>
+              <li><strong>Index Finger:</strong> Home: <code>F</code> (Tactile Bump) | Reaches: <code>4</code>, <code>5</code>, <code>R</code>, <code>T</code>, <code>G</code>, <code>V</code>, <code>B</code></li>
+              <li><strong>Thumb:</strong> Left side of Spacebar</li>
+            </ul>
+          </div>
+
+          <div class="finger-card right-hand">
+            <h3>Right Hand Allocations</h3>
+            <ul>
+              <li><strong>Index Finger:</strong> Home: <code>J</code> (Tactile Bump) | Reaches: <code>6</code>, <code>7</code>, <code>Y</code>, <code>U</code>, <code>H</code>, <code>N</code>, <code>M</code></li>
+              <li><strong>Middle Finger:</strong> Home: <code>K</code> | Reaches: <code>8</code>, <code>I</code>, <code>,</code> (Comma)</li>
+              <li><strong>Ring Finger:</strong> Home: <code>L</code> | Reaches: <code>9</code>, <code>O</code>, <code>.</code> (Period)</li>
+              <li><strong>Pinky (Little Finger):</strong> Home: <code>;</code> | Reaches: <code>0</code>, <code>-</code>, <code>=</code>, <code>P</code>, <code>[</code>, <code>]</code>, <code>'</code>, <code>Enter</code>, <code>Right Shift</code></li>
+              <li><strong>Thumb:</strong> Right side of Spacebar</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <h4>The Cardinal Home Return Rule</h4>
+          <p>
+            Whenever a finger reaches upward to type <code>E</code> or downward to type <code>C</code>, it must immediately return to its resting position on the Home Row. Never let your fingers drift or hover randomly over keys.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="golden-rules" class="article-section">
+        <h2>3. The 5 Golden Rules of Touch Typing</h2>
+        <ol class="rules-ordered-list">
+          <li>
+            <strong>Never Look at Your Hands:</strong> Looking down halts the formation of motor memory neural pathways. If you hit a wrong key, do not look down to correct it; use the tactile bumps on F and J to reorient by touch.
+          </li>
+          <li>
+            <strong>Accuracy Over Velocity Always:</strong> Typing at 70 WPM with 85% accuracy is slower than typing at 45 WPM with 99% accuracy because correcting mistakes breaks your rhythm and doubles keystroke latency.
+          </li>
+          <li>
+            <strong>Hit Spacebar with Your Dominant Thumb Only:</strong> Alternate keystrokes smoothly, but consistently use one thumb (typically right if right-handed) for spacing to keep cadence uniform.
+          </li>
+          <li>
+            <strong>Use Opposite Shift Keys:</strong> When typing an uppercase letter with your right hand (e.g. <code>K</code>), hold the <em>Left Shift</em> key with your left pinky. When typing an uppercase letter with your left hand (e.g. <code>D</code>), hold the <em>Right Shift</em> key with your right pinky.
+          </li>
+          <li>
+            <strong>Keep Keystrokes Light and Relaxed:</strong> Do not slam keys. Modern mechanical and chiclet keyboards actuate halfway down the key travel. Pressing harder increases finger tendon fatigue without increasing input speed.
+          </li>
+        </ol>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="ergonomics-posture" class="article-section">
+        <h2>4. Ergonomic Architecture: Neutral Wrist and Spine Alignment</h2>
+        <p>
+          High-volume typists, competitive programmers, and government clerks register upwards of 30,000 keystrokes daily. Poor ergonomic posture transfers excessive torque into the wrist tendons, cervical spine, and lumbar vertebrae.
+        </p>
+
+        <div class="table-responsive">
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Body Part</th>
+                <th>Harmful Posture</th>
+                <th>Correct Ergonomic Alignment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Wrists</strong></td>
+                <td>Resting wrists on desk while typing (extension angle &gt; 15°)</td>
+                <td>Floating wrists in straight, neutral alignment; hands parallel to floor</td>
+              </tr>
+              <tr>
+                <td><strong>Elbows</strong></td>
+                <td>Elbows bent sharply (&lt; 80°) or flaring outward</td>
+                <td>Open 90° to 100° angle, resting naturally beside torso</td>
+              </tr>
+              <tr>
+                <td><strong>Shoulders</strong></td>
+                <td>Hunched upward or rounded forward towards screen</td>
+                <td>Relaxed downward, blades retracted slightly toward spine</td>
+              </tr>
+              <tr>
+                <td><strong>Screen Height</strong></td>
+                <td>Monitor too low, requiring neck flexion downward</td>
+                <td>Top third of monitor exactly at eye level, 20–28 inches away</td>
+              </tr>
+              <tr>
+                <td><strong>Feet &amp; Legs</strong></td>
+                <td>Legs crossed, heels raised off ground</td>
+                <td>Both feet flat on floor or supported by an ergonomic footrest</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="preventing-rsi" class="article-section">
+        <h2>5. Preventing RSI, Carpal Tunnel, and Tendinitis</h2>
+        <p>
+          Repetitive Strain Injury (RSI) occurs when repetitive small movements irritate the synovial sheaths surrounding hand and wrist tendons. The median nerve passes through the carpal tunnel in the wrist; excessive wrist extension compresses this nerve, producing numbness, tingling, and chronic weakness.
+        </p>
+
+        <div class="ergonomic-drills-card glass-panel">
+          <h3>The 3-Minute Typist Stretch Routine</h3>
+          <ul>
+            <li><strong>Prayer Stretch:</strong> Place palms together in front of your chest with fingers pointing upward. Slowly lower your hands while keeping palms pressed together until you feel a gentle stretch across your forearms. Hold for 15 seconds.</li>
+            <li><strong>Wrist Extensor Stretch:</strong> Extend your right arm straight forward with palm facing down. Use your left hand to gently press your fingers downward toward the floor. Hold for 15 seconds, then alternate hands.</li>
+            <li><strong>Tendon Gliding Drills:</strong> Make a flat open hand, transition to a claw hand, then a straight fist, and finally a full fist. Repeat 5 times per hand to lubricate tendon pathways.</li>
+            <li><strong>The 20-20-20 Rule:</strong> Every 20 minutes, look at an object 20 feet away for 20 seconds to prevent digital eye strain and relax ocular muscles.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="practice-roadmap" class="article-section">
+        <h2>6. Structured Practice Routine (0 to 60+ WPM)</h2>
+        <p>
+          Progress in touch typing follows an S-curve. Follow this step-by-step roadmap using TypeBaazi’s specialized practice modes:
+        </p>
+
+        <div class="roadmap-grid">
+          <div class="roadmap-phase">
+            <span class="phase-number">Phase 1</span>
+            <h4>Home Row Mastery (Days 1–5)</h4>
+            <p>Practice exclusively on home keys (A S D F J K L ;). Achieve 98% accuracy at any speed before introducing top or bottom rows.</p>
+          </div>
+          <div class="roadmap-phase">
+            <span class="phase-number">Phase 2</span>
+            <h4>Top &amp; Bottom Reach (Days 6–12)</h4>
+            <p>Incorporate the QWERTY top row (Q W E R T Y U I O P) followed by bottom row (Z X C V B N M). Practice returning to home row after every letter.</p>
+          </div>
+          <div class="roadmap-phase">
+            <span class="phase-number">Phase 3</span>
+            <h4>Numbers &amp; Punctuation (Days 13–20)</h4>
+            <p>Practice periods, commas, capitals via Shift, and quotation marks. Punctuation mastery is what separates amateur typists from exam qualifiers.</p>
+          </div>
+          <div class="roadmap-phase">
+            <span class="phase-number">Phase 4</span>
+            <h4>Rhythm &amp; Speed Building (Days 21+)</h4>
+            <p>Transition to full 1-minute, 2-minute, and 7-minute typing passages on TypeBaazi. Focus on steady musical cadence rather than bursts of rushed typing.</p>
+          </div>
+        </div>
+
+        <div class="cta-box glass-panel">
+          <h3>Ready to Test Your Finger Muscle Memory?</h3>
+          <p>Put these rules into practice with TypeBaazi’s real-time accuracy and WPM tracker.</p>
+          <div class="cta-actions">
+            <a href="/english-typing-test" class="btn btn-primary">Start English Typing Test</a>
+            <a href="/typing-speed-test" class="btn btn-outline">Take Speed Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="faqs" class="article-section">
+        <h2>7. Frequently Asked Questions</h2>
+        <div class="faq-accordion-list">
+          {faqs.map((faq) => (
+            <div class="faq-item glass-panel">
+              <h3 class="faq-question">{faq.question}</h3>
+              <p class="faq-answer">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .guide-article-container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+    color: var(--text-color, #f1f5f9);
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--text-muted, #94a3b8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-nav a:hover {
+    color: var(--primary, #38bdf8);
+  }
+
+  .bc-sep {
+    color: var(--text-muted, #64748b);
+  }
+
+  .bc-current {
+    color: var(--primary, #38bdf8);
+    font-weight: 500;
+  }
+
+  .article-header {
+    margin-bottom: 3rem;
+  }
+
+  .article-meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--primary, #38bdf8);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    color: var(--text-heading, #ffffff);
+  }
+
+  .article-lead {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: var(--text-muted, #cbd5e1);
+  }
+
+  .article-toc {
+    padding: 1.75rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    background: var(--surface-card, rgba(15, 23, 42, 0.65));
+  }
+
+  .toc-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-heading, #ffffff);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .toc-list a {
+    color: var(--primary, #38bdf8);
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+
+  .toc-list a:hover {
+    text-decoration: underline;
+  }
+
+  .article-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .article-section h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--text-heading, #ffffff);
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    padding-bottom: 0.5rem;
+  }
+
+  .article-section p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-body, #cbd5e1);
+    margin-bottom: 1.25rem;
+  }
+
+  .keyboard-mapping-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .finger-card {
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+  }
+
+  .finger-card.left-hand {
+    border-left: 4px solid #38bdf8;
+  }
+
+  .finger-card.right-hand {
+    border-left: 4px solid #a855f7;
+  }
+
+  .finger-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  .finger-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+    font-size: 0.925rem;
+  }
+
+  .finger-card code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #38bdf8;
+  }
+
+  .rules-ordered-list {
+    padding-left: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    font-size: 1.025rem;
+    line-height: 1.7;
+    color: var(--text-body, #cbd5e1);
+  }
+
+  .callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    margin: 1.75rem 0;
+    border-left: 4px solid #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+  }
+
+  .callout h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+  }
+
+  .guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .guide-table th, .guide-table td {
+    padding: 0.9rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  }
+
+  .guide-table th {
+    background: rgba(255, 255, 255, 0.04);
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .ergonomic-drills-card {
+    padding: 1.75rem;
+    border-radius: 1rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    margin: 1.5rem 0;
+  }
+
+  .ergonomic-drills-card h3 {
+    font-size: 1.25rem;
+    color: #38bdf8;
+    margin-bottom: 1rem;
+  }
+
+  .ergonomic-drills-card ul {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.75rem;
+    line-height: 1.65;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin: 1.75rem 0;
+  }
+
+  .roadmap-phase {
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .phase-number {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .roadmap-phase h4 {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .roadmap-phase p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .cta-box {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1));
+    border: 1px solid rgba(56, 189, 248, 0.25);
+  }
+
+  .cta-box h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-box p {
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary, #38bdf8);
+    color: #0b1120;
+  }
+
+  .btn-primary:hover {
+    background: #0ea5e9;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .btn-outline:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
+
+  .faq-accordion-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-body, #cbd5e1);
+    margin: 0;
+  }
+</style>
+

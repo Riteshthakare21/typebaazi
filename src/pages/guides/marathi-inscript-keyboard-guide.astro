@@ -1,0 +1,579 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const pageTitle = "Marathi InScript Keyboard Layout Guide: Finger Placement & Conjuncts | TypeBaazi";
+const pageDesc = "Master Marathi typing with the official Devanagari InScript keyboard layout. Comprehensive tutorial covering finger anchoring, vowels, consonants, halant rules, and complex conjuncts (जोडाक्षरे).";
+const pageKeywords = "marathi inscript keyboard, inscript typing rules, devanagari inscript layout, marathi typing tutorial, how to type jodakshare in marathi, marathi typing practice online, typebaazi";
+
+const faqs = [
+  {
+    question: "What is the InScript keyboard layout for Marathi?",
+    answer: "InScript (Indian Script) is the standardized touch-typing keyboard layout for Indian languages written in Devanagari script. It was standardized by the Bureau of Indian Standards (BIS) and the Department of Electronics in 1986. Unlike phonetic layouts, InScript uses a logical linguistic arrangement: vowels and matras are mapped to the left hand, and consonants are mapped to the right hand."
+  },
+  {
+    question: "How do you type conjuncts (जोडाक्षरे) in Marathi InScript?",
+    answer: "In InScript, double consonants and conjuncts are formed by typing the first consonant, pressing the Halant / Virama key (`d` on QWERTY), and then typing the second consonant. For example, to type 'स्त', type 'स' (l) + '्' (d) + 'त' (r)."
+  },
+  {
+    question: "How do you type Ksh (क्ष) and Gnya (ज्ञ) in InScript?",
+    answer: "In InScript, 'क्ष' is typed as क (k) + ् (d) + ष (Shift + ,). In modern InScript layouts, 'क्ष' is also directly mapped to Shift + & (Shift + 7). 'ज्ञ' is typed as ज (p) + ् (d) + ञ (Shift + }) or directly mapped to Shift + 5."
+  },
+  {
+    question: "Is InScript better than Remington for government exams?",
+    answer: "Yes, InScript is universally supported across modern operating systems (Windows, macOS, Linux, Android) without third-party font packages (like Shree-Lipi or ISM). The Maharashtra Public Service Commission (MPSC) and MSCE Pune GCC-TBC exams utilize Unicode InScript as the primary standard."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Guides", url: "https://typebaazi.com/guides" },
+  { name: "Marathi InScript Guide", url: "https://typebaazi.com/guides/marathi-inscript-keyboard-guide" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  activePath="/guides"
+  canonical="https://typebaazi.com/guides/marathi-inscript-keyboard-guide"
+  faqItems={faqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <article class="container guide-article-container">
+    <!-- Breadcrumb Nav -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="/guides">Guides</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Marathi InScript Keyboard Guide</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="article-header">
+      <div class="article-meta-badge">
+        <span class="badge badge-pink">⌨️ Devanagari Architecture Guide</span>
+        <span class="reading-time">⏱️ 7 Min Read</span>
+        <span class="updated-date">Updated: November 2026</span>
+      </div>
+      <h1 class="article-title">Complete Guide to Marathi InScript Keyboard: Rules, Keys &amp; Conjuncts</h1>
+      <p class="article-lead">
+        Learn how to type Devanagari Marathi with the government-approved InScript layout: left-hand vowel logic, right-hand consonants, halant mechanics, and step-by-step keystrokes for complex conjuncts (जोडाक्षरे).
+      </p>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="article-toc glass-panel">
+      <h3 class="toc-title">Table of Contents</h3>
+      <ol class="toc-list">
+        <li><a href="#why-inscript">Why InScript is the Standard for Marathi Typing</a></li>
+        <li><a href="#anatomical-logic">The Anatomical Logic: Left Hand vs Right Hand</a></li>
+        <li><a href="#home-row-keys">Home Row Keys &amp; Finger Placement</a></li>
+        <li><a href="#matras-and-vowels">Vowels (स्वर) and Matras (मात्रा) Rules</a></li>
+        <li><a href="#halant-mechanics">Halant (`्`) Mechanics &amp; Forming Half-Letters</a></li>
+        <li><a href="#conjunct-table">Step-by-Step Keystroke Chart for Complex Conjuncts (जोडाक्षरे)</a></li>
+        <li><a href="#nukta-and-anusvara">Anusvara (`ं`), Visarga (`ः`) and Nukta (`़`)</a></li>
+        <li><a href="#practice-exercises">Daily Marathi Typing Practice Drills</a></li>
+      </ol>
+    </nav>
+
+    <div class="article-body">
+      <!-- Section 1 -->
+      <section id="why-inscript" class="article-section">
+        <h2>1. Why InScript is the Standard for Marathi Typing</h2>
+        <p>
+          For decades, Marathi typists relied on legacy mechanical typewriter layouts (commonly known as <strong>Remington</strong>). Remington mapped Devanagari characters haphazardly across the keyboard based on mechanical typewriter hammer clearances rather than human linguistics.
+        </p>
+        <p>
+          In 1986, the Department of Electronics (DOE) and the Bureau of Indian Standards (BIS) introduced the <strong>Indian Script (InScript)</strong> standard (IS 13194:1991). InScript was engineered from ground up based on the phonetic and grammatical structure of the Sanskrit-derived Devanagari alphabet:
+        </p>
+        <ul>
+          <li><strong>Universal Layout:</strong> Once you learn InScript for Marathi, you can type Hindi, Sanskrit, Konkani, and with minor adaptations, Bengali, Gujarati, and Tamil.</li>
+          <li><strong>Native Operating System Support:</strong> InScript is baked into Windows, macOS, Ubuntu, and Android. You do not need to install legacy fonts like Shree-Lipi or Kruti Dev.</li>
+          <li><strong>Government Mandated:</strong> Used in MSCE GCC-TBC examinations, MPSC recruitment tests, and Bombay High Court typist assessments.</li>
+        </ul>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="anatomical-logic" class="article-section">
+        <h2>2. The Anatomical Logic: Left Hand vs Right Hand</h2>
+        <p>
+          The revolutionary breakthrough of the InScript design is its anatomical hand division:
+        </p>
+        <div class="hand-division-grid">
+          <div class="division-card left-hand">
+            <h3>✋ Left Hand: Vowels &amp; Matras (स्वर व मात्रा)</h3>
+            <p>
+              Your left hand handles all vowels and dependent vowel signs (matras). Because almost every Indian syllable alternates between a consonant and a vowel sound, your hands alternate rhythmically like walking feet.
+            </p>
+            <ul>
+              <li>Home row left: <strong>ो, े, ्, ि, ु</strong> (keys A, S, D, F, G)</li>
+              <li>Upper row left: <strong>ौ, ै, ा, ी, ू</strong> (Shift + Q, W, E, R, T)</li>
+            </ul>
+          </div>
+          <div class="division-card right-hand">
+            <h3>✋ Right Hand: Consonants &amp; Stops (व्यंजने)</h3>
+            <p>
+              Your right hand controls all guttural, palatal, retroflex, dental, and labial consonants, arranged strictly in phonetic vargas:
+            </p>
+            <ul>
+              <li>क-वर्ग (क, ख, ग, घ)</li>
+              <li>च-वर्ग (च, छ, ज, झ)</li>
+              <li>ट-वर्ग (ट, ठ, ड, ढ, ण)</li>
+              <li>त-वर्ग (त, थ, द, ध, न)</li>
+              <li>प-वर्ग (प, फ, ब, भ, म)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="home-row-keys" class="article-section">
+        <h2>3. Home Row Keys &amp; Finger Placement</h2>
+        <p>
+          Just like in English touch typing, your index fingers rest on the tactile bumps of the <strong>F</strong> and <strong>J</strong> keys.
+        </p>
+
+        <div class="table-responsive">
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Finger</th>
+                <th>Physical Key</th>
+                <th>Normal Key (Unshifted)</th>
+                <th>Shift Key (Shifted)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Left Pinky</td><td>A</td><td>ो (Matra O)</td><td>ओ (Independent O)</td></tr>
+              <tr><td>Left Ring</td><td>S</td><td>े (Matra E)</td><td>ए (Independent E)</td></tr>
+              <tr><td>Left Middle</td><td>D</td><td>् (Halant / Virama)</td><td>अ (Independent A)</td></tr>
+              <tr><td>Left Index</td><td>F</td><td>ि (Matra Short I)</td><td>इ (Independent Short I)</td></tr>
+              <tr><td>Left Index (Reach)</td><td>G</td><td>ु (Matra Short U)</td><td>उ (Independent Short U)</td></tr>
+              <tr><td>Right Index (Reach)</td><td>H</td><td>प (Pa)</td><td>फ (Pha)</td></tr>
+              <tr><td>Right Index</td><td>J</td><td>र (Ra)</td><td>ऱ (Chillu Ra)</td></tr>
+              <tr><td>Right Middle</td><td>K</td><td>क (Ka)</td><td>ख (Kha)</td></tr>
+              <tr><td>Right Ring</td><td>L</td><td>त (Ta)</td><td>थ (Tha)</td></tr>
+              <tr><td>Right Pinky</td><td>;</td><td>च (Cha)</td><td>छ (Chha)</td></tr>
+              <tr><td>Right Pinky</td><td>'</td><td>ट (Retroflex Ta)</td><td>ठ (Retroflex Tha)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="matras-and-vowels" class="article-section">
+        <h2>4. Vowels (स्वर) and Matras (मात्रा) Rules</h2>
+        <p>
+          In Devanagari Unicode, there is a fundamental distinction between an <strong>independent vowel</strong> (used at the beginning of a word or after another vowel) and a <strong>dependent matra</strong> (attached to a consonant):
+        </p>
+        <div class="callout callout-info">
+          <h4>📌 The Golden Rule of Devanagari Unicode:</h4>
+          <p>
+            Always type the <strong>Consonant first</strong>, then type the <strong>Matra second</strong>. For example, to type "कि", you do NOT type the short-i first. You type <strong>क (K)</strong> followed by <strong>ि (F)</strong>. The rendering engine automatically draws the matra to the left!
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="halant-mechanics" class="article-section">
+        <h2>5. Halant (`्`) Mechanics &amp; Forming Half-Letters</h2>
+        <p>
+          The Halant key (also called Virama) is located on the <strong>D key</strong>. It suppresses the inherent "a" vowel of a consonant, turning a full letter into a half-letter (अर्धे अक्षर).
+        </p>
+        <p>
+          When you follow a halant with another consonant, the computer automatically joins them into a conjunct ligature:
+        </p>
+        <ul>
+          <li><strong>क + ् = क्</strong> (K + D)</li>
+          <li><strong>क् + य = क्य</strong> (K + D + /)</li>
+          <li><strong>स + ् + त = स्त</strong> (L + D + R)</li>
+          <li><strong>म + ् + ह + णा + ल + ा = म्हणाला</strong></li>
+        </ul>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="conjunct-table" class="article-section">
+        <h2>6. Keystroke Chart for Complex Conjuncts (जोडाक्षरे)</h2>
+        <p>
+          Here are the exact keystroke sequences for the most common Marathi conjuncts tested in GCC-TBC examinations:
+        </p>
+
+        <div class="table-responsive">
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Conjunct (जोडाक्षर)</th>
+                <th>Pronunciation</th>
+                <th>Keystroke Sequence in InScript</th>
+                <th>Example Marathi Word</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>क्ष</strong></td>
+                <td>Ksha</td>
+                <td>क (k) + ् (d) + ष (Shift + ,) OR Shift + 7</td>
+                <td>शिक्षण, परीक्षा, वृक्ष</td>
+              </tr>
+              <tr>
+                <td><strong>ज्ञ</strong></td>
+                <td>Dnya / Gnya</td>
+                <td>ज (p) + ् (d) + ञ (Shift + &#125;) OR Shift + 5</td>
+                <td>ज्ञान, विज्ञान, आज्ञा</td>
+              </tr>
+              <tr>
+                <td><strong>त्र</strong></td>
+                <td>Tra</td>
+                <td>त (l) + ् (d) + र (j)</td>
+                <td>मित्र, चरित्र, पत्र</td>
+              </tr>
+              <tr>
+                <td><strong>श्र</strong></td>
+                <td>Shra</td>
+                <td>श (Shift + m) + ् (d) + र (j)</td>
+                <td>श्रीमंत, आश्रम, श्रम</td>
+              </tr>
+              <tr>
+                <td><strong>प्र</strong></td>
+                <td>Pra</td>
+                <td>प (h) + ् (d) + र (j)</td>
+                <td>प्रगती, प्रकाश, प्रयत्न</td>
+              </tr>
+              <tr>
+                <td><strong>ट्र / ड्र</strong></td>
+                <td>Tra / Dra (Rashtra)</td>
+                <td>ट (') + ् (d) + र (j)</td>
+                <td>राष्ट्र, ट्रेन, ड्रायव्हर</td>
+              </tr>
+              <tr>
+                <td><strong>र्य</strong></td>
+                <td>Rya (Raphar)</td>
+                <td>र (j) + ् (d) + य (/)</td>
+                <td>कार्य, सूर्य, धैर्य</td>
+              </tr>
+              <tr>
+                <td><strong>ऱ्य</strong></td>
+                <td>Rya (Eyelashe Ra)</td>
+                <td>ऱ (Shift + j) + ् (d) + य (/)</td>
+                <td>साऱ्या, ताऱ्या, वाऱ्या</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="nukta-and-anusvara" class="article-section">
+        <h2>7. Anusvara (`ं`), Visarga (`ः`) and Nukta (`़`)</h2>
+        <p>
+          Special diacritics in Marathi InScript have dedicated home and upper row keys:
+        </p>
+        <ul>
+          <li><strong>Anusvara (`ं`):</strong> Key <strong>X</strong> (Left hand). Example: स (l) + ं (x) + ग (i) + ण (Shift + c) + क (k) = संगणक.</li>
+          <li><strong>Visarga (`ः`):</strong> <strong>Shift + _</strong> (Shift + Hyphen). Example: स्वतः, दुःख.</li>
+          <li><strong>Nukta (`़`):</strong> Key <strong>]</strong>. Used for Urdu/Persian loan consonants like ज़, ख़, फ़.</li>
+          <li><strong>Chandra (`ॅ`):</strong> Key <strong>\</strong>. Used for English loan vowel sounds like बॅंक, कॉलेज, डॉक्टर.</li>
+        </ul>
+      </section>
+
+      <!-- Section 8 -->
+      <section id="practice-exercises" class="article-section">
+        <h2>8. Daily Marathi Typing Practice Drills</h2>
+        <p>
+          To build muscle memory without frustration, practice on TypeBaazi's specialized practice hubs:
+        </p>
+        <div class="links-callout-grid">
+          <div class="link-card glass-panel">
+            <h4>🚩 Marathi Typing Test (30/40 WPM)</h4>
+            <p>Timed 60s and 180s assessments with live WPM, Net speed, and error diagnostics.</p>
+            <a href="/marathi-typing-test" class="btn btn-sm btn-primary">Start Marathi Test</a>
+          </div>
+          <div class="link-card glass-panel">
+            <h4>📖 Marathi Typing Practice Zone</h4>
+            <p>Untimed, relaxed sentence-by-sentence practice focusing purely on accurate conjuncts.</p>
+            <a href="/marathi-typing-practice" class="btn btn-sm btn-secondary">Open Practice Zone</a>
+          </div>
+          <div class="link-card glass-panel">
+            <h4>⏱️ 7-Minute GCC-TBC Exam Simulator</h4>
+            <p>Simulate official 30 WPM and 40 WPM government exam passages with MSCE scorecards.</p>
+            <a href="/seven-minute-typing-test" class="btn btn-sm btn-primary">Launch 7-Min Exam</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQs -->
+      <section class="article-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-accordion-list">
+          {faqs.map((faq) => (
+            <div class="faq-item glass-panel">
+              <h3 class="faq-question">{faq.question}</h3>
+              <p class="faq-answer">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .guide-article-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+    color: var(--text-main);
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+  }
+
+  .breadcrumb-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .bc-sep {
+    color: var(--text-dim);
+  }
+
+  .bc-current {
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  .article-header {
+    margin-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 24px;
+  }
+
+  .article-meta-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .article-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    color: #ffffff;
+  }
+
+  .article-lead {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-dim);
+  }
+
+  .article-toc {
+    background: rgba(14, 22, 40, 0.6);
+    border: 1px solid rgba(255, 0, 122, 0.2);
+    border-radius: var(--radius-md, 12px);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+
+  .toc-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--accent-pink);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .toc-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toc-list a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: color 0.15s ease;
+  }
+
+  .toc-list a:hover {
+    color: var(--accent-pink);
+    text-decoration: underline;
+  }
+
+  .article-section {
+    margin-bottom: 44px;
+  }
+
+  .article-section h2 {
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+    border-left: 4px solid var(--accent-pink);
+    padding-left: 12px;
+  }
+
+  .article-section p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .article-section ul, .article-section ol {
+    margin: 0 0 20px 24px;
+    color: var(--text-dim);
+    line-height: 1.75;
+    font-size: 15.5px;
+  }
+
+  .hand-division-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .division-card {
+    background: rgba(14, 22, 40, 0.65);
+    border-radius: 12px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .division-card.left-hand {
+    border-top: 4px solid var(--accent-cyan);
+  }
+
+  .division-card.right-hand {
+    border-top: 4px solid var(--accent-pink);
+  }
+
+  .division-card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    color: #ffffff;
+  }
+
+  .callout {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+
+  .callout-info {
+    background: rgba(0, 240, 255, 0.08);
+    border-left: 4px solid var(--accent-cyan);
+  }
+
+  .callout h4 {
+    margin-bottom: 6px;
+    color: #ffffff;
+    font-size: 15px;
+  }
+
+  .callout p {
+    margin: 0;
+    font-size: 14.5px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+
+  .guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+    background: rgba(10, 16, 30, 0.7);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .guide-table th, .guide-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .guide-table th {
+    background: rgba(255, 0, 122, 0.12);
+    color: var(--accent-pink);
+    font-weight: 600;
+  }
+
+  .links-callout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .link-card {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .link-card h4 {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .link-card p {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+
+  .faq-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .faq-item {
+    padding: 18px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .faq-question {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .faq-answer {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text-dim);
+  }
+</style>

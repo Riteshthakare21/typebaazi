@@ -176,8 +176,56 @@
   <!-- 22. Cookie Policy Page -->
   <url>
     <loc>https://typebaazi.com/cookie-policy</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+  </url>
+
+  <!-- 23. Guides Hub -->
+  <url>
+    <loc>https://typebaazi.com/guides</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+
+  <!-- 24. Guide: GCC-TBC Exam Guide -->
+  <url>
+    <loc>https://typebaazi.com/guides/gcc-tbc-exam-guide</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 25. Guide: Marathi InScript Keyboard Guide -->
+  <url>
+    <loc>https://typebaazi.com/guides/marathi-inscript-keyboard-guide</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 26. Guide: Touch Typing & Ergonomics -->
+  <url>
+    <loc>https://typebaazi.com/guides/touch-typing-rules-ergonomics</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 27. Guide: Hindi Typing Exam Preparation -->
+  <url>
+    <loc>https://typebaazi.com/guides/hindi-typing-exam-preparation</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 28. Guide: WPM & Accuracy Calculation -->
+  <url>
+    <loc>https://typebaazi.com/guides/wpm-accuracy-calculation</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 </urlset>

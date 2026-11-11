@@ -1,0 +1,699 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const pageTitle = "Hindi Typing Exam Preparation Guide: SSC CGL, CHSL, RRB & Court Exams";
+const pageDesc = "Complete syllabus, keyboard layouts (InScript vs Remington Gail), key depression rules, and error deduction criteria for Hindi government typing tests.";
+const pageKeywords = "hindi typing exam, ssc chsl hindi typing, ssc cgl dest hindi, rrb ntpc hindi typing, mangal inscript font, remington gail keyboard, hindi typing speed test, ssc typing rules";
+
+const faqs = [
+  {
+    question: "Which keyboard layout is mandatory for SSC CGL and CHSL Hindi typing tests?",
+    answer: "Staff Selection Commission (SSC) allows candidates to choose between InScript and Remington (Gail) on the Mangal font. InScript is the default government standard, while Remington Gail provides a familiar typewriter-style mapping."
+  },
+  {
+    question: "What is the qualifying speed for Hindi typing in SSC CHSL and CGL?",
+    answer: "The standard speed requirement for Hindi typing in SSC CHSL and CGL DEST is 30 words per minute (WPM), which corresponds to 9,000 Key Depressions Per Hour (KDPH) or approximately 1,500 to 1,750 key depressions in a 10 to 15-minute test."
+  },
+  {
+    question: "What is the difference between Kruti Dev and Mangal font?",
+    answer: "Kruti Dev is a legacy non-Unicode ASCII font requiring special system fonts to display properly, whereas Mangal is a standardized Unicode Devanagari font supported natively across all operating systems and mandatory in almost all modern central and state government recruitment tests."
+  },
+  {
+    question: "How are errors classified in SSC Hindi typing tests?",
+    answer: "SSC classifies errors into Full Mistakes (omission of words, substitution of words, addition of words) and Half Mistakes (spacing errors, capitalization/halant mistakes, punctuation inaccuracies). Full mistakes deduct an entire word count while half mistakes deduct 0.5 words."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Guides", url: "https://typebaazi.com/guides" },
+  { name: "Hindi Typing Exam Guide", url: "https://typebaazi.com/guides/hindi-typing-exam-preparation" }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDesc}
+  keywords={pageKeywords}
+  canonical="https://typebaazi.com/guides/hindi-typing-exam-preparation"
+  faqItems={faqs}
+  breadcrumbs={breadcrumbItems}
+>
+  <main class="guide-article-container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="/guides">Guides</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Hindi Typing Exam Guide</span>
+    </nav>
+
+    <article class="guide-article">
+      <header class="article-header">
+        <div class="article-meta-badge">
+          <span class="badge-category">Government Exams</span>
+          <span class="badge-dot">•</span>
+          <span class="badge-read-time">11 min read</span>
+          <span class="badge-dot">•</span>
+          <span class="badge-date">Updated November 2026</span>
+        </div>
+        <h1 class="article-title">Hindi Typing Test Preparation: Comprehensive Handbook for SSC, RRB &amp; Court Clerk Exams</h1>
+        <p class="article-lead">
+          Government competitive examinations across India mandate rigorous Hindi typing benchmarks for clerical and secretarial posts. This master guide decodes keyboard layout options, key depression standards, error evaluation models, and actionable 30-day practice plans.
+        </p>
+      </header>
+
+      <div class="article-toc glass-panel">
+        <h2 class="toc-title">Table of Contents</h2>
+        <ul class="toc-list">
+          <li><a href="#exam-overview">1. Major Hindi Typing Examinations in India</a></li>
+          <li><a href="#font-layout-comparison">2. Keyboard Layouts: Mangal InScript vs Remington Gail</a></li>
+          <li><a href="#kdph-formula">3. Speed Benchmark: Words Per Minute vs Key Depressions (KDPH)</a></li>
+          <li><a href="#ssc-error-evaluation">4. SSC Error Evaluation: Full vs Half Mistakes</a></li>
+          <li><a href="#common-traps">5. Critical Matra and Nukta Typing Traps</a></li>
+          <li><a href="#daily-training-routine">6. 4-Week Daily Exam Preparation Routine</a></li>
+          <li><a href="#faqs">7. Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <!-- Section 1 -->
+      <section id="exam-overview" class="article-section">
+        <h2>1. Major Hindi Typing Examinations in India</h2>
+        <p>
+          Qualifying a typing test or Data Entry Speed Test (DEST) is an absolute prerequisite for final selection in several prestigious government cadres:
+        </p>
+
+        <div class="table-responsive">
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Recruiting Body &amp; Exam</th>
+                <th>Post</th>
+                <th>Required Speed</th>
+                <th>Duration &amp; Keystrokes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>SSC CHSL (10+2)</strong></td>
+                <td>LDC, JSA, Data Entry Operator</td>
+                <td>30 WPM (Hindi)</td>
+                <td>10 Minutes (~1,500 Key Depressions)</td>
+              </tr>
+              <tr>
+                <td><strong>SSC CGL (Tier 2)</strong></td>
+                <td>Tax Assistant, ASO, Inspector</td>
+                <td>27–30 WPM (DEST)</td>
+                <td>15 Minutes (2,000 Key Depressions)</td>
+              </tr>
+              <tr>
+                <td><strong>Railway RRB NTPC</strong></td>
+                <td>Jr. Accounts Assistant, Sr. Clerk</td>
+                <td>30 WPM (Hindi)</td>
+                <td>10 Minutes (300 words without editing aids)</td>
+              </tr>
+              <tr>
+                <td><strong>High Courts &amp; District Courts</strong></td>
+                <td>Clerk / Court Steno</td>
+                <td>25–35 WPM (Hindi)</td>
+                <td>5 to 10 Minutes (Strict accuracy cutoff &gt; 95%)</td>
+              </tr>
+              <tr>
+                <td><strong>Paramilitary (CRPF / BSF / CISF)</strong></td>
+                <td>Head Constable (Ministerial)</td>
+                <td>30 WPM (Hindi)</td>
+                <td>10 Minutes (~1,500 depressions on computer)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="font-layout-comparison" class="article-section">
+        <h2>2. Keyboard Layouts: Mangal InScript vs Remington Gail</h2>
+        <p>
+          One of the greatest points of confusion among beginners is choosing between <strong>InScript</strong> and <strong>Remington Gail</strong>. Both layouts use the <strong>Unicode Mangal font</strong>, but their physical key mapping differs fundamentally:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h3>Mangal InScript (Standard)</h3>
+            <p><strong>Official BIS standard.</strong> Vowels are mapped logically on the left hand; consonants on the right hand.</p>
+            <ul>
+              <li>Pre-installed natively on Windows, macOS, Linux, and Android.</li>
+              <li>No special drivers needed—simply add Hindi (India) Keyboard in OS settings.</li>
+              <li>Faster for beginners with no prior manual typewriter experience.</li>
+              <li>Universal layout across all national testing agencies.</li>
+            </ul>
+          </div>
+
+          <div class="comparison-card">
+            <h3>Remington Gail (Legacy)</h3>
+            <p><strong>Mechanical typewriter replica.</strong> Mimics the legacy Kruti Dev / mechanical typewriter layout on Unicode font.</p>
+            <ul>
+              <li>Requires Hindi Indic Input 3 or custom IME drivers.</li>
+              <li>Preferred by veterans with years of experience on mechanical typewriters.</li>
+              <li>Higher risk of driver conflicts in strict exam testing centers.</li>
+              <li>Matra keys are entered in different sequence compared to phonetics.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="kdph-formula" class="article-section">
+        <h2>3. Speed Benchmark: Words Per Minute vs Key Depressions (KDPH)</h2>
+        <p>
+          In government examinations, word length varies widely depending on vocabulary. To ensure scientific fairness, exam bodies do not count arbitrary whitespace words; they measure <strong>Key Depressions</strong>:
+        </p>
+
+        <div class="formula-card glass-panel">
+          <h3>The Official Government Conversion Formula:</h3>
+          <div class="formula-box">
+            <span class="formula-line"><strong>1 Standard Exam Word</strong> = 5 Key Depressions (including letters, spaces, and punctuation)</span>
+            <span class="formula-line"><strong>30 WPM in 10 Minutes</strong> = 30 &times; 5 &times; 10 = 1,500 Key Depressions</span>
+            <span class="formula-line"><strong>KDPH (Hourly Rate)</strong> = Total Key Depressions &times; (60 / Duration in Minutes)</span>
+          </div>
+        </div>
+
+        <p>
+          When practicing on TypeBaazi, each key stroke (including shift triggers and spacebars) feeds directly into your real-time Key Depression tracker so you can benchmark your exact performance against official exam metrics.
+        </p>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="ssc-error-evaluation" class="article-section">
+        <h2>4. SSC Error Evaluation: Full vs Half Mistakes</h2>
+        <p>
+          In SSC and RRB evaluations, errors are classified into two strict penalty tiers:
+        </p>
+
+        <div class="mistake-breakdown-grid">
+          <div class="mistake-card full-error">
+            <h3>Full Mistakes (1.0 Penalty per occurrence)</h3>
+            <ul>
+              <li><strong>Omission of Word:</strong> Skipping a word or sentence present in the test passage.</li>
+              <li><strong>Substitution of Word:</strong> Typing an incorrect word in place of the passage word.</li>
+              <li><strong>Addition of Word:</strong> Inserting unnecessary words not present in the master text.</li>
+              <li><strong>Repetition:</strong> Accidentally repeating a phrase or word multiple times.</li>
+            </ul>
+          </div>
+
+          <div class="mistake-card half-error">
+            <h3>Half Mistakes (0.5 Penalty per occurrence)</h3>
+            <ul>
+              <li><strong>Spacing Errors:</strong> Missing space between words or unwanted double spaces.</li>
+              <li><strong>Punctuation Mistakes:</strong> Omitting or mistyping full stops (पूर्णविराम ।), commas, or question marks.</li>
+              <li><strong>Transposition:</strong> Reversing the order of adjacent characters within a word.</li>
+              <li><strong>Halant &amp; Matra Inaccuracies:</strong> Missing or wrongly applied vowel matras.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <h4>Maximum Permissible Error Threshold</h4>
+          <p>
+            For unreserved (UR/General) candidates, the permissible error threshold in SSC CHSL/CGL is typically <strong>7%</strong>. For reserved categories (OBC, SC, ST, PwD), it is relaxed to <strong>10%</strong>. Exceeding this error cap results in immediate disqualification regardless of speed.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="common-traps" class="article-section">
+        <h2>5. Critical Matra and Nukta Typing Traps</h2>
+        <p>
+          Examiners deliberately insert words containing conjuncts (संयुक्त वर्ण), Nukta (नुक्ता) characters, and Halants (हलन्त) to test candidate precision.
+        </p>
+
+        <div class="table-responsive">
+          <table class="guide-table">
+            <thead>
+              <tr>
+                <th>Tricky Character</th>
+                <th>InScript Shortcut</th>
+                <th>Example Words Tested</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ऋ (Rri)</strong></td>
+                <td>Shift + + (Equal key)</td>
+                <td>ऋषि, ऋण, ऋतु, कृषि</td>
+              </tr>
+              <tr>
+                <td><strong>Nukta (़)</strong></td>
+                <td>] (Closing square bracket)</td>
+                <td>ज़िंदगी (j + ] + f + ...), फ़िल्म, क़रीब</td>
+              </tr>
+              <tr>
+                <td><strong>Poornaviram (।)</strong></td>
+                <td>Shift + &gt; (Period key)</td>
+                <td>समाप्त हुआ।</td>
+              </tr>
+              <tr>
+                <td><strong>Double Dand (॥)</strong></td>
+                <td>Shift + &lt; (Comma key)</td>
+                <td>श्लोक उद्धरण॥</td>
+              </tr>
+              <tr>
+                <td><strong>चंद्रबिंदु (ँ)</strong></td>
+                <td>Shift + X</td>
+                <td>गाँव, माँ, चाँद</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="daily-training-routine" class="article-section">
+        <h2>6. 4-Week Daily Exam Preparation Routine</h2>
+        <div class="roadmap-grid">
+          <div class="roadmap-phase">
+            <span class="phase-number">Week 1</span>
+            <h4>Character Accuracy</h4>
+            <p>15 minutes daily of isolated consonants, vowel matras, and halant conjuncts. Target: 99% accuracy on basic words.</p>
+          </div>
+          <div class="roadmap-phase">
+            <span class="phase-number">Week 2</span>
+            <h4>Vocabulary &amp; Words</h4>
+            <p>Practice 300 frequently used administrative Hindi words (अधिसूचना, मंत्रालय, प्राधिकरण, कार्यालय). Target: 22 WPM.</p>
+          </div>
+          <div class="roadmap-phase">
+            <span class="phase-number">Week 3</span>
+            <h4>Continuous Paragraphs</h4>
+            <p>Practice 5-minute timed Hindi editorial passages on TypeBaazi without backspacing. Target: 28 WPM.</p>
+          </div>
+          <div class="roadmap-phase">
+            <span class="phase-number">Week 4</span>
+            <h4>Full Exam Simulations</h4>
+            <p>Simulate exact 10-minute and 15-minute exam passages under timed conditions. Target: 32+ WPM with under 5% errors.</p>
+          </div>
+        </div>
+
+        <div class="cta-box glass-panel">
+          <h3>Begin Your Hindi Typing Practice Today</h3>
+          <p>Practice with official government-style Hindi passages and measure your real-time Key Depressions.</p>
+          <div class="cta-actions">
+            <a href="/hindi-typing-test" class="btn btn-primary">Start Hindi Typing Test</a>
+            <a href="/hindi-typing-practice" class="btn btn-outline">Hindi Practice Drills</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="faqs" class="article-section">
+        <h2>7. Frequently Asked Questions</h2>
+        <div class="faq-accordion-list">
+          {faqs.map((faq) => (
+            <div class="faq-item glass-panel">
+              <h3 class="faq-question">{faq.question}</h3>
+              <p class="faq-answer">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .guide-article-container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+    color: var(--text-color, #f1f5f9);
+  }
+
+  .breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-nav a {
+    color: var(--text-muted, #94a3b8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-nav a:hover {
+    color: var(--primary, #38bdf8);
+  }
+
+  .bc-sep {
+    color: var(--text-muted, #64748b);
+  }
+
+  .bc-current {
+    color: var(--primary, #38bdf8);
+    font-weight: 500;
+  }
+
+  .article-header {
+    margin-bottom: 3rem;
+  }
+
+  .article-meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--primary, #38bdf8);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    color: var(--text-heading, #ffffff);
+  }
+
+  .article-lead {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: var(--text-muted, #cbd5e1);
+  }
+
+  .article-toc {
+    padding: 1.75rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    background: var(--surface-card, rgba(15, 23, 42, 0.65));
+  }
+
+  .toc-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-heading, #ffffff);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .toc-list a {
+    color: var(--primary, #38bdf8);
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+
+  .toc-list a:hover {
+    text-decoration: underline;
+  }
+
+  .article-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .article-section h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--text-heading, #ffffff);
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    padding-bottom: 0.5rem;
+  }
+
+  .article-section p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-body, #cbd5e1);
+    margin-bottom: 1.25rem;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-card {
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+  }
+
+  .comparison-card h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+  }
+
+  .comparison-card ul {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.925rem;
+    line-height: 1.6;
+  }
+
+  .formula-card {
+    padding: 1.75rem;
+    border-radius: 1rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    margin: 1.5rem 0;
+  }
+
+  .formula-card h3 {
+    font-size: 1.15rem;
+    color: #38bdf8;
+    margin-bottom: 1rem;
+  }
+
+  .formula-box {
+    display: grid;
+    gap: 0.75rem;
+    font-family: monospace;
+    font-size: 1.05rem;
+  }
+
+  .formula-line {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    display: block;
+    color: #f8fafc;
+  }
+
+  .mistake-breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .mistake-card {
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+  }
+
+  .mistake-card.full-error {
+    border-left: 4px solid #ef4444;
+  }
+
+  .mistake-card.half-error {
+    border-left: 4px solid #f59e0b;
+  }
+
+  .mistake-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  .mistake-card ul {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+    font-size: 0.925rem;
+    line-height: 1.6;
+  }
+
+  .callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    margin: 1.75rem 0;
+    border-left: 4px solid #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+  }
+
+  .callout h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+  }
+
+  .guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .guide-table th, .guide-table td {
+    padding: 0.9rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  }
+
+  .guide-table th {
+    background: rgba(255, 255, 255, 0.04);
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin: 1.75rem 0;
+  }
+
+  .roadmap-phase {
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .phase-number {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .roadmap-phase h4 {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .roadmap-phase p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .cta-box {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1));
+    border: 1px solid rgba(56, 189, 248, 0.25);
+  }
+
+  .cta-box h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-box p {
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary, #38bdf8);
+    color: #0b1120;
+  }
+
+  .btn-primary:hover {
+    background: #0ea5e9;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .btn-outline:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+  }
+
+  .faq-accordion-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background: var(--surface-card, rgba(15, 23, 42, 0.6));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-body, #cbd5e1);
+    margin: 0;
+  }
+</style>
+

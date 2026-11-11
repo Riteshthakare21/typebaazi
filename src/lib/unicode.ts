@@ -25,20 +25,13 @@ export class UnicodeHelper {
   }
 
   /**
-   * Splits a string into an array of grapheme clusters (perceptual characters).
-   * Works smoothly with Devanagari matras, conjuncts, and English glyphs.
+   * Splits a string into an array of individual keystroke character tokens.
+   * Works smoothly with Devanagari Inscript/Remington keystrokes, matras, halants, and English letters.
    */
   public static splitGraphemes(text: string): string[] {
     if (!text) return [];
-    const segmenter = this.getSegmenter();
-    if (segmenter) {
-      return Array.from(segmenter.segment(text), s => s.segment);
-    }
-    // Fallback: Unicode matching regex for Devanagari grapheme clusters
-    // Base character followed by optional nukta, virama + base, or combining marks/matras
-    const graphemeRegex = /[\u0900-\u097F][\u093E-\u094D\u0951-\u0954\u0962-\u0963\u0901-\u0903\u093C]*|[\uD800-\uDBFF][\uDC00-\uDFFF]|[^\uD800-\uDFFF]/gu;
-    const matches = text.match(graphemeRegex);
-    return matches ? Array.from(matches) : Array.from(text);
+    // Individual keystroke segmentation ensures 1-to-1 matching with physical/virtual keyboards
+    return Array.from(text);
   }
 
   /**

@@ -781,7 +781,15 @@ const breadcrumbSchema = {
       const targetTag = (e.target as HTMLElement)?.tagName;
       if (targetTag === 'INPUT' && e.target !== inputField) return;
       if (targetTag === 'TEXTAREA' || targetTag === 'SELECT') return;
-      if (document.querySelector('.modal-overlay:not(.hidden), .profile-modal-overlay:not(.hidden), #typebaazi-profile-modal:not(.hidden), #settings-modal:not(.hidden), #certificate-modal:not(.hidden)')) return;
+      if (document.getElementById('mobile-drawer')?.classList.contains('open')) return;
+      const authModal = document.getElementById('auth-modal');
+      if (authModal && authModal.classList.contains('open') && !authModal.classList.contains('hidden')) return;
+      const settingsModal = document.getElementById('settings-modal');
+      if (settingsModal && !settingsModal.classList.contains('hidden')) return;
+      const certModal = document.getElementById('typebaazi-certificate-modal');
+      if (certModal && !certModal.classList.contains('hidden')) return;
+      const profileModal = document.getElementById('typebaazi-profile-modal');
+      if (profileModal && !profileModal.classList.contains('hidden')) return;
 
       if (!isRunning) {
         if (e.key === ' ' || e.key === 'Enter') {

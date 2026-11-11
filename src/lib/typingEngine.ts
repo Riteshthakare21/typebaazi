@@ -146,7 +146,7 @@ export class TypingEngine {
 
     if (this.config.strictMode && !isMatch) {
       // In strict mode, error sound plays and input is rejected until correct
-      soundEngine.playError();
+      try { soundEngine.playError(); } catch {}
       this.totalErrors++;
       this.notifyUpdate();
       return false;
@@ -155,12 +155,12 @@ export class TypingEngine {
     if (isMatch) {
       this.typedChars.push(char);
       this.charStatuses[currentIndex] = 'correct';
-      soundEngine.playKey(char);
+      try { soundEngine.playKey(char); } catch {}
     } else {
       this.typedChars.push(char);
       this.charStatuses[currentIndex] = 'incorrect';
       this.totalErrors++;
-      soundEngine.playError();
+      try { soundEngine.playError(); } catch {}
     }
 
     if (this.typedChars.length >= this.tokens.length) {
@@ -180,7 +180,7 @@ export class TypingEngine {
     const removedIndex = this.typedChars.length - 1;
     this.typedChars.pop();
     this.charStatuses[removedIndex] = 'pending';
-    soundEngine.playBackspace();
+    try { soundEngine.playBackspace(); } catch {}
     this.notifyUpdate();
   }
 
@@ -196,7 +196,7 @@ export class TypingEngine {
     if (this.elapsedSec < 0.1) this.elapsedSec = 0.1;
 
     const metrics = this.getMetrics();
-    soundEngine.playVictory();
+    try { soundEngine.playVictory(); } catch {}
 
     this.onFinishCallbacks.forEach(cb => {
       try {
@@ -252,6 +252,12 @@ export class TypingEngine {
       currentIndex: this.typedChars.length,
       isFinished: this.isFinished
     };
+  }
+
+  public getState(): 'idle' | 'running' | 'finished' {
+    if (this.isFinished) return 'finished';
+    if (this.isStarted) return 'running';
+    return 'idle';
   }
 
   public getTokens(): string[] {

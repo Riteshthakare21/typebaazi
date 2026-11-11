@@ -692,6 +692,7 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
   import { textManager, type Language, type Difficulty } from '../lib/texts';
   import { DailyChallengeManager } from '../lib/dailyChallenge';
   import { StorageManager } from '../lib/storage';
+  import { resolveIndicChar } from '../lib/inscriptMap';
 
   let currentLang: Language = 'english';
   let currentDiff: Difficulty = 'medium';
@@ -769,8 +770,12 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
 
       const curToken = engine.getCurrentToken();
       if (curToken) {
+        const charStr = typeof curToken === 'string' ? curToken : (curToken as any).char;
         window.dispatchEvent(new CustomEvent('active-token-changed', {
-          detail: { char: curToken.char, language: currentLang }
+          detail: { char: charStr, language: currentLang }
+        }));
+        window.dispatchEvent(new CustomEvent('highlight-target-key', {
+          detail: { char: charStr, language: currentLang }
         }));
       }
     }
@@ -888,9 +893,9 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
 
     // Engine callbacks
     engine.onUpdate(() => {
-      if (!hasStartedThisSession && engine && engine.getState() === 'running') {
-        hasStartedThisSession = true;
-        try {
+      try {
+        if (!hasStartedThisSession && engine && engine.getState() === 'running') {
+          hasStartedThisSession = true;
           if (typeof (window as any).trackTypeBaaziEvent === 'function') {
             (window as any).trackTypeBaaziEvent(currentMode === 'daily' ? 'start_daily_challenge' : 'start_typing_test', {
               language: currentLang,
@@ -899,7 +904,9 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
               mode: currentMode
             });
           }
-        } catch {}
+        }
+      } catch (err) {
+        console.warn('TypeBaazi tracking error:', err);
       }
       renderTokens();
       updateHUD();
@@ -942,7 +949,10 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
         engine.handleBackspace();
       } else if (val && val.length > 0) {
         for (const char of val) {
-          engine.handleInput(char);
+          const curToken = engine.getCurrentToken();
+          const expected = typeof curToken === 'string' ? curToken : (curToken as any)?.char;
+          const resolved = resolveIndicChar(char, expected, currentLang);
+          engine.handleInput(resolved);
         }
       }
       hiddenInput.value = '';
@@ -952,7 +962,10 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
       if (!engine) return;
       if (e.data) {
         for (const char of e.data) {
-          engine.handleInput(char);
+          const curToken = engine.getCurrentToken();
+          const expected = typeof curToken === 'string' ? curToken : (curToken as any)?.char;
+          const resolved = resolveIndicChar(char, expected, currentLang);
+          engine.handleInput(resolved);
         }
       }
       hiddenInput.value = '';
@@ -1005,9 +1018,21 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
         return;
       }
 
-      if (document.querySelector('.modal-overlay:not(.hidden), .profile-modal-overlay:not(.hidden), #typebaazi-profile-modal:not(.hidden), #settings-modal:not(.hidden), #certificate-modal:not(.hidden)')) {
-        return;
-      }
+      // Check if any modal dialog is currently active / open
+      const authModal = document.getElementById('auth-modal');
+      if (authModal && authModal.classList.contains('open') && !authModal.classList.contains('hidden')) return;
+
+      const settingsModal = document.getElementById('settings-modal');
+      if (settingsModal && !settingsModal.classList.contains('hidden')) return;
+
+      const resultsModal = document.getElementById('results-modal');
+      if (resultsModal && !resultsModal.classList.contains('hidden')) return;
+
+      const certModal = document.getElementById('typebaazi-certificate-modal');
+      if (certModal && !certModal.classList.contains('hidden')) return;
+
+      const profileModal = document.getElementById('typebaazi-profile-modal');
+      if (profileModal && !profileModal.classList.contains('hidden')) return;
 
       const target = e.target as HTMLElement;
       if (target && target !== hiddenInput && (target.tagName === 'INPUT' || target.tagName === 'SELECT' || target.tagName === 'TEXTAREA')) {
@@ -1019,7 +1044,13 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
         engine.handleBackspace();
       } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
         e.preventDefault();
-        engine.handleInput(e.key);
+        const curToken = engine.getCurrentToken();
+        const expected = typeof curToken === 'string' ? curToken : (curToken as any)?.char;
+        const resolved = resolveIndicChar(e.key, expected, currentLang);
+        engine.handleInput(resolved);
+        if (hiddenInput && document.activeElement !== hiddenInput) {
+          focusHiddenInput();
+        }
       }
     };
 
@@ -1048,8 +1079,15 @@ const initialTokens = UnicodeHelper.splitGraphemes(UnicodeHelper.normalize(initi
 
       if (key === 'Backspace') {
         engine.handleBackspace();
-      } else if (key.length === 1) {
-        engine.handleInput(key);
+      } else if (key && key !== 'Shift' && key !== 'CapsLock' && key !== 'Control' && key !== 'Alt') {
+        const curToken = engine.getCurrentToken();
+        const expected = typeof curToken === 'string' ? curToken : (curToken as any)?.char;
+        let charToSend = key;
+        if (expected && expected.toUpperCase() === key.toUpperCase()) {
+          charToSend = expected;
+        }
+        const resolved = resolveIndicChar(charToSend, expected, currentLang);
+        engine.handleInput(resolved);
       }
 
       if ((window.scrollY || window.pageYOffset || 0) !== prevScrollY || (window.scrollX || window.pageXOffset || 0) !== prevScrollX) {

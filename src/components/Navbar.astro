@@ -52,6 +52,10 @@ const { activePath = '/' } = Astro.props;
         <span class="nav-icon">🔥</span>
         <span class="nav-text">Daily</span>
       </a>
+      <a href="/guides" class={`nav-item ${activePath && activePath.startsWith('/guides') ? 'active' : ''}`} title="Typing &amp; Exam Guides">
+        <span class="nav-icon">📚</span>
+        <span class="nav-text">Guides</span>
+      </a>
       <a href="/leaderboard" class={`nav-item ${activePath === '/leaderboard' || activePath === '/dashboard' ? 'active' : ''}`} title="Rankings & Player Dashboard">
         <span class="nav-icon">🏆</span>
         <span class="nav-text nav-text-rankings">Rankings &amp; Dashboard</span>
@@ -116,6 +120,7 @@ const { activePath = '/' } = Astro.props;
       <a href="/games" class="mobile-nav-item">🎮 Arcade Falling Words Game</a>
       <a href="/daily-challenge" class="mobile-nav-item">🔥 Daily Streak Challenge</a>
       <a href="/leaderboard" class="mobile-nav-item">🏆 Rankings &amp; Dashboard</a>
+      <a href="/guides" class="mobile-nav-item">📚 Typing Guides &amp; Exam Resources</a>
       <a href="/learn" class="mobile-nav-item">📖 Learn Touch Typing &amp; Finger Chart</a>
       <button id="mobile-settings-btn" class="mobile-nav-item mobile-settings-btn" style="text-align: left; width: 100%; cursor: pointer;">
         <span>⚙️ Settings &amp; Typing Voices</span>

@@ -598,6 +598,8 @@ const { language = 'english', visible = true } = Astro.props;
     hintsBtn?.addEventListener('click', onHints);
     kbCleanupFns.push(() => hintsBtn?.removeEventListener('click', onHints));
 
+    let isShiftActive = false;
+
     function triggerVirtualKey(target: HTMLElement) {
       const key = target.dataset.key;
       if (!key) return;
@@ -605,14 +607,27 @@ const { language = 'english', visible = true } = Astro.props;
       target.classList.add('pressed-correct');
       setTimeout(() => target.classList.remove('pressed-correct'), 100);
 
-      const isMarathi = kbWrapper?.getAttribute('data-lang') === 'marathi';
+      if (key === 'Shift') {
+        isShiftActive = !isShiftActive;
+        kbWrapper?.classList.toggle('shift-active', isShiftActive);
+        document.querySelectorAll('.kb-key[data-key="Shift"]').forEach(s => s.classList.toggle('active', isShiftActive));
+        return;
+      }
+
+      const curLang = kbWrapper?.getAttribute('data-lang');
+      const isIndic = curLang === 'marathi' || curLang === 'hindi';
       let sentChar = key;
-      if (key === 'Backspace' || key === 'Enter' || key === 'Tab' || key === 'CapsLock' || key === 'Shift' || key === 'Control' || key === 'Alt') {
+      if (key === 'Backspace' || key === 'Enter' || key === 'Tab' || key === 'CapsLock' || key === 'Control' || key === 'Alt') {
         sentChar = key;
       } else if (key === ' ') {
         sentChar = ' ';
-      } else if (isMarathi && target.dataset.mr) {
+      } else if (isIndic && target.dataset.mr) {
         sentChar = target.dataset.mr;
+      } else if (isShiftActive && target.dataset.shift) {
+        sentChar = target.dataset.shift;
+        isShiftActive = false;
+        kbWrapper?.classList.remove('shift-active');
+        document.querySelectorAll('.kb-key[data-key="Shift"]').forEach(s => s.classList.remove('active'));
       }
 
       window.dispatchEvent(new CustomEvent('virtual-key-click', { detail: { key: sentChar } }));

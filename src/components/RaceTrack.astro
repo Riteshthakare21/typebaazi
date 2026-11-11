@@ -305,6 +305,7 @@ const initialTokens = Array.from(initialTextItem.text);
   import { textManager, type Language, type Difficulty } from '../lib/texts';
   import { StorageManager } from '../lib/storage';
   import { downloadGrandPrixCertificatePdf } from '../lib/certificateGenerator';
+  import { resolveIndicChar } from '../lib/inscriptMap';
 
   let currentLang: Language = 'english';
   let currentDiff: Difficulty = 'medium';
@@ -783,7 +784,17 @@ const initialTokens = Array.from(initialTextItem.text);
       const targetTag = (e.target as HTMLElement)?.tagName;
       if (targetTag === 'INPUT' && e.target !== hiddenInput) return;
       if (targetTag === 'TEXTAREA' || targetTag === 'SELECT') return;
-      if (document.querySelector('.modal-overlay:not(.hidden), .profile-modal-overlay:not(.hidden), #typebaazi-profile-modal:not(.hidden), #settings-modal:not(.hidden), #typebaazi-certificate-modal:not(.hidden)')) return;
+      if (document.getElementById('mobile-drawer')?.classList.contains('open')) return;
+      const authModal = document.getElementById('auth-modal');
+      if (authModal && authModal.classList.contains('open') && !authModal.classList.contains('hidden')) return;
+      const settingsModal = document.getElementById('settings-modal');
+      if (settingsModal && !settingsModal.classList.contains('hidden')) return;
+      const raceResModal = document.getElementById('race-result-modal');
+      if (raceResModal && !raceResModal.classList.contains('hidden')) return;
+      const certModal = document.getElementById('typebaazi-certificate-modal');
+      if (certModal && !certModal.classList.contains('hidden')) return;
+      const profileModal = document.getElementById('typebaazi-profile-modal');
+      if (profileModal && !profileModal.classList.contains('hidden')) return;
 
       const state = raceEngine.getState();
 
@@ -810,7 +821,9 @@ const initialTokens = Array.from(initialTextItem.text);
             e.preventDefault();
           } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
             e.preventDefault();
-            typingEngine.handleInput(e.key);
+            const curToken = typingEngine.getCurrentToken();
+            const resolved = resolveIndicChar(e.key, curToken?.char, currentLang);
+            typingEngine.handleInput(resolved);
           }
         }
       } else if (state === 'finished') {
@@ -850,8 +863,10 @@ const initialTokens = Array.from(initialTextItem.text);
       } else if (raceEngine.getState() === 'racing') {
         if (key === 'Backspace') {
           typingEngine.handleBackspace();
-        } else if (key.length === 1) {
-          typingEngine.handleInput(key);
+        } else if (key && key !== 'Shift' && key !== 'CapsLock' && key !== 'Control' && key !== 'Alt') {
+          const curToken = typingEngine.getCurrentToken();
+          const resolved = resolveIndicChar(key, curToken?.char, currentLang);
+          typingEngine.handleInput(resolved);
         }
       }
     };
