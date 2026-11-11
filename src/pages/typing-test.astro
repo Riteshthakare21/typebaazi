@@ -6,15 +6,35 @@ import VirtualKeyboard from '../components/VirtualKeyboard.astro';
 const typingTestFaqs = [
   {
     question: "How does the online typing speed test calculate WPM?",
-    answer: "Typing speed is calculated by standardizing 5 characters as one word: WPM = (Total Correct Characters / 5) / Time in Minutes. Net WPM subtracts error penalties to reflect real-world typing accuracy."
+    answer: "Typing speed is calculated by standardizing 5 characters (including letters, punctuation, and spaces) as one word: Gross WPM = (Total Characters Typed / 5) / Time in Minutes. Net WPM subtracts error penalties to reflect real-world, error-free typing output."
   },
   {
-    question: "Can I test typing speed in English, Hindi, and Marathi?",
-    answer: "Yes! TypeBaazi provides first-class support for English QWERTY, Hindi Devanagari Inscript, and Marathi Devanagari Inscript typing tests with live accuracy tracking and downloadable certificates."
+    question: "What is the difference between Gross WPM and Net WPM?",
+    answer: "Gross WPM measures your raw keystroke velocity regardless of mistakes. Net WPM subtracts your uncorrected errors: Net WPM = Gross WPM - (Errors / Time in Minutes). For government and certification exams like SSC, MPSC, and GCC-TBC, qualifying marks are strictly determined by Net WPM."
   },
   {
-    question: "What test durations are available?",
-    answer: "You can take 60-second quick speed tests or 180-second endurance tests across all supported languages and difficulty levels."
+    question: "Can I test typing speed in English, Hindi, and Marathi on TypeBaazi?",
+    answer: "Yes! TypeBaazi provides native, first-class support for English QWERTY, Hindi Devanagari Inscript, and Marathi Devanagari Inscript typing tests with live accuracy tracking, customizable test durations, and instant downloadable certificates."
+  },
+  {
+    question: "What is considered a good typing speed for exams and jobs?",
+    answer: "The global average typing speed is around 40 WPM with 92% accuracy. For administrative jobs, courts, and central government exams (SSC CHSL, CGL, RRB NTPC), 35 WPM in English or 30 WPM in Hindi/Marathi is required. Professional transcriptionists and software developers typically type at 65–85+ WPM."
+  },
+  {
+    question: "How do I practice Devanagari Hindi and Marathi typing without an Indian keyboard?",
+    answer: "You do not need a special keyboard hardware! TypeBaazi maps your standard physical QWERTY keyboard to the official Indian Script (InScript) layout standard. Our on-screen interactive virtual keyboard visually shows you where vowels, consonants, and matras lie in real-time."
+  },
+  {
+    question: "Can I take typing tests on a smartphone or tablet?",
+    answer: "Yes! TypeBaazi features full mobile touch support and an on-screen responsive keypad. You can also connect a USB or Bluetooth physical keyboard to your Android or iPad device via OTG for full desktop-grade typing practice on the go."
+  },
+  {
+    question: "How can I earn a verified typing speed certificate?",
+    answer: "Upon completing any standard 60-second or 180-second typing test with at least 90% accuracy, TypeBaazi generates an instant, tamper-resistant digital Certificate of Competence with your name, verified WPM, accuracy, and official seal in PDF or PNG format."
+  },
+  {
+    question: "What daily practice routine is best for doubling typing speed?",
+    answer: "Practice 15 to 20 minutes daily divided into three 5-minute blocks: 5 minutes of home row accuracy drills, 5 minutes of timed speed tests on TypeBaazi, and 5 minutes of AI Grand Prix racing to build rapid reflex instincts without looking down at the keyboard."
   }
 ];
 
@@ -55,21 +75,203 @@ const breadcrumbItems = [
     <!-- Virtual Keyboard -->
     <VirtualKeyboard language="english" visible={true} />
 
-    <!-- Explanatory SEO Content & Guides -->
-    <div class="test-guide-card glass-panel">
-      <h2>How Does This Typing Test Work?</h2>
-      <p>
-        The TypeBaazi typing speed test calculates your true typing speed across English, Hindi, and Marathi using the standard international formula:
-      </p>
-      <div class="formula-box">
-        <code>WPM = (Total Correct Characters / 5) / Elapsed Time in Minutes</code>
-      </div>
-      <p>
-        <strong>Net WPM</strong> accounts for uncorrected typing mistakes, ensuring your recorded score accurately mirrors real-world typing productivity. Practice regularly in English, Hindi, and Marathi to build muscle memory, reduce typos, and prepare for competitive exams like SSC, CPCT, MPSC, and UPSC.
-      </p>
+    <!-- Explanatory SEO Content & Comprehensive Typing Guide -->
+    <article class="test-guide-card glass-panel" itemscope itemtype="https://schema.org/Article">
+      <header class="guide-article-header">
+        <span class="badge badge-cyan">📖 Comprehensive Speed &amp; Ergonomics Handbook</span>
+        <h2 itemprop="headline">The Science of Typing Speed: How to Measure, Calculate &amp; Master WPM</h2>
+        <p class="guide-lead-text">
+          Touch typing is the cognitive art of translating mental thoughts into high-speed digital text without visually glancing at your keyboard. Whether you are preparing for government clerk recruitment (SSC, MPSC, GCC-TBC) or seeking to elevate your professional daily coding and drafting productivity, mastering touch typing in <strong>English</strong>, <strong>Hindi Devanagari</strong>, and <strong>Marathi</strong> unlocks exceptional efficiency.
+        </p>
+      </header>
+
+      <!-- Section 1: Measurement & Formulas -->
+      <section class="guide-content-block">
+        <h3>1. The Universal Standard Formula for WPM &amp; Net WPM</h3>
+        <p>
+          Worldwide examination authorities and commercial typing portals do not measure words based on actual dictionary word lengths. Since the word <em>"a"</em> is 1 character while <em>"infrastructure"</em> is 14 characters, measuring raw words would yield wild inconsistencies. Instead, international typing standards define <strong>1 Standard Typist Word = Exactly 5 Keystrokes</strong> (including letters, spaces, and punctuation marks).
+        </p>
+
+        <div class="formula-grid">
+          <div class="formula-card">
+            <span class="formula-title">Gross WPM (Raw Speed)</span>
+            <div class="formula-box">
+              <code>Gross WPM = (Total Keystrokes / 5) / Elapsed Time (Minutes)</code>
+            </div>
+            <p class="formula-note">Measures your raw motor execution speed regardless of typographical errors.</p>
+          </div>
+
+          <div class="formula-card">
+            <span class="formula-title">Net WPM (Exam Grade Speed)</span>
+            <div class="formula-box">
+              <code>Net WPM = Gross WPM - (Uncorrected Errors / Time in Minutes)</code>
+            </div>
+            <p class="formula-note">Deducts penalties for mistakes. This is the official qualifying metric used by recruitment boards.</p>
+          </div>
+        </div>
+
+        <div class="example-calculation-box">
+          <h4>Worked Example:</h4>
+          <p>
+            If a candidate types <strong>1,200 keystrokes</strong> in a <strong>5-minute test</strong> and makes <strong>6 uncorrected errors</strong>:
+          </p>
+          <ul>
+            <li><strong>Gross Words Typed:</strong> 1,200 / 5 = 240 words.</li>
+            <li><strong>Gross WPM:</strong> 240 / 5 min = <strong>48 WPM</strong>.</li>
+            <li><strong>Error Deduction:</strong> 6 errors / 5 min = 1.2 WPM deduction.</li>
+            <li><strong>Net Qualifying WPM:</strong> 48 - 1.2 = <strong>46.8 Net WPM</strong> (Accuracy: 97.5%).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Global Benchmark Standards Table -->
+      <section class="guide-content-block">
+        <h3>2. Global Typing Speed Benchmarks &amp; Certification Tiers</h3>
+        <p>
+          Check where your current typing score stands relative to global typists and competitive government examination cutoffs:
+        </p>
+
+        <div class="table-responsive">
+          <table class="speed-benchmark-table">
+            <thead>
+              <tr>
+                <th>Skill Tier</th>
+                <th>Net WPM Range</th>
+                <th>Accuracy Cutoff</th>
+                <th>Target Audience &amp; Career Relevance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🌱 Novice / Beginner</strong></td>
+                <td><span class="speed-tag">15 – 30 WPM</span></td>
+                <td>88% – 92%</td>
+                <td>Hunt-and-peck typists, beginners transitioning to 10 fingers.</td>
+              </tr>
+              <tr>
+                <td><strong>⚡ Average Typist</strong></td>
+                <td><span class="speed-tag">35 – 45 WPM</span></td>
+                <td>93% – 95%</td>
+                <td>Global average. Meets standard corporate data entry &amp; email needs.</td>
+              </tr>
+              <tr>
+                <td><strong>🏛️ Govt Exam Qualified</strong></td>
+                <td><span class="speed-tag">30 – 40 WPM</span></td>
+                <td>95% – 98%</td>
+                <td>Qualifies for <strong>GCC-TBC 30/40 WPM</strong>, <strong>SSC CHSL/CGL</strong>, <strong>RRB NTPC</strong>, and Court Clerks.</td>
+              </tr>
+              <tr>
+                <td><strong>🚀 Professional Typist</strong></td>
+                <td><span class="speed-tag">50 – 70 WPM</span></td>
+                <td>97%+</td>
+                <td>Software developers, transcriptionists, paralegals, and journalists.</td>
+              </tr>
+              <tr>
+                <td><strong>🏆 Competitive Master</strong></td>
+                <td><span class="speed-tag">75 – 100+ WPM</span></td>
+                <td>98.5%+</td>
+                <td>Top 1% of competitive typists worldwide. Instant motor reflexes.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Trilingual Typing Mastery -->
+      <section class="guide-content-block">
+        <h3>3. Mastering Trilingual Typing: English, Hindi &amp; Marathi</h3>
+        <p>
+          Unlike monolingual websites, TypeBaazi provides complete native typing frameworks for India's three most widely practiced official languages:
+        </p>
+        <div class="trilingual-guide-grid">
+          <div class="tri-card">
+            <h4>🇬🇧 English QWERTY</h4>
+            <p>
+              Standard touch typing with index fingers anchored on the tactile bumps of <strong>F</strong> and <strong>J</strong>. Spacebar executed alternately by the dominant thumb.
+            </p>
+          </div>
+          <div class="tri-card">
+            <h4>🇮🇳 Hindi Devanagari Inscript</h4>
+            <p>
+              The standardized Indian government layout. Vowels (स्वर) are placed logically on the left hand, while consonants (व्यंजन) are on the right hand. Halant (्) on <strong>D</strong> joins letters.
+            </p>
+          </div>
+          <div class="tri-card">
+            <h4>🚩 Marathi Devanagari Inscript</h4>
+            <p>
+              Tailored for Maharashtra MSCE GCC-TBC examinations. Master conjuncts (उदा. <em>महाराष्ट्र, विद्या, कल्प</em>) using standard Shift combinations and virama keys without font dependency.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: 15-Minute Daily Training Blueprint -->
+      <section class="guide-content-block">
+        <h3>4. The 15-Minute Daily Typing Blueprint (Double Speed in 30 Days)</h3>
+        <p>
+          Research in motor skill acquisition proves that short, daily deliberate practice sessions generate far greater muscle memory retention than marathon multi-hour weekend typing sessions:
+        </p>
+        <ol class="steps-numbered-list">
+          <li><strong>Minute 0–5 (Tactile Calibration):</strong> Take a slow 60-second test on TypeBaazi focusing strictly on 100% accuracy. Do not rush. Let your fingers feel key locations without glancing down.</li>
+          <li><strong>Minute 5–10 (Exam Timed Sprint):</strong> Switch to the 7-Minute Exam Simulator or 180s test. Build steady rhythmic cadence and minimize backspace usage.</li>
+          <li><strong>Minute 10–15 (Reflex Overdrive in AI Race):</strong> Enter the <a href="/race">Grand Prix AI Car Race</a>. Pushing your velocity past 75+ WPM to trigger nitro forces your brain to automate whole-word recognition rather than typing letter-by-letter.</li>
+        </ol>
+      </section>
+
+      <!-- Section 5: Direct Educational Guide Links Hub -->
+      <section class="guide-content-block guides-feature-box">
+        <h3>📚 Explore Our Free In-Depth Educational Guides</h3>
+        <p>
+          Looking for deep-dive technical tutorials, syllabus breakdowns, and anatomical posture diagrams? Read our comprehensive guides authored by typing experts:
+        </p>
+        <div class="guides-direct-links-grid">
+          <a href="/guides/gcc-tbc-exam-guide" class="guide-direct-card">
+            <span class="g-icon">📝</span>
+            <div>
+              <strong>GCC-TBC Typing Exam Complete Guide</strong>
+              <small>Maharashtra 30 &amp; 40 WPM syllabus, marking scheme &amp; 30-day timetable.</small>
+            </div>
+          </a>
+          <a href="/guides/marathi-inscript-keyboard-guide" class="guide-direct-card">
+            <span class="g-icon">⌨️</span>
+            <div>
+              <strong>Marathi InScript Keyboard Layout Guide</strong>
+              <small>Finger mapping, halant rules, conjunct (जोडाक्षरे) cheat sheet &amp; drills.</small>
+            </div>
+          </a>
+          <a href="/guides/hindi-typing-exam-preparation" class="guide-direct-card">
+            <span class="g-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Typing Exam Preparation Guide</strong>
+              <small>SSC CHSL, CGL DEST, RRB NTPC &amp; High Court clerk exam guidelines.</small>
+            </div>
+          </a>
+          <a href="/guides/touch-typing-rules-ergonomics" class="guide-direct-card">
+            <span class="g-icon">🖐️</span>
+            <div>
+              <strong>Touch Typing Rules &amp; Ergonomics</strong>
+              <small>Home row anchor technique, wrist elevation &amp; Carpal Tunnel prevention.</small>
+            </div>
+          </a>
+          <a href="/guides/wpm-accuracy-calculation" class="guide-direct-card">
+            <span class="g-icon">📊</span>
+            <div>
+              <strong>WPM &amp; Accuracy Calculation Formulas</strong>
+              <small>Gross WPM, Net WPM, KDPH equations and the backspace speed trap.</small>
+            </div>
+          </a>
+          <a href="/guides" class="guide-direct-card">
+            <span class="g-icon">📚</span>
+            <div>
+              <strong>All Typing &amp; Exam Guides Hub</strong>
+              <small>Browse full library of free downloadable typing resources.</small>
+            </div>
+          </a>
+        </div>
+      </section>
 
       <!-- Related Typing Modes Cross-Linking -->
-      <div class="related-modes-box" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+      <div class="related-modes-box" style="margin-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
         <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">🚀 Explore More Typing Modes &amp; Practice Tools</h3>
         <div class="related-links-grid">
           <a href="/race" class="related-link-card" data-analytics-cta="tt_related_race">
@@ -116,7 +318,7 @@ const breadcrumbItems = [
           </a>
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </Layout>
 
@@ -341,5 +543,322 @@ const breadcrumbItems = [
 
   [data-theme='light'] .related-link-card small {
     color: #475569 !important;
+  }
+
+  /* Guide Article Styling */
+  .guide-article-header {
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 18px;
+  }
+
+  .guide-article-header h2 {
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 10px 0 12px;
+    line-height: 1.3;
+  }
+
+  .guide-lead-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .guide-content-block {
+    margin: 28px 0;
+  }
+
+  .guide-content-block h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--accent-cyan, #00f0ff);
+    margin-bottom: 10px;
+  }
+
+  .guide-content-block p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 14px;
+  }
+
+  .formula-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 680px) {
+    .formula-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .formula-card {
+    background: rgba(14, 21, 37, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md, 12px);
+    padding: 16px;
+  }
+
+  .formula-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .formula-note {
+    font-size: 12.5px !important;
+    color: var(--text-muted, #94a3b8);
+    margin: 6px 0 0 !important;
+    line-height: 1.4 !important;
+  }
+
+  .example-calculation-box {
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: var(--radius-md, 12px);
+    padding: 18px 20px;
+    margin: 18px 0;
+  }
+
+  .example-calculation-box h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .example-calculation-box ul {
+    margin: 8px 0 0 18px;
+    color: var(--text-muted, #94a3b8);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Benchmark Table */
+  .table-responsive {
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .speed-benchmark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+
+  .speed-benchmark-table th {
+    background: rgba(14, 21, 37, 0.95);
+    padding: 12px 16px;
+    color: #ffffff;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .speed-benchmark-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .speed-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 4px;
+    color: var(--accent-cyan, #00f0ff);
+    font-weight: 700;
+  }
+
+  .trilingual-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 768px) {
+    .trilingual-guide-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tri-card {
+    background: rgba(14, 21, 37, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md, 12px);
+    padding: 16px;
+  }
+
+  .tri-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .tri-card p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  .steps-numbered-list {
+    margin: 14px 0 16px 20px;
+    padding: 0;
+    color: var(--text-muted, #94a3b8);
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .steps-numbered-list li {
+    margin-bottom: 10px;
+  }
+
+  .steps-numbered-list strong {
+    color: #ffffff;
+  }
+
+  /* Direct Guides Feature Box */
+  .guides-feature-box {
+    background: rgba(14, 21, 37, 0.6);
+    border: 1.5px solid rgba(0, 240, 255, 0.2);
+    border-radius: var(--radius-lg, 16px);
+    padding: 22px;
+    margin: 28px 0;
+  }
+
+  .guides-direct-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 720px) {
+    .guides-direct-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .guide-direct-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(8, 14, 27, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 12px);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .guide-direct-card:hover {
+    background: rgba(0, 240, 255, 0.12);
+    border-color: rgba(0, 240, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .g-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .guide-direct-card strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+
+  .guide-direct-card small {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted, #94a3b8);
+    margin-top: 3px;
+    line-height: 1.35;
+  }
+
+  /* Light Theme Adjustments */
+  [data-theme='light'] .guide-article-header h2 {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .guide-lead-text,
+  [data-theme='light'] .guide-content-block p,
+  [data-theme='light'] .formula-note,
+  [data-theme='light'] .example-calculation-box ul,
+  [data-theme='light'] .speed-benchmark-table td,
+  [data-theme='light'] .tri-card p,
+  [data-theme='light'] .steps-numbered-list {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .formula-card,
+  [data-theme='light'] .tri-card {
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  [data-theme='light'] .formula-title,
+  [data-theme='light'] .example-calculation-box h4,
+  [data-theme='light'] .tri-card h4,
+  [data-theme='light'] .steps-numbered-list strong,
+  [data-theme='light'] .guide-direct-card strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .example-calculation-box {
+    background: #f0fdf4 !important;
+    border: 1.5px solid #bbf7d0 !important;
+  }
+
+  [data-theme='light'] .speed-benchmark-table th {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .speed-benchmark-table td {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .speed-tag {
+    background: #e0f2fe !important;
+    border-color: #7dd3fc !important;
+    color: #0284c7 !important;
+  }
+
+  [data-theme='light'] .guides-feature-box {
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .guide-direct-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .guide-direct-card:hover {
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .guide-direct-card small {
+    color: #64748b !important;
   }
 </style>

@@ -21,12 +21,32 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const leaderboardFaqs = [
+  {
+    question: "How does the TypeBaazi Global Leaderboard rank players?",
+    answer: "Rankings are determined by verified Net WPM scores achieved in timed tests, Grand Prix race finishes, and consecutive daily streak milestones across English, Hindi, and Marathi categories."
+  },
+  {
+    question: "How does TypeBaazi prevent bots and macro cheaters?",
+    answer: "TypeBaazi incorporates client-side keystroke interval analysis (flight time and dwell time). Automated macros, pastes, and robotic identical intervals are detected and disqualified from global leaderboards."
+  },
+  {
+    question: "When does the Weekly Championship reset?",
+    answer: "The Weekly Championship cycle runs for 7 days, concluding every Sunday at 23:59 UTC. Top podium finishers are awarded digital trophies and immortalized in the seasonal Hall of Fame."
+  },
+  {
+    question: "Can I compete on the leaderboard in Hindi and Marathi?",
+    answer: "Yes! There are dedicated ranking divisions for Hindi Devanagari WPM and Marathi Devanagari WPM, celebrating top speed typists across Indian languages."
+  }
+];
 ---
 
 <Layout
   title="TypeBaazi Weekly Championship & Leaderboard | Global Typing Speed Rankings"
   description="Compete in the TypeBaazi Weekly Championship. Track top typists, race winners, and daily streak leaders in English, Hindi, and Marathi typing."
   activePath="/leaderboard"
+  faqItems={leaderboardFaqs}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <div class="container page-container">
@@ -53,6 +73,74 @@ const breadcrumbSchema = {
 
     <!-- Leaderboard Widget Component -->
     <LeaderboardWidget />
+
+    <!-- Comprehensive Leaderboard & Fair Play Guide -->
+    <article class="lb-guide-section glass-panel" itemscope itemtype="https://schema.org/Article" style="margin-top: 32px; padding: 24px; border-radius: 16px; background: rgba(14, 21, 37, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <header class="guide-article-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px; margin-bottom: 20px;">
+        <span class="badge badge-gold">🏆 Competitive Standards &amp; Integrity</span>
+        <h2 itemprop="headline" style="font-size: 22px; font-weight: 900; color: #ffffff; margin: 8px 0 10px;">
+          TypeBaazi Competitive Integrity: Divisions, Ranking Tiers &amp; Fair Play Protocols
+        </h2>
+        <p style="font-size: 14.5px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin: 0;">
+          The TypeBaazi Global Hall of Fame showcases verified top typing performers from across the globe. To maintain authentic competitive integrity, every score undergoes strict client-side behavioral verification before immortalization on the leaderboard.
+        </p>
+      </header>
+
+      <section class="guide-content-block" style="margin: 20px 0;">
+        <h3 style="font-size: 17px; font-weight: 800; color: #ffd700; margin-bottom: 10px;">1. Skill Divisions &amp; Player Tiers</h3>
+        <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.7;">
+          Typists compete across categorized speed divisions based on verified 60-second Net WPM scores:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 12px 0;">
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px;">
+            <strong style="color: #cd7f32; display: block; font-size: 14px;">🥉 Bronze Tier</strong>
+            <span style="font-size: 12px; color: var(--text-muted);">20–35 Net WPM</span>
+          </div>
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px;">
+            <strong style="color: #c0c0c0; display: block; font-size: 14px;">🥈 Silver Tier</strong>
+            <span style="font-size: 12px; color: var(--text-muted);">36–50 Net WPM</span>
+          </div>
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px;">
+            <strong style="color: #ffd700; display: block; font-size: 14px;">🥇 Gold Tier</strong>
+            <span style="font-size: 12px; color: var(--text-muted);">51–70 Net WPM</span>
+          </div>
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px;">
+            <strong style="color: #00f0ff; display: block; font-size: 14px;">💎 Diamond Tier</strong>
+            <span style="font-size: 12px; color: var(--text-muted);">71–95 Net WPM</span>
+          </div>
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px;">
+            <strong style="color: #ff007a; display: block; font-size: 14px;">👑 Apex Grandmaster</strong>
+            <span style="font-size: 12px; color: var(--text-muted);">96+ Net WPM (Top 1%)</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-content-block" style="margin: 20px 0;">
+        <h3 style="font-size: 17px; font-weight: 800; color: #ffd700; margin-bottom: 8px;">2. Anti-Cheat &amp; Human Keystroke Verification</h3>
+        <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.7;">
+          To ensure genuine human accomplishment, TypeBaazi actively monitors keystroke inter-arrival times (flight times) and dwell times. Automated scripts, macros, and text paste events are completely blocked. Genuine human typing is characterized by natural micro-variations between letter pairs and words.
+        </p>
+      </section>
+
+      <!-- Educational Guides Direct Links -->
+      <section class="guide-content-block" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 18px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">📚 Typing Guides &amp; Speed Resources</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 20px;">
+          <a href="/guides/touch-typing-rules-ergonomics" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>🖐️ Touch Typing Rules &amp; Posture Ergonomics</span>
+          </a>
+          <a href="/guides/wpm-accuracy-calculation" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>📊 How WPM &amp; Net Accuracy Are Calculated</span>
+          </a>
+          <a href="/guides/marathi-inscript-keyboard-guide" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>⌨️ Marathi Devanagari Inscript Keyboard Guide</span>
+          </a>
+          <a href="/guides/gcc-tbc-exam-guide" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>📝 GCC-TBC Maharashtra Examination Guide</span>
+          </a>
+        </div>
+      </section>
+    </article>
 
     <!-- Related Challenges & Practice Modes -->
     <div class="lb-related-modes glass-panel" style="margin-top: 32px; padding: 22px; border-radius: 16px; background: rgba(14, 21, 37, 0.8); border: 1px solid rgba(255, 255, 255, 0.1);">

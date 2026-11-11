@@ -6,15 +6,27 @@ import VirtualKeyboard from '../components/VirtualKeyboard.astro';
 const raceFaqs = [
   {
     question: "How does the TypeBaazi Grand Prix Typing Car Race work?",
-    answer: "You control a high-speed racing car on a futuristic track. Every accurate character you type moves your car forward. Typing with high WPM and 98%+ accuracy activates nitro turbo boosts to overtake the AI bot and cross the finish line."
+    answer: "You control a high-speed vector racing car on an animated cyber track. Every accurate character you type moves your car forward along the track. Typing with sustained high WPM and 98%+ accuracy ignites rear nitro flames, providing acceleration to overtake the adaptive AI opponent and cross the finish line."
   },
   {
     question: "Can I race in Hindi and Marathi as well as English?",
-    answer: "Yes! You can choose English, Hindi (हिंदी), or Marathi (मराठी) race passages with full Devanagari Inscript support and race against adaptive AI bots."
+    answer: "Yes! TypeBaazi is the world's only platform supporting trilingual real-time AI car racing across English QWERTY, Hindi Devanagari InScript, and Marathi Devanagari Inscript layouts with live character resolution."
   },
   {
-    question: "Do I get a certificate for winning the typing race?",
-    answer: "Yes, when you defeat the AI bot and win 1st Place in the Grand Prix race, you unlock an official verified digital Certificate of Victory available in high-resolution PDF and PNG formats."
+    question: "How does the AI Bot calculate its speed during the race?",
+    answer: "The AI bot calculates its speed using calibrated difficulty tiers: Easy (~25 WPM), Medium (~45 WPM), Hard (~70 WPM), and Extreme (~95+ WPM). The AI simulates human keystroke variance with natural speed fluctuations and slight pauses between phrases."
+  },
+  {
+    question: "What is Nitro Overdrive and how do I activate it?",
+    answer: "Nitro Overdrive activates automatically whenever your typing velocity exceeds 75 WPM while maintaining zero consecutive errors. It displays visual particle exhaust flames and surges your vehicle ahead of the competition."
+  },
+  {
+    question: "Do I get a verified certificate for winning the typing race?",
+    answer: "Yes, when you defeat the AI bot and achieve 1st Place in the Grand Prix race, you unlock an official verified digital Certificate of Victory available in high-resolution 300 DPI PDF and PNG formats."
+  },
+  {
+    question: "Why does racing against an AI bot improve typing speed faster than normal tests?",
+    answer: "Racing creates healthy competitive stress and visual urgency that forces your brain to bypass subvocalization (saying words in your head) and adopt word-chunking — processing whole words at a glance through rapid muscle memory."
   }
 ];
 
@@ -67,61 +79,98 @@ const breadcrumbItems = [
       <VirtualKeyboard language="english" visible={true} />
     </main>
 
-    <!-- Collapsible Educational & SEO Guide (Below Active Game) -->
-    <section class="race-guide-section">
-      <details class="race-info-accordion glass-panel" id="race-info-accordion">
-        <summary class="accordion-summary">
-          <span class="summary-title">📖 How the AI Typing Race Works &amp; Pro Racing Tips</span>
-          <span class="summary-chevron">▼</span>
-        </summary>
-        <div class="accordion-content">
-          <div class="race-rules-grid">
-            <div class="rule-box">
-              <span class="rule-icon">🚦</span>
-              <h4>3-2-1-GO Countdown</h4>
-              <p>Get ready on the starting grid. The race clock and AI driver start precisely when GO appears.</p>
-            </div>
-            <div class="rule-box">
-              <span class="rule-icon">🚗</span>
-              <h4>Dynamic AI Speed Engine</h4>
-              <p>The virtual opponent races with realistic human speed curves across 4 calibrated difficulty tiers (18 to 102+ WPM).</p>
-            </div>
-            <div class="rule-box">
-              <span class="rule-icon">🔥</span>
-              <h4>Nitro Overdrive</h4>
-              <p>Surge past 75+ WPM to trigger your car's rear nitro exhaust flames and speed ahead in the standings.</p>
-            </div>
-            <div class="rule-box">
-              <span class="rule-icon">🏆</span>
-              <h4>Rewards &amp; XP</h4>
-              <p>Winning races awards bonus XP, advances your player level, and unlocks exclusive racing trophy badges.</p>
-            </div>
-          </div>
+    <!-- Comprehensive Educational & Tactical Racing Guide (Always Visible) -->
+    <article class="race-guide-section glass-panel" itemscope itemtype="https://schema.org/Article" style="margin-top: 18px; padding: 24px; border-radius: 16px;">
+      <header class="guide-article-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px; margin-bottom: 20px;">
+        <span class="badge badge-pink">🏎️ Real-Time Competitive Gaming</span>
+        <h2 itemprop="headline" style="font-size: 22px; font-weight: 900; color: #ffffff; margin: 8px 0 10px;">
+          The Science of Gamified Typing: How Real-Time AI Racing Breaks Speed Plateaus
+        </h2>
+        <p style="font-size: 14.5px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin: 0;">
+          Traditional typing tests often lead to mental fatigue and flatlining speed plateaus around 45–50 WPM. The <strong>TypeBaazi Grand Prix AI Car Race</strong> leverages cognitive gamification, real-time visual pacing, and competitive pressure to stimulate faster motor reflex loops and encourage whole-word chunking across <strong>English</strong>, <strong>Hindi</strong>, and <strong>Marathi</strong>.
+        </p>
+      </header>
 
-          <!-- Related Modes Navigation Strip -->
-          <div class="race-related-strip" style="margin-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px;">
-            <h4 style="font-size: 14.5px; font-weight: 800; color: #ffffff; margin-bottom: 10px;">⚡ Continue Your Typing Journey</h4>
-            <div class="race-related-grid">
-              <a href="/typing-test" class="race-rel-card" data-analytics-cta="race_rel_typing_test">
-                <span>⌨️ Online Typing Speed Test</span>
-              </a>
-              <a href="/daily-challenge" class="race-rel-card" data-analytics-cta="race_rel_daily">
-                <span>🔥 Daily Typing Challenge (+100 XP)</span>
-              </a>
-              <a href="/seven-minute-typing-test" class="race-rel-card" data-analytics-cta="race_rel_7min">
-                <span>⏱️ 7-Minute GCC-TBC Exam Test</span>
-              </a>
-              <a href="/games" class="race-rel-card" data-analytics-cta="race_rel_games">
-                <span>🎮 Falling Words Arcade Matrix</span>
-              </a>
-              <a href="/leaderboard" class="race-rel-card" data-analytics-cta="race_rel_leaderboard">
-                <span>🏆 Global Leaderboard &amp; Hall of Fame</span>
-              </a>
-            </div>
+      <!-- Section 1: Racing Mechanics Grid -->
+      <section class="guide-content-block" style="margin: 20px 0;">
+        <h3 style="font-size: 17px; font-weight: 800; color: #ff007a; margin-bottom: 12px;">1. Core Game Mechanics &amp; Physics Simulation</h3>
+        <div class="race-rules-grid">
+          <div class="rule-box">
+            <span class="rule-icon">🚦</span>
+            <h4>3-2-1-GO Countdown</h4>
+            <p>Audio countdown beeps and visual grid lights train you to prime your home row finger positioning before the race timer starts.</p>
+          </div>
+          <div class="rule-box">
+            <span class="rule-icon">🚗</span>
+            <h4>Dynamic Adaptive AI Driver</h4>
+            <p>The virtual AI racer features calibrated human-like velocity variance across 4 tiers: Easy (~25 WPM), Medium (~45 WPM), Hard (~70 WPM), and Extreme (~95+ WPM).</p>
+          </div>
+          <div class="rule-box">
+            <span class="rule-icon">🔥</span>
+            <h4>Nitro Overdrive Burst</h4>
+            <p>Maintain 75+ WPM with 100% accuracy to ignite twin rear nitro exhaust plumes, accelerating your car past the leading opponent.</p>
+          </div>
+          <div class="rule-box">
+            <span class="rule-icon">🏆</span>
+            <h4>Championship Honors &amp; PDF Seals</h4>
+            <p>Winning 1st place in the Grand Prix awards bonus XP, updates your Hall of Fame rating, and generates a verified digital Certificate of Victory.</p>
           </div>
         </div>
-      </details>
-    </section>
+      </section>
+
+      <!-- Section 2: Pro Racing Tactics -->
+      <section class="guide-content-block" style="margin: 24px 0;">
+        <h3 style="font-size: 17px; font-weight: 800; color: #ff007a; margin-bottom: 10px;">2. Five Tactical Tips to Defeat the AI on Hard &amp; Extreme</h3>
+        <ol class="steps-numbered-list" style="margin: 10px 0 16px 20px; color: var(--text-muted); font-size: 14px; line-height: 1.7;">
+          <li><strong>Look Two Words Ahead:</strong> Never fixate on the character your finger is currently striking. Keep your eyes locked 2 words ahead so your subconscious can queue up keystroke sequences without hesitation.</li>
+          <li><strong>Eliminate Backspace Spam:</strong> In high-speed duels, hitting backspace three times costs more forward distance than mistyping a single character. Keep your momentum steady and correct mistakes with single, disciplined strokes.</li>
+          <li><strong>Master Spacebar Transitions:</strong> Spaces between words account for ~20% of all race keystrokes. Use your dominant thumb with minimal lift to ensure seamless transitions between words.</li>
+          <li><strong>Leverage Trilingual InScript Mapping:</strong> Racing in Hindi or Marathi Devanagari utilizes Inscript key positions. Practice half-letters and common matras on the virtual keyboard to accelerate through complex Indic sentences.</li>
+          <li><strong>Trigger Nitro in Straightaways:</strong> Build rhythm on common, shorter words to surge past the 75 WPM threshold and maintain the nitro burn across longer passages.</li>
+        </ol>
+      </section>
+
+      <!-- Section 3: Educational Guides Direct Links -->
+      <section class="guide-content-block" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 18px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">📚 Master Touch Typing &amp; Exam Techniques</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 20px;">
+          <a href="/guides/touch-typing-rules-ergonomics" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>🖐️ Touch Typing Rules &amp; Posture Ergonomics</span>
+          </a>
+          <a href="/guides/wpm-accuracy-calculation" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>📊 The Mathematics of WPM &amp; Net Accuracy</span>
+          </a>
+          <a href="/guides/marathi-inscript-keyboard-guide" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>⌨️ Marathi Devanagari Inscript Keyboard Guide</span>
+          </a>
+          <a href="/guides/hindi-typing-exam-preparation" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>🇮🇳 Hindi Exam Typing Guide (SSC, RRB, Courts)</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Related Modes Navigation Strip -->
+      <div class="race-related-strip" style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 16px;">
+        <h4 style="font-size: 14.5px; font-weight: 800; color: #ffffff; margin-bottom: 10px;">⚡ Continue Your Typing Journey</h4>
+        <div class="race-related-grid">
+          <a href="/typing-test" class="race-rel-card" data-analytics-cta="race_rel_typing_test">
+            <span>⌨️ Online Typing Speed Test</span>
+          </a>
+          <a href="/daily-challenge" class="race-rel-card" data-analytics-cta="race_rel_daily">
+            <span>🔥 Daily Typing Challenge (+100 XP)</span>
+          </a>
+          <a href="/seven-minute-typing-test" class="race-rel-card" data-analytics-cta="race_rel_7min">
+            <span>⏱️ 7-Minute GCC-TBC Exam Test</span>
+          </a>
+          <a href="/games" class="race-rel-card" data-analytics-cta="race_rel_games">
+            <span>🎮 Falling Words Arcade Matrix</span>
+          </a>
+          <a href="/leaderboard" class="race-rel-card" data-analytics-cta="race_rel_leaderboard">
+            <span>🏆 Global Leaderboard &amp; Hall of Fame</span>
+          </a>
+        </div>
+      </div>
+    </article>
   </div>
 </Layout>
 

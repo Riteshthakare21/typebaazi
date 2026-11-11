@@ -20,6 +20,29 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const gameFaqs = [
+  {
+    question: "How do I play the Falling Words Matrix typing game?",
+    answer: "Words drop from the top of the matrix grid toward your laser defense barrier. Type the letters of any falling word to lock your targeting laser on it. Completing the word blasts it out of the matrix, earning score points and combo multipliers before it breaches your barrier."
+  },
+  {
+    question: "Can I play the typing game in Hindi and Marathi as well as English?",
+    answer: "Yes! Use the language buttons in the top controls bar to switch between English, Hindi (हिंदी), and Marathi (मराठी) word banks with full Devanagari Inscript layout support."
+  },
+  {
+    question: "How do combos and scoring multipliers work?",
+    answer: "Destroying consecutive words without mistyping any character builds your combo multiplier up to 10x. Higher combos award exponential bonus score points and elevate your position on the high score leaderboards."
+  },
+  {
+    question: "What happens when words breach the bottom defense line?",
+    answer: "You start the game with 5 barrier health points (hearts). Each word that impacts the laser barrier deducts one heart. When all 5 hearts are depleted, the game session concludes and displays your final statistics."
+  },
+  {
+    question: "Why are typing games effective for improving typing speed?",
+    answer: "Arcade typing games force you to expand your visual field, process multiple words simultaneously under time pressure, and eliminate hesitate pauses between keystrokes."
+  }
+];
 ---
 
 <Layout
@@ -27,6 +50,7 @@ const breadcrumbSchema = {
   description="Play fun and addictive typing games online in English, Hindi, and Marathi! Destroy falling words, improve keystroke accuracy, build reflex speed, and climb high score leaderboards on TypeBaazi."
   keywords="typing games, typing game, arcade typing game, falling words typing game, fun typing games online, english typing game, hindi typing game, marathi typing game, free typing games, typebaazi games"
   activePath="/games"
+  faqItems={gameFaqs}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <div class="game-page-wrapper" id="game-page-root">
@@ -187,6 +211,68 @@ const breadcrumbSchema = {
     <div class="game-large-keyboard">
       <VirtualKeyboard language="english" visible={true} />
     </div>
+
+    <!-- Comprehensive Arcade Typing Educational Guide -->
+    <article class="game-guide-section glass-panel" itemscope itemtype="https://schema.org/Article" style="margin-top: 24px; padding: 24px; border-radius: 16px; background: rgba(14, 21, 37, 0.85); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <header class="guide-article-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px; margin-bottom: 20px;">
+        <span class="badge badge-pink">🎮 Arcade Keystroke Reflex Training</span>
+        <h2 itemprop="headline" style="font-size: 22px; font-weight: 900; color: #ffffff; margin: 8px 0 10px;">
+          The Cognitive Neuroscience of Arcade Typing Games: Developing Reflex Automation
+        </h2>
+        <p style="font-size: 14.5px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin: 0;">
+          While linear typing tests train sustained reading endurance, fast-paced arcade games like <strong>Falling Words Matrix</strong> train an entirely different neurological capability: <strong>instant stimulus-response reaction time</strong> and <strong>dynamic peripheral spatial scanning</strong> across English, Hindi, and Marathi.
+        </p>
+      </header>
+
+      <section class="guide-content-block" style="margin: 20px 0;">
+        <h3 style="font-size: 17px; font-weight: 800; color: #00f0ff; margin-bottom: 8px;">1. Why Falling Word Games Improve Typing Accuracy Under Pressure</h3>
+        <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.7;">
+          In real-world professional environments and high-stakes government examinations (such as SSC, CPCT, or GCC-TBC), anxiety often triggers micro-hesitations. By introducing vertical velocity and a laser defense barrier with 5 lives, your subconscious brain is forced to prioritize rapid target acquisition. Instead of thinking about which finger moves where, your fingers execute keystrokes reflexively, eliminating the conscious mental bottleneck.
+        </p>
+      </section>
+
+      <section class="guide-content-block" style="margin: 20px 0;">
+        <h3 style="font-size: 17px; font-weight: 800; color: #00f0ff; margin-bottom: 12px;">2. Scoring Multipliers, Combos &amp; Trilingual Play</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 14px 0;">
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px;">
+            <span style="font-size: 22px;">⚡</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #ffffff; margin: 6px 0 4px;">Dynamic Combo Scaling</h4>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin: 0; line-height: 1.5;">Every consecutive word blasted without an error increases your combo multiplier up to 10x, awarding exponential bonus points.</p>
+          </div>
+
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px;">
+            <span style="font-size: 22px;">🇮🇳</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #ffffff; margin: 6px 0 4px;">Hindi &amp; Marathi Matrix</h4>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin: 0; line-height: 1.5;">Practice high-frequency Devanagari words (घर, जल, सराव, विजय) using standard Inscript keyboard finger movements.</p>
+          </div>
+
+          <div style="background: rgba(8, 14, 27, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px;">
+            <span style="font-size: 22px;">🛡️</span>
+            <h4 style="font-size: 14px; font-weight: 800; color: #ffffff; margin: 6px 0 4px;">Threat Prioritization</h4>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin: 0; line-height: 1.5;">Prioritize words lowest on the screen closest to breaching your barrier rather than words that just appeared at the top.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Educational Guides Hub Links -->
+      <section class="guide-content-block" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 18px;">
+        <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">📚 Educational Typing Guides &amp; Resources</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 20px;">
+          <a href="/guides/touch-typing-rules-ergonomics" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>🖐️ Touch Typing Rules &amp; Posture Ergonomics</span>
+          </a>
+          <a href="/guides/wpm-accuracy-calculation" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>📊 How WPM &amp; Net Accuracy Are Calculated</span>
+          </a>
+          <a href="/guides/marathi-inscript-keyboard-guide" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>⌨️ Marathi Devanagari Inscript Keyboard Guide</span>
+          </a>
+          <a href="/guides/gcc-tbc-exam-guide" class="btn-secondary" style="font-size: 13px; padding: 10px 14px; justify-content: flex-start; text-align: left;">
+            <span>📝 GCC-TBC Maharashtra Examination Guide</span>
+          </a>
+        </div>
+      </section>
+    </article>
 
     <!-- Related Modes Navigation Strip -->
     <div class="game-related-strip glass-panel" style="margin-top: 24px; padding: 18px 20px; border-radius: 14px; background: rgba(14, 21, 37, 0.7); border: 1px solid rgba(255, 255, 255, 0.1);">

@@ -10,15 +10,35 @@ const pageKeywords = "7 minute typing test, 7 min typing test, 30 wpm typing tes
 const examFaqs = [
   {
     question: "How does the 7-Minute Typing Test on TypeBaazi work?",
-    answer: "The 7-minute typing test accurately simulates government and state board certification examinations. You select your language (English, Hindi, or Marathi), your target speed (30 WPM or 40 WPM), and a curated exam passage. The timer runs for exactly 7:00 minutes and calculates Gross WPM, Net WPM, accuracy, and total marks."
+    answer: "The 7-minute typing test accurately simulates government and state board certification examinations (such as Maharashtra GCC-TBC, SSC, CPCT, and High Court recruitment). You select your language (English, Hindi, or Marathi), your speed target (30 WPM or 40 WPM), and an official exam passage. The timer runs for exactly 7:00 minutes, evaluating Gross WPM, Net WPM, mistake deductions, and awarding an official pass/fail mark on a 50-mark scale."
   },
   {
-    question: "What is the passing criteria for 30 WPM and 40 WPM 7-minute typing tests?",
-    answer: "For 30 WPM certification, candidates must type at least 210 correct words in 7 minutes with over 90% accuracy. For 40 WPM certification, candidates must type at least 280 correct words with high accuracy and minimal errors."
+    question: "What is the passing criteria for GCC-TBC 30 WPM and 40 WPM examinations?",
+    answer: "For GCC-TBC 30 WPM certification, candidates must type at least 210 words (1,050 keystrokes) within 7 minutes with a minimum of 90% accuracy (no more than 10 uncorrected errors). For 40 WPM certification, candidates must type at least 280 words (1,400 keystrokes) with 90%+ accuracy to achieve passing marks (at least 25 out of 50 marks)."
+  },
+  {
+    question: "How are typing exam marks and mistake deductions calculated?",
+    answer: "Examinations standardly allocate 50 marks to the speed passage. Each full error (spelling mistake, omission of a word, addition of an extraneous word, or substitution) deducts 1 to 2 marks or deducts directly from your gross word count depending on the board's specific marking handbook."
   },
   {
     question: "Can I practice 7-minute Hindi and Marathi typing tests?",
-    answer: "Yes, TypeBaazi provides authentic 7-minute Hindi and Marathi Devanagari typing passages specially designed for SSC, CPCT, GCC-TBC Marathi 30/40 WPM, and state government recruitment exams."
+    answer: "Yes! TypeBaazi features authentic 7-minute Hindi and Marathi Devanagari exam passages specially calibrated to official Maharashtra GCC-TBC, MP CPCT, and SSC standards with full InScript and Remington layout compatibility."
+  },
+  {
+    question: "Is Backspace permitted during the 7-minute exam simulation?",
+    answer: "Yes, backspace is enabled in TypeBaazi's 7-minute exam simulator to mirror modern digital computer-based tests (CBT). However, excessive backspacing severely degrades your WPM rhythm, so typing with calm, steady precision is strongly recommended."
+  },
+  {
+    question: "What is the difference between speed passage and statement/email in GCC-TBC?",
+    answer: "The official GCC-TBC exam consists of multiple sections: the 7-minute Speed Passage (50 marks), Business Letters/Official Correspondence (30 marks), and Balance Sheets/Tabular Statements (20 marks). The speed passage is the primary eliminator section."
+  },
+  {
+    question: "Can I download an official verified certificate after passing?",
+    answer: "Yes! Achieving a qualified result (Net WPM >= Target and Accuracy >= 90%) unlocks an instant high-resolution 300 DPI Certificate of Exam Qualification in PDF or PNG format, complete with candidate name, score breakdown, and TypeBaazi certification badge."
+  },
+  {
+    question: "How many days of practice are needed to pass 30 WPM or 40 WPM?",
+    answer: "With disciplined daily practice of 30 to 45 minutes on TypeBaazi, complete beginners typically achieve 30 WPM certification within 30 to 45 days. Transitioning from 30 WPM to 40 WPM typically requires an additional 3 to 4 weeks of consistent passage typing."
   }
 ];
 
@@ -62,34 +82,162 @@ const breadcrumbItems = [
     <VirtualKeyboard language="english" visible={true} />
 
     <!-- Educational & Exam Guidelines Section -->
-    <section class="test-guide-card glass-panel" style="margin-top: 36px;">
-      <h2 style="font-size: 22px; font-weight: 900; color: #ffffff; margin-bottom: 14px;">
-        🏛️ About the 7-Minute Government Typing Test Simulation
-      </h2>
-      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-        State government examination boards, court stenographer commissions, and commercial typing institutes (including GCC-TBC in Maharashtra) standardly conduct speed assessments with strict 7-minute time limits. This practice test provides a 1:1 replica of the official exam environment.
-      </p>
+    <article class="test-guide-card glass-panel" itemscope itemtype="https://schema.org/Article" style="margin-top: 36px;">
+      <header class="guide-article-header">
+        <span class="badge badge-green">🏛️ Official Examination Handbook</span>
+        <h2 itemprop="headline" style="font-size: 24px; font-weight: 900; color: #ffffff; margin: 10px 0 12px;">
+          The Official 7-Minute Government Typing Examination Master Guide
+        </h2>
+        <p class="guide-lead-text">
+          Across Indian state examination boards, public service commissions, high court registries, and commercial typing institutes (including the <strong>Maharashtra State Council of Examination - GCC-TBC</strong>), computer typing proficiency tests standardly utilize a strict <strong>7-Minute Speed Passage</strong> as the primary qualifying milestone. Understanding the structural marking scheme, error deduction protocols, and pacing discipline is crucial for passing on your first attempt.
+        </p>
+      </header>
 
-      <div class="exam-tips-grid">
-        <div class="tip-card">
-          <span class="tip-icon">🎯</span>
-          <h4>30 WPM Target (Clerk Grade)</h4>
-          <p>Requires typing 210+ words in 7 minutes (1,050 keystrokes) with at least 90% Net accuracy.</p>
+      <!-- Section 1: Comparison Matrix -->
+      <section class="guide-content-block">
+        <h3>1. GCC-TBC 30 WPM vs 40 WPM Examination Comparison Matrix</h3>
+        <p>
+          Recruitment for junior clerical positions generally mandates 30 WPM certification, while senior administrative assistants, stenographers, and confidential secretaries require 40 WPM certification:
+        </p>
+
+        <div class="table-responsive">
+          <table class="speed-benchmark-table">
+            <thead>
+              <tr>
+                <th>Exam Parameter</th>
+                <th>GCC-TBC 30 WPM (Grade 'A'/'B'/'C')</th>
+                <th>GCC-TBC 40 WPM (Grade 'A'/'B'/'C')</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>⏱️ Passage Duration</strong></td>
+                <td>Exactly 7 Minutes (420 Seconds)</td>
+                <td>Exactly 7 Minutes (420 Seconds)</td>
+              </tr>
+              <tr>
+                <td><strong>📝 Word Requirement</strong></td>
+                <td>210 Standard Words (1,050 Keystrokes)</td>
+                <td>280 Standard Words (1,400 Keystrokes)</td>
+              </tr>
+              <tr>
+                <td><strong>🎯 Minimum Accuracy</strong></td>
+                <td>90.0% Minimum Qualifying Accuracy</td>
+                <td>90.0% Minimum Qualifying Accuracy</td>
+              </tr>
+              <tr>
+                <td><strong>⚠️ Max Permissible Errors</strong></td>
+                <td>Maximum 10 Uncorrected Mistakes</td>
+                <td>Maximum 14 Uncorrected Mistakes</td>
+              </tr>
+              <tr>
+                <td><strong>📊 Speed Section Marks</strong></td>
+                <td>50 Marks (Passing Cutoff: 25 Marks)</td>
+                <td>50 Marks (Passing Cutoff: 25 Marks)</td>
+              </tr>
+              <tr>
+                <td><strong>🏆 Grading Breakdown</strong></td>
+                <td>Distinction: 75%+ | First Class: 60%+ | Pass: 50%+</td>
+                <td>Distinction: 75%+ | First Class: 60%+ | Pass: 50%+</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">⚡</span>
-          <h4>40 WPM Target (Senior Typist)</h4>
-          <p>Requires typing 280+ words in 7 minutes (1,400 keystrokes) with error deduction penalties.</p>
+      </section>
+
+      <!-- Section 2: Error Classification Rules -->
+      <section class="guide-content-block">
+        <h3>2. Official Government Error Deduction &amp; Evaluation Rules</h3>
+        <p>
+          Government examination evaluators follow strict codification rules when auditing candidate passages. Mistakes are categorized into <strong>Full Mistakes</strong> and <strong>Half Mistakes</strong>:
+        </p>
+
+        <div class="exam-tips-grid">
+          <div class="tip-card">
+            <span class="tip-icon">❌</span>
+            <h4>Full Mistakes (1 to 2 Mark Deductions)</h4>
+            <p>
+              • <strong>Omission:</strong> Skipping a word or sentence fragment.<br/>
+              • <strong>Substitution:</strong> Replacing an exam word with a different word.<br/>
+              • <strong>Addition:</strong> Typing extraneous words not present in the master passage.<br/>
+              • <strong>Spelling Error:</strong> Transposing, omitting, or adding letters in a word.
+            </p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-icon">⚠️</span>
+            <h4>Half Mistakes (0.5 Mark Deductions)</h4>
+            <p>
+              • <strong>Spacing Errors:</strong> Irregular double spacing between words or no space after punctuation.<br/>
+              • <strong>Punctuation Errors:</strong> Missing full stops, commas, or semicolons.<br/>
+              • <strong>Capitalization:</strong> Typing lowercase where uppercase was indicated, or vice versa.
+            </p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-icon">🚫</span>
+            <h4>Disqualifying Penalties (Zero Marks)</h4>
+            <p>
+              • <strong>Skipping an entire line:</strong> Results in cascading word misalignment and massive error accumulation.<br/>
+              • <strong>Unfinished passage:</strong> Typing fewer than 85% of total words automatically yields a failing grade.
+            </p>
+          </div>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">📊</span>
-          <h4>Net WPM &amp; Marks Calculation</h4>
-          <p>Scored on a 50-mark scale where each uncorrected mistake incurs deductions against your gross speed.</p>
+      </section>
+
+      <!-- Section 3: Time Management Strategy -->
+      <section class="guide-content-block">
+        <h3>3. Step-by-Step Pacing Strategy for the 7-Minute Test</h3>
+        <p>
+          The most common reason for exam failure is starting at maximum sprint speed, committing typos in the first minute, and panicking. Follow this proven tactical pacing framework:
+        </p>
+        <ol class="steps-numbered-list">
+          <li><strong>Minute 0:00 – 1:30 (Rhythm Calibration):</strong> Start at a steady, rhythmic cadence (approximately 32 WPM). Focus on warm, smooth finger placement and zero errors. Do not look at the countdown clock.</li>
+          <li><strong>Minute 1:30 – 5:00 (The Cruising Zone):</strong> Maintain your locked rhythm. Keep your gaze fixed on the source text tokens. If you make a typo, do not frantically smash backspace multiple times — press backspace calmly once or twice or continue forward smoothly.</li>
+          <li><strong>Minute 5:00 – 7:00 (The Final Finish):</strong> Check your word progress. If you are on track to complete the passage with 30 seconds to spare, maintain your steady speed to safeguard your 95%+ accuracy score.</li>
+        </ol>
+      </section>
+
+      <!-- Section 4: Direct Guide Links Hub -->
+      <section class="guide-content-block guides-feature-box">
+        <h3>📚 Related Examination &amp; Syllabus Handbooks</h3>
+        <p>
+          Enhance your exam preparation with our comprehensive, free study guides:
+        </p>
+        <div class="guides-direct-links-grid">
+          <a href="/guides/gcc-tbc-exam-guide" class="guide-direct-card">
+            <span class="g-icon">📝</span>
+            <div>
+              <strong>MSCE GCC-TBC Complete Exam Guide</strong>
+              <small>Maharashtra 30 &amp; 40 WPM syllabus, letters, statements &amp; passing tips.</small>
+            </div>
+          </a>
+          <a href="/guides/marathi-inscript-keyboard-guide" class="guide-direct-card">
+            <span class="g-icon">⌨️</span>
+            <div>
+              <strong>Marathi InScript Keyboard Layout Guide</strong>
+              <small>Finger placement, Devanagari conjuncts (जोडाक्षरे) &amp; exam drills.</small>
+            </div>
+          </a>
+          <a href="/guides/hindi-typing-exam-preparation" class="guide-direct-card">
+            <span class="g-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Government Exam Preparation Guide</strong>
+              <small>SSC CHSL, CGL DEST, RRB NTPC &amp; High Court clerk exam guidelines.</small>
+            </div>
+          </a>
+          <a href="/government-exam-typing-practice" class="guide-direct-card">
+            <span class="g-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Hub</strong>
+              <small>Practice real exam passages for Central &amp; State government recruitment.</small>
+            </div>
+          </a>
         </div>
-      </div>
+      </section>
 
       <!-- Related Exam & Speed Test Links -->
-      <div class="exam-related-links-box" style="margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+      <div class="exam-related-links-box" style="margin-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
         <h3 style="font-size: 16px; font-weight: 800; color: #ffffff; margin-bottom: 12px;">📚 Explore More Examination &amp; Speed Practice</h3>
         <div class="exam-related-grid" style="display: flex; flex-wrap: wrap; gap: 10px;">
           <a href="/government-exam-typing-practice" class="btn-secondary" data-analytics-cta="7min_rel_govt_exam" style="font-size: 13px; padding: 8px 16px;">
@@ -109,7 +257,7 @@ const breadcrumbItems = [
           </a>
         </div>
       </div>
-    </section>
+    </article>
   </div>
 </Layout>
 
@@ -175,5 +323,180 @@ const breadcrumbItems = [
   }
   [data-theme='light'] .test-guide-card h2 {
     color: #0f172a !important;
+  }
+
+  /* Guide Article Styling */
+  .guide-article-header {
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 18px;
+  }
+
+  .guide-lead-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .guide-content-block {
+    margin: 28px 0;
+  }
+
+  .guide-content-block h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--accent-cyan, #00f0ff);
+    margin-bottom: 10px;
+  }
+
+  .guide-content-block p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 14px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .speed-benchmark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+  }
+
+  .speed-benchmark-table th {
+    background: rgba(14, 21, 37, 0.95);
+    padding: 12px 16px;
+    color: #ffffff;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .speed-benchmark-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .steps-numbered-list {
+    margin: 14px 0 16px 20px;
+    padding: 0;
+    color: var(--text-muted, #94a3b8);
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .steps-numbered-list li {
+    margin-bottom: 10px;
+  }
+
+  .steps-numbered-list strong {
+    color: #ffffff;
+  }
+
+  .guides-feature-box {
+    background: rgba(14, 21, 37, 0.6);
+    border: 1.5px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-lg, 16px);
+    padding: 22px;
+    margin: 28px 0;
+  }
+
+  .guides-direct-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 720px) {
+    .guides-direct-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .guide-direct-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(8, 14, 27, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md, 12px);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .guide-direct-card:hover {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .g-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .guide-direct-card strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+
+  .guide-direct-card small {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted, #94a3b8);
+    margin-top: 3px;
+    line-height: 1.35;
+  }
+
+  [data-theme='light'] .guide-lead-text,
+  [data-theme='light'] .guide-content-block p,
+  [data-theme='light'] .speed-benchmark-table td,
+  [data-theme='light'] .steps-numbered-list {
+    color: #334155 !important;
+  }
+
+  [data-theme='light'] .speed-benchmark-table th {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .speed-benchmark-table td {
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .guides-feature-box {
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .guide-direct-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .guide-direct-card:hover {
+    background: #eff6ff !important;
+    border-color: #0070f3 !important;
+  }
+
+  [data-theme='light'] .guide-direct-card strong {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .guide-direct-card small {
+    color: #64748b !important;
   }
 </style>
