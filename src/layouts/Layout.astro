@@ -53,8 +53,18 @@ const {
   breadcrumbs,
 } = Astro.props;
 
-const cleanPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
-const canonicalURL = canonical || `https://typebaazi.com${cleanPath}`;
+// Ensure canonical path always ends with a single trailing slash to match Cloudflare Pages directory routing
+let canonicalURL: string;
+if (canonical) {
+  const clean = canonical.replace(/\/+$/, '');
+  canonicalURL = clean === 'https://typebaazi.com' ? 'https://typebaazi.com/' : `${clean}/`;
+} else {
+  const rawPath = Astro.url.pathname.replace(/\/+$/, '');
+  const normalizedPath = rawPath === '' ? '/' : `${rawPath}/`;
+  canonicalURL = `https://typebaazi.com${normalizedPath}`;
+}
+const rawPath = Astro.url.pathname.replace(/\/+$/, '');
+const normalizedPath = rawPath === '' ? '/' : `${rawPath}/`;
 
 const finalOgTitle = ogTitle || title;
 const finalOgDesc = ogDescription || description;
@@ -63,20 +73,20 @@ const finalTwitterDesc = twitterDescription || ogDescription || description;
 const finalOgImage = ogImage || 'https://typebaazi.com/og-image.png';
 const finalOgImageAlt = ogImageAlt || (lang === 'hi' ? 'TypeBaazi - Hindi Typing Test, Speed & Practice' : (lang === 'mr' ? 'TypeBaazi - Marathi Typing Test, Speed & Practice' : 'TypeBaazi - English, Hindi & Marathi Typing Speed Tests & Practice'));
 
-// Dynamic hreflang detection for equivalent multilingual hubs
+// Dynamic hreflang detection for equivalent multilingual hubs (with canonical trailing slashes)
 let alternates = hreflangAlternates;
 if (!alternates) {
-  if (['/typing-test', '/english-typing-test', '/hindi-typing-test', '/marathi-typing-test'].includes(cleanPath)) {
+  if (['/typing-test/', '/english-typing-test/', '/hindi-typing-test/', '/marathi-typing-test/'].includes(normalizedPath)) {
     alternates = [
-      { lang: 'en', href: 'https://typebaazi.com/english-typing-test' },
-      { lang: 'hi', href: 'https://typebaazi.com/hindi-typing-test' },
-      { lang: 'mr', href: 'https://typebaazi.com/marathi-typing-test' },
-      { lang: 'x-default', href: 'https://typebaazi.com/typing-test' },
+      { lang: 'en', href: 'https://typebaazi.com/english-typing-test/' },
+      { lang: 'hi', href: 'https://typebaazi.com/hindi-typing-test/' },
+      { lang: 'mr', href: 'https://typebaazi.com/marathi-typing-test/' },
+      { lang: 'x-default', href: 'https://typebaazi.com/typing-test/' },
     ];
-  } else if (['/hindi-typing-practice', '/marathi-typing-practice'].includes(cleanPath)) {
+  } else if (['/hindi-typing-practice/', '/marathi-typing-practice/'].includes(normalizedPath)) {
     alternates = [
-      { lang: 'hi', href: 'https://typebaazi.com/hindi-typing-practice' },
-      { lang: 'mr', href: 'https://typebaazi.com/marathi-typing-practice' },
+      { lang: 'hi', href: 'https://typebaazi.com/hindi-typing-practice/' },
+      { lang: 'mr', href: 'https://typebaazi.com/marathi-typing-practice/' },
     ];
   }
 }
@@ -84,7 +94,7 @@ if (!alternates) {
 // Build Breadcrumb Schema
 const breadcrumbItems = breadcrumbs || [
   { name: 'Home', url: 'https://typebaazi.com/' },
-  ...(cleanPath !== '/' ? [{ name: title.split('—')[0].split('|')[0].trim(), url: canonicalURL }] : [])
+  ...(normalizedPath !== '/' ? [{ name: title.split('—')[0].split('|')[0].trim(), url: canonicalURL }] : [])
 ];
 ---
 

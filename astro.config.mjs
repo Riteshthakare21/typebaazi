@@ -1,4 +1,5 @@
 // @ts-check
+process.env.NAPI_RS_FORCE_WASI = 'true';
 import { defineConfig } from 'astro/config';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -33,6 +34,7 @@ function apkMimePlugin() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://typebaazi.com',
+  trailingSlash: 'always',
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',

@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { activePath = '/' } = Astro.props;
+const current = activePath.replace(/\/+$/, '') || '/';
 ---
 
 <header class="navbar-wrapper">
@@ -32,36 +33,36 @@ const { activePath = '/' } = Astro.props;
 
     <!-- Desktop Navigation Links (Center / Middle) -->
     <nav class="nav-links" aria-label="Main Navigation">
-      <a href="/typing-test" class={`nav-item ${activePath === '/typing-test' ? 'active' : ''}`} title="Typing Speed Test">
+      <a href="/typing-test/" class={`nav-item ${current === '/typing-test' ? 'active' : ''}`} title="Typing Speed Test">
         <span class="nav-icon">⌨️</span>
         <span class="nav-text">Typing Test</span>
       </a>
-      <a href="/seven-minute-typing-test" class={`nav-item ${activePath === '/seven-minute-typing-test' ? 'active' : ''}`} title="7-Minute Government Exam Simulation">
+      <a href="/seven-minute-typing-test/" class={`nav-item ${current === '/seven-minute-typing-test' ? 'active' : ''}`} title="7-Minute Government Exam Simulation">
         <span class="nav-icon">⏱️</span>
         <span class="nav-text">7-Min Test</span>
       </a>
-      <a href="/race" class={`nav-item ${activePath === '/race' ? 'active' : ''}`} title="Grand Prix AI Car Race">
+      <a href="/race/" class={`nav-item ${current === '/race' ? 'active' : ''}`} title="Grand Prix AI Car Race">
         <span class="nav-icon">🏎️</span>
         <span class="nav-text badge-racer-dot">Race</span>
       </a>
-      <a href="/games" class={`nav-item ${activePath === '/games' ? 'active' : ''}`} title="Matrix Falling Words Game">
+      <a href="/games/" class={`nav-item ${current === '/games' ? 'active' : ''}`} title="Matrix Falling Words Game">
         <span class="nav-icon">🎮</span>
         <span class="nav-text">Game</span>
       </a>
-      <a href="/daily-challenge" class={`nav-item ${activePath === '/daily-challenge' ? 'active' : ''}`} title="Daily Streak Challenge">
+      <a href="/daily-challenge/" class={`nav-item ${current === '/daily-challenge' ? 'active' : ''}`} title="Daily Streak Challenge">
         <span class="nav-icon">🔥</span>
         <span class="nav-text">Daily</span>
       </a>
-      <a href="/guides" class={`nav-item ${activePath && activePath.startsWith('/guides') ? 'active' : ''}`} title="Typing &amp; Exam Guides">
+      <a href="/guides/" class={`nav-item ${current && current.startsWith('/guides') ? 'active' : ''}`} title="Typing &amp; Exam Guides">
         <span class="nav-icon">📚</span>
         <span class="nav-text">Guides</span>
       </a>
-      <a href="/leaderboard" class={`nav-item ${activePath === '/leaderboard' || activePath === '/dashboard' ? 'active' : ''}`} title="Rankings & Player Dashboard">
+      <a href="/leaderboard/" class={`nav-item ${current === '/leaderboard' || current === '/dashboard' ? 'active' : ''}`} title="Rankings & Player Dashboard">
         <span class="nav-icon">🏆</span>
         <span class="nav-text nav-text-rankings">Rankings &amp; Dashboard</span>
         <span class="nav-text nav-text-rankings-short">Rankings</span>
       </a>
-      <a href="/about" class={`nav-item nav-item-collapsible ${activePath === '/about' || activePath === '/learn' ? 'active' : ''}`} title="About Us & Learn Touch Typing">
+      <a href="/about/" class={`nav-item nav-item-collapsible ${current === '/about' || current === '/learn' ? 'active' : ''}`} title="About Us & Learn Touch Typing">
         <span class="nav-icon">ℹ️</span>
         <span class="nav-text">About &amp; Learn</span>
       </a>
@@ -112,20 +113,20 @@ const { activePath = '/' } = Astro.props;
         <span id="mobile-nav-avatar">🏎️</span>
         <span>👤 Profile &amp; Daily Streak (<strong id="mobile-streak-num" style="color: #fbbf24;">0d</strong>)</span>
       </button>
-      <a href="/english-typing-test" class="mobile-nav-item">🇬🇧 English Typing Test</a>
-      <a href="/hindi-typing-test" class="mobile-nav-item">🇮🇳 हिंदी टाइपिंग (Hindi Test)</a>
-      <a href="/marathi-typing-test" class="mobile-nav-item">🇮🇳 मराठी टायपिंग (Marathi Test)</a>
-      <a href="/seven-minute-typing-test" class="mobile-nav-item">⏱️ 7-Min Exam Test (30/40 WPM)</a>
-      <a href="/race" class="mobile-nav-item">🏎️ Grand Prix Typing Race</a>
-      <a href="/games" class="mobile-nav-item">🎮 Arcade Falling Words Game</a>
-      <a href="/daily-challenge" class="mobile-nav-item">🔥 Daily Streak Challenge</a>
-      <a href="/leaderboard" class="mobile-nav-item">🏆 Rankings &amp; Dashboard</a>
-      <a href="/guides" class="mobile-nav-item">📚 Typing Guides &amp; Exam Resources</a>
-      <a href="/learn" class="mobile-nav-item">📖 Learn Touch Typing &amp; Finger Chart</a>
+      <a href="/english-typing-test/" class="mobile-nav-item">🇬🇧 English Typing Test</a>
+      <a href="/hindi-typing-test/" class="mobile-nav-item">🇮🇳 हिंदी टाइपिंग (Hindi Test)</a>
+      <a href="/marathi-typing-test/" class="mobile-nav-item">🇮🇳 मराठी टायपिंग (Marathi Test)</a>
+      <a href="/seven-minute-typing-test/" class="mobile-nav-item">⏱️ 7-Min Exam Test (30/40 WPM)</a>
+      <a href="/race/" class="mobile-nav-item">🏎️ Grand Prix Typing Race</a>
+      <a href="/games/" class="mobile-nav-item">🎮 Arcade Falling Words Game</a>
+      <a href="/daily-challenge/" class="mobile-nav-item">🔥 Daily Streak Challenge</a>
+      <a href="/leaderboard/" class="mobile-nav-item">🏆 Rankings &amp; Dashboard</a>
+      <a href="/guides/" class="mobile-nav-item">📚 Typing Guides &amp; Exam Resources</a>
+      <a href="/learn/" class="mobile-nav-item">📖 Learn Touch Typing &amp; Finger Chart</a>
       <button id="mobile-settings-btn" class="mobile-nav-item mobile-settings-btn" style="text-align: left; width: 100%; cursor: pointer;">
         <span>⚙️ Settings &amp; Typing Voices</span>
       </button>
-      <a href="/about" class="mobile-nav-item">ℹ️ About TypeBaazi Hub</a>
+      <a href="/about/" class="mobile-nav-item">ℹ️ About TypeBaazi Hub</a>
     </div>
   </div>
 </header>

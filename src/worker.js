@@ -1,20 +1,27 @@
 const REDIRECTS = {
-  '/about-us': '/about',
-  '/contact': '/contact-us',
-  '/privacy': '/privacy-policy',
-  '/terms': '/terms-and-conditions',
-  '/daily-typing-challenge': '/daily-challenge',
-  '/learn-typing': '/learn',
-  '/typing-race': '/race',
-  '/typing-games': '/games',
-  '/cookies': '/cookie-policy',
-  '/cookie': '/cookie-policy',
-  '/mpsc-typing-practice': '/government-exam-typing-practice'
+  '/about-us': '/about/',
+  '/contact': '/contact-us/',
+  '/privacy': '/privacy-policy/',
+  '/terms': '/terms-and-conditions/',
+  '/daily-typing-challenge': '/daily-challenge/',
+  '/learn-typing': '/learn/',
+  '/typing-race': '/race/',
+  '/typing-games': '/games/',
+  '/cookies': '/cookie-policy/',
+  '/cookie': '/cookie-policy/',
+  '/mpsc-typing-practice': '/government-exam-typing-practice/'
 };
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // Canonical host redirect (www -> non-www)
+    if (url.hostname.startsWith('www.')) {
+      url.hostname = url.hostname.replace(/^www\./, '');
+      return Response.redirect(url.toString(), 301);
+    }
+
     const cleanPath = url.pathname.toLowerCase().replace(/\/+$/, '');
 
     // Pure HTTP 301 Redirects for legacy routes
