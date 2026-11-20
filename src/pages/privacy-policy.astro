@@ -51,7 +51,7 @@ const breadcrumbSchema = {
       <div class="legal-section">
         <h2>2. Data We Store Locally (Client-Side Only)</h2>
         <p>
-          To provide a seamless, personalized experience across your practice sessions, TypeBaazi utilizes browser <code>localStorage</code> on your device. This data never leaves your browser:
+          To provide a seamless, personalized experience across your practice sessions without compromising personal privacy, TypeBaazi utilizes browser <code>localStorage</code> directly on your device. This data is strictly sandboxed to your browser origin and never transmitted to remote servers:
         </p>
         <ul class="legal-bullets">
           <li><strong>Typing Statistics:</strong> Your highest Words Per Minute (WPM), Net WPM records, test history counts, and total keystrokes typed.</li>
@@ -60,8 +60,20 @@ const breadcrumbSchema = {
           <li><strong>Custom Avatars &amp; Usernames:</strong> Custom display names and avatar icons chosen in your Profile modal.</li>
         </ul>
         <p>
-          You can erase all locally saved data at any time simply by clearing your browser's site data / cache.
+          You can erase all locally saved data at any time simply by clearing your browser's site data / cache or clicking "Reset Local Data" in your browser settings.
         </p>
+      </div>
+
+      <div class="legal-section">
+        <h2>2.1 Client-Side Cryptographic Security Architecture</h2>
+        <p>
+          Unlike conventional platforms that transmit user credentials over the Internet to centralized cloud databases, TypeBaazi incorporates a decentralized <strong>Client-Side Cryptographic Verification Model</strong> powered by the standardized W3C <strong>Web Crypto API</strong> (<code>window.crypto.subtle</code>):
+        </p>
+        <ul class="legal-bullets">
+          <li><strong>Salted SHA-256 Hashing:</strong> User authentication tokens and account passwords are salted with a cryptographically secure pseudo-random salt and hashed with SHA-256 exclusively within your local browser runtime.</li>
+          <li><strong>Zero Plaintext Exposure:</strong> Plaintext passwords never exist in local storage, and neither plaintext nor raw hashes are ever broadcast across the network.</li>
+          <li><strong>Local Profile Isolation:</strong> All profile progress is strictly tied to your local device sandbox, ensuring total immunity against remote database leaks or third-party credential breaches.</li>
+        </ul>
       </div>
 
       <div class="legal-section">

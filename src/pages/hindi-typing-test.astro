@@ -9,20 +9,36 @@ const pageKeywords = "hindi typing test online, hindi typing practice, hindi typ
 
 const hindiFaqs = [
   {
-    question: "What is a Hindi typing test?",
-    answer: "A Hindi typing test measures how many Devanagari Hindi words and characters you can type accurately per minute (WPM). It evaluates your keystroke speed, error rate, and proficiency in Hindi keyboard layouts like Inscript and Remington."
+    question: "What is a Hindi typing test and how is typing speed calculated?",
+    answer: "A Hindi typing test evaluates typing fluency in Devanagari script. In official government tests, 5 keystrokes (including consonants, vowels, matras, halants, and spaces) equal one standardized word. Gross WPM measures your raw keystroke speed, while Net WPM deducts error penalties for missed or incorrect words."
   },
   {
-    question: "What is a good Hindi typing speed for government exams?",
-    answer: "A speed of 30 to 35 WPM with 95%+ accuracy is the standard benchmark required for central and state government recruitment exams like SSC CGL, SSC CHSL, CPCT, High Court Clerks, and State PSCs."
+    question: "What is the speed requirement for SSC CGL, CHSL, and CPCT Hindi typing?",
+    answer: "For SSC CHSL and CGL DEST, the standard requirement for Hindi is 30 WPM (which equals 9,000 Key Depressions Per Hour or 1,500 key depressions in 10 minutes) with up to 5% or 7% permissible error cap depending on reservation category. In MP CPCT, 20 WPM is minimum qualifying, but 30+ WPM secures a higher score band."
   },
   {
-    question: "How can I practice Hindi typing online for free on TypeBaazi?",
-    answer: "You can practice Hindi typing for free directly on TypeBaazi. Choose 30s, 60s, or 7-minute exam rounds, practice with on-screen Inscript virtual keyboard guides, and download free verified speed certificates."
+    question: "What is the difference between InScript and Remington Gail / CBI keyboard layouts?",
+    answer: "InScript is the official Indian national Devanagari keyboard standard standardized by the Government of India and pre-installed in all modern operating systems. Remington Gail mimics traditional mechanical typewriters. Most modern government bodies (SSC, UPSC, High Courts, Railways) now prioritize or mandatorily test on InScript. TypeBaazi's interactive visual keyboard provides real-time InScript key highlighting."
   },
   {
-    question: "Which keyboard layout is used for Hindi typing in TypeBaazi?",
-    answer: "TypeBaazi supports the standard Devanagari Inscript keyboard layout recommended by the Government of India for all official recruitment tests."
+    question: "How do I type conjuncts (संयुक्ताक्षर) like क्ष, त्र, ज्ञ, and श्र in Hindi InScript?",
+    answer: "In InScript, type the first consonant, followed by the Halant (् / 'd' key), followed by the second consonant. For example: क + ् + ष = क्ष (k + d + Shift+,); त + ् + र = त्र (l + d + j); ज + ् + ञ = ज्ञ (p + d + Shift+&#125;); श + ् + र = श्र (Shift+m + d + j)."
+  },
+  {
+    question: "What is Key Depressions Per Hour (KDPH) and how does it convert to WPM?",
+    answer: "KDPH measures total key depressions in an hour. To convert KDPH to WPM: Divide KDPH by 5 (characters per word) and then divide by 60 (minutes per hour). For example: 9,000 KDPH / 5 = 1,800 words / 60 = 30 WPM. 10,500 KDPH = 35 WPM."
+  },
+  {
+    question: "How are mistakes classified in SSC and Court Hindi typing tests?",
+    answer: "Examinations standardly categorize errors into Full Mistakes (word omission, substitution, addition of unauthorized words) and Half Mistakes (spelling errors, wrong capitalization/punctuation, paragraph spacing errors). Net words are calculated by deducting the penalty from gross words typed."
+  },
+  {
+    question: "Can I practice Hindi typing on TypeBaazi with a regular physical QWERTY keyboard?",
+    answer: "Yes! TypeBaazi automatically translates your physical QWERTY keypresses into standard Devanagari InScript characters. You do not need any special hardware; the on-screen virtual keyboard visually guides every keystroke."
+  },
+  {
+    question: "How many days of daily practice are needed to reach 30 WPM in Hindi?",
+    answer: "With 30 minutes of focused daily practice on TypeBaazi (10 mins home-row drills, 10 mins matras & conjuncts, 10 mins timed mock tests), complete beginners typically achieve 30 WPM with 95%+ accuracy within 30 to 45 days."
   }
 ];
 
@@ -70,45 +86,234 @@ const breadcrumbItems = [
     </section>
 
     <!-- Educational & Practical Guide -->
-    <section class="hindi-info-panel glass-panel">
-      <h2>What is a Hindi Typing Test?</h2>
-      <p class="panel-text">
-        A Hindi typing test evaluates your typing fluency in Devanagari script. It measures your <strong>Words Per Minute (WPM)</strong>, <strong>Net WPM</strong>, and <strong>Accuracy percentage</strong>. In Hindi, one standardized word is calculated as 5 characters (including vowels, consonants, matras, and spaces).
-      </p>
+    <article class="hindi-info-panel glass-panel" itemscope itemtype="https://schema.org/Article">
+      <header class="panel-header-block">
+        <span class="badge badge-gold">🇮🇳 सरकारी परीक्षा मार्गदर्शिका</span>
+        <h2 itemprop="headline">Comprehensive Hindi Devanagari Typing &amp; Government Exam Handbook</h2>
+        <p class="panel-lead-text">
+          Hindi Devanagari typing is a mandatory qualification for thousands of central and state government posts across India, including SSC CGL, SSC CHSL (Data Entry Skill Test - DEST), MP CPCT, High Court and District Court Clerks, Police Sub-Inspectors, and Railway RRB NTPC. This comprehensive guide outlines the mathematical WPM/KDPH conversion formulas, Devanagari InScript keyboard mechanics, conjunct formation rules, and error scoring standards.
+        </p>
+      </header>
 
-      <h2>How to Improve Hindi Typing Speed? (Top 6 Tips)</h2>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <span class="tip-icon">🏠</span>
-          <h4>1. Master the Home Row</h4>
-          <p>Keep your index fingers anchored on the home row keys (F and J) to build muscle memory for Devanagari characters.</p>
+      <!-- Section 1: WPM and KDPH Conversion -->
+      <section class="guide-sub-section">
+        <h3>1. The Mathematics of Hindi Typing: WPM &amp; Key Depressions Per Hour (KDPH)</h3>
+        <p>
+          Recruitment commissions evaluate typing through two primary metrics: <strong>Words Per Minute (WPM)</strong> and <strong>Key Depressions Per Hour (KDPH)</strong>. In standard government evaluation, 1 standardized word equals exactly <strong>5 keystrokes</strong> (including consonants, vowels, matras, halants, and spaces):
+        </p>
+        <div class="formula-grid-block">
+          <div class="formula-box-card">
+            <h4>Gross WPM (कच्ची गति)</h4>
+            <code>Gross WPM = (Total Keystrokes / 5) / Time (Minutes)</code>
+            <p>Measures your raw finger agility across all characters typed in the time limit.</p>
+          </div>
+          <div class="formula-box-card">
+            <h4>Net WPM (शुद्ध गति)</h4>
+            <code>Net WPM = Gross WPM − (Mistakes / Time in Minutes)</code>
+            <p>The definitive qualifying metric used to determine pass/fail status in recruitment exams.</p>
+          </div>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">⌨️</span>
-          <h4>2. Master Devanagari Inscript Layout</h4>
-          <p>Learn the logical layout where vowels are on the left hand and consonants are on the right hand.</p>
+
+        <div class="formula-box-card" style="margin-top: 14px;">
+          <h4>KDPH to WPM Conversion Formula (SSC &amp; DEST Standard)</h4>
+          <code>WPM = (Total Key Depressions / 5) / 60</code>
+          <p>
+            Example: An SSC requirement of <strong>9,000 KDPH</strong> translates to <code>9,000 / 5 = 1,800 words / 60 mins = 30 WPM</code> (or 1,500 key depressions in a 10-minute test). A requirement of <strong>10,500 KDPH</strong> translates to <code>35 WPM</code>.
+          </p>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">🎯</span>
-          <h4>3. Focus on 98%+ Accuracy First</h4>
-          <p>Speed naturally follows accuracy. Avoiding backspace and incorrect keystrokes will instantly raise your Net WPM score.</p>
+      </section>
+
+      <!-- Section 2: Recruitment Benchmarks Table -->
+      <section class="guide-sub-section">
+        <h3>2. Central &amp; State Government Hindi Typing Exam Benchmarks</h3>
+        <p>
+          Review the official qualifying criteria across prominent Indian competitive examinations:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>Recruitment Examination</th>
+                <th>Standard Keyboard Layout</th>
+                <th>Required Speed</th>
+                <th>Test Duration</th>
+                <th>Permissible Error Limit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>SSC CHSL / CGL (DEST)</strong></td>
+                <td>Devanagari InScript / Remington</td>
+                <td>30 WPM (9,000 KDPH)</td>
+                <td>10 Minutes / 15 Minutes</td>
+                <td>5% (UR) / 7% (Reserved)</td>
+              </tr>
+              <tr>
+                <td><strong>MP CPCT (Madhya Pradesh)</strong></td>
+                <td>InScript / Remington Gail</td>
+                <td>20 WPM (Min Qualifying) / 30+ (High Score)</td>
+                <td>15 Minutes</td>
+                <td>Strict Net WPM Penalty</td>
+              </tr>
+              <tr>
+                <td><strong>Allahabad / Patna High Court Clerk</strong></td>
+                <td>InScript / Remington</td>
+                <td>25 to 30 WPM</td>
+                <td>10 Minutes</td>
+                <td>10% Maximum Mistake Cap</td>
+              </tr>
+              <tr>
+                <td><strong>Railway RRB NTPC (Junior Clerk)</strong></td>
+                <td>Devanagari InScript</td>
+                <td>30 WPM</td>
+                <td>10 Minutes</td>
+                <td>5% Permissible Mistakes</td>
+              </tr>
+              <tr>
+                <td><strong>State PSC (UPPSC, BPSC, UKPSC)</strong></td>
+                <td>InScript / Kruti Dev / Remington</td>
+                <td>25 to 30 WPM</td>
+                <td>5 to 10 Minutes</td>
+                <td>Strict Net Evaluation</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">🔤</span>
-          <h4>4. Practice Conjuncts (संयुक्ताक्षर)</h4>
-          <p>Regularly practice half-letters and complex conjuncts (जैसे क्ष, ज्ञ, त्र, श्र, प्र, क्र) using halant (्) combinations.</p>
+      </section>
+
+      <!-- Section 3: InScript vs Remington Comparison -->
+      <section class="guide-sub-section">
+        <h3>3. Devanagari InScript vs. Remington Keyboard Layout Comparison</h3>
+        <p>
+          Understanding the structural differences between InScript and Remington helps typists choose the best approach for their target examination:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>Feature / Characteristic</th>
+                <th>Devanagari InScript Layout</th>
+                <th>Remington Gail / CBI Layout</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Standardization Authority</strong></td>
+                <td>Government of India &amp; Bureau of Indian Standards (BIS)</td>
+                <td>Traditional Typewriter Manufacturers</td>
+              </tr>
+              <tr>
+                <td><strong>Operating System Support</strong></td>
+                <td>Natively built into Windows, macOS, Android, Linux, iOS</td>
+                <td>Requires special font installation or third-party IME</td>
+              </tr>
+              <tr>
+                <td><strong>Linguistic Logic</strong></td>
+                <td>Vowels/matras on left hand; Consonants on right hand</td>
+                <td>Mechanical placement based on mechanical typewriter arms</td>
+              </tr>
+              <tr>
+                <td><strong>Unicode Compliance</strong></td>
+                <td>100% universal Unicode standard; works across all modern web apps</td>
+                <td>Often dependent on legacy 8-bit fonts (Kruti Dev / Devlys)</td>
+              </tr>
+              <tr>
+                <td><strong>Government Exam Preference</strong></td>
+                <td>Mandatory or preferred in SSC, RRB, UPSC, High Courts</td>
+                <td>Permitted in select state exams (MP CPCT, UP Police)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">⏱️</span>
-          <h4>5. Take Daily 1-Minute Drills</h4>
-          <p>Consistent daily practice of 15 minutes is 10x more effective than irregular long sessions.</p>
+      </section>
+
+      <!-- Section 4: Conjunct (संयुक्ताक्षर) Formation Guide -->
+      <section class="guide-sub-section">
+        <h3>4. How to Type Conjuncts (संयुक्ताक्षर) in Devanagari InScript</h3>
+        <p>
+          In InScript, any joint character is formed by typing the first consonant, pressing the <strong>Halant (Virama / 'd' key)</strong>, and then typing the second consonant. Review the essential combinations:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>संयुक्त वर्ण (Conjunct)</th>
+                <th>वर्ण विच्छेद (Sequence)</th>
+                <th>InScript Physical Keys</th>
+                <th>उदाहरण शब्द (Examples)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>क्ष</strong></td>
+                <td>क + ् + ष</td>
+                <td><code>k</code> + <code>d</code> + <code>Shift + ,</code></td>
+                <td>परीक्षा, कक्षा, रक्षक</td>
+              </tr>
+              <tr>
+                <td><strong>त्र</strong></td>
+                <td>त + ् + र</td>
+                <td><code>l</code> + <code>d</code> + <code>j</code></td>
+                <td>पत्र, त्रिशूल, छात्र</td>
+              </tr>
+              <tr>
+                <td><strong>ज्ञ</strong></td>
+                <td>ज + ् + ञ</td>
+                <td><code>p</code> + <code>d</code> + <code>Shift + &#125;</code></td>
+                <td>ज्ञान, प्रज्ञा, वैज्ञानिक</td>
+              </tr>
+              <tr>
+                <td><strong>श्र</strong></td>
+                <td>श + ् + र</td>
+                <td><code>Shift + m</code> + <code>d</code> + <code>j</code></td>
+                <td>श्रीमान, श्रम, विश्राम</td>
+              </tr>
+              <tr>
+                <td><strong>प्र</strong></td>
+                <td>प + ् + र</td>
+                <td><code>h</code> + <code>d</code> + <code>j</code></td>
+                <td>प्रकाश, प्रगति, प्रभाव</td>
+              </tr>
+              <tr>
+                <td><strong>द्ध</strong></td>
+                <td>द + ् + ध</td>
+                <td><code>o</code> + <code>d</code> + <code>Shift + o</code></td>
+                <td>शुद्ध, युद्ध, बुद्धि</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">📜</span>
-          <h4>6. Prepare for Government Exams (SSC, CPCT, High Court)</h4>
-          <p>Central &amp; state exams require 30-35 WPM with strict error limits. Use TypeBaazi's mock passages to meet exam criteria.</p>
+      </section>
+
+      <!-- Section 5: Full vs Half Mistake Classification -->
+      <section class="guide-sub-section">
+        <h3>5. Error Scoring Standards: Full Mistakes vs. Half Mistakes</h3>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <span class="tip-icon">❌</span>
+            <h4>Full Mistakes (पूर्ण त्रुटि)</h4>
+            <p>Omission of words, substitution of incorrect words, addition of extra words not in passage, or spelling mistakes in key nouns. Deducts 1 full word or 1 mark.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">⚠️</span>
+            <h4>Half Mistakes (अर्ध त्रुटि)</h4>
+            <p>Spacing errors (extra space or missing space between words), incorrect punctuation marks, or minor matra positioning errors. Deducts 0.5 words or marks.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">🎯</span>
+            <h4>Accuracy Threshold Strategy</h4>
+            <p>Typing at 32 WPM with 98% accuracy always passes, whereas typing at 45 WPM with 88% accuracy fails due to cumulative mistake penalties.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">⏱️</span>
+            <h4>Steady Rhythm Pacing</h4>
+            <p>Maintain consistent keystroke tempo. Speed bursts followed by pauses create irregular keystroke intervals and increase typo probability.</p>
+          </div>
         </div>
-      </div>
+      </section>
 
       <!-- Contextual Internal Linking -->
       <div class="related-links-box">
@@ -117,8 +322,22 @@ const breadcrumbItems = [
           <a href="/seven-minute-typing-test/" class="hub-link-card">
             <span class="hub-icon">⏱️</span>
             <div>
-              <strong>7-Minute Exam Test</strong>
-              <span>30 &amp; 40 WPM timer test with 50+ exam passages.</span>
+              <strong>7-Minute Exam Simulator</strong>
+              <span>Full 30 &amp; 40 WPM mock test with real exam evaluation.</span>
+            </div>
+          </a>
+          <a href="/hindi-typing-practice/" class="hub-link-card">
+            <span class="hub-icon">✍️</span>
+            <div>
+              <strong>Hindi Typing Practice</strong>
+              <span>Untimed Devanagari key drills &amp; letter practice.</span>
+            </div>
+          </a>
+          <a href="/guides/hindi-typing-exam-preparation/" class="hub-link-card">
+            <span class="hub-icon">📚</span>
+            <div>
+              <strong>Hindi Exam Preparation Guide</strong>
+              <span>Complete handbook for SSC, RRB &amp; Court recruitment.</span>
             </div>
           </a>
           <a href="/marathi-typing-test/" class="hub-link-card">
@@ -131,7 +350,7 @@ const breadcrumbItems = [
           <a href="/typing-speed-test/" class="hub-link-card">
             <span class="hub-icon">⚡</span>
             <div>
-              <strong>English Typing Test</strong>
+              <strong>Typing Speed Test</strong>
               <span>1-Minute online WPM calculator &amp; free certificate.</span>
             </div>
           </a>
@@ -145,23 +364,24 @@ const breadcrumbItems = [
         </div>
       </div>
 
-      <!-- FAQ Section -->
-      <div class="seo-faq-block">
+      <!-- FAQ Accordion -->
+      <div class="seo-faq-block" style="margin-top: 24px;">
         <h3>Frequently Asked Questions (हिंदी टाइपिंग FAQ)</h3>
-        <div class="faq-item">
-          <h4>Q1: What is the difference between Inscript and Remington layouts?</h4>
-          <p>Inscript is the official Indian national Devanagari keyboard standard built into all modern operating systems (Windows, Mac, Android, Linux). Remington mimics the traditional mechanical typewriter layout. TypeBaazi's interactive visual keyboard supports standard Inscript typing.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Q2: What is a passing score in SSC / CPCT Hindi typing?</h4>
-          <p>Most exams require 30 WPM with at least 90% to 95% net accuracy over a 10-minute or 15-minute testing window.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Q3: How do I get my official TypeBaazi certificate?</h4>
-          <p>Complete any 60-second test or 7-minute test with 90%+ accuracy, and tap "Claim Official Certificate" to generate and download your verified PDF.</p>
+        <div class="faq-accordion">
+          {hindiFaqs.map((item) => (
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>{item.question}</span>
+                <span class="faq-arrow">&darr;</span>
+              </summary>
+              <div class="faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
         </div>
       </div>
-    </section>
+    </article>
   </div>
 </Layout>
 

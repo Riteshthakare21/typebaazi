@@ -9,16 +9,28 @@ const pageKeywords = "marathi typing practice online, marathi typing practice, �
 
 const marathiPracticeFaqs = [
   {
-    question: "How do I start Marathi typing practice as a beginner?",
-    answer: "Start by learning the home row keys on your physical or virtual keyboard. Practice individual letters, then move on to matras (काना, मात्रा, वेलांटी), and finally type short sentences and full paragraphs on TypeBaazi."
+    question: "How do I start Marathi typing practice as a complete beginner?",
+    answer: "Begin by placing your fingers on the InScript home row (Left hand on ASDF for vowels/matras; Right hand on JKL; for consonants). Practice typing individual characters without looking at the physical keyboard, relying on TypeBaazi's on-screen virtual keyboard to develop tactile muscle memory."
   },
   {
-    question: "Which keyboard layout is recommended for Marathi typing practice?",
-    answer: "For government exams like GCC-TBC and MPSC, Remington Devanagari and Inscript layouts are standard. TypeBaazi provides instant visual key assistance for smooth learning."
+    question: "Which keyboard layout is officially required for GCC-TBC and MPSC exams?",
+    answer: "The Maharashtra State Council of Examination (MSCE) and MPSC officially recommend the Devanagari InScript keyboard layout. It is standardized by the Bureau of Indian Standards (BIS) and pre-installed in Windows, macOS, and Linux. TypeBaazi automatically maps your physical keyboard to standard InScript."
   },
   {
-    question: "How can I improve my Marathi typing accuracy?",
-    answer: "Practice slowly without rushing. Pay extra attention to halant (्) combinations and matras. Aim for 98%+ accuracy before attempting to type faster."
+    question: "What is the correct way to type Marathi Barakhadi (बाराखडी)?",
+    answer: "In Devanagari InScript, Barakhadi is typed logically: type the base consonant first, followed by the vowel sign (matra). For example, to type 'कि' (Ki), press 'K' (क) followed by 'F' (ि). To type 'कु' (Ku), press 'K' (क) followed by 'G' (ु)."
+  },
+  {
+    question: "How do I type complex joint letters (जोडाक्षरे) like प्र, त्र, क्ष, ज्ञ, and ष्ट?",
+    answer: "To type any joint letter, type the first consonant, press the Halant / Virama key ('D' on InScript), and immediately press the second consonant. For example: क + ् (d) + ष (Shift+,) = क्ष; त + ् (d) + र (j) = त्र; ज + ् (d) + ञ (Shift+}) = ज्ञ."
+  },
+  {
+    question: "How can I increase my Marathi typing accuracy to 98%+?",
+    answer: "Speed is the natural consequence of accuracy. Do not rush keystrokes. Avoid backspacing by reading one or two syllables ahead. Practicing 15 to 20 minutes daily on TypeBaazi with steady, relaxed breathing builds smooth finger flow without hesitations."
+  },
+  {
+    question: "How much practice is required to pass the GCC-TBC 30 WPM exam?",
+    answer: "With 30 minutes of structured daily practice on TypeBaazi, candidates typically progress from 10–15 WPM to passing 30 WPM within 4 to 6 weeks, developing the stamina required for the full 7-minute speed test."
   }
 ];
 
@@ -67,34 +79,247 @@ const breadcrumbItems = [
     </section>
 
     <!-- Practice Drills & Guidelines -->
-    <section class="practice-card glass-panel">
-      <h2>How to Practice Marathi Typing Online?</h2>
-      <p class="panel-text">
-        Typing in Marathi requires building reflex memory for Devanagari characters, kanas, matras, and conjuncts (जोडाक्षरे). Follow this structured step-by-step guide to reach 30 to 40 WPM:
-      </p>
+    <article class="practice-card glass-panel" itemscope itemtype="https://schema.org/Article">
+      <header class="panel-header-block">
+        <span class="badge badge-cyan">🚩 सराव मार्गदर्शिका (Practice Guide)</span>
+        <h2 itemprop="headline">मराठी टायपिंग सराव: इन्स्क्रिप्ट कीबोर्ड, बाराखडी व जोडाक्षरे नियम</h2>
+        <p class="panel-lead-text">
+          मराठी टायपिंगमध्ये गती (WPM) आणि १००% अचूकता साध्य करण्यासाठी योग्य कीबोर्ड लेआउटची शास्त्रीय माहिती असणे अत्यावश्यक आहे. भारत सरकारने प्रमाणित केलेला <strong>इन्स्क्रिप्ट (InScript) कीबोर्ड</strong> हा टायपिंगसाठी सर्वात वैज्ञानिक लेआउट आहे. खालील सराव पाठांचा अभ्यास करून आपण घरबसल्या ३० ते ४० WPM गती सहज गाठू शकता.
+        </p>
+      </header>
 
-      <div class="drills-grid">
-        <div class="drill-item">
-          <span class="drill-icon">🌱</span>
-          <h4>1. Home Row Anchor</h4>
-          <p>Rest your left hand fingers on क, ख, ग and right hand on त, थ, द to build finger independence.</p>
+      <!-- Section 1: Correct Home Row Layout -->
+      <section class="guide-sub-section">
+        <h3>१. होम रो (Home Row) कीज आणि बोटांची अचूक ठेवण</h3>
+        <p>
+          इन्स्क्रिप्ट कीबोर्डवर दोन्ही हातांची चारही बोटे नेहमी होम रो वर स्थिर ठेवावीत. डाव्या हाताच्या तर्जनीखाली <code>F</code> की आणि उजव्या हाताच्या तर्जनीखाली <code>J</code> की वरील लहान उंचवटा (Tactile Bump) बोटांना योग्य स्थान देतो:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>हात</th>
+                <th>बोट (Finger)</th>
+                <th>होम की (Key)</th>
+                <th>मराठी अक्षर (Normal)</th>
+                <th>शिफ्टसह अक्षर (Shift Key)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4"><strong>डावा हात (स्वर व मात्रा)</strong></td>
+                <td>करंगळी (Little Finger)</td>
+                <td><code>A</code></td>
+                <td>ो (काना-मात्रा)</td>
+                <td>ओ</td>
+              </tr>
+              <tr>
+                <td>अनामिका (Ring Finger)</td>
+                <td><code>S</code></td>
+                <td>े (मात्रा)</td>
+                <td>ऐ</td>
+              </tr>
+              <tr>
+                <td>मध्यमा (Middle Finger)</td>
+                <td><code>D</code></td>
+                <td>् (हलंत / पाय मोडणे)</td>
+                <td>अ</td>
+              </tr>
+              <tr>
+                <td>तर्जनी (Index Finger)</td>
+                <td><code>F</code> व <code>G</code></td>
+                <td>ि (पहिली वेलांटी) / ु (पहिला उकार)</td>
+                <td>इ / उ</td>
+              </tr>
+              <tr>
+                <td rowspan="4"><strong>उजवा हात (व्यंजने)</strong></td>
+                <td>तर्जनी (Index Finger)</td>
+                <td><code>H</code> व <code>J</code></td>
+                <td>प / र</td>
+                <td>फ / ऱ</td>
+              </tr>
+              <tr>
+                <td>मध्यमा (Middle Finger)</td>
+                <td><code>K</code></td>
+                <td>क</td>
+                <td>ख</td>
+              </tr>
+              <tr>
+                <td>अनामिका (Ring Finger)</td>
+                <td><code>L</code></td>
+                <td>त</td>
+                <td>थ</td>
+              </tr>
+              <tr>
+                <td>करंगळी (Little Finger)</td>
+                <td><code>;</code></td>
+                <td>च</td>
+                <td>छ</td>
+              </tr>
+              <tr>
+                <td><strong>दोन्ही अंगठे</strong></td>
+                <td>अंगठा (Thumbs)</td>
+                <td><code>Spacebar</code></td>
+                <td colspan="2" style="text-align: center;">शब्दांमधील मोकळी जागा (Space)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="drill-item">
-          <span class="drill-icon">🔤</span>
-          <h4>2. Matras &amp; Vowels</h4>
-          <p>Practice vowels (अ, आ, इ, ई) and vowel signs (ा, ि, ी, ु, ू, े, ै, ो, ौ) without looking down at the keyboard.</p>
+      </section>
+
+      <!-- Section 2: Complete Barakhadi Reference -->
+      <section class="guide-sub-section">
+        <h3>२. मराठी बाराखडी (Barakhadi) टायपिंग पद्धती</h3>
+        <p>
+          मराठीत कोणत्याही व्यंजनाची बाराखडी टाइप करताना आधी मूळ व्यंजन टाइप करावे आणि त्यानंतर संबंधित मात्रा दाबावी:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>बाराखडी अक्षर</th>
+                <th>स्वर / मात्रा</th>
+                <th>घटक कीज (Components)</th>
+                <th>उदाहरणे</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>क</strong></td>
+                <td>मूळ व्यंजन (अ)</td>
+                <td><code>k</code></td>
+                <td>कमळ, कडक</td>
+              </tr>
+              <tr>
+                <td><strong>का</strong></td>
+                <td>काना (ा)</td>
+                <td><code>k</code> + <code>e</code></td>
+                <td>कावळा, कान</td>
+              </tr>
+              <tr>
+                <td><strong>कि</strong></td>
+                <td>पहिली वेलांटी (ि)</td>
+                <td><code>k</code> + <code>f</code></td>
+                <td>किरण, किल्ला</td>
+              </tr>
+              <tr>
+                <td><strong>की</strong></td>
+                <td>दुसरी वेलांटी (ी)</td>
+                <td><code>k</code> + <code>r</code></td>
+                <td>कीड, कीर्ती</td>
+              </tr>
+              <tr>
+                <td><strong>कु</strong></td>
+                <td>पहिला उकार (ु)</td>
+                <td><code>k</code> + <code>g</code></td>
+                <td>कुसुम, कुलूप</td>
+              </tr>
+              <tr>
+                <td><strong>कू</strong></td>
+                <td>दुसरा उकार (ू)</td>
+                <td><code>k</code> + <code>t</code></td>
+                <td>कूप, कूटनीती</td>
+              </tr>
+              <tr>
+                <td><strong>के</strong></td>
+                <td>एक मात्रा (े)</td>
+                <td><code>k</code> + <code>s</code></td>
+                <td>केळी, केवळ</td>
+              </tr>
+              <tr>
+                <td><strong>कै</strong></td>
+                <td>दोन मात्रे (ै)</td>
+                <td><code>k</code> + <code>w</code></td>
+                <td>कैलास, कैरी</td>
+              </tr>
+              <tr>
+                <td><strong>को</strong></td>
+                <td>काना-मात्रा (ो)</td>
+                <td><code>k</code> + <code>a</code></td>
+                <td>कोल्हा, कोपरा</td>
+              </tr>
+              <tr>
+                <td><strong>कौ</strong></td>
+                <td>काना-दोन मात्रे (ौ)</td>
+                <td><code>k</code> + <code>q</code></td>
+                <td>कौतुक, कौरव</td>
+              </tr>
+              <tr>
+                <td><strong>कं</strong></td>
+                <td>अनुस्वार (ं)</td>
+                <td><code>k</code> + <code>x</code></td>
+                <td>कंस, कंदन</td>
+              </tr>
+              <tr>
+                <td><strong>कः</strong></td>
+                <td>विसर्ग (ः)</td>
+                <td><code>k</code> + <code>Shift + -</code></td>
+                <td>दुःखी, स्वतः</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="drill-item">
-          <span class="drill-icon">⚡</span>
-          <h4>3. Conjuncts Mastery (जोडाक्षरे)</h4>
-          <p>Master joining consonants using the Virama/Halant (्) key to type words like 'महाराष्ट्र', 'राज्य', 'विद्या'.</p>
+      </section>
+
+      <!-- Section 3: Conjunct (जोडाक्षरे) Practice Drills -->
+      <section class="guide-sub-section">
+        <h3>३. जोडाक्षरे (Conjuncts) तयार करण्याचे सोपे नियम</h3>
+        <p>
+          मराठी शासकीय परीक्षेत (GCC-TBC) जोडाक्षरांमध्ये सर्वाधिक चुका होतात. जोडाक्षर टाइप करताना पहिल्या व्यंजनानंतर नेहमी <strong>हलंत (d)</strong> दाबणे बंधनकारक आहे:
+        </p>
+
+        <div class="drills-grid">
+          <div class="drill-item">
+            <span class="drill-icon">⚡</span>
+            <h4>१. क्ष आणि ज्ञ</h4>
+            <p><strong>क + ् + ष = क्ष</strong> (<code>k</code> + <code>d</code> + <code>Shift+,</code>)<br/><strong>ज + ् + ञ = ज्ञ</strong> (<code>p</code> + <code>d</code> + <code>Shift+&#125;</code>)</p>
+          </div>
+          <div class="drill-item">
+            <span class="drill-icon">🚩</span>
+            <h4>२. प्र आणि त्र</h4>
+            <p><strong>प + ् + र = प्र</strong> (<code>h</code> + <code>d</code> + <code>j</code>)<br/><strong>त + ् + र = त्र</strong> (<code>l</code> + <code>d</code> + <code>j</code>)</p>
+          </div>
+          <div class="drill-item">
+            <span class="drill-icon">📝</span>
+            <h4>३. श्र आणि द्व</h4>
+            <p><strong>श + ् + र = श्र</strong> (<code>Shift+m</code> + <code>d</code> + <code>j</code>)<br/><strong>द + ् + व = द्व</strong> (<code>o</code> + <code>d</code> + <code>b</code>)</p>
+          </div>
+          <div class="drill-item">
+            <span class="drill-icon">🏛️</span>
+            <h4>४. ष्ट आणि क्त</h4>
+            <p><strong>ष + ् + ट = ष्ट</strong> (<code>Shift+,</code> + <code>d</code> + <code>'</code>)<br/><strong>क + ् + त = क्त</strong> (<code>k</code> + <code>d</code> + <code>l</code>)</p>
+          </div>
         </div>
-        <div class="drill-item">
-          <span class="drill-icon">⏱️</span>
-          <h4>4. Timed Sentence Drills</h4>
-          <p>Practice with 60-second and 120-second paragraphs on TypeBaazi to measure your speed progress daily.</p>
+      </section>
+
+      <!-- Section 4: Daily Practice Roadmap -->
+      <section class="guide-sub-section">
+        <h3>४. दररोज ३० मिनिटांचे यशस्वी सराव नियोजन (30-Day Practice Plan)</h3>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <span class="tip-icon">📅</span>
+            <h4>दिवस १ ते ७: होम रो व बाराखडी</h4>
+            <p>फक्त होम रो व बाराखडीचा सराव करा. कीबोर्डकडे न पाहता बोटांचे स्थान पक्के करा.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">🔤</span>
+            <h4>दिवस ८ ते १५: जोडाक्षरे व कठीण शब्द</h4>
+            <p>महाराष्ट्र, राज्य, प्रशासन, कार्य, विद्यापीठ यांसारख्या जोडाक्षरांचे किमान १०० वेळा टायपिंग करा.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">⏱️</span>
+            <h4>दिवस १६ ते २५: १ व २ मिनिटांचे परिच्छेद</h4>
+            <p>TypeBaazi वर ६० व १८० सेकंदांचे परिच्छेद सोडवून ९५%+ अचूकता राखण्याचा सराव करा.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">🏆</span>
+            <h4>दिवस २६ ते ३०: ७ मिनिटांची मॉक टेस्ट</h4>
+            <p>प्रत्यक्ष परीक्षेच्या धर्तीवर ७ मिनिटांची टेस्ट देऊन ३० किंवा ४० WPM चे सर्टिफिकेट मिळवा.</p>
+          </div>
         </div>
-      </div>
+      </section>
 
       <!-- Contextual Internal Linking -->
       <div class="related-links-box">
@@ -105,6 +330,20 @@ const breadcrumbItems = [
             <div>
               <strong>Marathi Typing Test</strong>
               <span>Take a timed Marathi WPM test and earn a certificate.</span>
+            </div>
+          </a>
+          <a href="/seven-minute-typing-test/" class="hub-link-card">
+            <span class="hub-icon">⏱️</span>
+            <div>
+              <strong>7-Minute Exam Simulator</strong>
+              <span>Official MSCE GCC-TBC 30 &amp; 40 WPM simulator.</span>
+            </div>
+          </a>
+          <a href="/guides/marathi-inscript-keyboard-guide/" class="hub-link-card">
+            <span class="hub-icon">📚</span>
+            <div>
+              <strong>Marathi InScript Guide</strong>
+              <span>Full finger mapping, conjunct cheatsheet, and exam rules.</span>
             </div>
           </a>
           <a href="/government-exam-typing-practice/" class="hub-link-card">
@@ -130,7 +369,7 @@ const breadcrumbItems = [
           </a>
         </div>
       </div>
-    </section>
+    </article>
 
     <!-- FAQ Accordion -->
     <section class="faq-panel glass-panel">

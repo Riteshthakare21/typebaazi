@@ -55,6 +55,13 @@ const breadcrumbSchema = {
         </div>
 
         <div class="info-card glass-panel">
+          <div class="info-icon">⏱️</div>
+          <h3>Response Commitment</h3>
+          <p>We review every inquiry personally. Standard response turnaround is within <strong>24 to 48 business hours</strong>.</p>
+          <span style="font-size: 12.5px; color: #10b981; font-weight: 700;">✓ Active Support Mon–Sat</span>
+        </div>
+
+        <div class="info-card glass-panel">
           <div class="info-icon">💡</div>
           <h3>Frequently Asked Questions</h3>
           <p>Looking for instant answers regarding typing speed, Inscript keyboard, or scores?</p>
@@ -65,7 +72,7 @@ const breadcrumbSchema = {
       <!-- Interactive Contact Form -->
       <div class="contact-form-card glass-panel">
         <h2>Send Us a Message</h2>
-        <p class="form-desc">Fill out the form below and our team will get back to you within 24 hours.</p>
+        <p class="form-desc">Fill out the form below and our team will get back to you within 24 to 48 hours.</p>
 
         <form id="contact-form" class="contact-form">
           <div class="form-group">
@@ -106,6 +113,29 @@ const breadcrumbSchema = {
         </form>
       </div>
     </div>
+
+    <!-- Editorial Passage Submission & Quality Guidelines -->
+    <section class="editorial-submission-box glass-panel" style="margin-top: 36px; padding: clamp(20px, 3.5vw, 32px); border-radius: 18px; border: 1.5px solid rgba(0, 240, 255, 0.25); background: rgba(14, 21, 37, 0.85);">
+      <h2 style="font-size: clamp(19px, 2.5vw, 24px); font-weight: 800; color: #ffffff; margin-bottom: 8px;">📖 Passage Submission &amp; Quality Verification Guidelines</h2>
+      <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin-bottom: 20px;">
+        TypeBaazi welcomes passage contributions from educators, students, and typists across English, Hindi, and Marathi. To maintain the highest educational and linguistic standards, all submitted passages are manually evaluated against our editorial criteria:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+          <h4 style="font-size: 15px; font-weight: 800; color: #00f0ff; margin: 0 0 6px;">1. Public Domain &amp; Originality</h4>
+          <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0;">Passages must be either original compositions, in the public domain, or open educational resources. We strictly prohibit copyrighted text extracts without attribution.</p>
+        </div>
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+          <h4 style="font-size: 15px; font-weight: 800; color: #00f0ff; margin: 0 0 6px;">2. Grammatical &amp; Typographical Rigor</h4>
+          <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0;">Hindi and Marathi submissions must follow standardized Devanagari orthography (शुद्धलेखन). Punctuation, halant placement, and Nukta characters must be 100% correct.</p>
+        </div>
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+          <h4 style="font-size: 15px; font-weight: 800; color: #00f0ff; margin: 0 0 6px;">3. Length &amp; Word Count Standards</h4>
+          <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0;">Standard practice passages should range between 150 and 400 words. Exam simulation passages should be 300 words (30 WPM / 10 min) or 400 words (40 WPM / 10 min).</p>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>
 
@@ -282,10 +312,15 @@ const breadcrumbSchema = {
   }
 
   [data-theme='light'] .info-card,
-  [data-theme='light'] .contact-form-card {
+  [data-theme='light'] .contact-form-card,
+  [data-theme='light'] .editorial-submission-box {
     background: #ffffff !important;
     border: 1px solid #e2e8f0 !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  [data-theme='light'] .editorial-submission-box h2 {
+    color: #0f172a !important;
   }
 
   [data-theme='light'] .info-card h3,

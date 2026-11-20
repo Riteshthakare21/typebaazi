@@ -10,19 +10,35 @@ const pageKeywords = "government exam typing practice, mpsc typing practice, ups
 const govtFaqs = [
   {
     question: "What is the typing speed required for MPSC Clerk-Typist and GCC-TBC exams?",
-    answer: "For Maharashtra MPSC Group C Clerk-Typist and GCC-TBC examinations, candidates require Marathi typing speed of 30 WPM or English typing speed of 40 WPM with at least 95% accuracy."
+    answer: "For Maharashtra MPSC Group C Clerk-Typist and GCC-TBC examinations conducted by MSCE Pune, candidates require a Marathi typing speed of 30 WPM (300 words in 10 minutes) or an English typing speed of 40 WPM (400 words in 10 minutes) with a maximum permissible error cap of 5%."
   },
   {
-    question: "What is the speed requirement for UPSC and SSC typing tests?",
-    answer: "UPSC EPFO / Junior Assistant and SSC CHSL / CGL DEST tests require 35 WPM (10,500 KDPH / 1750 key depressions in 10 minutes) for English or 30 WPM for Hindi/Regional languages."
+    question: "What is the speed requirement for SSC CGL and CHSL DEST typing tests?",
+    answer: "The Staff Selection Commission Data Entry Speed Test (DEST) requires a typing speed of 35 WPM (10,500 KDPH / 1,750 key depressions in 10 minutes) for English, or 30 WPM (9,000 KDPH / 1,500 key depressions) for Hindi. The allowed error margin is typically 5% for General category candidates and 7% for reserved categories."
   },
   {
     question: "How is Net WPM calculated in government typing tests?",
-    answer: "Net WPM is calculated as Gross WPM minus error penalties. A single uncorrected spelling or omitted word can deduct significant points, making accuracy the most critical factor."
+    answer: "Net WPM is calculated as Gross WPM minus error deductions. In most commission standards, 5 key depressions equal 1 standardized word. Uncorrected errors result in heavy word penalties: Net WPM = Gross WPM - (Penalty Words / Time in Minutes). A single omitted sentence can disqualify a candidate."
   },
   {
-    question: "Is TypeBaazi government exam practice free?",
-    answer: "Yes, TypeBaazi provides 100% free simulated exam passages for MPSC, UPSC, SSC, Court, and GCC-TBC certifications with live accuracy scoring and error penalty metrics."
+    question: "What is the difference between a Full Mistake and a Half Mistake?",
+    answer: "In central recruitment evaluations (such as SSC and RRB), omission of an entire word, substitution of an incorrect word, or addition of an unscripted word counts as a Full Mistake (100% penalty). Spacing errors, capitalization mistakes, punctuation discrepancies, or transposed letters count as Half Mistakes (50% penalty)."
+  },
+  {
+    question: "Is the Backspace key permitted during government typing tests?",
+    answer: "Backspace rules vary by recruitment board. In SSC DEST and GCC-TBC exams, backspacing within the active test passage is generally permitted. However, in certain High Court and state agency examinations, the Backspace key is physically disabled in the software, or every backstroke incurs a minor accuracy penalty."
+  },
+  {
+    question: "Which keyboard layouts are permitted in Hindi and Marathi government tests?",
+    answer: "For Hindi examinations, SSC, CPCT, and Railway recruitment typically allow InScript, Remington Gail, and Remington CBI. For Maharashtra GCC-TBC and MPSC, Marathi tests utilize the standardized Devanagari InScript layout as well as Remington Marathi layout."
+  },
+  {
+    question: "What strategy works best in the first 60 seconds of a high-pressure exam?",
+    answer: "Begin the first minute typing at approximately 80% of your maximum speed. Exam nervousness causes hand tremors and irregular keystroke rhythm. Establishing clean, error-free rhythm in the initial 60 seconds calms adrenaline, stabilizes motor memory, and prevents early line skipping."
+  },
+  {
+    question: "Is TypeBaazi officially affiliated with any government recruitment agency?",
+    answer: "No. TypeBaazi is an independent, free educational typing simulator. Our passages and scoring algorithms replicate the structural rules and time limits of official exams (such as SSC DEST, GCC-TBC, and MPSC) purely for practice and preparation purposes."
   }
 ];
 
@@ -71,9 +87,9 @@ const breadcrumbItems = [
 
     <!-- Exam Benchmarks Table & Guide -->
     <section class="guide-panel glass-panel">
-      <h2>All-India Government Typing Exam Benchmarks</h2>
+      <h2>All-India Government Typing Exam Benchmarks &amp; Scoring Matrix</h2>
       <p class="panel-text">
-        Different recruitment boards have distinct speed and accuracy thresholds. Review the official criteria below:
+        Public sector recruitment commissions across India evaluate typing proficiency using rigorous speed, time, and error limits. The table below outlines official standards across premier central and state examinations:
       </p>
 
       <div class="table-responsive">
@@ -82,67 +98,156 @@ const breadcrumbItems = [
             <tr>
               <th>Exam / Recruitment Commission</th>
               <th>Language</th>
-              <th>Required Speed</th>
-              <th>Permissible Error Cap</th>
+              <th>Duration</th>
+              <th>Required Speed (WPM / KDPH)</th>
+              <th>Max Permissible Error</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>MPSC Group C Clerk-Typist</strong></td>
               <td>मराठी / English</td>
+              <td>10 Mins</td>
               <td><span class="speed-pill">30 WPM / 40 WPM</span></td>
-              <td>5% max (GCC-TBC)</td>
+              <td>5% Max (GCC-TBC Criteria)</td>
             </tr>
             <tr>
-              <td><strong>UPSC (EPFO / Junior Assistant)</strong></td>
-              <td>English / Hindi</td>
-              <td><span class="speed-pill">35 WPM / 30 WPM</span></td>
-              <td>5% max</td>
+              <td><strong>MSCE GCC-TBC Maharashtra</strong></td>
+              <td>मराठी / English</td>
+              <td>7 to 10 Mins</td>
+              <td><span class="speed-pill">30 WPM (300 words) / 40 WPM (400 words)</span></td>
+              <td>Passing: 17.5/50 marks</td>
             </tr>
             <tr>
               <td><strong>SSC CHSL &amp; CGL (DEST)</strong></td>
               <td>English / Hindi</td>
-              <td><span class="speed-pill">27 to 35 WPM</span></td>
-              <td>5% to 7% max</td>
+              <td>15 Mins</td>
+              <td><span class="speed-pill">35 WPM (10,500 KDPH) / 30 WPM (9,000 KDPH)</span></td>
+              <td>5% (UR) / 7% (Reserved)</td>
             </tr>
             <tr>
-              <td><strong>High Court &amp; District Court Clerk</strong></td>
-              <td>English / Marathi</td>
-              <td><span class="speed-pill">30 to 40 WPM</span></td>
-              <td>3% to 5% strict</td>
-            </tr>
-            <tr>
-              <td><strong>Railway RRB NTPC</strong></td>
+              <td><strong>UPSC EPFO &amp; Junior Assistant</strong></td>
               <td>English / Hindi</td>
+              <td>10 Mins</td>
+              <td><span class="speed-pill">35 WPM / 30 WPM</span></td>
+              <td>5% Strict Deduction</td>
+            </tr>
+            <tr>
+              <td><strong>High Court &amp; District Court Steno/Clerk</strong></td>
+              <td>English / Regional</td>
+              <td>10 Mins</td>
+              <td><span class="speed-pill">30 to 40 WPM</span></td>
+              <td>3% to 5% Strict Limit</td>
+            </tr>
+            <tr>
+              <td><strong>Railway RRB NTPC Typist Test</strong></td>
+              <td>English / Hindi</td>
+              <td>10 Mins</td>
               <td><span class="speed-pill">30 WPM / 25 WPM</span></td>
-              <td>5% mistake cap</td>
+              <td>5% Mistake Allowance</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>5 Proven Strategies to Clear Government Typing Tests</h2>
+      <!-- Mistake Classification Guide -->
+      <h2>Official Error Evaluation: Full Mistakes vs. Half Mistakes</h2>
+      <p class="panel-text">
+        Most government recruitment boards (including SSC and Railway Recruitment Boards) categorize typographical errors into <strong>Full Mistakes</strong> and <strong>Half Mistakes</strong>. Understanding this distinction is vital to prevent accidental disqualification:
+      </p>
+
+      <div class="table-responsive">
+        <table class="exam-benchmarks-table">
+          <thead>
+            <tr>
+              <th>Error Classification</th>
+              <th>Penalty Weight</th>
+              <th>Specific Discrepancy Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Full Mistake (100% Penalty)</strong></td>
+              <td>1.0 Word Deducted</td>
+              <td>
+                • <strong>Omission:</strong> Skipping an entire word or number from the test passage.<br/>
+                • <strong>Substitution:</strong> Replacing a printed word with an incorrect word (e.g., typing "house" instead of "horse").<br/>
+                • <strong>Addition:</strong> Inserting an extra word not present in the original printed text.<br/>
+                • <strong>Line Skipping:</strong> Skipping an entire line due to loss of visual tracking (results in immediate failure).
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Half Mistake (50% Penalty)</strong></td>
+              <td>0.5 Word Deducted</td>
+              <td>
+                • <strong>Spacing Discrepancies:</strong> Missing spaces between words or adding double spaces (e.g., "in to" instead of "into").<br/>
+                • <strong>Capitalization Errors:</strong> Lowercase when uppercase is required or vice versa (e.g., "delhi" instead of "Delhi").<br/>
+                • <strong>Punctuation Errors:</strong> Omitting or misplacing full stops, commas, or semicolons.<br/>
+                • <strong>Transposition:</strong> Inverting adjacent characters within a word (e.g., "teh" instead of "the").
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Backspace Policies & Exam Realities -->
+      <h2>Backspace Key Policies in Government Examinations</h2>
+      <p class="panel-text">
+        One of the most frequently asked questions by government exam aspirants is whether the <code>Backspace</code> key is allowed. Here is the operational reality across different exam testing software:
+      </p>
       <div class="tips-grid">
         <div class="tip-card">
-          <span class="tip-icon">🎯</span>
-          <h4>1. 98%+ Accuracy Discipline</h4>
-          <p>Government exams penalize errors heavily. Maintain steady rhythm and avoid reckless sprinting.</p>
+          <span class="tip-icon">🟢</span>
+          <h4>SSC DEST &amp; GCC-TBC (Full Backspace)</h4>
+          <p>In standard SSC CGL/CHSL DEST interfaces and MSCE GCC-TBC computer-based tests, the Backspace key functions normally within the current line/passage. Candidates can edit previous words before final submission.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🔴</span>
+          <h4>High Courts &amp; State Boards (Restricted)</h4>
+          <p>Certain High Court and legislative assembly typing tests physically disable the Backspace key or restrict edits strictly to the current word being typed. Once space is pressed, the word is permanently locked.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">⚠️</span>
+          <h4>The Psychological Backspace Trap</h4>
+          <p>Even when Backspace is permitted, compulsive backspacing is the #1 reason candidates fail on time. Correcting three words can burn 10 seconds of time. Focus on clean forward rhythm rather than perfectionism.</p>
         </div>
         <div class="tip-card">
           <span class="tip-icon">⌨️</span>
-          <h4>2. Practice on Desktop Keyboards</h4>
-          <p>Exam centers use physical membrane keyboards. Practice using a standard keyboard on TypeBaazi.</p>
+          <h4>Physical Membrane Keyboard Reality</h4>
+          <p>Exam centers use low-cost, high-travel physical membrane keyboards with stiff keys. Never practice exclusively on soft laptop chiclet keyboards. Use a standard desktop USB keyboard on TypeBaazi.</p>
+        </div>
+      </div>
+
+      <!-- 4-Week Exam Preparation Strategy -->
+      <h2>4-Week Tactical Exam Preparation Roadmap</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">🎯</span>
+          <h4>Phase 1 (Days 1–7): Zero-Error Calibration</h4>
+          <p>Practice untimed or 2-minute passages on TypeBaazi with a strict 99% accuracy floor. Refuse to type any word faster than you can execute cleanly without looking down.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🏛️</span>
+          <h4>Phase 2 (Days 8–14): Official Exam Passages</h4>
+          <p>Switch to TypeBaazi's Government Exam mode with dense administrative, constitutional, and economic passages containing numbers, legal terminology, and punctuation.</p>
         </div>
         <div class="tip-card">
           <span class="tip-icon">⏱️</span>
-          <h4>3. Master 5 &amp; 10-Minute Endurance</h4>
-          <p>Finger fatigue causes errors in the final minutes. Build stamina with continuous multi-minute drills.</p>
+          <h4>Phase 3 (Days 15–21): 10-Minute Stamina Drills</h4>
+          <p>Simulate full 10-minute and 15-minute test windows. Finger forearm fatigue begins at minute 6. Training endurance prevents the classic late-test accuracy collapse.</p>
         </div>
         <div class="tip-card">
-          <span class="tip-icon">🚩</span>
-          <h4>4. Remington &amp; Inscript Fluency</h4>
-          <p>For Marathi MPSC and GCC-TBC, practice Devanagari joḍākṣare (जोडाक्षरे) and special symbols.</p>
+          <span class="tip-icon">🧘</span>
+          <h4>Phase 4 (Days 22–30): Exam Day Mental Conditioning</h4>
+          <p>Practice the "First 60 Seconds 80% Pacing Rule". In real exam halls with 200 clicking keyboards, initial nervousness spikes. Typing smoothly at 80% speed calms heart rate and guarantees composure.</p>
         </div>
+      </div>
+
+      <!-- Statutory Disclaimer -->
+      <div class="disclaimer-callout" style="margin-top: 28px; padding: 18px 22px; background: rgba(0, 112, 243, 0.08); border-left: 4px solid #38bdf8; border-radius: 8px;">
+        <p style="margin: 0; font-size: 13px; color: #cbd5e1; line-height: 1.6;">
+          <strong style="color: #38bdf8;">📌 Statutory Educational Disclaimer:</strong> TypeBaazi is an independent online educational typing simulator developed for training, skill enhancement, and exam readiness. TypeBaazi is not affiliated with, endorsed by, or an authorized testing agency for the Staff Selection Commission (SSC), Maharashtra State Council of Examination (MSCE Pune), Union Public Service Commission (UPSC), High Courts, or Indian Railways. All examination names and acronyms are used strictly for identification and educational reference.
+        </p>
       </div>
 
       <!-- Contextual Internal Linking -->

@@ -20,6 +20,33 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const learnFaqs = [
+  {
+    question: "What is touch typing and how does it work?",
+    answer: "Touch typing is typing based on spatial muscle memory rather than visual hunting. Typists anchor eight fingers to the Home Row keys (A, S, D, F and J, K, L, ;) and learn dedicated reach angles for every upper, lower, and number row key without glancing at the physical keyboard."
+  },
+  {
+    question: "How long does it take to learn touch typing from scratch?",
+    answer: "Most learners achieve fluent touch typing (35–45 WPM without looking at the keyboard) within 3 to 4 weeks of practicing 15 to 20 minutes daily. Developing advanced speeds of 60–80+ WPM typically takes 2 to 3 months of consistent, error-disciplined practice."
+  },
+  {
+    question: "Should I look down at my fingers when learning new keys?",
+    answer: "No. Looking down at the physical keyboard impairs muscle memory development because the brain relies on visual cues instead of spatial proprioception. If you are unsure where a key is located, consult an on-screen virtual keyboard like the one on TypeBaazi."
+  },
+  {
+    question: "How do I avoid wrist strain and carpal tunnel syndrome while typing?",
+    answer: "Keep your wrists elevated and floating parallel to the desk rather than resting them firmly on hard surfaces or wrist pads while active typing is underway. Maintain elbows at a 90-degree angle, keep shoulders relaxed, and take brief 30-second micro-breaks every 20 minutes."
+  },
+  {
+    question: "How can I learn Devanagari Hindi or Marathi typing without forgetting English QWERTY?",
+    answer: "The standardized Indian InScript keyboard layout uses a logical linguistic model: vowels and matras are placed on the left hand, while consonants are arranged phonetically on the right hand. Because InScript uses spatial muscle memory independent of English phonetics, your brain naturally compartmentalizes the two typing systems."
+  },
+  {
+    question: "Why does TypeBaazi emphasize accuracy over speed for beginners?",
+    answer: "Every unforced typographical error forces you to stop forward momentum, locate the Backspace key, delete the mistaken character, and re-establish typing rhythm — losing nearly one full second. Typists who prioritize 98%+ accuracy build clean neural pathways and naturally type faster with less fatigue."
+  }
+];
 ---
 
 <Layout
@@ -27,6 +54,7 @@ const breadcrumbSchema = {
   description="Master touch typing with our free comprehensive guide. Learn home row finger placement, posture, WPM benchmarks, and English, Hindi and Marathi Devanagari typing on TypeBaazi."
   keywords="learn touch typing, typing tutorial, touch typing guide, finger placement typing, hindi typing guide, marathi typing guide, devanagari inscript guide, wpm typing tips, typebaazi"
   activePath="/learn"
+  faqItems={learnFaqs}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <div class="container page-container">
@@ -41,8 +69,50 @@ const breadcrumbSchema = {
     <!-- Learn Guide Component -->
     <LearnGuide />
 
+    <!-- Structured 4-Stage Curriculum Section -->
+    <section class="curriculum-panel glass-panel" style="margin-top: 36px; padding: clamp(20px, 3.5vw, 36px); border-radius: 20px; background: rgba(10, 16, 28, 0.95); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight: 800; color: #ffffff; margin-bottom: 8px;">🎓 TypeBaazi Touch Typing Curriculum &amp; Progression Roadmap</h2>
+      <p style="font-size: 14.5px; color: #cbd5e1; line-height: 1.65; margin-bottom: 24px;">
+        Touch typing is a physiological discipline combining spatial memory, tactile feedback, and motor planning. Progress through these four systematic training phases to attain speed, accuracy, and ergonomic endurance:
+      </p>
+
+      <div class="stages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 28px;">
+        <div class="stage-card" style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(0, 240, 255, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-size: 12px; font-weight: 800; color: #00f0ff; text-transform: uppercase; margin-bottom: 6px;">Stage 1 • Fundamentals</div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0 0 8px;">Home-Row Anchoring</h3>
+          <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.55; margin: 0;">
+            Locate the tactile bumps on <strong>F</strong> and <strong>J</strong>. Position eight fingers across A-S-D-F and J-K-L-;. Practice basic finger flexing without ever taking eyes off the monitor screen.
+          </p>
+        </div>
+
+        <div class="stage-card" style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-size: 12px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 6px;">Stage 2 • Spatial Reach</div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0 0 8px;">Upper &amp; Lower Key Rows</h3>
+          <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.55; margin: 0;">
+            Train vertical finger reaches to Q-W-E-R-T-Y-U-I-O-P and Z-X-C-V-B-N-M. Master immediate rebound: every finger strikes outward and snaps directly back to its home key.
+          </p>
+        </div>
+
+        <div class="stage-card" style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(168, 85, 247, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-size: 12px; font-weight: 800; color: #c084fc; text-transform: uppercase; margin-bottom: 6px;">Stage 3 • Punctuation &amp; Numbers</div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0 0 8px;">Symmetric Shift &amp; Numbers</h3>
+          <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.55; margin: 0;">
+            Learn two-handed Shift key coordination: use the opposite pinky to shift when capitalizing letters. Master the top number row and standard punctuation marks without glances.
+          </p>
+        </div>
+
+        <div class="stage-card" style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(245, 158, 11, 0.25); border-radius: 14px; padding: 20px;">
+          <div style="font-size: 12px; font-weight: 800; color: #fbbf24; text-transform: uppercase; margin-bottom: 6px;">Stage 4 • Multilingual Mastery</div>
+          <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0 0 8px;">Trilingual InScript Fluency</h3>
+          <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.55; margin: 0;">
+            Transition seamlessly between English QWERTY and Devanagari Hindi/Marathi InScript. Understand left-hand vowels/matras and right-hand consonants to eliminate cognitive interference.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- In-Depth Typing Guides Hub Strip -->
-    <section class="learn-guides-feature-box glass-panel" style="margin-top: 40px; padding: 26px; border-radius: 16px; background: rgba(14, 21, 37, 0.85); border: 1.5px solid rgba(0, 240, 255, 0.25);">
+    <section class="learn-guides-feature-box glass-panel" style="margin-top: 36px; padding: 26px; border-radius: 16px; background: rgba(14, 21, 37, 0.85); border: 1.5px solid rgba(0, 240, 255, 0.25);">
       <h3 style="font-size: 20px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">📚 Comprehensive Specialized Typing Handbooks</h3>
       <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin-bottom: 18px;">
         Take your touch typing education further with our authoritative, free technical guides:
@@ -81,12 +151,32 @@ const breadcrumbSchema = {
         </a>
       </div>
     </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-panel glass-panel" style="margin-top: 36px; padding: clamp(20px, 3.5vw, 36px); border-radius: 20px; background: rgba(10, 16, 28, 0.95); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <h2 style="font-size: clamp(20px, 2.8vw, 26px); font-weight: 800; color: #ffffff; margin-bottom: 18px;">Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 12px;">
+        {learnFaqs.map((item) => (
+          <details class="faq-item" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px 20px;">
+            <summary class="faq-question" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 15px; font-weight: 700; color: #ffffff; list-style: none;">
+              <span>{item.question}</span>
+              <span class="faq-arrow" style="color: #00f0ff; font-size: 16px;">&darr;</span>
+            </summary>
+            <div class="faq-answer" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+              <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6; margin: 0;">{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
   </div>
 </Layout>
 
 <style>
   .page-container {
     padding: 40px 20px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
   .page-header {
@@ -106,5 +196,31 @@ const breadcrumbSchema = {
     color: var(--text-muted);
     max-width: 650px;
     margin: 0 auto;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .curriculum-panel,
+  [data-theme='light'] .faq-panel {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  [data-theme='light'] .curriculum-panel h2,
+  [data-theme='light'] .curriculum-panel h3,
+  [data-theme='light'] .faq-panel h2,
+  [data-theme='light'] .faq-question {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .stage-card,
+  [data-theme='light'] .faq-item {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .stage-card p,
+  [data-theme='light'] .faq-answer p {
+    color: #334155 !important;
   }
 </style>

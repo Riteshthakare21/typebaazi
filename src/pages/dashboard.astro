@@ -1,6 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import StatsDashboard from '../components/StatsDashboard.astro';
+
+const dashboardFaqs = [
+  {
+    question: "How do I earn a verified typing speed certificate on TypeBaazi?",
+    answer: "You earn a verified certificate by completing any standard timed test (60s, 180s, or 7-minute exam simulation) with at least 90% net accuracy. Upon finishing, a 'Claim Official Certificate' button appears, allowing you to enter your full name and download a 300 DPI high-resolution PDF or PNG certificate."
+  },
+  {
+    question: "What information is included on the TypeBaazi certificate?",
+    answer: "Each certificate features your full name, language tested (English, Hindi, or Marathi), Gross WPM, Net WPM, accuracy percentage, test duration, date of issuance, an official TypeBaazi gold verification seal, and a unique tamper-resistant cryptographic serial hash."
+  },
+  {
+    question: "Can I add my TypeBaazi typing certificate to my resume or LinkedIn profile?",
+    answer: "Yes! Thousands of candidates and students showcase their verified TypeBaazi certificates under 'Licenses & Certifications' on LinkedIn and in the 'Skills' section of their technical resumes to prove demonstrable keyboard velocity to prospective employers."
+  },
+  {
+    question: "Is the TypeBaazi certificate an official government qualification like GCC-TBC?",
+    answer: "TypeBaazi certificates demonstrate verified online performance and personal typing competence. However, state government clerical posts (such as Maharashtra MPSC GCC-TBC) legally require in-person examination at accredited physical centers. TypeBaazi certificates are ideal for private sector jobs, student portfolios, and exam preparation benchmarks."
+  },
+  {
+    question: "How does TypeBaazi ensure certificate authenticity?",
+    answer: "Each generated certificate embeds an algorithmic verification hash calculated from candidate name, test timestamp, WPM, and accuracy metrics. This prevents unauthorized manual score altering."
+  },
+  {
+    question: "Can I retake tests to improve my certificate score?",
+    answer: "Yes! There is no limit on test attempts. As your speed and accuracy improve, you can generate updated certificates reflecting your highest personal bests."
+  }
+];
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://typebaazi.com/" },
+  { name: "Dashboard & Certificates", url: "https://typebaazi.com/dashboard" }
+];
 ---
 
 <Layout
@@ -8,6 +40,8 @@ import StatsDashboard from '../components/StatsDashboard.astro';
   description="View your personal typing statistics, WPM speed charts, accuracy history, and download official free typing certificates in PDF & PNG format on TypeBaazi."
   keywords="typing certificate, free typing certificate online, download typing certificate, typing test certificate, verified typing speed certificate, typebaazi dashboard, typing badges, wpm analytics"
   activePath="/dashboard"
+  faqItems={dashboardFaqs}
+  breadcrumbs={breadcrumbItems}
 >
   <div class="container page-container">
     <div class="page-header">
@@ -30,6 +64,92 @@ import StatsDashboard from '../components/StatsDashboard.astro';
 
     <!-- Complete Stats Dashboard Component -->
     <StatsDashboard />
+
+    <!-- Educational & Certificate Verification Guide -->
+    <article class="dashboard-guide-panel glass-panel" itemscope itemtype="https://schema.org/Article" style="margin-top: 40px; padding: clamp(20px, 3.5vw, 36px); border-radius: var(--radius-xl, 20px); border: 1.5px solid rgba(0, 240, 255, 0.25);">
+      <header class="panel-header-block" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 18px; margin-bottom: 24px;">
+        <span class="badge badge-gold">📜 Digital Credential Authority</span>
+        <h2 itemprop="headline" style="font-size: clamp(20px, 3.5vw, 26px); font-weight: 900; color: #ffffff; margin: 8px 0 10px;">
+          TypeBaazi Digital Typing Certificate &amp; Competency Standards
+        </h2>
+        <p class="panel-lead-text" style="font-size: 14.5px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin: 0;">
+          A typing certificate provides objective, third-party validation of your keyboard dexterity, data entry speed, and keystroke precision. Whether you are applying for corporate administrative roles, customer support positions, software development jobs, or preparing for state competitive typing exams, this guide explains how TypeBaazi certifies your performance and how to present your credentials effectively.
+        </p>
+      </header>
+
+      <!-- Section 1: Certificate Qualification Criteria -->
+      <section class="guide-sub-section" style="margin-bottom: 28px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--accent-cyan, #00f0ff); margin-bottom: 12px;">1. Certificate Qualification &amp; Accuracy Benchmarks</h3>
+        <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.6; margin-bottom: 14px;">
+          To preserve credential credibility for employers and recruiters, TypeBaazi enforces strict minimum performance thresholds before generating any Certificate of Competence:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+          <div style="background: rgba(8, 14, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+            <span style="font-size: 24px;">🎯</span>
+            <h4 style="font-size: 15px; font-weight: 800; color: #ffffff; margin: 8px 0 4px;">90%+ Minimum Accuracy</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">Raw speed with erratic typos does not qualify. Typists must demonstrate controlled keystroke accuracy.</p>
+          </div>
+          <div style="background: rgba(8, 14, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+            <span style="font-size: 24px;">⏱️</span>
+            <h4 style="font-size: 15px; font-weight: 800; color: #ffffff; margin: 8px 0 4px;">Full Session Completion</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">The test timer (60s, 180s, or 7:00 exam) must count down to zero without pauses or page reloads.</p>
+          </div>
+          <div style="background: rgba(8, 14, 27, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+            <span style="font-size: 24px;">🛡️</span>
+            <h4 style="font-size: 15px; font-weight: 800; color: #ffffff; margin: 8px 0 4px;">Net WPM Evaluation</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">Your verified score is calculated strictly from Net WPM after deducting all uncorrected character errors.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Cryptographic Security & Anti-Cheat -->
+      <section class="guide-sub-section" style="margin-bottom: 28px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--accent-cyan, #00f0ff); margin-bottom: 12px;">2. Cryptographic Security &amp; Anti-Tamper Verification</h3>
+        <p style="font-size: 14px; color: var(--text-muted, #94a3b8); line-height: 1.6;">
+          Every certificate generated through TypeBaazi's canvas renderer produces a 300 DPI high-resolution export embedding a unique cryptographic hash sequence (e.g., <code>TBZ-CERT-8F4A-2026</code>). This serial fingerprint binds your test metrics (WPM, accuracy, timestamp, language) to prevent manual alteration or unauthorized document forgery.
+        </p>
+      </section>
+
+      <!-- Section 3: Professional Use vs Government Exams -->
+      <section class="guide-sub-section" style="margin-bottom: 28px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--accent-cyan, #00f0ff); margin-bottom: 12px;">3. Understanding Certificate Scope: Portfolio vs. Statutory Exams</h3>
+        <div style="background: rgba(251, 191, 36, 0.1); border: 1.5px solid rgba(251, 191, 36, 0.35); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+          <h4 style="font-size: 15px; font-weight: 800; color: #fde047; margin: 0 0 6px;">⚠️ Transparency &amp; Non-Affiliation Notice</h4>
+          <p style="font-size: 13.5px; color: #fef08a; line-height: 1.6; margin: 0;">
+            TypeBaazi is an independent educational typing platform. Our digital certificates demonstrate authentic online typing proficiency and are widely valued for private sector employment, freelancing, and personal skill portfolios. However, they do not replace statutory government certifications (such as the Maharashtra MSCE GCC-TBC examination) which legally mandate in-person testing at authorized government centers.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: How to Add to LinkedIn & Resumes -->
+      <section class="guide-sub-section" style="margin-bottom: 28px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--accent-cyan, #00f0ff); margin-bottom: 12px;">4. How to Showcase Your Certificate on LinkedIn &amp; Resumes</h3>
+        <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: var(--text-muted); line-height: 1.8;">
+          <li><strong>LinkedIn Certifications:</strong> Under "Licenses &amp; Certifications", enter Name: <em>"TypeBaazi Verified Typing Competency (English/Hindi/Marathi)"</em>, Issuing Organization: <em>"TypeBaazi"</em>, and include your verified Net WPM score.</li>
+          <li><strong>Resume Skills Section:</strong> Add a bullet under Technical Skills: <em>"Touch Typing: 65 WPM with 98% Accuracy (Verified by TypeBaazi)"</em>.</li>
+          <li><strong>Job Portals (Naukri, Indeed):</strong> Attach your high-resolution 300 DPI PDF certificate to data entry, transcription, and administrative job applications.</li>
+        </ul>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section class="dashboard-faqs-block" style="margin-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 16px;">Frequently Asked Questions (Certificate FAQ)</h3>
+        <div class="faq-accordion">
+          {dashboardFaqs.map((item) => (
+            <details class="faq-item" style="background: rgba(8, 14, 27, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; margin-bottom: 10px; padding: 14px 18px;">
+              <summary class="faq-question" style="font-size: 14.5px; font-weight: 700; color: #ffffff; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                <span>{item.question}</span>
+                <span class="faq-arrow">&darr;</span>
+              </summary>
+              <div class="faq-answer" style="margin-top: 10px; font-size: 13.5px; color: var(--text-muted, #94a3b8); line-height: 1.6;">
+                <p style="margin: 0;">{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    </article>
   </div>
 </Layout>
 

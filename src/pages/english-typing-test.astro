@@ -10,19 +10,35 @@ const pageKeywords = "english typing test online, english typing test, english t
 const englishFaqs = [
   {
     question: "What is an English typing test?",
-    answer: "An English typing test measures your keyboard typing speed in Words Per Minute (WPM) and accuracy percentage over a timed period (typically 60 seconds). It tests how fast and accurately your fingers translate text into keystrokes."
+    answer: "An English typing test measures your keyboard typing speed in Words Per Minute (WPM) and accuracy percentage over a timed period (typically 60 seconds, 2 minutes, or 5 minutes). It quantifies how efficiently and cleanly your fingers translate written text into accurate digital keystrokes without visual keyboard dependence."
   },
   {
     question: "How is WPM and Net WPM calculated?",
-    answer: "Gross WPM = (Total Characters Typed / 5) / Time in Minutes. Net WPM subtracts uncorrected errors: Net WPM = Gross WPM - (Errors / Time in Minutes). 5 characters equal 1 standardized word."
+    answer: "Gross WPM = (Total Characters Typed / 5) / Time in Minutes. Net WPM subtracts uncorrected errors: Net WPM = Gross WPM - (Errors / Time in Minutes). Under standard typographical conventions, 5 characters (including letters, spaces, and punctuation) equal 1 standardized word."
   },
   {
-    question: "What is an average vs good English typing speed?",
-    answer: "The average typing speed is 40 WPM. A speed of 50–65 WPM is considered good, while 70–90+ WPM is professional grade. Speeds above 100 WPM place you in the top 1% of competitive typists."
+    question: "What is considered an average vs good English typing speed?",
+    answer: "The global average typing speed is approximately 40 WPM with 92% accuracy. A speed of 50–65 WPM is considered above average and competitive for office roles. 70–90 WPM represents professional-grade typing for software developers, transcribers, and administrative executives. Speeds above 100 WPM place typists in the top 1% internationally."
   },
   {
     question: "Can I get a free typing certificate on TypeBaazi?",
-    answer: "Yes! When you complete any 60-second typing test on TypeBaazi with at least 90% accuracy, you can instantly download an official digital typing certificate in PDF or PNG format."
+    answer: "Yes! Completing any 60-second or multi-minute typing test on TypeBaazi with at least 90% accuracy qualifies you for an instant, verifiable digital certificate in PDF or PNG format. Each certificate includes your Net WPM, accuracy, date, and tamper-resistant verification hash."
+  },
+  {
+    question: "Why does TypeBaazi prioritize accuracy over raw typing speed?",
+    answer: "Correcting a single error with the backspace key costs approximately 800 to 1,200 milliseconds of lost time and disrupts physical typing rhythm. Typists who maintain 98%+ accuracy consistently achieve higher Net WPM scores than typists who burst at high speeds but make frequent typographical errors."
+  },
+  {
+    question: "What is touch typing and why is it superior to hunt-and-peck typing?",
+    answer: "Touch typing is typing based on spatial muscle memory without looking down at the keyboard. Each finger is assigned a dedicated column of keys anchored to the Home Row (ASDF - JKL;). Hunt-and-peck typing relies on visual searching, which caps human speed at 30–45 WPM and causes neck fatigue."
+  },
+  {
+    question: "How long does it take to improve typing speed from 30 WPM to 60 WPM?",
+    answer: "With dedicated 15-minute daily practice sessions focusing on correct finger placement and zero-error discipline, most typists double their typing speed from 30 WPM to 60 WPM within 4 to 6 weeks. Consistency and proper ergonomic form are far more effective than marathon practice sessions."
+  },
+  {
+    question: "Does TypeBaazi track or save my keystrokes on remote servers?",
+    answer: "No. TypeBaazi is engineered with a strict 100% client-side execution model. All keystroke timing, WPM calculations, and accuracy metrics are computed entirely in your local browser memory (RAM). Zero typed characters or personal test inputs are ever transmitted or saved to external servers."
   }
 ];
 
@@ -73,7 +89,7 @@ const breadcrumbItems = [
     <section class="guide-panel glass-panel">
       <h2>What is a Good English Typing Speed?</h2>
       <p class="panel-text">
-        Typing speed is measured in <strong>Words Per Minute (WPM)</strong>. Check where your speed ranks on the international typing skill scale:
+        Typing speed is measured internationally in <strong>Words Per Minute (WPM)</strong>, where one standardized word equals exactly five keystrokes (including characters, spaces, and punctuation). Check where your speed ranks on the international typing competency framework:
       </p>
 
       <div class="table-responsive">
@@ -83,7 +99,7 @@ const breadcrumbItems = [
               <th>Skill Level</th>
               <th>Speed (WPM)</th>
               <th>Accuracy Target</th>
-              <th>Typical Profile</th>
+              <th>Typical Profile &amp; Workplace Roles</th>
             </tr>
           </thead>
           <tbody>
@@ -91,67 +107,127 @@ const breadcrumbItems = [
               <td><strong>🌱 Beginner</strong></td>
               <td><span class="speed-tag">20 – 35 WPM</span></td>
               <td>90% – 94%</td>
-              <td>Two-finger typists, beginners</td>
+              <td>Two-finger typists, visual keyboard searchers, beginners</td>
             </tr>
             <tr>
               <td><strong>⚡ Average</strong></td>
               <td><span class="speed-tag">38 – 50 WPM</span></td>
               <td>95%+</td>
-              <td>Office workers, students</td>
+              <td>Office workers, administrative staff, undergraduate students</td>
             </tr>
             <tr>
               <td><strong>🚀 Above Average</strong></td>
               <td><span class="speed-tag">55 – 70 WPM</span></td>
               <td>97%+</td>
-              <td>Writers, competitive exam aspirants</td>
+              <td>Technical writers, journalists, competitive exam aspirants</td>
             </tr>
             <tr>
               <td><strong>🏎️ Professional</strong></td>
               <td><span class="speed-tag">75 – 90 WPM</span></td>
               <td>98%+</td>
-              <td>Programmers, transcribers, data entry pros</td>
+              <td>Software engineers, transcribers, data entry specialists</td>
             </tr>
             <tr>
               <td><strong>👑 Master / Top 1%</strong></td>
               <td><span class="speed-tag gold">95 – 120+ WPM</span></td>
               <td>99%+</td>
-              <td>Competitive esports typists</td>
+              <td>Competitive esports typists, court stenographers</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>How to Improve English Typing Speed? (7 Proven Tips)</h2>
+      <!-- In-Depth Technical Guide Section -->
+      <h2>Touch Typing Technical Ergonomics &amp; Keystroke Economy Guide</h2>
+      <p class="panel-text">
+        Achieving speeds above 70 WPM is fundamentally a study in physiological biomechanics and keystroke economy rather than brute finger velocity. By optimizing hand posture, tactile orientation, and rebound mechanics, you eliminate wasted physical travel and dramatically reduce mental latency.
+      </p>
+
       <div class="tips-grid">
         <div class="tip-card">
           <span class="tip-icon">🏠</span>
-          <h4>1. Anchor to Home Row (ASDF - JKL;)</h4>
-          <p>Always return your index fingers to F and J bumps. This enables typing without looking down.</p>
+          <h4>1. Tactile Anchoring &amp; The Home Row</h4>
+          <p>Standard keyboards feature small tactile ridges on the <strong>F</strong> and <strong>J</strong> keys. Your left index finger rests naturally on F, and your right index finger on J. These tactile nubs allow your brain to calibrate keyboard spatial geometry without a single downward glance.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🕊️</span>
+          <h4>2. Floating Wrists &amp; Tendon Protection</h4>
+          <p>Never rest the palms or wrists firmly on the desk surface while active typing is underway. Resting wrists compresses the median nerve inside the carpal tunnel. Maintain floating, hovering wrists aligned horizontally with your forearms in a relaxed arch.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-icon">🔄</span>
+          <h4>3. Keystroke Economy &amp; Rebound Motion</h4>
+          <p>Every keystroke should be a crisp, decisive strike followed immediately by an elastic snap-back to home-row position. Do not allow fingers to hover over upper or lower rows. The shortest path between any two sequential letters is always through the home row axis.</p>
         </div>
         <div class="tip-card">
           <span class="tip-icon">👁️</span>
-          <h4>2. Keep Eyes on the Screen</h4>
-          <p>Look ahead at upcoming words rather than focusing on the key you are currently striking.</p>
+          <h4>4. Buffer Reading &amp; Look-Ahead Gaze</h4>
+          <p>Competitive typists do not look at the character their fingers are currently striking. Instead, their gaze stays fixed two to three words ahead in the text stream. This visual buffering enables your subconscious motor cortex to prepare finger transitions in advance.</p>
+        </div>
+      </div>
+
+      <!-- The Mathematical Cost of Errors -->
+      <div class="math-breakdown-box">
+        <h3>The Hidden Mathematical Cost of Typographical Errors</h3>
+        <p class="panel-text">
+          Many typists mistakenly believe that typing frantically at 90 WPM with 90% accuracy yields higher output than typing steadily at 75 WPM with 99% accuracy. Biomechanical timing studies prove why this intuition is incorrect:
+        </p>
+        <div class="error-timeline-grid">
+          <div class="timeline-step">
+            <span class="step-ms">~200 ms</span>
+            <strong>1. Error Recognition</strong>
+            <p>Visual latency required for the brain to recognize a mistyped character on the monitor.</p>
+          </div>
+          <div class="timeline-step">
+            <span class="step-ms">~180 ms</span>
+            <strong>2. Motor Inhibitory Brake</strong>
+            <p>Neurological reaction time required to halt forward finger momentum across the keyboard.</p>
+          </div>
+          <div class="timeline-step">
+            <span class="step-ms">~160 ms</span>
+            <strong>3. Backspace Reach &amp; Stroke</strong>
+            <p>Physical transit of the right pinky finger reaching to the top-right corner to strike Backspace.</p>
+          </div>
+          <div class="timeline-step">
+            <span class="step-ms">~360 ms</span>
+            <strong>4. Re-Type &amp; Rhythm Reset</strong>
+            <p>Entering the correct letter and mentally resetting rhythm across both hands.</p>
+          </div>
+        </div>
+        <div class="formula-box" style="margin-top: 14px;">
+          <code>Total Time Lost Per Mistake = ~900 ms (~0.90 seconds)</code>
+          <p style="margin: 6px 0 0; font-size: 13px; color: #94a3b8;">
+            In a 60-second typing test, just 6 unforced errors consume over 5.4 seconds of dead time — lowering your net test score by 8 to 12 WPM! Accurate typing is invariably the fastest typing.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4-Week Daily 15-Minute Mastery Blueprint -->
+      <h2 style="margin-top: 28px;">The 4-Week Daily 15-Minute Mastery Blueprint</h2>
+      <p class="panel-text">
+        Follow this structured daily training syllabus to systematically eliminate keyboard hunting and build permanent muscle memory:
+      </p>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-icon">📅</span>
+          <h4>Week 1: Home-Row Lockdown</h4>
+          <p><strong>Goal:</strong> 100% blind touch on A S D F and J K L ;.<br/>Commit 15 minutes daily to practicing common English home-row patterns (sad, fall, ask, flash, dad). Never glance down.</p>
         </div>
         <div class="tip-card">
-          <span class="tip-icon">🎯</span>
-          <h4>3. Maintain 98%+ Accuracy</h4>
-          <p>Fixing mistakes with backspace costs 3x more time than typing at a steady, accurate pace.</p>
+          <span class="tip-icon">📅</span>
+          <h4>Week 2: Vertical Reach Expansion</h4>
+          <p><strong>Goal:</strong> Master upper row (Q W E R T Y U I O P) and lower row (Z X C V B N M).<br/>Drill vertical reaches with dedicated fingers. Ensure fingers snap back to home position instantly after each reach.</p>
         </div>
         <div class="tip-card">
-          <span class="tip-icon">🖐️</span>
-          <h4>4. Use All 10 Fingers</h4>
-          <p>Assign specific fingers to specific keys to distribute work evenly and prevent hand strain.</p>
+          <span class="tip-icon">📅</span>
+          <h4>Week 3: Numbers &amp; Shift Symmetry</h4>
+          <p><strong>Goal:</strong> Symmetric Shift key usage and punctuation fluency.<br/>Use opposite hand Shift: when capitalizing left-hand keys, press Right Shift with your right pinky, and vice versa. Drill comma, period, and apostrophe.</p>
         </div>
         <div class="tip-card">
-          <span class="tip-icon">⏱️</span>
-          <h4>5. Practice in 60s Bursts</h4>
-          <p>Short, intense 1-minute tests build quick muscle memory and rapid neural reflexes.</p>
-        </div>
-        <div class="tip-card">
-          <span class="tip-icon">🏎️</span>
-          <h4>6. Compete in Typing Races</h4>
-          <p>Playing in the TypeBaazi AI Car Race pushes your subconscious to type faster under competition.</p>
+          <span class="tip-icon">📅</span>
+          <h4>Week 4: Speed Bursts &amp; Pacing</h4>
+          <p><strong>Goal:</strong> Push past speed plateaus while holding 98%+ accuracy.<br/>Combine 60-second benchmark tests on TypeBaazi with competitive AI car racing to push reaction thresholds under pressure.</p>
         </div>
       </div>
 
@@ -511,6 +587,104 @@ const breadcrumbItems = [
     color: #cbd5e1;
     line-height: 1.6;
     margin: 0;
+  }
+
+  /* Light Theme */
+  [data-theme='light'] .math-breakdown-box {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  [data-theme='light'] .timeline-step {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  [data-theme='light'] .timeline-step strong,
+  [data-theme='light'] .math-breakdown-box h3 {
+    color: #0f172a !important;
+  }
+
+  [data-theme='light'] .timeline-step p {
+    color: #475569 !important;
+  }
+
+  [data-theme='light'] .formula-box {
+    background: #f0f9ff !important;
+    border-color: #0284c7 !important;
+  }
+
+  [data-theme='light'] .formula-box code {
+    color: #0369a1 !important;
+  }
+
+  .math-breakdown-box {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1.5px solid rgba(0, 240, 255, 0.25);
+    border-radius: 16px;
+    padding: 22px;
+    margin: 24px 0;
+  }
+
+  .math-breakdown-box h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+  }
+
+  .error-timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .timeline-step {
+    background: rgba(8, 12, 22, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .step-ms {
+    display: inline-block;
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: var(--font-mono, monospace);
+    margin-bottom: 6px;
+  }
+
+  .timeline-step strong {
+    display: block;
+    font-size: 13.5px;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .timeline-step p {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .formula-box {
+    background: rgba(0, 240, 255, 0.06);
+    border: 1px dashed rgba(0, 240, 255, 0.3);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+
+  .formula-box code {
+    font-size: 13px;
+    font-weight: 700;
+    color: #00f0ff;
+    font-family: var(--font-mono, monospace);
   }
 
   /* Light Theme */

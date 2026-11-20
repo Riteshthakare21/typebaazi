@@ -12,20 +12,29 @@ const pageKeywords =
 
 const hindiPracticeFaqs = [
   {
-    question: "How do I start Hindi typing practice as a beginner?",
-    answer:
-      "Start by learning the home row keys on your physical or virtual keyboard. Practice individual letters, then move on to matras (मात्राएं), and finally type short sentences and full paragraphs on TypeBaazi.",
+    question: "हिंदी टाइपिंग अभ्यास की शुरुआत कैसे करें?",
+    answer: "टाइपिंग की शुरुआत होम रो (Home Row) कीज़ से करें। अपने बाएं हाथ की उंगलियों को ASDF (ो े ् ि) पर और दाएं हाथ की उंगलियों को JKL; (र क त च) पर रखें। TypeBaazi के ऑन-स्क्रीन कीबोर्ड की सहायता से बिना कीबोर्ड को देखे टाइप करने का अभ्यास करें।"
   },
   {
-    question: "Which keyboard layout is recommended for Hindi typing practice?",
-    answer:
-      "For government exams like SSC, CPCT, and High Court recruitment, Inscript Devanagari is standard. TypeBaazi provides instant visual key assistance for smooth learning.",
+    question: "सरकारी परीक्षाओं (SSC, CPCT, High Court) के लिए कौन सा कीबोर्ड लेआउट सही है?",
+    answer: "भारत सरकार द्वारा मानकीकृत 'देवनागरी इनस्क्रिप्ट' (InScript) कीबोर्ड लेआउट सभी केंद्रीय और अधिकांश राज्य स्तरीय परीक्षाओं (SSC CGL/CHSL, Railway RRB, Courts) में अनिवार्य या अनुशंसित है। यह विंडोज़, मैक और मोबाइल में पहले से उपलब्ध रहता है।"
   },
   {
-    question: "How can I improve my Hindi typing accuracy?",
-    answer:
-      "Practice slowly without rushing. Pay extra attention to halant (्) combinations and matras. Aim for 98%+ accuracy before attempting to type faster.",
+    question: "हिंदी इनस्क्रिप्ट में मात्राएँ (Matras) कैसे टाइप करें?",
+    answer: "इनस्क्रिप्ट में पहले व्यंजन टाइप करें, फिर संबंधित मात्रा की की दबाएँ। जैसे 'कि' लिखने के लिए 'k' (क) फिर 'f' (ि) दबाएँ। 'कु' के लिए 'k' (क) फिर 'g' (ु) दबाएँ। 'का' के लिए 'k' (क) फिर 'e' (ा) दबाएँ।"
   },
+  {
+    question: "संयुक्त अक्षर (जैसे क्ष, त्र, ज्ञ, श्र) कैसे बनाए जाते हैं?",
+    answer: "पहला व्यंजन टाइप करें, फिर हलंत ('d' की) दबाएँ, और फिर दूसरा व्यंजन दबाएँ। उदाहरण: क + ् (d) + ष (Shift+,) = क्ष; त + ् (d) + र (j) = त्र; ज + ् (d) + ञ (Shift+}) = ज्ञ; श + ् (d) + र (j) = श्र।"
+  },
+  {
+    question: "नुक्ता वाले अक्षर (क़, ख़, ग़, ज़, ड़, ढ़, फ़) कैसे टाइप करें?",
+    answer: "मूल अक्षर टाइप करने के तुरंत बाद नुक्ता की (']' की) दबाएँ। जैसे 'ज' (p) + '़' (]) = ज़; 'ड' ([) + '़' (]) = ड़; 'फ' (Shift+h) + '़' (]) = फ़।"
+  },
+  {
+    question: "प्रतिदिन कितने समय अभ्यास करने से गति 30+ WPM हो सकती है?",
+    answer: "प्रतिदिन 25 से 30 मिनट का नियमित अभ्यास पर्याप्त है। पहले 10 मिनट वर्णमाला और मात्राओं का अभ्यास करें, 10 मिनट कठिन संयुक्त शब्दों का अभ्यास करें, और 10 मिनट TypeBaazi पर टाइमर टेस्ट दें। 4 से 6 सप्ताह में 30+ WPM गति प्राप्त हो जाती है।"
+  }
 ];
 
 const breadcrumbItems = [
@@ -91,67 +100,228 @@ const breadcrumbItems = [
     </section>
 
     <!-- Practice Guide & Exercises -->
-    <section class="practice-guide-panel glass-panel">
-      <h2>Step-by-Step Hindi Typing Lessons</h2>
-      <div class="lessons-grid">
-        <div class="lesson-card">
-          <span class="lesson-badge">Lesson 1</span>
-          <h3>Home Row Keys (होम रो कीज)</h3>
-          <p>
-            Learn finger positioning on ASDF (ो े ् ि) and JKL; (र क त स).
-            Anchor your index fingers on F and J.
-          </p>
-        </div>
-        <div class="lesson-card">
-          <span class="lesson-badge">Lesson 2</span>
-          <h3>Top Row Keys (अपर रो कीज)</h3>
-          <p>
-            Practice vowels and consonants on QWERTY (ौ ै ा ी ू ब ह ग द ज ड)
-            using upper finger reaches.
-          </p>
-        </div>
-        <div class="lesson-card">
-          <span class="lesson-badge">Lesson 3</span>
-          <h3>Bottom Row Keys (बॉटम रो कीज)</h3>
-          <p>
-            Master bottom row characters (ं ृ ़ े ् म न व ल स) for smooth word
-            transitions.
-          </p>
-        </div>
-        <div class="lesson-card">
-          <span class="lesson-badge">Lesson 4</span>
-          <h3>Shift Keys &amp; Conjuncts (संयुक्ताक्षर)</h3>
-          <p>
-            Type upper characters (ओ, ऐ, आ, ई, ऊ, भ, ङ, घ, ध, झ, ढ) and combine
-            consonants with halant (्).
-          </p>
-        </div>
-      </div>
+    <article class="practice-guide-panel glass-panel" itemscope itemtype="https://schema.org/Article">
+      <header class="panel-header-block">
+        <span class="badge badge-gold">🇮🇳 हिंदी टाइपिंग संपूर्ण पाठ</span>
+        <h2 itemprop="headline">हिंदी टाइपिंग अभ्यास पाठ एवं वैज्ञानिक इनस्क्रिप्ट नियमावली</h2>
+        <p class="panel-lead-text">
+          हिंदी टाइपिंग में गति और 100% सटीकता प्राप्त करने के लिए भारत सरकार द्वारा प्रमाणित <strong>देवनागरी इनस्क्रिप्ट (InScript) कीबोर्ड</strong> सबसे सटीक और वैज्ञानिक माध्यम है। यह पाठमाला आपको होम-रो, मात्राओं, हलंत तथा कठिन संयुक्त अक्षरों का चरणबद्ध अभ्यास कराती है।
+        </p>
+      </header>
 
-      <!-- Practice Tips -->
-      <h2>Essential Tips for Hindi Typing Mastery</h2>
-      <div class="tips-box">
-        <ul>
-          <li>
-            <strong>Never look at your keyboard:</strong> Trust muscle memory and
-            let the on-screen visual guide guide your fingers.
-          </li>
-          <li>
-            <strong>Master the Halant (् / D key):</strong> In Hindi Inscript, press
-            the consonant, then press <code>D</code> (्), followed by the second consonant
-            to create conjuncts (e.g. क + ् + ष = क्ष).
-          </li>
-          <li>
-            <strong>Consistent rhythm:</strong> Maintain an even typing tempo rather
-            than typing in sporadic bursts.
-          </li>
-          <li>
-            <strong>Test under timed conditions:</strong> After practicing drills,
-            take the <strong>7-Minute Exam Test</strong> to evaluate your real exam
-            readiness.
-          </li>
+      <!-- Section 1: InScript Home Row & Fingers -->
+      <section class="guide-sub-section">
+        <h3>१. होम रो (Home Row) कीज़ और उंगलियों का सही विन्यास</h3>
+        <p>
+          इनस्क्रिप्ट कीबोर्ड पर दोनों हाथों की उंगलियाँ हमेशा होम रो पर टिकी होनी चाहिए। बाएं हाथ की तर्जनी <code>F</code> की पर और दाएं हाथ की तर्जनी <code>J</code> की पर स्थित 'उभरे हुए निशान' (Bump) पर रखें:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>हाथ (Hand)</th>
+                <th>उंगली (Finger)</th>
+                <th>की (Physical Key)</th>
+                <th>सामान्य वर्ण (Normal)</th>
+                <th>शिफ्ट के साथ (Shift Key)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4"><strong>बायां हाथ (स्वर एवं मात्राएँ)</strong></td>
+                <td>कनिष्ठिका (Little)</td>
+                <td><code>A</code></td>
+                <td>ो (ओ की मात्रा)</td>
+                <td>ओ</td>
+              </tr>
+              <tr>
+                <td>अनामिका (Ring)</td>
+                <td><code>S</code></td>
+                <td>े (ए की मात्रा)</td>
+                <td>ऐ</td>
+              </tr>
+              <tr>
+                <td>मध्यमा (Middle)</td>
+                <td><code>D</code></td>
+                <td>् (हलंत)</td>
+                <td>अ</td>
+              </tr>
+              <tr>
+                <td>तर्जनी (Index)</td>
+                <td><code>F</code> एवं <code>G</code></td>
+                <td>ि (इ की मात्रा) / ु (उ की मात्रा)</td>
+                <td>इ / उ</td>
+              </tr>
+              <tr>
+                <td rowspan="4"><strong>दायां हाथ (व्यंजन)</strong></td>
+                <td>तर्जनी (Index)</td>
+                <td><code>H</code> एवं <code>J</code></td>
+                <td>प / र</td>
+                <td>फ / ऱ</td>
+              </tr>
+              <tr>
+                <td>मध्यमा (Middle)</td>
+                <td><code>K</code></td>
+                <td>क</td>
+                <td>ख</td>
+              </tr>
+              <tr>
+                <td>अनामिका (Ring)</td>
+                <td><code>L</code></td>
+                <td>त</td>
+                <td>थ</td>
+              </tr>
+              <tr>
+                <td>कनिष्ठिका (Little)</td>
+                <td><code>;</code></td>
+                <td>च</td>
+                <td>छ</td>
+              </tr>
+              <tr>
+                <td><strong>दोनों अंगूठे</strong></td>
+                <td>अंगूठा (Thumbs)</td>
+                <td><code>Spacebar</code></td>
+                <td colspan="2" style="text-align: center;">शब्दों के बीच स्पेस (Space)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: Matras & Vowel Signs -->
+      <section class="guide-sub-section">
+        <h3>२. हिंदी मात्राएँ (Matras) लगाने की सही विधि</h3>
+        <p>
+          देवनागरी इनस्क्रिप्ट में हमेशा पहले मूल व्यंजन टाइप किया जाता है, उसके तुरंत बाद मात्रा की की दबाई जाती है:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>वर्ण विन्यास</th>
+                <th>मात्रा नाम</th>
+                <th>कीस्ट्रोक (Keystrokes)</th>
+                <th>उदाहरण शब्द</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>क + ा = का</strong></td>
+                <td>आ की मात्रा (ा)</td>
+                <td><code>k</code> + <code>e</code></td>
+                <td>काम, काल, भारत</td>
+              </tr>
+              <tr>
+                <td><strong>क + ि = कि</strong></td>
+                <td>ह्रस्व इ की मात्रा (ि)</td>
+                <td><code>k</code> + <code>f</code></td>
+                <td>किरण, किसान, किताब</td>
+              </tr>
+              <tr>
+                <td><strong>क + ी = की</strong></td>
+                <td>दीर्घ ई की मात्रा (ी)</td>
+                <td><code>k</code> + <code>r</code></td>
+                <td>कीमत, कीचड़, सीख</td>
+              </tr>
+              <tr>
+                <td><strong>क + ु = कु</strong></td>
+                <td>ह्रस्व उ की मात्रा (ु)</td>
+                <td><code>k</code> + <code>g</code></td>
+                <td>कुल, कुशल, सुमन</td>
+              </tr>
+              <tr>
+                <td><strong>क + ू = कू</strong></td>
+                <td>दीर्घ ऊ की मात्रा (ू)</td>
+                <td><code>k</code> + <code>t</code></td>
+                <td>कूदना, कूप, मूल</td>
+              </tr>
+              <tr>
+                <td><strong>क + ृ = कृ</strong></td>
+                <td>ऋ की मात्रा (ृ)</td>
+                <td><code>k</code> + <code>=</code></td>
+                <td>कृपा, कृषि, प्रकृति</td>
+              </tr>
+              <tr>
+                <td><strong>क + े = के</strong></td>
+                <td>ए की मात्रा (े)</td>
+                <td><code>k</code> + <code>s</code></td>
+                <td>केसर, खेल, देश</td>
+              </tr>
+              <tr>
+                <td><strong>क + ै = कै</strong></td>
+                <td>ऐ की मात्रा (ै)</td>
+                <td><code>k</code> + <code>w</code></td>
+                <td>कैमरा, कैसा, सैनिक</td>
+              </tr>
+              <tr>
+                <td><strong>क + ो = को</strong></td>
+                <td>ओ की मात्रा (ो)</td>
+                <td><code>k</code> + <code>a</code></td>
+                <td>कोयल, कोण, मोर</td>
+              </tr>
+              <tr>
+                <td><strong>क + ौ = कौ</strong></td>
+                <td>औ की मात्रा (ौ)</td>
+                <td><code>k</code> + <code>q</code></td>
+                <td>कौन, कौतुक, नौका</td>
+              </tr>
+              <tr>
+                <td><strong>क + ं = कं</strong></td>
+                <td>अनुस्वार (ं)</td>
+                <td><code>k</code> + <code>x</code></td>
+                <td>कंस, रंग, संसार</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Conjunct (संयुक्ताक्षर) Rules -->
+      <section class="guide-sub-section">
+        <h3>३. संयुक्त अक्षर (Conjuncts) और हलंत (Virama) नियम</h3>
+        <p>
+          हिंदी में जब दो व्यंजन बिना किसी स्वर के आपस में जुड़ते हैं, तो पहले व्यंजन के बाद <strong>हलंत (् / 'd' की)</strong> दबाया जाता है:
+        </p>
+
+        <div class="drills-grid">
+          <div class="drill-item">
+            <span class="drill-icon">⚡</span>
+            <h4>१. क्ष और त्र</h4>
+            <p><strong>क + ् + ष = क्ष</strong> (<code>k</code> + <code>d</code> + <code>Shift+,</code>)<br/><strong>त + ् + र = त्र</strong> (<code>l</code> + <code>d</code> + <code>j</code>)</p>
+          </div>
+          <div class="drill-item">
+            <span class="drill-icon">🇮🇳</span>
+            <h4>२. ज्ञ और श्र</h4>
+            <p><strong>ज + ् + ञ = ज्ञ</strong> (<code>p</code> + <code>d</code> + <code>Shift+&#125;</code>)<br/><strong>श + ् + र = श्र</strong> (<code>Shift+m</code> + <code>d</code> + <code>j</code>)</p>
+          </div>
+          <div class="drill-item">
+            <span class="drill-icon">📝</span>
+            <h4>३. प्र और क्र</h4>
+            <p><strong>प + ् + र = प्र</strong> (<code>h</code> + <code>d</code> + <code>j</code>)<br/><strong>क + ् + र = क्र</strong> (<code>k</code> + <code>d</code> + <code>j</code>)</p>
+          </div>
+          <div class="drill-item">
+            <span class="drill-icon">🏛️</span>
+            <h4>४. द्व और द्ध</h4>
+            <p><strong>द + ् + व = द्व</strong> (<code>o</code> + <code>d</code> + <code>b</code>)<br/><strong>द + ् + ध = द्ध</strong> (<code>o</code> + <code>d</code> + <code>Shift+o</code>)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Nukta Characters -->
+      <section class="guide-sub-section">
+        <h3>४. नुक्ता (़) वाले अक्षरों का प्रयोग</h3>
+        <p>
+          उर्दू एवं फ़ारसी मूल के हिंदी शब्दों में नुक्ता आवश्यक होता है। इनस्क्रिप्ट में नुक्ता की <strong>']' (Right Bracket)</strong> पर स्थित होती है:
+        </p>
+        <ul class="feature-bullets-list">
+          <li><strong>ज़ (Za):</strong> <code>p</code> (ज) + <code>]</code> (़) &rarr; ज़िंदगी, ज़िला, आवाज़</li>
+          <li><strong>फ़ (Fa):</strong> <code>Shift + h</code> (फ) + <code>]</code> (़) &rarr; फ़ैसला, फ़िल्म, फ़ायदा</li>
+          <li><strong>ड़ (Dda):</strong> <code>[</code> (ड) + <code>]</code> (़) &rarr; सड़क, पेड़, कपड़ा</li>
+          <li><strong>ढ़ (Ddha):</strong> <code>Shift + [</code> (ढ) + <code>]</code> (़) &rarr; पढ़ना, चढ़ना, सीढ़ी</li>
         </ul>
-      </div>
+      </section>
 
       <!-- Related Links -->
       <div class="related-links-box">
@@ -161,9 +331,7 @@ const breadcrumbItems = [
             <span class="hub-icon">⏱️</span>
             <div>
               <strong>Hindi Typing Test</strong>
-              <span
-                >Timed 1-min &amp; 7-min speed tests with PDF certificates.</span
-              >
+              <span>Timed 1-min &amp; 7-min speed tests with PDF certificates.</span>
             </div>
           </a>
           <a href="/seven-minute-typing-test/" class="hub-link-card">
@@ -171,6 +339,13 @@ const breadcrumbItems = [
             <div>
               <strong>7-Minute Exam Simulator</strong>
               <span>30 WPM &amp; 40 WPM mock test with 50+ passages.</span>
+            </div>
+          </a>
+          <a href="/guides/hindi-typing-exam-preparation/" class="hub-link-card">
+            <span class="hub-icon">📚</span>
+            <div>
+              <strong>Hindi Exam Preparation Guide</strong>
+              <span>Complete preparation handbook for SSC &amp; CPCT tests.</span>
             </div>
           </a>
           <a href="/marathi-typing-practice/" class="hub-link-card">
@@ -187,9 +362,34 @@ const breadcrumbItems = [
               <span>Compete against AI cars with nitro boosts in Hindi!</span>
             </div>
           </a>
+          <a href="/government-exam-typing-practice/" class="hub-link-card">
+            <span class="hub-icon">🏛️</span>
+            <div>
+              <strong>Government Exam Typing Practice</strong>
+              <span>Practice central and state clerical exam formats.</span>
+            </div>
+          </a>
         </div>
       </div>
-    </section>
+
+      <!-- FAQ Accordion -->
+      <div class="seo-faq-block" style="margin-top: 24px;">
+        <h3>अक्सर पूछे जाने वाले प्रश्न (FAQ)</h3>
+        <div class="faq-accordion">
+          {hindiPracticeFaqs.map((item) => (
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>{item.question}</span>
+                <span class="faq-arrow">&darr;</span>
+              </summary>
+              <div class="faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </article>
   </div>
 </Layout>
 

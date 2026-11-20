@@ -9,20 +9,36 @@ const pageKeywords = "marathi typing test online, marathi typing test, marathi t
 
 const marathiFaqs = [
   {
-    question: "What is a Marathi typing test?",
-    answer: "A Marathi typing test measures how many Devanagari words and characters you can type accurately per minute (WPM). It evaluates your keystroke speed, error rate, and knowledge of Marathi keyboard layouts like Remington and Inscript."
+    question: "What is a Marathi typing test and how is speed calculated?",
+    answer: "A Marathi typing test measures typing speed in Words Per Minute (WPM) and accuracy in the Devanagari script. In standard typing examinations, 5 keystrokes (including consonants, vowels, matras, halants, and spaces) equal one standardized word. Gross WPM measures your raw keystroke velocity, while Net WPM subtracts penalties for uncorrected spelling or grammatical errors."
   },
   {
-    question: "What is a good Marathi typing speed for GCC-TBC exams?",
-    answer: "A speed of 30 WPM with 95%+ accuracy is the standard benchmark required for government certification (GCC-TBC) and clerk-typist recruitment in Maharashtra. Speeds above 40 WPM are considered professional grade."
+    question: "What is the passing criteria for Maharashtra GCC-TBC 30 WPM & 40 WPM examinations?",
+    answer: "For GCC-TBC Marathi 30 WPM, candidates must type at least 210 words (1,050 keystrokes) within 7 minutes with a minimum of 90% accuracy (no more than 10 uncorrected errors). For GCC-TBC Marathi 40 WPM, candidates must type 280 words (1,400 keystrokes) with 90%+ accuracy to secure a passing grade of at least 25 out of 50 marks."
   },
   {
-    question: "How can I practice Marathi typing online for free on TypeBaazi?",
-    answer: "You can practice Marathi typing for free directly on TypeBaazi. Choose between 60s, 180s, or official 7-minute test rounds, practice with on-screen virtual keyboard guides, and download free verified speed certificates."
+    question: "Which keyboard layout is officially required for Marathi government exams?",
+    answer: "The Maharashtra State Council of Examination (MSCE) and MPSC officially recognize the standard Devanagari InScript keyboard layout, which is built natively into Windows, macOS, Android, and Linux. Remington Marathi typewriter layout is also practiced by traditional typists. TypeBaazi's interactive virtual keyboard teaches InScript layout principles with active finger guides."
   },
   {
-    question: "Is TypeBaazi free for students and exam aspirants?",
-    answer: "Yes, TypeBaazi is 100% free with unlimited tests, practice paragraphs, live AI racing games, and downloadable digital certificates."
+    question: "How do I type half letters (अर्धी अक्षरे) and conjuncts (जोडाक्षरे) in Marathi?",
+    answer: "In the Devanagari InScript layout, you type any half-letter by typing the full consonant followed immediately by the Halant/Virama key ('d' key on your physical keyboard), and then the second consonant. For example, to type 'महाराष्ट्र', type म, ह, ा, र, ा, ष, ् (d), ट, ् (d), र."
+  },
+  {
+    question: "How are errors penalized in Marathi typing examinations?",
+    answer: "In GCC-TBC speed tests, errors are categorized as Full Mistakes (incorrect words, missing words, substituted words) or Half Mistakes (spacing errors, capitalization/punctuation errors). Each full error generally deducts 1 to 2 marks from the 50-mark speed paper, making accuracy far more critical than raw unguided speed."
+  },
+  {
+    question: "Can I practice Marathi typing with my standard physical QWERTY keyboard?",
+    answer: "Yes! You do not need an expensive specialized Indian keyboard. TypeBaazi automatically maps your standard physical QWERTY keyboard directly into the official Devanagari InScript script, and our on-screen visual keyboard highlights the active finger positions in real-time."
+  },
+  {
+    question: "Why is a Marathi typing certificate valuable for government careers in Maharashtra?",
+    answer: "A valid GCC-TBC Marathi 30 WPM certificate is a mandatory qualification under Maharashtra government recruitment rules for MPSC Group C Clerk-Typist (लिपिक-टंकलेखक), Municipal Corporation (महानगरपालिका) jobs, Talathi, and High Court Registry positions."
+  },
+  {
+    question: "What is the best daily practice routine to achieve 30 WPM in Marathi?",
+    answer: "Practice 25 to 30 minutes daily divided into three targeted drills: 10 minutes of InScript home-row and matra muscle memory drills, 10 minutes of untimed passage typing focusing on 98%+ accuracy, and 10 minutes of timed 60s or 7-minute mock exam simulations on TypeBaazi."
   }
 ];
 
@@ -71,55 +87,248 @@ const breadcrumbItems = [
     </section>
 
     <!-- Educational & Practical Guide -->
-    <section class="marathi-info-panel glass-panel">
-      <h2>What is a Marathi Typing Test?</h2>
-      <p class="panel-text">
-        A Marathi typing test evaluates your typing fluency in Devanagari script. It measures your <strong>Words Per Minute (WPM)</strong>, <strong>Net WPM</strong>, and <strong>Accuracy percentage</strong>. In Marathi, one standardized word is calculated as 5 characters (including vowels, consonants, matras, and spaces).
-      </p>
+    <article class="marathi-info-panel glass-panel" itemscope itemtype="https://schema.org/Article">
+      <header class="panel-header-block">
+        <span class="badge badge-pink">📚 Official Exam Reference</span>
+        <h2 itemprop="headline">Comprehensive Marathi Devanagari Typing &amp; GCC-TBC Examination Handbook</h2>
+        <p class="panel-lead-text">
+          Mastering Marathi typing in the authentic Devanagari script is an essential vocational qualification across Maharashtra for government clerk-typist posts (MPSC), Municipal Corporations, District Courts, and commercial secretarial roles. This authoritative guide breaks down the international WPM measurement standards, the official InScript keyboard architecture, conjunct formation rules, and proven practice routines to pass the MSCE GCC-TBC 30 and 40 WPM examinations.
+        </p>
+      </header>
 
-      <h2>How to Improve Marathi Typing Speed? (Top 8 Tips)</h2>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <span class="tip-icon">🏠</span>
-          <h4>1. Master the Home Row</h4>
-          <p>Keep your index fingers anchored on the home row keys (F and J) to build muscle memory for Devanagari characters.</p>
+      <!-- Section 1: Measurement & Standard Calculation -->
+      <section class="guide-sub-section">
+        <h3>1. How Marathi Typing Speed (WPM) &amp; Accuracy Are Evaluated</h3>
+        <p>
+          Unlike casual character counting, official state examination authorities—including the Maharashtra State Council of Examination (MSCE)—measure typing proficiency using standardized mathematical equations. In Marathi Devanagari, one standardized typist word is defined as exactly <strong>5 keystrokes</strong> (including consonants, independent vowels, matras, halants, spaces, and punctuation):
+        </p>
+        <div class="formula-grid-block">
+          <div class="formula-box-card">
+            <h4>Gross Words Per Minute (Gross WPM)</h4>
+            <code>Gross WPM = (Total Keystrokes / 5) / Test Time in Minutes</code>
+            <p>Measures your raw keystroke velocity and finger agility regardless of typographical errors.</p>
+          </div>
+          <div class="formula-box-card">
+            <h4>Net Words Per Minute (Net WPM)</h4>
+            <code>Net WPM = Gross WPM − (Uncorrected Errors / Test Time in Minutes)</code>
+            <p>The definitive metric used for official pass/fail qualification and merit ranking in government tests.</p>
+          </div>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">⌨️</span>
-          <h4>2. Learn Remington &amp; Inscript Layouts</h4>
-          <p>Understand key placements for vowels (स्वर), consonants (व्यंजने), and matras (काना, वेलांटी, उकार, मात्रा).</p>
+      </section>
+
+      <!-- Section 2: InScript Keyboard Layout Architecture -->
+      <section class="guide-sub-section">
+        <h3>2. Devanagari InScript Keyboard Layout: Finger-to-Key Architecture</h3>
+        <p>
+          The standard Indian Script (InScript) keyboard was scientifically engineered by the Department of Electronics (Government of India) to maximize typing speed while minimizing finger travel. The layout follows a logical linguistic division:
+        </p>
+        <ul class="feature-bullets-list">
+          <li><strong>Left Hand (Vowels &amp; Matras):</strong> Controls all independent vowels (स्वर) and dependent vowel signs (मात्रा). The home-row keys <code>ASDFG</code> produce <em>ो, े, ्, ि, ु</em> (normal) and <em>ओ, ऐ, अ, इ, उ</em> (with Shift).</li>
+          <li><strong>Right Hand (Consonants):</strong> Controls all consonants (व्यंजने). The home-row keys <code>HJKL;</code> produce <em>प, र, क, त, च</em> (normal) and <em>फ, ऱ, ख, थ, छ</em> (with Shift).</li>
+          <li><strong>Top &amp; Bottom Rows:</strong> Top row keys cover additional consonants (ब, ह, ग, द, ज, ड) and matras (ौ, ै, ा, ी, ू). Bottom row keys cover nasalizations (ं), vocalic r (ृ), nukta (़), and lower consonants (म, न, व, ल, स).</li>
+        </ul>
+
+        <div class="table-responsive" style="margin-top: 16px;">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>Finger Position</th>
+                <th>Left Hand Keys (Vowels / Matras)</th>
+                <th>Right Hand Keys (Consonants)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Home Row (Pinky)</strong></td>
+                <td><code>A</code> &rarr; ो (Shift: ओ)</td>
+                <td><code>;</code> &rarr; च (Shift: छ)</td>
+              </tr>
+              <tr>
+                <td><strong>Home Row (Ring)</strong></td>
+                <td><code>S</code> &rarr; े (Shift: ऐ)</td>
+                <td><code>L</code> &rarr; त (Shift: थ)</td>
+              </tr>
+              <tr>
+                <td><strong>Home Row (Middle)</strong></td>
+                <td><code>D</code> &rarr; ् (Halant / Virama) (Shift: अ)</td>
+                <td><code>K</code> &rarr; क (Shift: ख)</td>
+              </tr>
+              <tr>
+                <td><strong>Home Row (Index Anchor)</strong></td>
+                <td><code>F</code> &rarr; ि (Shift: इ), <code>G</code> &rarr; ु (Shift: उ)</td>
+                <td><code>J</code> &rarr; र (Shift: ऱ), <code>H</code> &rarr; प (Shift: फ)</td>
+              </tr>
+              <tr>
+                <td><strong>Thumbs</strong></td>
+                <td colspan="2" style="text-align: center;">Spacebar (spaces between words)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">🎯</span>
-          <h4>3. Focus on 98%+ Accuracy First</h4>
-          <p>Speed naturally follows accuracy. Avoiding backspace and incorrect keystrokes will instantly raise your Net WPM score.</p>
+      </section>
+
+      <!-- Section 3: Conjunct (जोडाक्षरे) Formation Rules -->
+      <section class="guide-sub-section">
+        <h3>3. Forming Conjuncts (जोडाक्षरे) &amp; Half-Letters in InScript</h3>
+        <p>
+          The most critical technical skill in Marathi typing is forming joint characters cleanly without mistyping the halant or vowel order. In InScript, a conjunct is created by entering the base consonant, followed by the <strong>Halant (Virama / 'd' key)</strong>, followed by the second consonant:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>Target Conjunct</th>
+                <th>Devanagari Component Sequence</th>
+                <th>Physical Keystroke Sequence (InScript)</th>
+                <th>Practical Example Word</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>क्त</strong></td>
+                <td>क + ् + त</td>
+                <td><code>k</code> + <code>d</code> + <code>l</code></td>
+                <td>रक्त, भक्त, व्यक्ती</td>
+              </tr>
+              <tr>
+                <td><strong>प्र</strong></td>
+                <td>प + ् + र</td>
+                <td><code>h</code> + <code>d</code> + <code>j</code></td>
+                <td>प्रशासन, प्रगती, प्रकाश</td>
+              </tr>
+              <tr>
+                <td><strong>त्र</strong></td>
+                <td>त + ् + र</td>
+                <td><code>l</code> + <code>d</code> + <code>j</code></td>
+                <td>पत्र, मित्र, चरित्र</td>
+              </tr>
+              <tr>
+                <td><strong>क्ष</strong></td>
+                <td>क + ् + ष</td>
+                <td><code>k</code> + <code>d</code> + <code>Shift + ,</code></td>
+                <td>शिक्षण, परीक्षा, पक्षी</td>
+              </tr>
+              <tr>
+                <td><strong>ज्ञ</strong></td>
+                <td>ज + ् + ञ</td>
+                <td><code>p</code> + <code>d</code> + <code>Shift + &#125;</code></td>
+                <td>ज्ञान, विज्ञान, आज्ञा</td>
+              </tr>
+              <tr>
+                <td><strong>ष्ट</strong></td>
+                <td>ष + ् + ट</td>
+                <td><code>Shift + ,</code> + <code>d</code> + <code>'</code></td>
+                <td>महाराष्ट्र, कष्ट, स्पष्ट</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">🔤</span>
-          <h4>4. Practice Conjuncts (जोडाक्षरे)</h4>
-          <p>Regularly practice half-letters and complex conjuncts (उदा. क्ष, ज्ञ, त्र, प्र, क्र) using halant (्) combinations.</p>
+      </section>
+
+      <!-- Section 4: GCC-TBC 30 WPM vs 40 WPM Examination Matrix -->
+      <section class="guide-sub-section">
+        <h3>4. Maharashtra GCC-TBC 30 WPM vs 40 WPM Examination Criteria</h3>
+        <p>
+          The MSCE GCC-TBC (Government Commercial Certificate in Computer Typing Basic Course) examination follows a rigorous time-bound marking structure. Review the exact statutory thresholds below:
+        </p>
+
+        <div class="table-responsive">
+          <table class="exam-benchmarks-table">
+            <thead>
+              <tr>
+                <th>Exam Parameter</th>
+                <th>GCC-TBC Marathi 30 WPM</th>
+                <th>GCC-TBC Marathi 40 WPM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Test Duration</strong></td>
+                <td>7 Minutes (420 Seconds)</td>
+                <td>7 Minutes (420 Seconds)</td>
+              </tr>
+              <tr>
+                <td><strong>Target Word Count</strong></td>
+                <td>210 Words</td>
+                <td>280 Words</td>
+              </tr>
+              <tr>
+                <td><strong>Target Keystroke Count</strong></td>
+                <td>1,050 Key Depressions</td>
+                <td>1,400 Key Depressions</td>
+              </tr>
+              <tr>
+                <td><strong>Total Marks Allocated</strong></td>
+                <td>50 Marks (Speed Passage)</td>
+                <td>50 Marks (Speed Passage)</td>
+              </tr>
+              <tr>
+                <td><strong>Minimum Qualifying Marks</strong></td>
+                <td>25 Marks (50%)</td>
+                <td>25 Marks (50%)</td>
+              </tr>
+              <tr>
+                <td><strong>Maximum Permissible Errors</strong></td>
+                <td>7 to 10 Uncorrected Mistakes</td>
+                <td>5 to 8 Uncorrected Mistakes</td>
+              </tr>
+              <tr>
+                <td><strong>Primary Recruitment Eligibility</strong></td>
+                <td>MPSC Clerk-Typist, Talathi, Zilla Parishad</td>
+                <td>Senior Steno, Court Typist, Secretarial Staff</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">⏱️</span>
-          <h4>5. Take Daily 1-Minute Drills</h4>
-          <p>Consistent daily practice of 15 minutes is 10x more effective than irregular long sessions.</p>
+      </section>
+
+      <!-- Section 5: Top 7 Common Mistakes -->
+      <section class="guide-sub-section">
+        <h3>5. Top 7 Marathi Typing Mistakes &amp; How to Overcome Them</h3>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <span class="tip-icon">⚠️</span>
+            <h4>1. Premature Matra Typing</h4>
+            <p>In Devanagari, always type the consonant first and then the matra, even for short 'i' (ि), which displays on the left visually.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">⌨️</span>
+            <h4>2. Misplacing Halant (्)</h4>
+            <p>Ensure the halant is typed immediately after the consonant to be halved, before touching the subsequent joining character.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">🎯</span>
+            <h4>3. Excessive Backspacing</h4>
+            <p>Halt the urge to delete entire words. Backspacing breaks keystroke rhythm and causes more severe time penalties than small mistakes.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">🔤</span>
+            <h4>4. Confusing श (Sha) and ष (Shha)</h4>
+            <p>Learn exact locations: श is on <code>Shift + M</code> while ष is on <code>Shift + ,</code>. Confusing them costs 1 full mark in exams.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">🧘</span>
+            <h4>5. Incorrect Wrist Posture</h4>
+            <p>Resting heavy palms on the desk restricts finger reach to top-row numbers and bottom-row conjuncts. Keep wrists floating lightly.</p>
+          </div>
+          <div class="tip-card">
+            <span class="tip-icon">⏱️</span>
+            <h4>6. Rushing the First 60 Seconds</h4>
+            <p>Starting at sprint speed triggers early muscle cramping. Start steadily at 25 WPM to calibrate rhythm before accelerating.</p>
+          </div>
         </div>
-        <div class="tip-card">
-          <span class="tip-icon">📜</span>
-          <h4>6. Prepare for Government Exams (GCC-TBC &amp; MPSC)</h4>
-          <p>Maharashtra state exams require 30 WPM with strict error penalties. Use TypeBaazi's mock passages to meet exam criteria.</p>
-        </div>
-      </div>
+      </section>
 
       <!-- Contextual Internal Linking -->
       <div class="related-links-box">
         <h3>Explore Other TypeBaazi Practice Hubs</h3>
         <div class="links-grid">
-          <a href="/hindi-typing-test/" class="hub-link-card">
-            <span class="hub-icon">🇮🇳</span>
+          <a href="/seven-minute-typing-test/" class="hub-link-card">
+            <span class="hub-icon">⏱️</span>
             <div>
-              <strong>Hindi Typing Test</strong>
-              <span>Devanagari Hindi speed test &amp; SSC/Court prep.</span>
+              <strong>7-Minute Exam Simulator</strong>
+              <span>Full GCC-TBC 30 &amp; 40 WPM mock test with error scoring.</span>
             </div>
           </a>
           <a href="/marathi-typing-practice/" class="hub-link-card">
@@ -129,11 +338,18 @@ const breadcrumbItems = [
               <span>Untimed Devanagari key drills &amp; letter practice.</span>
             </div>
           </a>
-          <a href="/english-typing-test/" class="hub-link-card">
-            <span class="hub-icon">🇬🇧</span>
+          <a href="/guides/marathi-inscript-keyboard-guide/" class="hub-link-card">
+            <span class="hub-icon">📚</span>
             <div>
-              <strong>English Typing Test</strong>
-              <span>Test and benchmark your English WPM speed.</span>
+              <strong>Marathi InScript Handbook</strong>
+              <span>Comprehensive finger mapping &amp; joint letter cheat sheet.</span>
+            </div>
+          </a>
+          <a href="/hindi-typing-test/" class="hub-link-card">
+            <span class="hub-icon">🇮🇳</span>
+            <div>
+              <strong>Hindi Typing Test</strong>
+              <span>Devanagari Hindi speed test &amp; SSC/Court prep.</span>
             </div>
           </a>
           <a href="/typing-speed-test/" class="hub-link-card">
@@ -152,7 +368,7 @@ const breadcrumbItems = [
           </a>
         </div>
       </div>
-    </section>
+    </article>
 
     <!-- FAQ Accordion -->
     <section class="faq-panel glass-panel">
