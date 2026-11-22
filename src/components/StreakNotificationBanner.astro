@@ -415,18 +415,18 @@
       };
     }
 
-    // Card click handler: Clicking notification navigates to /daily-challenge
+    // Card click handler: Clicking notification navigates to /daily-challenge/
     if (warningBox) {
       warningBox.onclick = (e) => {
         const target = e.target as HTMLElement;
         if (target && target.closest('#streak-close-btn')) {
           return;
         }
-        window.location.href = '/daily-challenge';
+        window.location.href = '/daily-challenge/';
       };
       warningBox.onkeydown = (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          window.location.href = '/daily-challenge';
+          window.location.href = '/daily-challenge/';
         }
       };
     }

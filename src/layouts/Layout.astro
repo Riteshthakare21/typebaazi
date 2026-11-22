@@ -92,10 +92,17 @@ if (!alternates) {
 }
 
 // Build Breadcrumb Schema
-const breadcrumbItems = breadcrumbs || [
+const rawBreadcrumbs = breadcrumbs || [
   { name: 'Home', url: 'https://typebaazi.com/' },
   ...(normalizedPath !== '/' ? [{ name: title.split('—')[0].split('|')[0].trim(), url: canonicalURL }] : [])
 ];
+const breadcrumbItems = rawBreadcrumbs.map((item) => {
+  let u = item.url;
+  if (u.startsWith('https://typebaazi.com/') && !u.endsWith('/') && !u.includes('#') && !u.includes('?') && !/\.[a-zA-Z0-9]+$/.test(u)) {
+    u = `${u}/`;
+  }
+  return { ...item, url: u };
+});
 ---
 
 <!doctype html>
@@ -220,10 +227,10 @@ const breadcrumbItems = breadcrumbs || [
       "@type": "WebSite",
       "name": "TypeBaazi",
       "alternateName": ["TypeBaazi Typing Test", "TypeBaazi.com", "TypeBaazi Online Typing"],
-      "url": "https://typebaazi.com",
+      "url": "https://typebaazi.com/",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://typebaazi.com/typing-test?q={search_term_string}",
+        "target": "https://typebaazi.com/typing-test/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     })} />
@@ -234,10 +241,10 @@ const breadcrumbItems = breadcrumbs || [
       "@type": "Organization",
       "name": "TypeBaazi",
       "alternateName": "TypeBaazi Platform",
-      "url": "https://typebaazi.com",
+      "url": "https://typebaazi.com/",
       "logo": "https://typebaazi.com/icons/icon-512.png",
       "sameAs": [
-        "https://typebaazi.com"
+        "https://typebaazi.com/"
       ]
     })} />
 
@@ -247,7 +254,7 @@ const breadcrumbItems = breadcrumbs || [
       "@type": "WebApplication",
       "name": "TypeBaazi",
       "alternateName": "TypeBaazi Web Application",
-      "url": "https://typebaazi.com",
+      "url": canonicalURL,
       "description": description,
       "applicationCategory": "EducationalApplication, GameApplication, ProductivityApplication",
       "operatingSystem": "All (Android, Windows, macOS, iOS, Linux, ChromeOS)",
@@ -257,11 +264,11 @@ const breadcrumbItems = breadcrumbs || [
         "priceCurrency": "INR"
       },
       "featureList": [
-        "Free 1-Minute English Typing Speed Test (WPM & Accuracy)",
+        "Devanagari Marathi Typing Test & Practice (मराठी टायपिंग सराव व GCC-TBC 30/40 WPM)",
+        "Free 1, 2, 5-Minute English Typing Speed Test (WPM & Accuracy)",
         "Devanagari Hindi Typing Test & Practice (हिंदी टाइपिंग सराव)",
-        "Devanagari Marathi Typing Test & Practice (मराठी टायपिंग सराव)",
-        "SSC, MPSC Group C Clerk-Typist & Tax Assistant 30/40 WPM Exam Prep",
-        "UPSC EPFO, Central & State Government Exam Typing Skill Tests",
+        "Maharashtra MPSC Group C Clerk-Typist & GCC-TBC 30/40 WPM Exam Prep",
+        "SSC CGL, CHSL, RRB NTPC & State Government Exam Typing Skill Tests",
         "High Court & District Court Stenographer Legal Typing Mock Tests",
         "Real-Time Multiplayer AI Car Race Track Typing Game",
         "Matrix Falling Words Arcade Typing Defense Game",
