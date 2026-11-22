@@ -238,6 +238,42 @@ export const ENGLISH_TEXTS: TypingTextItem[] = [
     category: 'technology',
     text: 'Executing complex shell pipelines: `ps aux | grep -v "root" | awk \'{print $2, $11}\' | sort -k1,1n | head -n 25 > /var/log/audit.log 2>&1;` requires rigorous key coordination across alphanumeric characters, pipes, quotes, and redirection operators. Precision keyboard mastery across special symbols: [array[idx] -> pointer* (deref::type)] guarantees seamless terminal workflow without syntax errors or cognitive interruptions under pressure.'
   }
+,
+  {
+    id: 'en-e-7',
+    language: 'english',
+    difficulty: 'easy',
+    category: 'general',
+    text: 'Consistent daily reading sharpens your cognitive faculties, broadens your linguistic vocabulary, and enhances your empathetic understanding of human experiences across diverse societies. Whether you delve into historical non-fiction, contemporary science journalism, or imaginative storytelling, regular reading stimulates intellectual curiosity and mental agility. When practicing keyboard drills, typing thoughtfully constructed prose allows you to internalize sentence structures and idiomatic expressions naturally. Maintain a calm posture, keep your wrists slightly elevated above the desk, and allow your fingers to find their home positions with fluid rhythm.'
+  },
+  {
+    id: 'en-e-8',
+    language: 'english',
+    difficulty: 'easy',
+    category: 'technology',
+    text: 'Modern web browsers and cloud applications connect millions of people around the globe instantaneously, democratizing access to knowledge, collaborative work tools, and educational opportunities. Software developers and technical writers craft clear documentation so users can easily navigate digital platforms. Cultivating smooth keyboard dexterity transforms how you interact with computer terminals, spreadsheet software, and word processors. By focusing on typing accuracy before speed, you build lasting neural pathways that make daily digital tasks feel effortless and enjoyable.'
+  },
+  {
+    id: 'en-m-7',
+    language: 'english',
+    difficulty: 'medium',
+    category: 'culture',
+    text: 'Democratic governance relies upon active citizen participation, robust statutory institutions, and equitable access to judicial redress. When public administrators communicate administrative rules clearly and uphold ethical transparency, public confidence in civic institutions flourishes. Digital portals and grievance redressal systems allow citizens to submit formal inquiries and track resolution progress online. For public service personnel, rapid and error-free keyboarding is essential to maintain accurate official records, publish executive directives, and eliminate administrative backlogs across state departments.'
+  },
+  {
+    id: 'en-m-8',
+    language: 'english',
+    difficulty: 'medium',
+    category: 'science',
+    text: 'Atmospheric and oceanic sciences have revealed the profound interconnectedness of planetary climate systems. Global satellite networks continuously monitor polar ice caps, sea surface temperatures, and atmospheric carbon concentrations, providing scientists with critical observational data. Synthesizing this immense volume of meteorological research requires collaborative international efforts and advanced computational modeling. As climate mitigation strategies accelerate, clear technical communication remains indispensable to guide policymakers in building sustainable, carbon-neutral economies.'
+  },
+  {
+    id: 'en-h-7',
+    language: 'english',
+    difficulty: 'hard',
+    category: 'technology',
+    text: 'Asynchronous distributed microservices leverage reactive event streams, protocol buffers, and non-blocking I/O multiplexing to maintain sub-millisecond throughput under peak concurrency. Orchestrating containerized workloads across hybrid cloud infrastructures requires automated health probes, resilient circuit breakers, and zero-downtime deployment pipelines. Systems engineers continuously monitor telemetry metrics, trace spans, and latency percentiles to optimize garbage collection pauses and eliminate network contention across high-throughput clusters.'
+  }
 ];
 
 export const MARATHI_TEXTS: TypingTextItem[] = [
@@ -409,6 +445,42 @@ export const MARATHI_TEXTS: TypingTextItem[] = [
     difficulty: 'extreme',
     category: 'culture',
     text: 'अजिंठा-वेरूळ येथील जगप्रसिद्ध कोरीव लेणी, कैलास मंदिराचे भव्य शिल्पकाम आणि प्राचीन भारतीय स्थापत्यकलेचा उत्कृष्ट आविष्कार जगाला चकित करतो! अखंड एकाच खडकात कोरलेले कैलास मंदिर हे भारतीय कारागिरांच्या अचाट कल्पकतेचे आणि कौशल्याचे अद्वितीय उदाहरण आहे. हे जागतिक वारसा स्थळ भारताच्या वैभवशाली इतिहासाची साक्ष देते.'
+  }
+,
+  {
+    id: 'mr-e-6',
+    language: 'marathi',
+    difficulty: 'easy',
+    category: 'general',
+    text: 'माहिती तंत्रज्ञानाच्या युगात संगणक आणि मोबाईल फोन आपल्या जीवनाचे महत्त्वाचे घटक बनले आहेत. इंटरनेटच्या साहाय्याने आज आपण घरबसल्या रेल्वेचे तिकीट काढू शकतो, वीजबिल भरू शकतो आणि जगातील कोणत्याही कोपऱ्यातील मित्रांशी संवाद साधू शकतो. तंत्रज्ञानाचा सुयोग्य वापर केल्यास आपला वेळ आणि श्रम दोघांचीही मोठी बचत होते. मराठीतून संगणक चालवणे आणि टाईप करणे आता खूप सोपे झाले आहे. नियमित सरावाने आपण आधुनिक तंत्रज्ञानात पारंगत होऊ शकतो.'
+  },
+  {
+    id: 'mr-e-7',
+    language: 'marathi',
+    difficulty: 'easy',
+    category: 'culture',
+    text: 'वारकरी संप्रदाय ही महाराष्ट्राच्या सांस्कृतिक जीवनाची जीवनवाहिनी आहे. आषाढी आणि कार्तिकी एकादशीला लाखो वारकरी पायी चालत पंढरपूरला विठुरायाच्या दर्शनासाठी जातात. हातात टाळ, मृदंग आणि मुखात ज्ञानोबा-तुकारामांचा नामघोष करत चालणाऱ्या या दिंडीमध्ये कोणतीही जात-पात किंवा भेदाभेद नसतो. समता, बंधुभाव आणि निसर्गप्रेमाची ही शिकवण संपूर्ण विश्वाला मार्गदर्शक ठरते.'
+  },
+  {
+    id: 'mr-m-9',
+    language: 'marathi',
+    difficulty: 'medium',
+    category: 'culture',
+    text: 'प्रशासकीय पारदर्शकता आणि गतिमानता ही लोककल्याणकारी राज्याची मुख्य लक्षणे आहेत. शासकीय योजनांची माहिती सामान्य नागरिकांपर्यंत पोहोचवणे आणि त्यांच्या तक्रारींचे वेळेत निवारण करणे ही प्रशासनाची जबाबदारी असते. आज सर्व शासकीय कार्यालयांमध्ये ई-ऑफिस प्रणालीचा वापर सुरू झाला आहे. टंकलेखक आणि लिपिकांना प्रशासकीय मसुदे, शासकीय परिपत्रके आणि मंत्रिमंडळाच्या बैठकींचे इतिवृत्त मराठी युनिकोड फॉन्टमध्ये अत्यंत अचूकतेने टंकलिखित करावे लागते. शुद्धलेखन आणि व्याकरणाचे नियम पाळल्यास प्रशासकीय पत्रव्यवहार प्रभावी आणि निर्दोष होतो.'
+  },
+  {
+    id: 'mr-m-10',
+    language: 'marathi',
+    difficulty: 'medium',
+    category: 'culture',
+    text: 'सह्याद्रीच्या पर्वतरांगा, पश्चिम घाटातील दाट जंगले आणि विविध वन्यजीव ही महाराष्ट्राची नैसर्गिक संपत्ती आहे. ताडोबा, पेंच, मेळघाट आणि कोयना अभयारण्यांमध्ये वाघ, बिबटे, सांबर आणि अनेक दुर्मिळ पक्षांचे वास्तव्य आहे. वाढत्या औद्योगिकीकरणामुळे जंगलांचे संरक्षण करणे अत्यंत निकडीचे झाले आहे. झाडे लावणे, पाण्याचे स्रोत स्वच्छ ठेवणे आणि प्लास्टिकचा वापर टाळणे ही प्रत्येक नागरिकाची नैतिक जबाबदारी आहे. निसर्गाचा समतोल राखल्यासच मानवी जीवन सुखी आणि समृद्ध होऊ शकते.'
+  },
+  {
+    id: 'mr-h-5',
+    language: 'marathi',
+    difficulty: 'hard',
+    category: 'culture',
+    text: 'छत्रपती संभाजी महाराजांचे शौर्य, अथांग धैर्य आणि संस्कृत भाषेवरील प्रभुत्व हे भारतीय इतिहासातील देदीप्यमान पर्व आहे. प्रतिकूल परिस्थितीतही त्यांनी स्वराज्य टिकवून ठेवले आणि मुघल आक्रमकांशी नऊ वर्षे अखंड लढा दिला. बुधभूषणम् या संस्कृत ग्रंथाची रचना करून त्यांनी आपल्या विद्वत्तेचा परिचय दिला. मातृभूमीसाठी केलेले त्यांचे सर्वोच्च बलिदान आजही महाराष्ट्रातील कोट्यवधी तरुणांना राष्ट्रनिष्ठेची आणि आत्मसन्मानाची अजरामर प्रेरणा देते.'
   }
 ];
 

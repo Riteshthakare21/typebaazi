@@ -129,6 +129,71 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     text: 'Harnessing abundant solar power and wind energy reduces our reliance on polluting fossil fuels and combats global climate change. Government subsidies encourage homeowners and industrial factories to install rooftop solar panels. Energy departments track power generation data and grid connectivity records on digital databases. Typists who work with precision assist energy auditors in publishing statistical reports on green energy adoption.'
   },
 
+,
+  {
+    id: 'en-30-13',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 13,
+    title: 'Passage 13: Right to Information and Public Accountability',
+    wordCount: 218,
+    text: 'The Right to Information Act is one of the most powerful legislative tools designed to strengthen transparency, eliminate administrative corruption, and foster democratic accountability. By providing citizens with direct access to official government documents and financial spending records, it bridges the gap between public administrators and the common people. In government departments, public information officers and their clerical staff receive hundreds of formal queries every week. Entering these applications into the official portal, maintaining chronological dispatch registers, and generating formal replies demands disciplined touch typing skills. When office assistants type with continuous accuracy, official notifications are dispatched within statutory deadlines without bureaucratic delay.'
+  },
+  {
+    id: 'en-30-14',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 14,
+    title: 'Passage 14: Rainwater Harvesting & Community Water Security',
+    wordCount: 216,
+    text: 'Conserving fresh water through scientific rainwater harvesting systems is vital for combating groundwater depletion and ensuring sustainable drinking supplies across urban settlements. As erratic monsoon patterns and climate disruptions affect agricultural output, municipal corporations are mandating rooftop water recharge facilities in all residential and commercial building complexes. Town planning departments inspect construction designs, monitor groundwater levels, and issue environmental compliance certificates. Clerical staff and data entry operators in water boards compile monthly conservation logs and municipal circulars. Learning proper home row keyboard navigation allows office clerks to draft technical directives and citizen circulars with total precision and professional velocity.'
+  },
+  {
+    id: 'en-30-15',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 15,
+    title: 'Passage 15: Digital Literacy and Cyber Safety Hygiene',
+    wordCount: 215,
+    text: 'The rapid expansion of internet connectivity and mobile applications has transformed personal communication, educational learning, and commercial transactions. However, this digital transformation also brings serious cyber threats such as financial phishing scams, identity theft, and malicious malware intrusions. Cultivating strong cyber hygiene habits, such as creating complex alphanumeric passwords, enabling two-factor authentication, and avoiding suspicious web links, is essential for every internet user. Educational institutions and local police departments regularly conduct community cyber awareness programs. Preparing informational pamphlets, incident reports, and presentation slides requires swift clerical keyboarding. Consistent typing practice develops typing stamina and confidence under workplace pressure.'
+  },
+  {
+    id: 'en-30-16',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 16,
+    title: 'Passage 16: Primary Healthcare & Rural Community Wellness',
+    wordCount: 214,
+    text: 'Universal access to affordable primary healthcare is a fundamental indicator of social progress and human development. Rural health centers and urban dispensaries deliver essential medical treatments, maternal care, child immunization, and diagnostic blood screenings to local residents. Dedicated healthcare workers and nursing staff maintain comprehensive clinical registers and digital patient records for continuous wellness monitoring. Hospital administrative assistants transcribe doctor prescriptions, track pharmaceutical inventories, and generate public health bulletins. Practicing touch typing on a standardized keyboard layout prevents typographical errors in medical documentation and ensures that critical patient data is recorded without administrative bottlenecks.'
+  },
+  {
+    id: 'en-30-17',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 17,
+    title: 'Passage 17: Local Self-Government and Village Democracy',
+    wordCount: 216,
+    text: 'Grassroots democracy thrives when local self-governing institutions like village councils, block panchayats, and municipal wards actively engage citizens in administrative decision making. Village assemblies convene to approve infrastructure projects, resolve neighborhood grievances, and allocate welfare funds for rural development. Panchayat development officers draft formal minutes of meeting, maintain budget ledgers, and compile quarterly progress summaries for district oversight committees. Accurate touch typing allows clerical officers to transcribe civic deliberations, issue welfare certificates, and publish developmental notices promptly. Dedicated daily practice on TypeBaazi equips candidates with the keyboard velocity required for government clerk examinations.'
+  },
+  {
+    id: 'en-30-18',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 18,
+    title: 'Passage 18: Vocational Training & Youth Employment Schemes',
+    wordCount: 215,
+    text: 'Equipping young men and women with practical vocational skills is crucial for harnessing demographic potential and driving economic industrial productivity. Government technical institutes offer specialized apprenticeship training in mechanical trades, electrical maintenance, digital data entry, and modern office automation. Certified keyboard proficiency remains a mandatory eligibility prerequisite for clerical recruitments across railways, postal services, banking corporations, and municipal bodies. Developing rhythmic typing cadence through focused daily sessions enhances neuromuscular coordination and mental concentration. Achieving thirty words per minute with ninety-five percent accuracy opens promising career opportunities for aspiring candidates across public and private sectors.'
+  },
+  {
+    id: 'en-30-19',
+    lang: 'english',
+    speedTarget: 30,
+    passageNum: 19,
+    title: 'Passage 19: Public Libraries & Lifelong Learning Culture',
+    wordCount: 214,
+    text: 'Public libraries serve as vibrant community hubs of knowledge, intellectual exploration, and lifelong educational growth. By providing free access to classic literature, academic research journals, reference encyclopedias, and digital archives, libraries empower readers of all ages and socioeconomic backgrounds. Modern libraries are transforming into digital learning centers equipped with high-speed internet terminals and electronic catalog databases. Library assistants and catalogers enter bibliographic records, track book loans, and compile subject bibliographies using automated library management systems. Fast touch typing skills allow library professionals to manage reader services efficiently and inspire an enduring culture of reading.'
+  },
+
   // =========================================================================
   // ENGLISH - 40 WPM (~280 - 330 words for 7 minutes @ 40 WPM target)
   // =========================================================================
@@ -136,8 +201,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-1',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 13,
-    title: 'Passage 13: Administrative Reform & Modern Civil Services',
+    passageNum: 20,
+    title: 'Passage 20: Administrative Reform & Modern Civil Services',
     wordCount: 300,
     text: 'Comprehensive administrative reform is essential for building a responsive, transparent, and high-performing civil service. In modern governance, public administrators are expected to formulate progressive policies while maintaining fiscal discipline and adhering to strict legal standards. The transition toward paperless offices and integrated digital dashboards has transformed traditional bureaucratic workflows. For senior typists, executive assistants, and court stenographers, attaining an effortless typing speed of forty words per minute with ninety-five percent accuracy is an indispensable professional requirement. Touch typing enables officers to draft intricate policy memoranda, legislative briefs, and cabinet summaries without cognitive distraction. When fingers navigate the keyboard instinctively through refined muscle memory, the writer can focus entirely on linguistic clarity and logical coherence. Dedicated daily practice on TypeBaazi strengthens keyboard dexterity, sharpens typographical reflexes, and instills the calm confidence needed to excel in competitive government examinations and high-pressure workplace environments.'
   },
@@ -145,8 +210,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-2',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 14,
-    title: 'Passage 14: Digital Economy, E-Commerce & Cyber Security',
+    passageNum: 21,
+    title: 'Passage 21: Digital Economy, E-Commerce & Cyber Security',
     wordCount: 295,
     text: 'The exponential rise of the digital economy has fundamentally revolutionized global commerce, consumer banking, and industrial manufacturing. Secure electronic payment gateways, cloud enterprise systems, and encrypted communication channels allow international businesses to execute financial transactions seamlessly across borders. As commercial ecosystems become increasingly reliant on digital networks, cybersecurity protocols and stringent data protection regulations have become paramount. Technical documentation specialists, data analysts, and compliance officers must manage vast volumes of structured information, audit records, and security incident reports with absolute precision. Developing exceptional touch typing velocity allows professionals to draft technical manuals, transcribe executive meetings, and communicate critical operational directives swiftly without compromising typographical accuracy. Cultivating a disciplined typing cadence on mechanical keyboards minimizes keystroke errors, elevates overall workplace productivity, and unlocks new avenues for professional career advancement.'
   },
@@ -154,8 +219,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-3',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 15,
-    title: 'Passage 15: Urban Planning, Smart Cities & Green Transit',
+    passageNum: 22,
+    title: 'Passage 22: Urban Planning, Smart Cities & Green Transit',
     wordCount: 290,
     text: 'Rapid urban migration requires visionary urban planning, energy-efficient architecture, and robust public transportation infrastructure. Modern smart cities integrate internet-of-things sensors, intelligent traffic management systems, and electric bus fleets to reduce vehicular congestion and lower harmful carbon emissions. Municipal corporations and town planning boards are tasked with designing expansive green belts, pedestrian walkways, and sustainable drainage systems to ensure high quality of life for metropolitan residents. Administrative staff within municipal secretariats must prepare detailed engineering estimates, municipal budgets, and citizen feedback compilations with high typing speed. Mastering forty words per minute with zero uncorrected errors allows clerical personnel to process tenders, publish town planning notifications, and maintain official gazettes with exemplary diligence and administrative excellence.'
   },
@@ -163,8 +228,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-4',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 16,
-    title: 'Passage 16: Higher Scientific Research & Aerospace Innovations',
+    passageNum: 23,
+    title: 'Passage 23: Higher Scientific Research & Aerospace Innovations',
     wordCount: 295,
     text: 'Scientific discovery and aerospace engineering represent the pinnacle of human curiosity, intellectual rigor, and collaborative endeavor. Space exploration agencies and research laboratories develop satellite communication networks, weather forecasting satellites, and interplanetary probes that advance our understanding of the universe. Scientific documentation demands meticulous attention to technical nomenclature, mathematical formulas, and experimental data logs. Research assistants and documentation specialists who possess advanced keyboard proficiency can synthesize complex laboratory findings into peer-reviewed research papers and project proposals with speed and accuracy. Consistent touch typing practice on TypeBaazi sharpens cognitive coordination, trains fingers to strike keys rhythmically without visual reliance, and equips aspiring professionals with the velocity required for demanding scientific careers.'
   },
@@ -172,8 +237,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-5',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 17,
-    title: 'Passage 17: Legal Jurisprudence & High Court Proceedings',
+    passageNum: 24,
+    title: 'Passage 24: Legal Jurisprudence & High Court Proceedings',
     wordCount: 290,
     text: 'The administration of justice requires unwavering integrity, profound legal scholarship, and meticulous record keeping at every judicial tier. High courts and district tribunals handle complex civil litigation, constitutional appeals, and commercial arbitrations where every verbatim statement carries substantial evidentiary weight. Court reporters, personal assistants to judges, and legal transcribers must record courtroom arguments, frame judgment drafts, and issue certified copies of orders with impeccable precision. Achieving forty words per minute in timed certification tests certifies that a candidate can handle rapid judicial dictation under pressure without omitting crucial legal terminology. Daily deliberate practice on simulated 7-minute exam passages builds sustained concentration, refines finger muscle memory, and ensures peak performance in official recruitment skill tests.'
   },
@@ -181,8 +246,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-6',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 18,
-    title: 'Passage 18: International Trade & Global Supply Chains',
+    passageNum: 25,
+    title: 'Passage 25: International Trade & Global Supply Chains',
     wordCount: 285,
     text: 'Global trade agreements and container shipping networks form the lifeblood of international commerce, distributing manufactured commodities and food supplies across continents. Port authorities and customs departments inspect shipping manifests, verify tariff classifications, and ensure regulatory compliance with maritime laws. Modern logistics coordinators utilize cloud software to manage cargo tracking and warehouse inventories in real time. Fast and accurate keyboarding is critical for documenting bills of lading, customs declarations, and commercial invoices without administrative delays. Mastering rapid typing skills boosts productivity and ensures flawless data management.'
   },
@@ -190,8 +255,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-7',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 19,
-    title: 'Passage 19: Artificial Intelligence & Future of Automation',
+    passageNum: 26,
+    title: 'Passage 26: Artificial Intelligence & Future of Automation',
     wordCount: 290,
     text: 'Artificial intelligence and automated machine learning models are fundamentally transforming healthcare diagnostics, financial fraud detection, and autonomous transportation. Engineers and data annotators must feed structured datasets and clean textual prompts into algorithms to ensure ethical, unbiased outcomes. Software developers and technical writers must document algorithmic architectures and system integrations with high precision. Exceptional keyboarding speed allows technologists to express complex programming logic without mechanical friction, fostering deep problem-solving focus and creative intellectual flow.'
   },
@@ -199,8 +264,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-8',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 20,
-    title: 'Passage 20: Disaster Management & Emergency Response',
+    passageNum: 27,
+    title: 'Passage 27: Disaster Management & Emergency Response',
     wordCount: 288,
     text: 'Effective disaster management frameworks protect vulnerable communities during natural calamities such as floods, cyclones, and earthquakes. Emergency operation centers coordinate real-time rescue operations, distribute emergency relief supplies, and communicate life-saving weather advisories to ground personnel. Operators handling disaster communication consoles must record situation reports and logistics requests with maximum speed and accuracy. Quick and reliable touch typing ensures that critical emergency directives are disseminated without losing precious moments.'
   },
@@ -208,8 +273,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-9',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 21,
-    title: 'Passage 21: Banking Regulations & Fiscal Policies',
+    passageNum: 28,
+    title: 'Passage 28: Banking Regulations & Fiscal Policies',
     wordCount: 292,
     text: 'Central banks establish prudential financial guidelines, reserve requirements, and monetary policies to maintain economic stability and curb inflation. Commercial banking institutions must comply with strict anti-money laundering norms and risk assessment audits. Financial analysts and bank auditors compile detailed quarterly balances, risk assessments, and compliance reports for regulatory oversight. Typing proficiency of forty words per minute allows banking professionals to draft voluminous regulatory filings with absolute accuracy, ensuring institutional transparency and investor confidence.'
   },
@@ -217,8 +282,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-10',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 22,
-    title: 'Passage 22: Sustainable Agriculture & Food Security',
+    passageNum: 29,
+    title: 'Passage 29: Sustainable Agriculture & Food Security',
     wordCount: 288,
     text: 'Ensuring national food security amidst expanding populations and changing climatic patterns requires innovative agricultural practices and resilient crop varieties. Agricultural scientists and extension workers train farming cooperatives in precision farming, soil moisture monitoring, and integrated pest management. Central warehouse corporations track grain inventories and supply chain distribution across public welfare systems. Clerical officers managing grain logistics utilize fast keyboard typing to keep supply records up to date, guaranteeing timely food distribution.'
   },
@@ -226,8 +291,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-11',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 23,
-    title: 'Passage 23: Ocean Conservation & Marine Ecosystems',
+    passageNum: 30,
+    title: 'Passage 30: Ocean Conservation & Marine Ecosystems',
     wordCount: 285,
     text: 'Oceans cover over seventy percent of the planet, regulating global temperatures and supporting billions of marine organisms. Marine scientists monitor coral reef health, ocean acidification levels, and sustainable fishing practices to preserve fragile aquatic ecosystems. Compiling oceanographic research surveys and maritime conservation policies requires sustained clerical diligence and fast data entry. Touch typing enables research staff to record ecological findings quickly and accurately, aiding environmental protection efforts.'
   },
@@ -235,8 +300,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-12',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 24,
-    title: 'Passage 24: Digital Healthcare & Telemedicine Networks',
+    passageNum: 31,
+    title: 'Passage 31: Digital Healthcare & Telemedicine Networks',
     wordCount: 290,
     text: 'Telemedicine platforms and electronic health records connect rural patients with expert medical specialists in metropolitan hospitals. Secure medical databases store patient histories, diagnostic scan reports, and prescription details for seamless healthcare coordination. Hospital administrators and medical data entry operators must transcribe clinical notes and billing entries with utmost accuracy. Achieving high typing velocity ensures that patient consultations and medical records are processed swiftly, directly benefiting public health delivery.'
   },
@@ -244,10 +309,75 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'en-40-13',
     lang: 'english',
     speedTarget: 40,
-    passageNum: 25,
-    title: 'Passage 25: Industrial Innovation & Infrastructure Growth',
+    passageNum: 32,
+    title: 'Passage 32: Industrial Innovation & Infrastructure Growth',
     wordCount: 295,
     text: 'Industrial manufacturing corridors, high-speed freight railways, and automated ports drive national economic competitiveness and create widespread employment. Industrial development boards oversee factory allocations, safety compliance certificates, and environmental clearances. Project managers and administrative assistants draft project feasibility studies, tender evaluations, and safety inspection minutes with rigorous accuracy. Mastering touch typing at forty words per minute equips administrative staff with the capability to manage complex industrial correspondence and maintain operational excellence.'
+  },
+
+,
+  {
+    id: 'en-40-14',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 33,
+    title: 'Passage 33: Constitutional Principles & Judicial Independence',
+    wordCount: 290,
+    text: 'The Constitution serves as the supreme foundational charter that guides the democratic governance and legal jurisprudence of a sovereign republic. It guarantees fundamental rights, safeguards human dignity, and establishes a balanced separation of powers between the legislature, the executive, and the judiciary. An independent judiciary plays a paramount role as the guardian of constitutional freedoms, ensuring that executive actions and statutory enactments conform strictly to the rule of law. In higher courts, district tribunals, and judicial magistrate registries, judicial clerks and court stenographers are entrusted with recording verbatim proceedings, drafting judicial notices, and typing comprehensive legal judgements. Achieving an effortless typing velocity of forty words per minute with impeccable typographical accuracy is indispensable in legal administration. Even a single clerical misspelling or incorrect legal terminology can distort statutory intent and delay the delivery of justice. Consistent keyboard practice empowers typists to handle dense legal arguments, citations, and procedural rulings with remarkable calm and efficiency.'
+  },
+  {
+    id: 'en-40-15',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 34,
+    title: 'Passage 34: Public Finance Management, Fiscal Policy & GST',
+    wordCount: 288,
+    text: 'Prudent fiscal management, transparent budget allocation, and robust revenue mobilization form the bedrock of sustainable national economic development. The introduction of modern automated taxation architectures, such as the Goods and Services Tax, has streamlined indirect taxation, dismantled interstate trade barriers, and expanded the formal economy. State treasury directorates, audit offices, and finance departments monitor tax receipts, manage public debt obligations, and execute social sector expenditures through integrated financial management systems. Executive assistants and accounting data entry operators must transcribe complex ledger balances, revenue reconciliation statements, and legislative budgetary replies under strict statutory timelines. Operating at forty words per minute ensures that high-volume fiscal datasets and ministerial briefs are prepared without administrative delays. Mastering touch typing with disciplined posture and light finger keystrokes minimizes physical fatigue during long computational shifts and guarantees the flawless arithmetic and textual precision required in public accounting.'
+  },
+  {
+    id: 'en-40-16',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 35,
+    title: 'Passage 35: Multimodal Logistics & Maritime Trade Infrastructure',
+    wordCount: 286,
+    text: 'Efficient freight transportation networks and automated deep-water container ports drive international trade competitiveness and accelerate regional economic prosperity. Developing dedicated freight railway corridors, multi-lane expressways, and coastal shipping routes substantially lowers logistics overhead and facilitates the swift export of industrial manufactured goods. Modern port authority terminals rely heavily on automated logistics software, radio-frequency cargo tracking, and customs clearance platforms. Senior administrative officers, freight dispatchers, and customs documentation specialists prepare intricate shipping manifests, bill of lading certificates, and hazardous cargo safety compliance dossiers. Achieving forty words per minute typing capability enables logistical personnel to interact fluidly with digital shipping databases and resolve international freight queries promptly. Rigorous preparation on TypeBaazi builds the typographical stamina, mental discipline, and split-second keyboard reflexes necessary to excel in demanding commercial freight and export management careers.'
+  },
+  {
+    id: 'en-40-17',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 36,
+    title: 'Passage 36: Climate Change Mitigation & Environmental Policy',
+    wordCount: 288,
+    text: 'Addressing the escalating global climate emergency demands decisive policy interventions, renewable energy expansion, and aggressive ecosystem restoration initiatives. Industrial economies are actively phasing out carbon-intensive energy sources in favor of decentralized solar arrays, wind farms, and battery storage innovations. Concurrently, environmental protection agencies enforce strict industrial effluent standards, oversee carbon credit trading mechanisms, and spearhead nationwide afforestation projects to protect sensitive biodiversity hotspots. Civil servants, environmental impact analysts, and municipal planning officers draft comprehensive ecological audit reports, public hearing minutes, and statutory environmental clearances. Maintaining a swift keyboarding rate of forty words per minute allows regulatory officers to synthesize complex scientific data, legislative requirements, and community feedback into articulate policy memoranda. Dedicated typing practice reinforces mental endurance and prepares aspiring candidates to handle high-volume administrative tasks with uncompromising precision and professional finesse.'
+  },
+  {
+    id: 'en-40-18',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 37,
+    title: 'Passage 37: Artificial Intelligence Governance & Ethical Data Use',
+    wordCount: 288,
+    text: 'The transformative rise of artificial intelligence, machine learning algorithms, and predictive data analytics is fundamentally reshaping business operations, healthcare diagnostics, and governmental decision making. While automated computational intelligence unlocks extraordinary efficiencies and breakthroughs in scientific research, it also introduces profound ethical concerns regarding algorithmic bias, surveillance risks, and intellectual property attribution. Governments worldwide are formulating regulatory frameworks, ethical guidelines, and cybersecurity standards to ensure that automated technologies serve the common good and respect fundamental individual privacy. Technology policy analysts, legal consultants, and technical documentation writers formulate legislative white papers, ethical compliance audits, and stakeholder position briefs. Possessing certified touch typing skills at forty words per minute enables technology professionals to translate complex technical jargon and regulatory mandates into clear, persuasive prose. Practicing on TypeBaazi builds the cognitive dexterity needed to navigate contemporary digital challenges seamlessly.'
+  },
+  {
+    id: 'en-40-19',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 38,
+    title: 'Passage 38: Space Technology, Satellite Networks & Scientific Innovation',
+    wordCount: 290,
+    text: 'Pioneering achievements in space exploration and satellite communications have propelled human scientific understanding to unprecedented heights while delivering profound societal benefits on Earth. Indigenous space research programs design, construct, and launch sophisticated remote sensing satellites that enable precise meteorological forecasting, oceanic monitoring, and national disaster relief coordination. Deep space lunar and interplanetary exploration missions demonstrate remarkable engineering excellence, frugal innovation, and international scientific collaboration. Scientific documentation officers, project managers, and technical secretariats compile mission telemetry analyses, satellite launch protocols, and research papers for global peer review. Flawless touch typing at forty words per minute allows technical personnel to transcribe complex scientific equations, technical telemetry logs, and mission briefings with total typographical precision. Developing muscle memory through daily timed typing drills instills the speed, accuracy, and confidence required in prestigious scientific institutions.'
+  },
+  {
+    id: 'en-40-20',
+    lang: 'english',
+    speedTarget: 40,
+    passageNum: 39,
+    title: 'Passage 39: Higher Education Reforms & University Research Culture',
+    wordCount: 289,
+    text: 'Cultivating a progressive, multidisciplinary higher education ecosystem is paramount for fostering intellectual innovation, academic excellence, and national socioeconomic development. Modern university campuses are dismantling rigid disciplinary boundaries, encouraging interdisciplinary research between the humanities, computer science, and biological engineering. Academic senates, university registrar offices, and examination boards manage intricate institutional curricula, research fellowship grants, and international faculty exchange programs. Administrative coordinators and departmental typists transcribe academic syndicate minutes, draft doctoral accreditation reports, and maintain confidential examination registries. Attaining a consistent velocity of forty words per minute allows university administrative staff to process massive academic correspondence and student credentials smoothly. Regular practice on TypeBaazi empowers aspirants to surpass recruitment benchmarks and perform their professional duties with admirable poise and speed.'
   },
 
   // =========================================================================
@@ -362,6 +492,71 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     text: 'सौर ऊर्जा आणि पवन ऊर्जा यांसारख्या अपारंपरिक ऊर्जा स्रोतांचा वापर वाढवणे पर्यावरण संरक्षणासाठी आवश्यक आहे. घरांवर आणि कारखान्यांमध्ये सौर पॅनेल्स बसवून विजेची बचत केली जात आहे. महावितरण आणि ऊर्जा विभागातील ग्राहक सेवा, वीजबिल दुरुस्ती आणि नवीन जोडणीचे अर्ज मराठीतून हाताळले जातात. सात मिनिटांच्या टायपिंग चाचणीत नियमित सराव केल्याने गती आणि अचूकतेमध्ये लक्षणीय सुधारणा होते.'
   },
 
+,
+  {
+    id: 'mr-30-13',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 13,
+    title: 'उतारा १३: माहितीचा अधिकार आणि नागरिकांचे सक्षमीकरण',
+    wordCount: 215,
+    text: 'माहितीचा अधिकार कायदा हा लोकशाही व्यवस्थेला बळकटी देणारा एक अत्यंत प्रभावी आणि क्रांतिकारी कायदा मानला जातो. या कायद्यामुळे प्रत्येक नागरिकाला शासकीय कामकाज, योजना आणि निधीच्या खर्चाबाबत थेट माहिती मागवण्याचा कायदेशीर हक्क मिळाला आहे. प्रशासनात पारदर्शकता आणि उत्तरदायित्व निर्माण करण्यासाठी हा कायदा मैलाचा दगड ठरला आहे. सर्व शासकीय आणि निमशासकीय कार्यालयांमध्ये माहिती अधिकार कक्ष स्थापन करण्यात आले आहेत. या कक्षात जनमाहिती अधिकारी आणि प्रथम अपिलीय अधिकारी यांच्याकडे येणारे अर्ज, नोटीसा आणि खुलासे संगणकावर मराठीतून टंकलिखित केले जातात. लिपिक टंकलेखकांना अशा अर्जांची विहित मुदतीत नोंदणी करावी लागते. TypeBaazi वर नियमित सराव केल्याने टायपिंगचा वेग वाढतो.'
+  },
+  {
+    id: 'mr-30-14',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 14,
+    title: 'उतारा १४: शिवकालीन जलव्यवस्थापन आणि दुर्गसंरचना',
+    wordCount: 218,
+    text: 'छत्रपती शिवाजी महाराजांनी स्वराज्याची उभारणी करताना जलसंधारण आणि जलव्यवस्थापनाला सर्वोच्च प्राधान्य दिले होते. सह्याद्रीच्या उंच कड्यांवर गडकिल्ले बांधताना पाण्याचे नैसर्गिक स्रोत शोधून तिथे दगडी तलाव आणि पाण्याचे टाके निर्माण केले गेले. किल्ल्यावर पुरेसा पाणीसाठा असल्याशिवाय तो किल्ला अजिंक्य राहू शकत नाही, ही महाराजांची दूरदृष्टी होती. आजही रायगड, राजगड, पन्हाळा आणि सिंधुदुर्ग येथील जलव्यवस्थापन आधुनिक अभियंत्यांना अचंबित करते. पुरातत्व विभाग आणि पर्यटन महामंडळ गडकिल्ल्यांच्या संवर्धनाचे अहवाल मराठीतून तयार करते. संगणकावर मराठी टायपिंगचे कौशल्य अवगत असलेले कर्मचारी या ऐतिहासिक संवर्धन प्रकल्पांचे मसुदे तत्परतेने टंकलिखित करतात.'
+  },
+  {
+    id: 'mr-30-15',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 15,
+    title: 'उतारा १५: डिजिटल साक्षरता आणि सायबर सुरक्षा जाणीव',
+    wordCount: 220,
+    text: 'माहिती तंत्रज्ञानाच्या युगात मोबाईल आणि संगणक हे आपल्या दैनंदिन जीवनाचा अविभाज्य भाग बनले आहेत. ऑनलाईन खरेदी, युपीआय द्वारे पैशांचे व्यवहार आणि शासकीय सेवांचा वापर यामुळे मानवी जीवन अधिक सुलभ झाले आहे. तथापि या डिजिटल क्रांतीसोबत सायबर गुन्हेगारीचे धोकेही वाढले आहेत. नागरिकांनी आपले गोपनीय पासवर्ड, ओटीपी आणि बँक खात्याची माहिती कोणाशीही शेअर करू नये. शाळा आणि महाविद्यालयांमधून सायबर सुरक्षेचे धडे दिले जात आहेत. पोलिस विभाग आणि सायबर गुन्हे शाखेत येणाऱ्या तक्रारींची जलद नोंदणी करण्यासाठी मराठी टंकलेखकांची मोठी गरज भासते. दररोज सात मिनिटांचा टायपिंग सराव हाताला उत्तम वेग मिळवून देतो.'
+  },
+  {
+    id: 'mr-30-16',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 16,
+    title: 'उतारा १६: प्राथमिक आरोग्य केंद्रे आणि ग्रामीण आरोग्य सेवा',
+    wordCount: 214,
+    text: 'ग्रामीण भागातील जनतेला दर्जेदार आणि मोफत वैद्यकीय सेवा उपलब्ध करून देण्यासाठी प्राथमिक आरोग्य केंद्रे अत्यंत महत्त्वाची भूमिका बजावतात. माता व बालसंगोपन, नवजात बालकांचे लसीकरण आणि संसर्गजन्य आजारांवर नियंत्रण ठेवण्याचे काम या केंद्रांमार्फत केले जाते. आशा सेविका आणि आरोग्य सेवकांच्या मदतीने घरोघरी जाऊन आरोग्य तपासणी केली जाते. आरोग्य केंद्रांमध्ये रुग्णांची दैनंदिन नोंदणी, औषध साठ्याची माहिती आणि वैद्यकीय अहवाल संगणकीय प्रणालीवर नोंदवले जातात. आरोग्य विभागातील लिपिकांना हे सर्व कामकाज मराठीतून वेगाने करावे लागते. अचूक टायपिंगमुळे रुग्णांची माहिती सुरक्षित राहते आणि उपचारांमध्ये कोणताही विलंब होत नाही.'
+  },
+  {
+    id: 'mr-30-17',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 17,
+    title: 'उतारा १७: स्थानिक स्वराज्य संस्था आणि ग्रामविकास योजना',
+    wordCount: 216,
+    text: 'महात्मा गांधी यांच्या ग्रामस्वराज्याच्या स्वप्नाला साकार करण्यासाठी ग्रामपंचायती, पंचायत समित्या आणि जिल्हा परिषदा कार्यरत आहेत. गावातील रस्ते, पिण्याचे पाणी, दिवाबत्ती आणि प्राथमिक शिक्षणाची सोय करणे ही ग्रामपंचायतीची प्राथमिक कर्तव्ये आहेत. ग्रामसभांमध्ये गावकरी एकत्र येऊन विकासकामांचे नियोजन करतात आणि ठराव मंजूर करतात. ग्रामसेवकांना या सर्व ग्रामसभांचे इतिवृत्त, मासिक जमाखर्च आणि शासकीय योजनांचे लाभार्थी अहवाल संगणकावर मराठीतून तयार करावे लागतात. स्थानिक स्वराज्य संस्थांमधील टंकलेखकांना शुद्ध मराठीत टायपिंग करण्याची सवय असणे गरजेचे आहे. सात मिनिटांच्या टायपिंग टेस्टमुळे आत्मविश्वास उंचावतो.'
+  },
+  {
+    id: 'mr-30-18',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 18,
+    title: 'उतारा १८: सेंद्रिय शेती आणि आधुनिक कृषी तंत्रज्ञान',
+    wordCount: 215,
+    text: 'रासायनिक खते आणि कीटकनाशकांच्या अतिवापरामुळे जमिनीची सुपीकता कमी होत चालली आहे. त्यामुळे आज सेंद्रिय शेती आणि नैसर्गिक शेतीकडे शेतकऱ्यांचा ओढा वेगाने वाढत आहे. शेणखत, गांडूळखत आणि जिवामृताचा वापर करून पिकवलेला भाजीपाला व फळे मानवी आरोग्यासाठी अत्यंत पोषक ठरतात. कृषी विभाग शेतकऱ्यांना सेंद्रिय शेतीसाठी अनुदान आणि तांत्रिक मार्गदर्शन उपलब्ध करून देत आहे. कृषी कार्यालयात माती परीक्षण अहवाल, पीक विमा योजनांचे अर्ज आणि अनुदान वाटपाची कागदपत्रे मराठीतून तयार केली जातात. लिपिकांनी ही कागदपत्रे वेळेत पूर्ण केली तर शेतकऱ्यांना योजनांचा लाभ तत्परतेने मिळतो.'
+  },
+  {
+    id: 'mr-30-19',
+    lang: 'marathi',
+    speedTarget: 30,
+    passageNum: 19,
+    title: 'उतारा १९: वाचन संस्कृती आणि सार्वजनिक ग्रंथालयांचे योगदान',
+    wordCount: 212,
+    text: 'ग्रंथ हे मानवाचे खरे मित्र आणि मार्गदर्शक असतात. उत्तम पुस्तकांच्या वाचनाने विचारांची क्षितिजे रुंदावतात आणि व्यक्तिमत्त्वाला नवी दिशा मिळते. महाराष्ट्रात सार्वजनिक ग्रंथालयांची गौरवशाली परंपरा असून त्यांनी खेड्यापाड्यांत वाचन संस्कृती रुजवली आहे. आजच्या डिजिटल युगात ई-पुस्तके आणि ऑनलाईन वाचनालयेही लोकप्रिय होत आहेत. ग्रंथालय संचालनालयामार्फत नवीन पुस्तकांची खरेदी, नियतकालिकांची नोंद आणि वाचकांच्या नोंदी संगणकीकृत केल्या जात आहेत. ग्रंथालयातील कर्मचाऱ्यांना संदर्भ सूची आणि पुस्तकांचे वर्गीकरण मराठीतून अचूक टंकलिखित करावे लागते. नियमित वाचन आणि टायपिंगमुळे शब्दसंग्रह समृद्ध होतो.'
+  },
+
   // =========================================================================
   // MARATHI - 40 WPM (~270 - 320 words for 7 minutes @ 40 WPM target)
   // =========================================================================
@@ -369,8 +564,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-1',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 13,
-    title: 'उतारा १३: प्रशासकीय सुधारणा आणि पारदर्शक कारभार',
+    passageNum: 20,
+    title: 'उतारा २०: प्रशासकीय सुधारणा आणि पारदर्शक कारभार',
     wordCount: 285,
     text: 'प्रशासकीय कामकाजात पारदर्शकता, गतिमानता आणि उत्तरदायित्व निर्माण करण्यासाठी सर्वंकष प्रशासकीय सुधारणांची अंमलबजावणी करणे अत्यंत गरजेचे आहे. लोकशाही शासन व्यवस्थेत शासकीय अधिकाऱ्यांनी जनतेच्या अडीअडचणी समजून घेऊन तत्परतेने निर्णय घेणे अपेक्षित असते. कागदविरहित कार्यालयांची संकल्पना प्रत्यक्षात आणण्यासाठी सर्व शासकीय पत्रव्यवहार, परिपत्रके, मंत्रिमंडळाचे ठराव आणि न्यायालयीन आदेश संगणकीय प्रणालीवर मराठीतून तयार केले जात आहेत. शासकीय सेवेत वरिष्ठ लघुलेखक, शीघ्रलेखक आणि उच्च श्रेणी लिपिक पदांवर काम करणाऱ्या कर्मचाऱ्यांना चाळीस शब्द प्रति मिनिट गतीने अचूक टायपिंग करता येणे आवश्यक असते. होम रो कीजवर बोटे अचूक ठेवून डोळे स्क्रीनवर रोखून टायपिंग केल्याने बोटांची हालचाल गतिमान होते. TypeBaazi या ऑनलाईन व्यासपीठावर दररोज सात मिनिटांचा टायपिंग पेपर सोडवल्याने स्पर्धा परीक्षेतील यश सहज साध्य करता येते.'
   },
@@ -378,8 +573,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-2',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 14,
-    title: 'उतारा १४: विज्ञान, अंतराळ संशोधन आणि भारताची भरारी',
+    passageNum: 21,
+    title: 'उतारा २१: विज्ञान, अंतराळ संशोधन आणि भारताची भरारी',
     wordCount: 280,
     text: 'भारताने अंतराळ संशोधन आणि उपग्रह तंत्रज्ञानाच्या क्षेत्रात जागतिक स्तरावर अत्यंत अभिमानास्पद यश संपादन केले आहे. इस्रोच्या शास्त्रज्ञांनी चंद्रयान आणि आदित्य एल-१ मोहिमा यशस्वी करून भारताची वैज्ञानिक क्षमता सिद्ध केली आहे. उपग्रहांच्या साहाय्याने हवामान अंदाज, कृषी निरीक्षण, नैसर्गिक आपत्ती व्यवस्थापन आणि दळणवळण व्यवस्था अधिक सक्षम झाली आहे. वैज्ञानिक संशोधन संस्था, प्रयोगशाळा आणि शासकीय संशोधन मंडळामध्ये संशोधन अहवाल, तांत्रिक माहिती आणि प्रकल्पांचे मसुदे जलद गतीने तयार करण्यासाठी संगणक टायपिंगचे उत्तम ज्ञान असणे आवश्यक आहे. दररोजच्या नियमित सरावाने टायपिंग गती चाळीस शब्दांच्या पुढे जाते आणि टंकलेखनातील चुकांचे प्रमाण नगण्य होते.'
   },
@@ -387,8 +582,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-3',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 15,
-    title: 'उतारा १५: न्यायालयीन कामकाज, न्यायव्यवस्था आणि कायदा',
+    passageNum: 22,
+    title: 'उतारा २२: न्यायालयीन कामकाज, न्यायव्यवस्था आणि कायदा',
     wordCount: 282,
     text: 'न्यायव्यवस्था हा लोकशाहीचा सर्वात महत्त्वाचा आधारस्तंभ असून नागरिकांच्या मूलभूत हक्कांचे रक्षण करण्याचे कार्य न्यायालये करतात. उच्च न्यायालय आणि जिल्हा सत्र न्यायालयांमध्ये दररोज हजारो खटल्यांची सुनावणी होते, ज्यामध्ये साक्षीदारांचे जबाब, वकिलांचे युक्तिवाद आणि न्यायाधीशांचे निकाल शब्दशः टंकलिखित करावे लागतात. न्यायालयीन लिपिक आणि टंकलेखकांच्या एका लहानशा चुकीमुळे न्यायालयीन प्रक्रियेत गंभीर अडथळे निर्माण होऊ शकतात. त्यामुळे विधी व न्याय विभागाच्या परीक्षांमध्ये ४० शब्द प्रति मिनिट गती आणि ९५ टक्क्यांपेक्षा जास्त अचूकतेची अट ठेवली जाते. सात मिनिटांच्या वेळेत सराव केल्याने उमेदवारांचा ताण कमी होतो आणि परीक्षेतील आत्मविश्वास दृढ होतो.'
   },
@@ -396,8 +591,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-4',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 16,
-    title: 'उतारा १६: शाश्वत विकास, स्मार्ट शहरे आणि वाहतूक व्यवस्था',
+    passageNum: 23,
+    title: 'उतारा २३: शाश्वत विकास, स्मार्ट शहरे आणि वाहतूक व्यवस्था',
     wordCount: 278,
     text: 'शहरी भागातील वाढती लोकसंख्या लक्षात घेऊन शाश्वत नागरी नियोजन आणि पर्यावरणपूरक वाहतूक व्यवस्थेची उभारणी करणे काळाची गरज आहे. मेट्रो रेल्वे, वातानुकूलित इलेक्ट्रिक बसेस आणि सायकल ट्रॅक यांमुळे शहरातील वायू प्रदूषण आणि वाहतूक कोंडी कमी होण्यास मदत होत आहे. महानगरपालिका, नगरपरिषदा आणि नगररचना विभागातील अभियंते आणि लिपिकांना विकास आराखडे, अंदाजपत्रके आणि निविदा मराठीतून तयार कराव्या लागतात. उच्च गतीने मराठी टायपिंग करणाऱ्या कर्मचाऱ्यांमुळे प्रशासकीय कामांची उत्पादकता वाढते आणि नागरिकांना दर्जेदार नागरी सेवा मिळतात.'
   },
@@ -405,8 +600,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-5',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 17,
-    title: 'उतारा १७: ई-प्रशासन, सायबर सुरक्षा आणि सुरक्षित बँकिंग',
+    passageNum: 24,
+    title: 'उतारा २४: ई-प्रशासन, सायबर सुरक्षा आणि सुरक्षित बँकिंग',
     wordCount: 280,
     text: 'डिजिटल क्रांतीमुळे आर्थिक व्यवहार आणि प्रशासकीय कामे ऑनलाइन झाली असली, तरी सायबर सुरक्षेचे महत्त्वही तितकेच वाढले आहे. बँकिंग प्रणाली, यूपीआय व्यवहार आणि शासकीय संकेतस्थळे सुरक्षित ठेवण्यासाठी अत्याधुनिक फायरवॉल आणि सुरक्षा मानके वापरली जातात. बँका आणि वित्तीय संस्थांमधील वरिष्ठ लिपिकांना ग्राहकांच्या खात्यांची पडताळणी, कर्ज मंजुरी पत्रे आणि लेखापरीक्षण अहवाल मराठीतून तयार करावे लागतात. संगणकावर अचूक मराठी टायपिंग केल्यास कामकाजात पारदर्शकता राहते आणि वेळेचा अपव्यय टळतो.'
   },
@@ -414,8 +609,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-6',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 18,
-    title: 'उतारा १८: उद्योग, व्यवसाय आणि रोजगार निर्मिती',
+    passageNum: 25,
+    title: 'उतारा २५: उद्योग, व्यवसाय आणि रोजगार निर्मिती',
     wordCount: 275,
     text: 'औद्योगिक विकास आणि नवीन उद्योगांची स्थापना यामुळे तरुणांना मोठ्या प्रमाणावर रोजगाराच्या संधी उपलब्ध होतात. महाराष्ट्र औद्योगिक विकास महामंडळाच्या माध्यमातून उद्योगांना जमिनी, वीज आणि पाणीपुरवठा उपलब्ध करून दिला जातो. कारखान्यांचे परवाने, कामगार कल्याण कायदे आणि सुरक्षिततेचे नियम यांसंबंधीचे अहवाल तयार करण्यासाठी प्रशासकीय कार्यालयांमध्ये कुशल टंकलेखकांची मोठी मागणी असते. ४० शब्द प्रति मिनिट गतीने टायपिंग केल्यास कार्यालयीन कामकाज अत्यंत वेगाने पूर्ण होते.'
   },
@@ -423,8 +618,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-7',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 19,
-    title: 'उतारा १९: पर्यटन विकास आणि महाराष्ट्राचा ऐतिहासिक वारसा',
+    passageNum: 26,
+    title: 'उतारा २६: पर्यटन विकास आणि महाराष्ट्राचा ऐतिहासिक वारसा',
     wordCount: 278,
     text: 'महाराष्ट्राला सह्याद्रीच्या डोंगररांगा, ऐतिहासिक किल्ले, लेणी आणि विस्तीर्ण समुद्रकिनाऱ्यांचा समृद्ध वारसा लाभला आहे. पर्यटन विकास महामंडळाच्या माध्यमातून गडकिल्ल्यांचे संवर्धन आणि पर्यटकांसाठी सोयीसुविधांची निर्मिती केली जात आहे. पर्यटन स्थळांची माहिती, मार्गदर्शिका आणि सरकारी योजनांची माहिती पर्यटकांपर्यंत पोहोचवण्यासाठी मराठीतून प्रचार साहित्य तयार केले जाते. पर्यटन विभागातील संपर्क अधिकाऱ्यांना मराठी टायपिंगचे उत्तम ज्ञान असणे आवश्यक ठरते.'
   },
@@ -432,8 +627,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-8',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 20,
-    title: 'उतारा २०: आपत्ती व्यवस्थापन आणि नागरी संरक्षण',
+    passageNum: 27,
+    title: 'उतारा २७: आपत्ती व्यवस्थापन आणि नागरी संरक्षण',
     wordCount: 276,
     text: 'पूर, भूकंप, चक्रीवादळे आणि दरडी कोसळणे यांसारख्या नैसर्गिक आपत्तींच्या वेळी तातडीने मदतकार्य पोहोचवणे हे आपत्ती व्यवस्थापन कक्षाचे मुख्य उद्दिष्ट असते. आपत्कालीन नियंत्रण कक्षातून विविध यंत्रणांशी जलद संपर्क साधून परिस्थितीचा अहवाल तयार केला जातो. अचूक आणि वेगवान टायपिंगमुळे तात्काळ आदेश जारी करता येतात आणि मदतकार्य अधिक परिणामकारक बनते. नियमित सराव करणाऱ्या टंकलेखकांना अशा महत्त्वाच्या ठिकाणी प्राधान्य दिले जाते.'
   },
@@ -441,8 +636,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-9',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 21,
-    title: 'उतारा २१: जलसंपदा, धरणे आणि सिंचन व्यवस्था',
+    passageNum: 28,
+    title: 'उतारा २८: जलसंपदा, धरणे आणि सिंचन व्यवस्था',
     wordCount: 278,
     text: 'शेती आणि पिण्याच्या पाण्याचा प्रश्न सोडवण्यासाठी जलसंपदा विभाग धरणांचे बांधकाम आणि कालव्यांची देखभाल करतो. धरणातील पाणीसाठा, विसर्ग आणि शेतीसाठी पाणी वाटपाचे नियोजन संगणकीय नोंदींद्वारे केले जाते. जलसंपदा विभागातील कारकुनांना धरणांचे दैनंदिन अहवाल आणि पूर नियंत्रणाचे संदेश मराठीतून तयार करावे लागतात. टायपिंगमधील अचूकतेमुळे पाणी व्यवस्थापनातील त्रुटी दूर होण्यास मदत होते.'
   },
@@ -450,8 +645,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-10',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 22,
-    title: 'उतारा २२: महिला सबलीकरण आणि बचत गट चळवळ',
+    passageNum: 29,
+    title: 'उतारा २९: महिला सबलीकरण आणि बचत गट चळवळ',
     wordCount: 280,
     text: 'महिलांच्या आर्थिक आणि सामाजिक सक्षमीकरणासाठी स्वयंसाहाय्यता बचत गट चळवळ अत्यंत प्रभावी माध्यम ठरली आहे. महिला बचत गटांना लघुउद्योग सुरू करण्यासाठी बँकांकडून कमी व्याजदरात कर्ज उपलब्ध करून दिले जाते. बचत गटांचे हिशोब, उत्पादन विक्री आणि शासकीय अनुदानाचे अहवाल मराठीतून तयार केले जातात. महिलांना संगणक आणि टायपिंगचे प्रशिक्षण दिल्यास त्या स्वावलंबी बनतात आणि कुटुंबाचा आधार होतात.'
   },
@@ -459,8 +654,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-11',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 23,
-    title: 'उतारा २३: कौशल्य भारत आणि रोजगार विकास कार्यक्रम',
+    passageNum: 30,
+    title: 'उतारा ३०: कौशल्य भारत आणि रोजगार विकास कार्यक्रम',
     wordCount: 275,
     text: 'तरुणांच्या कौशल्यांना वाव देऊन त्यांना रोजगाराभिमुख बनवण्यासाठी कौशल्य विकास कार्यक्रम राबवले जात आहेत. आयटीआय आणि व्यावसायिक प्रशिक्षण केंद्रांमधून संगणक टायपिंग, डेटा एन्ट्री आणि ऑफिस ऑटोमेशनचे प्रशिक्षण दिले जाते. शासकीय आणि खासगी क्षेत्रातील लिपिक टंकलेखक पदांसाठी ४० शब्द प्रति मिनिट गती असलेले उमेदवार तत्परतेने निवडले जातात.'
   },
@@ -468,8 +663,8 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-12',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 24,
-    title: 'उतारा २४: वनसंपदा आणि वन्यजीव संवर्धन कायदे',
+    passageNum: 31,
+    title: 'उतारा ३१: वनसंपदा आणि वन्यजीव संवर्धन कायदे',
     wordCount: 278,
     text: 'जंगलतोड रोखणे आणि वन्यजीवांचे संरक्षण करणे यासाठी वन विभागामार्फत कडक कायदे राबवले जातात. अभयारण्यांमधील वन्यप्राण्यांची गणना, वृक्षारोपण मोहिमा आणि वन संरक्षणाचे अहवाल नियमितपणे तयार करावे लागतात. वन विभागातील टंकलेखकांना पर्यावरण विषयक मसुदे आणि वन संवर्धन परवाने मराठीतून जलद गतीने तयार करावे लागतात.'
   },
@@ -477,10 +672,75 @@ export const SEVEN_MIN_PASSAGES: SevenMinPassage[] = [
     id: 'mr-40-13',
     lang: 'marathi',
     speedTarget: 40,
-    passageNum: 25,
-    title: 'उतारा २५: उच्च शिक्षण, संशोधन आणि विद्यापीठीय प्रशासन',
+    passageNum: 32,
+    title: 'उतारा ३२: उच्च शिक्षण, संशोधन आणि विद्यापीठीय प्रशासन',
     wordCount: 282,
     text: 'विद्यापीठे आणि उच्च शिक्षण संस्थांमधून दर्जेदार संशोधनाला चालना दिली जाते. विद्यापीठीय परीक्षा, निकाल, पदवी प्रमाणपत्रे आणि विविध शिष्यवृत्तींचे वितरण संगणकीकृत प्रणालीद्वारे केले जाते. कुलसचिव कार्यालय आणि परीक्षा विभागातील कारकुनांना दररोज शेकडो विद्यार्थ्यांचे अर्ज आणि निकाल मराठीतून अचूक टंकलिखित करावे लागतात. चाळीस शब्द प्रति मिनिट टायपिंग गती असलेल्या कर्मचाऱ्यांमुळे प्रशासनाचा दर्जा उंचावतो.'
+  },
+
+,
+  {
+    id: 'mr-40-14',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 33,
+    title: 'उतारा ३३: महाराष्ट्र लोकसेवा हक्क कायदा आणि पारदर्शक ई-प्रशासन',
+    wordCount: 285,
+    text: 'महाराष्ट्राने नागरिकांना पारदर्शक, गतिमान आणि कालबद्ध शासकीय सेवा मिळवून देण्यासाठी महाराष्ट्र लोकसेवा हक्क कायदा संमत केला आहे. या कायद्यानुसार शासकीय विभागांनी विविध सेवा विहित मुदतीत देणे बंधनकारक करण्यात आले आहे. आपले सरकार या ऑनलाईन संकेतस्थळावरून उत्पन्न दाखला, जात प्रमाणपत्र, रहिवासी दाखला आणि विविध परवाने घरबसल्या उपलब्ध होत आहेत. सेवा देण्यास विनाकारण विलंब झाल्यास संबंधित अधिकाऱ्यांवर दंडात्मक कारवाईची तरतूद कायद्यात आहे. जिल्हाधिकारी कार्यालये, तहसील कचेऱ्या आणि महापालिकांमध्ये या सेवांची छाननी करून प्रमाणपत्रे डिजिटल स्वाक्षरीने वितरित केली जातात. वरिष्ठ लिपिक आणि टंकलेखकांना दररोज शेकडो अर्जांचे खुलासे, अहवाल आणि अपील आदेश मराठी युनिकोड फॉन्टमध्ये अत्यंत अचूकतेने टंकलिखित करावे लागतात. चाळीस शब्द प्रति मिनिट टायपिंग गती असलेल्या कर्मचाऱ्यांमुळे प्रशासनाची कार्यक्षमता कित्येक पटीने वाढते. TypeBaazi वर नियमित सराव केल्याने परीक्षार्थींना ४० शब्द प्रति मिनिट गतीचा टप्पा सहज गाठता येतो.'
+  },
+  {
+    id: 'mr-40-15',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 34,
+    title: 'उतारा ३४: महसूल प्रशासन, ई-फेरफार आणि सातबारा संगणकीकरण',
+    wordCount: 288,
+    text: 'महाराष्ट्रातील महसूल प्रशासन हे ग्रामीण अर्थव्यवस्थेचा आणि भूमी अभिलेखांचा पाया मानले जाते. शेतकऱ्यांच्या जमिनीची मालकी, वारसाहक्क आणि खरेदी-विक्रीच्या नोंदी सातबारा उताऱ्यावर ठेवल्या जातात. राज्य शासनाने डिजिटल इंडिया भूमी अभिलेख आधुनिकीकरण कार्यक्रमांतर्गत सर्व सातबारा उतारे संगणकीकृत करून ऑनलाईन उपलब्ध करून दिले आहेत. ई-फेरफार प्रणालीमुळे आता जमिनीच्या खरेदी-विक्रीची नोंद थेट दुय्यम निबंधक कार्यालयातून तहसील कार्यालयाशी जोडली गेली आहे. तलाठी आणि मंडळ अधिकाऱ्यांच्या स्तरावर फेरफार नोंदी प्रमाणित करणे, हरकतींची सुनावणी घेणे आणि महसूल न्यायालयातील दाव्यांचे मसुदे तयार करणे हे काम वेगाने पूर्ण करावे लागते. महसूल विभागातील लिपिक टंकलेखकांना मराठीतून क्लिष्ट कायदेशीर पत्रव्यवहार आणि आदेश त्वरित टाइप करावे लागतात. होम रो कीजवर अचूक बोटे ठेवून टाईप केल्याने चुका टळतात आणि कामात गतिमानता येते.'
+  },
+  {
+    id: 'mr-40-16',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 35,
+    title: 'उतारा ३५: समृद्धी महामार्ग, दळणवळण आणि औद्योगिक विकास',
+    wordCount: 290,
+    text: 'हिंदूहृदयसम्राट बाळासाहेब ठाकरे महाराष्ट्र समृद्धी महामार्ग हा नागपूर ते मुंबई दरम्यानचा राज्यातील सर्वात लांब आणि अत्याधुनिक एक्सप्रेसवे आहे. या महामार्गामुळे विदर्भ, मराठवाडा आणि उत्तर महाराष्ट्रातील कृषी उत्पादने आणि औद्योगिक माल जेएनपीटी बंदरापर्यंत काही तासांत पोहोचू लागला आहे. महामार्गालगत कृषी समृद्धी केंद्रे, औद्योगिक वसाहती आणि लॉजिस्टिक्स हब्स विकसित केले जात आहेत. महाराष्ट्र राज्य रस्ते विकास महामंडळामार्फत जमिनीचे भूसंपादन, भरपाई वाटप, टोल व्यवस्थापन आणि सुरक्षिततेचे नियमन केले जाते. अशा भव्य पायाभूत सुविधा प्रकल्पांच्या अंमलबजावणीसाठी विविध शासकीय विभागांशी अखंड समन्वय ठेवावा लागतो. या प्रकल्पाशी संबंधित निविदा, करारनामे आणि पर्यावरण मंजुरीचे शासकीय ठराव मराठीतून अचूक टंकलिखित करण्यासाठी चाळीस शब्द प्रति मिनिट गती असलेले उच्च श्रेणी लिपिक मोलाचे योगदान देतात.'
+  },
+  {
+    id: 'mr-40-17',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 36,
+    title: 'उतारा ३६: पर्यावरण संवर्धन, घनकचरा व्यवस्थापन आणि जलपुनर्भरन',
+    wordCount: 292,
+    text: 'शहरीकरणाच्या प्रचंड वेगामुळे निर्माण होणारा घनकचरा आणि जलप्रदूषण या आजच्या काळातील सर्वात गंभीर समस्या बनल्या आहेत. महानगरपालिका आणि नगरपालिकांमार्फत ओला व सुका कचरा यांचे वर्गीकरण करून खतनिर्मिती आणि वीजनिर्मितीचे प्रकल्प राबवले जात आहेत. प्लास्टिक कचऱ्याचा पुनर्वापर करून रस्ते बांधणीमध्ये त्याचा वापर करण्याचे अभिनव प्रयोग यशस्वी झाले आहेत. त्याचप्रमाणे पावसाच्या पाण्याचे छतावरून संकलन करून भूगर्भातील पाणीपातळी वाढवण्यासाठी रेन वॉटर हार्वेस्टिंग सक्तीचे केले जात आहे. पर्यावरण विभागातील प्रदूषण नियंत्रण मंडळ कारखान्यांचे सांडपाणी ऑडिट आणि उत्सर्जन अहवाल नियमितपणे तपासते. या संदर्भातील पर्यावरणीय कायदे, दंडात्मक नोटीसा आणि न्यायालयातील प्रतिज्ञापत्रे मराठीतून तत्परतेने तयार करण्यासाठी संगणक टायपिंगमध्ये निपुण असलेल्या कर्मचाऱ्यांची आवश्यकता असते. सात मिनिटांच्या कसून सरावाने टायपिंग अचूकता ९५ टक्क्यांच्या वर पोहोचते.'
+  },
+  {
+    id: 'mr-40-18',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 37,
+    title: 'उतारा ३७: ई-न्यायालय प्रणाली आणि गतिमान न्यायव्यवस्था',
+    wordCount: 286,
+    text: 'भारतीय न्यायव्यवस्थेमध्ये प्रलंबित खटल्यांचा जलद गतीने निपटारा करण्यासाठी ई-कोर्ट्स प्रकल्प अत्यंत वेगाने राबवला जात आहे. जिल्हा व सत्र न्यायालये, उच्च न्यायालय आणि सर्वोच्च न्यायालय यांचे कामकाज आता संगणकीकृत आणि डिजिटल प्रणालीवर चालवले जात आहे. पक्षकारांना खटल्यांची स्थिती, पुढील सुनावणीची तारीख आणि निकाल ऑनलाईन पोर्टलवर पाहता येतात. न्यायालयांमध्ये साक्षीदारांचे जबाब नोंदवणे, वकिलांचे युक्तिवाद टंकलिखित करणे आणि अंतिम न्यायनिर्णय तयार करणे यासाठी न्यायालयीन लघुलेखक व टंकलेखकांवर मोठी जबाबदारी असते. मराठीतून कायदेशीर मसुदा तयार करताना शुद्धलेखन आणि व्याकरणाचे नियम तंतोतंत पाळावे लागतात. एक लहानशी टायपिंग चूकही खटल्याचा अर्थ बदलू शकते. म्हणूनच न्यायालयीन लिपिक भरती परीक्षेत चाळीस शब्द प्रति मिनिट गती आणि उच्च अचूकतेला सर्वोच्च प्राधान्य दिले जाते.'
+  },
+  {
+    id: 'mr-40-19',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 38,
+    title: 'उतारा ३८: भारतीय अंतराळ संशोधन आणि चांद्रयान मोहीम',
+    wordCount: 284,
+    text: 'भारतीय अंतराळ संशोधन संस्था म्हणजेच इस्रोने संपूर्ण जगासमोर भारताच्या वैज्ञानिक क्षमतेचा अद्वितीय ठसा उमटवला आहे. चांद्रयान-३ मोहिमेत चंद्राच्या दक्षिण ध्रुवावर यशस्वी मऊ लँडिंग करणारा भारत हा जगातील पहिला देश ठरला. या ऐतिहासिक यशाने भारतीय शास्त्रज्ञांचे अफाट कर्तृत्व आणि कमी खर्चात उत्कृष्ट तंत्रज्ञान विकसित करण्याची क्षमता सिद्ध झाली. अंतराळ विज्ञानामुळे हवामान अंदाज, चक्रीवादळांची पूर्वसूचना, दूरसंचार आणि संरक्षण क्षेत्रात क्रांती घडून आली आहे. केंद्र आणि राज्य शासनाच्या विज्ञान व तंत्रज्ञान विभागामार्फत अंतराळ विज्ञानाची माहिती सर्वसामान्यांपर्यंत पोहोचवण्यासाठी विविध उपक्रम राबवले जातात. या मोहिमांचे संशोधन अहवाल आणि प्रसिद्धी पत्रके मराठीतून प्रसिद्ध करण्यासाठी टंकलेखकांची भूमिका महत्त्वाची ठरते. टाइपबाझीवरील नियमित सरावाने एकाग्रता आणि बोटांची चपळता वाढते.'
+  },
+  {
+    id: 'mr-40-20',
+    lang: 'marathi',
+    speedTarget: 40,
+    passageNum: 39,
+    title: 'उतारा ३९: मराठी भाषा संवर्धन आणि अभिजात भाषेचा गौरव',
+    wordCount: 288,
+    text: 'मराठी ही जगातील सर्वात प्राचीन, समृद्ध आणि साहित्यसंपन्न भाषांपैकी एक आहे. संत ज्ञानेश्वर, संत नामदेव, छत्रपती शिवाजी महाराज, लोकमान्य टिळक आणि कुसुमाग्रज यांच्या समृद्ध वारशाने मराठी भाषेला वैश्विक प्रतिष्ठा मिळवून दिली आहे. नुकताच मराठी भाषेला केंद्र शासनाकडून अभिजात भाषा दर्जा प्रदान करण्यात आला, जो प्रत्येक मराठी नागरिकासाठी अत्यंत अभिमानाचा क्षण आहे. अभिजात भाषेच्या दर्जामुळे मराठीतील प्राचीन हस्तलिखितांचे जतन, आंतरराष्ट्रीय स्तरावर भाषा संशोधन आणि विद्यापीठांमध्ये मराठी अध्यापनाला मोठे प्रोत्साहन मिळणार आहे. राज्य शासनाने सर्व शासकीय कार्यालये, न्यायालये आणि स्थानिक संस्थांमध्ये शंभर टक्के मराठीतून कामकाज करण्याचे निर्देश दिले आहेत. मराठी टंकलेखन हे केवळ परीक्षेचे माध्यम नसून मातृभाषेची सेवा करण्याचे एक प्रभावी साधन आहे.'
   },
 
   // =========================================================================
