@@ -168,7 +168,7 @@ export class StorageManager {
           stats.currentStreak = 0;
           try {
             localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-          } catch {}
+          } catch { }
         }
       }
 
@@ -255,7 +255,7 @@ export class StorageManager {
         const lastDate = new Date(current.lastActiveDate);
         const nowDate = new Date(today);
         const diffDays = Math.floor((nowDate.getTime() - lastDate.getTime()) / (1000 * 60 * 60 * 24));
-        
+
         // If practiced yesterday (diffDays === 1, within 48 hours): Increment streak!
         if (diffDays === 1) {
           currentStreak = Math.max(1, currentStreak + 1);
