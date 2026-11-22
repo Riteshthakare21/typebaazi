@@ -13,76 +13,76 @@
     </image:image>
   </url>
 
-  <!-- 2. Main Speed Test Arena -->
-  <url>
-    <loc>https://typebaazi.com/typing-test/</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.98</priority>
-  </url>
-
-  <!-- 3. English Speed Test -->
-  <url>
-    <loc>https://typebaazi.com/english-typing-test/</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.98</priority>
-  </url>
-
-  <!-- 4. Hindi Typing Test Online -->
-  <url>
-    <loc>https://typebaazi.com/hindi-typing-test/</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.98</priority>
-  </url>
-
-  <!-- 5. Hindi Typing Practice Zone -->
-  <url>
-    <loc>https://typebaazi.com/hindi-typing-practice/</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- 6. Marathi Typing Arena (मराठी टायपिंग टेस्ट) -->
+  <!-- 2. Marathi Typing Arena (मराठी टायपिंग टेस्ट) -->
   <url>
     <loc>https://typebaazi.com/marathi-typing-test/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.98</priority>
+    <priority>0.99</priority>
   </url>
 
-  <!-- 7. Marathi Practice Zone (मराठी सराव) -->
+  <!-- 3. Marathi Practice Zone (मराठी सराव) -->
   <url>
     <loc>https://typebaazi.com/marathi-typing-practice/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.95</priority>
+    <priority>0.98</priority>
   </url>
 
-  <!-- 8. 7-Minute Government Exam Test (GCC-TBC, MPSC, SSC) -->
+  <!-- 4. 7-Minute Government Exam Test (GCC-TBC 30 & 40 WPM, MPSC) -->
   <url>
     <loc>https://typebaazi.com/seven-minute-typing-test/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.98</priority>
   </url>
 
-  <!-- 9. Typing Speed Test 1 Minute Hub -->
+  <!-- 5. Government Exam Typing Practice (MPSC Group C, Courts, SSC) -->
   <url>
-    <loc>https://typebaazi.com/typing-speed-test/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <loc>https://typebaazi.com/government-exam-typing-practice/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.97</priority>
+  </url>
+
+  <!-- 6. Main Speed Test Arena -->
+  <url>
+    <loc>https://typebaazi.com/typing-test/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
+  </url>
+
+  <!-- 7. English Speed Test -->
+  <url>
+    <loc>https://typebaazi.com/english-typing-test/</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- 10. Government Exam Typing Practice (SSC, Courts, RRB) -->
+  <!-- 8. Typing Speed Test 1 Minute Hub -->
   <url>
-    <loc>https://typebaazi.com/government-exam-typing-practice/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <loc>https://typebaazi.com/typing-speed-test/</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.98</priority>
+    <priority>0.93</priority>
+  </url>
+
+  <!-- 9. Hindi Typing Test Online -->
+  <url>
+    <loc>https://typebaazi.com/hindi-typing-test/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 10. Hindi Typing Practice Zone -->
+  <url>
+    <loc>https://typebaazi.com/hindi-typing-practice/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.88</priority>
   </url>
 
   <!-- 11. Real-Time AI Car Racing -->
