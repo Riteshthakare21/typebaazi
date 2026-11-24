@@ -931,15 +931,29 @@
     }
 
     // Attach Viral Share Handlers with dynamic test metrics & UTM parameters
-    const baseShareUrl = 'https://typebaazi.com/typing-test';
+    const resLang = (rawResult.language || 'english').toLowerCase();
+    const baseShareUrl = resLang === 'marathi'
+      ? 'https://typebaazi.com/marathi-typing-test/'
+      : (resLang === 'hindi' ? 'https://typebaazi.com/hindi-typing-test/' : 'https://typebaazi.com/typing-test/');
+
     const waShareUrl = `${baseShareUrl}?utm_source=whatsapp&utm_medium=social_share&utm_campaign=typing_score`;
     const xShareUrl = `${baseShareUrl}?utm_source=twitter&utm_medium=social_share&utm_campaign=typing_score`;
     const tgShareUrl = `${baseShareUrl}?utm_source=telegram&utm_medium=social_share&utm_campaign=typing_score`;
     const copyShareUrl = `${baseShareUrl}?utm_source=copy_link&utm_medium=social_share&utm_campaign=typing_score`;
 
-    const shareTextWA = `🔥 I just scored ${rawResult.wpm} WPM with ${rawResult.accuracy}% accuracy in ${rawResult.language || 'English'} typing on TypeBaazi! 🏎️ Can you beat my score? Take the free challenge here: ${waShareUrl}`;
-    const shareTextTG = `🔥 I just scored ${rawResult.wpm} WPM with ${rawResult.accuracy}% accuracy in ${rawResult.language || 'English'} typing on TypeBaazi! 🏎️ Can you beat my score? Take the free challenge here: ${tgShareUrl}`;
-    const shareTextCopy = `🔥 I just scored ${rawResult.wpm} WPM with ${rawResult.accuracy}% accuracy in ${rawResult.language || 'English'} typing on TypeBaazi! 🏎️ Can you beat my score? Take the free challenge: ${copyShareUrl}`;
+    let shareTextWA = `⚡ I just typed ${rawResult.wpm} WPM with ${rawResult.accuracy}% accuracy on TypeBaazi! 🏆 Can you beat my score? Test your speed & get a free certificate: ${waShareUrl}`;
+    let shareTextTG = `⚡ I just typed ${rawResult.wpm} WPM with ${rawResult.accuracy}% accuracy on TypeBaazi! 🏆 Can you beat my score? Test your speed: ${tgShareUrl}`;
+    let shareTextCopy = `⚡ I just typed ${rawResult.wpm} WPM with ${rawResult.accuracy}% accuracy on TypeBaazi! 🏆 Can you beat my score? Test your speed: ${copyShareUrl}`;
+
+    if (resLang === 'marathi') {
+      shareTextWA = `🚩 मी TypeBaazi वर मराठी टायपिंग टेस्ट दिली! ⚡ स्पीड: ${rawResult.wpm} WPM | अचूकता: ${rawResult.accuracy}% 🏆 तुम्ही पण तुमचा टायपिंग स्पीड मोफत तपासा आणि सर्टिफिकेट मिळवा: ${waShareUrl}`;
+      shareTextTG = `🚩 मी TypeBaazi वर मराठी टायपिंग टेस्ट दिली! ⚡ स्पीड: ${rawResult.wpm} WPM | अचूकता: ${rawResult.accuracy}% 🏆 तुम्ही पण स्पीड तपासा: ${tgShareUrl}`;
+      shareTextCopy = `🚩 मी TypeBaazi वर मराठी टायपिंग टेस्ट दिली! ⚡ स्पीड: ${rawResult.wpm} WPM | अचूकता: ${rawResult.accuracy}% 🏆 मोफत टेस्ट द्या: ${copyShareUrl}`;
+    } else if (resLang === 'hindi') {
+      shareTextWA = `🇮🇳 मैंने TypeBaazi पर हिंदी टाइपिंग टेस्ट दिया! ⚡ स्पीड: ${rawResult.wpm} WPM | सटीकता: ${rawResult.accuracy}% 🏆 आप भी अपना स्पीड टेस्ट करें और सर्टिफिकेट पाएं: ${waShareUrl}`;
+      shareTextTG = `🇮🇳 मैंने TypeBaazi पर हिंदी टाइपिंग टेस्ट दिया! ⚡ स्पीड: ${rawResult.wpm} WPM | सटीकता: ${rawResult.accuracy}% 🏆 आप भी स्पीड टेस्ट करें: ${tgShareUrl}`;
+      shareTextCopy = `🇮🇳 मैंने TypeBaazi पर हिंदी टाइपिंग टेस्ट दिया! ⚡ स्पीड: ${rawResult.wpm} WPM | सटीकता: ${rawResult.accuracy}% 🏆 टेस्ट दें: ${copyShareUrl}`;
+    }
 
     const btnWhatsapp = document.getElementById('res-btn-share-whatsapp');
     const btnX = document.getElementById('res-btn-share-x');

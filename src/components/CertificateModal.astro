@@ -1014,10 +1014,23 @@
       const name = currentCertificateResult.userName || 'Champion';
       const wpm = currentCertificateResult.wpm || 28;
       const acc = currentCertificateResult.accuracy || 90.4;
-      const time = currentCertificateResult.timeSec || 12.0;
       const certId = currentCertificateResult.certificateId || '#TB-765493';
-      const shareRaceUrl = 'https://typebaazi.com/race?utm_source=whatsapp&utm_medium=social_share&utm_campaign=certificate_victory';
-      const text = `🏆 I just won the Grand Prix Speed Championship on TypeBaazi!\n\n⚡ Speed: ${wpm} WPM\n🎯 Accuracy: ${acc}%\n⏱️ Time: ${time}s\n🎓 Certificate: ${certId}\n\nCan you beat my typing speed? Race now: ${shareRaceUrl}`;
+      const lang = (currentCertificateResult.language || 'english').toLowerCase();
+      const isRace = currentCertificateResult.testType === 'race';
+
+      let shareUrl = 'https://typebaazi.com/dashboard/?utm_source=whatsapp&utm_medium=social_share&utm_campaign=certificate_share';
+      let text = `🏆 I just earned an official verified typing certificate on TypeBaazi!\n\n⚡ Speed: ${wpm} WPM\n🎯 Accuracy: ${acc}%\n📜 Certificate ID: ${certId}\n\nCheck your typing speed and download your free certificate: ${shareUrl}`;
+
+      if (isRace) {
+        shareUrl = 'https://typebaazi.com/race/?utm_source=whatsapp&utm_medium=social_share&utm_campaign=certificate_victory';
+        text = `🏆 I just won the Grand Prix Speed Championship on TypeBaazi!\n\n⚡ Speed: ${wpm} WPM\n🎯 Accuracy: ${acc}%\n🎓 Certificate: ${certId}\n\nCan you beat my typing speed? Race now: ${shareUrl}`;
+      } else if (lang === 'marathi') {
+        shareUrl = 'https://typebaazi.com/marathi-typing-test/?utm_source=whatsapp&utm_medium=social_share&utm_campaign=certificate_share';
+        text = `🚩 मी TypeBaazi वर अधिकृत टायपिंग प्रमाणपत्र मिळवले!\n\n⚡ स्पीड: ${wpm} WPM\n🎯 अचूकता: ${acc}%\n📜 प्रमाणपत्र क्रमांक: ${certId}\n\nतुम्ही पण मोफत टायपिंग स्पीड तपासा आणि सर्टिफिकेट मिळवा: ${shareUrl}`;
+      } else if (lang === 'hindi') {
+        shareUrl = 'https://typebaazi.com/hindi-typing-test/?utm_source=whatsapp&utm_medium=social_share&utm_campaign=certificate_share';
+        text = `🇮🇳 मैंने TypeBaazi पर प्रमाणित टाइपिंग सर्टिफिकेट प्राप्त किया!\n\n⚡ स्पीड: ${wpm} WPM\n🎯 सटीकता: ${acc}%\n📜 सर्टिफिकेट ID: ${certId}\n\nआप भी फ्री सर्टिफिकेट टेस्ट करें: ${shareUrl}`;
+      }
       
       try {
         if (typeof (window as any).trackTypeBaaziEvent === 'function') {
